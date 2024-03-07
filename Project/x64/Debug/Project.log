@@ -1,0 +1,3 @@
+﻿  project's code .cpp
+C:\Users\Youse\repos\SP_Project\Project\project's code .cpp(3,6): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Project.vcxproj -> C:\Users\Youse\repos\SP_Project\x64\Debug\Project.exe
