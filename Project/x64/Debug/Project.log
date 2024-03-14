@@ -1,3 +1,4 @@
 ﻿  project's code .cpp
-C:\Users\Youse\repos\SP_Project\Project\project's code .cpp(3,6): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\Youse\repos\SP_Project\Project\project's code .cpp(79,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  LINK : C:\Users\Youse\repos\SP_Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
   Project.vcxproj -> C:\Users\Youse\repos\SP_Project\x64\Debug\Project.exe
