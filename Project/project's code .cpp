@@ -6,16 +6,17 @@ using namespace std;
 #define NumberOfSpecialties 15
 struct Hospitals {
 	 int HospitalID;
-	 int PatientReservationRooms[NumberOfHospital];
+	 int PatientReservationRooms;//BedsAvailable
 	 float ReservationPrice;
+	 float BedsPrice;
 	 float HospitalRate;
 	 string HospitalSpecialties[NumberOfSpecialties];
 	 string HospitalClinics[NumberOfSpecialties];
 };
 struct Reservations {
-	 int ReservtionID[NumberOfReservation];
-	 Hospitals hospital[10];
-	 string ReservationType[2] = { "check-up","consultation" };
+	 int ReservtionID;
+	 Hospitals hospital;
+	 string ReservationType[2] = { "check-up","surgery" };
 	 string ReservationDay[7] = { "Saturday","Sunday","Monday","Tuesday","Wednesday"," Thursday","Friday" };
 };
 struct Users {
@@ -23,7 +24,6 @@ struct Users {
 	 string userType;
 	 string username;
 	 string password;
-	 string CheckUserType="patient";
 	 /*if (CheckUserType == userType[1]) {
 		  Reservations reservation[NumberOfHospital];
 		  by use pointer
