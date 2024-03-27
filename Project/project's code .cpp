@@ -1,9 +1,12 @@
 #include<iostream>
+#include<fstream>
+#include<string>
 using namespace std;
 #define NumberOfHospital 6
 #define NumberOfReservation 10
 #define NumberOfUsers 8
-#define NumberOfSpecialties 15
+#define NumberOfSpecialties 11
+
 struct Hospitals {
 	 int HospitalID;
 	 int PatientReservationRooms;//BedsAvailable
@@ -29,11 +32,13 @@ struct Users {
 		  by use pointer
 	 }*/
 };
-void PrintHospitalData();
-void PrintPatientData();
-void SortHospitalByName();
-void SortHospitalByRating();
-void SortByBedsAvailable();
-void SortByBedsPrice();
+
+void PrintHospitalData(Hospitals hospital[]);
+void PrintPatientData(Hospitals hospital[]);
+void SortHospitalByName(Hospitals hospital[]);
+void SortHospitalByRating(Hospitals hospital[]);
+void SortByBedsAvailable(Hospitals hospital[]);
+void SortByBedsPrice(Hospitals hospital[]);
+void DefinitonOfVariable(Hospitals hospital[]);
 void main() {
 }
