@@ -1,0 +1,13 @@
+
+*.db-shm
+*.vsidx
+*.vsidx
+*.db
+*.db-wal
+*.vsidx
+*.db
+*.opendb
+*.json
+*.db
+*.db
+/.vs

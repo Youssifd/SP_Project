@@ -1,4 +1,70 @@
 ﻿  project's code .cpp
-C:\Users\Youse\repos\SP_Project\Project\project's code .cpp(79,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  LINK : C:\Users\Youse\repos\SP_Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
-  Project.vcxproj -> C:\Users\Youse\repos\SP_Project\x64\Debug\Project.exe
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(43,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(46,23): error C2563: mismatch in formal parameter list
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(46,23): error C2568: '<': unable to resolve function overload
+  C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(46,23):
+  could be 'size_t std::size(const _Ty (&)[_Size]) noexcept'
+  C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(46,23):
+  or       'unknown-type std::size(const _Container &) noexcept(<expr>)'
+  
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(47,29): error C2563: mismatch in formal parameter list
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(47,29): error C2568: '<': unable to resolve function overload
+  C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(47,29):
+  could be 'size_t std::size(const _Ty (&)[_Size]) noexcept'
+  C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(47,29):
+  or       'unknown-type std::size(const _Container &) noexcept(<expr>)'
+  
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(48,23): error C2039: 'HospitalName': is not a member of 'Hospitals'
+  C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(10,8):
+  see declaration of 'Hospitals'
+  
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(48,38): error C2065: 'hos': undeclared identifier
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,11): error C2065: 'hos': undeclared identifier
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,19): error C2065: 'hos': undeclared identifier
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6): error C2672: 'std::swap': no matching overloaded function found
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\fstream(485,6):
+  could be 'void std::swap(std::basic_fstream<_Elem,_Traits> &,std::basic_fstream<_Elem,_Traits> &) noexcept'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::basic_fstream<_Elem,_Traits> &,std::basic_fstream<_Elem,_Traits> &) noexcept': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\fstream(325,6):
+  or       'void std::swap(std::basic_ofstream<_Elem,_Traits> &,std::basic_ofstream<_Elem,_Traits> &) noexcept'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::basic_ofstream<_Elem,_Traits> &,std::basic_ofstream<_Elem,_Traits> &) noexcept': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\fstream(172,6):
+  or       'void std::swap(std::basic_ifstream<_Elem,_Traits> &,std::basic_ifstream<_Elem,_Traits> &) noexcept'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::basic_ifstream<_Elem,_Traits> &,std::basic_ifstream<_Elem,_Traits> &) noexcept': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\__msvc_filebuf.hpp(778,6):
+  or       'void std::swap(std::basic_filebuf<_Elem,_Traits> &,std::basic_filebuf<_Elem,_Traits> &) noexcept'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::basic_filebuf<_Elem,_Traits> &,std::basic_filebuf<_Elem,_Traits> &) noexcept': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3465,19):
+  or       'void std::swap(std::unique_ptr<_Ty,_Dx> &,std::unique_ptr<_Ty,_Dx> &) noexcept'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::unique_ptr<_Ty,_Dx> &,std::unique_ptr<_Ty,_Dx> &) noexcept': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3085,6):
+  or       'void std::swap(std::weak_ptr<_Ty> &,std::weak_ptr<_Ty> &) noexcept'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::weak_ptr<_Ty> &,std::weak_ptr<_Ty> &) noexcept': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(1952,6):
+  or       'void std::swap(std::shared_ptr<_Ty> &,std::shared_ptr<_Ty> &) noexcept'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::shared_ptr<_Ty> &,std::shared_ptr<_Ty> &) noexcept': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(4925,19):
+  or       'void std::swap(std::basic_string<_Elem,_Traits,_Alloc> &,std::basic_string<_Elem,_Traits,_Alloc> &) noexcept'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::basic_string<_Elem,_Traits,_Alloc> &,std::basic_string<_Elem,_Traits,_Alloc> &) noexcept': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\utility(476,19):
+  or       'void std::swap(std::pair<_Ty1,_Ty2> &,std::pair<_Ty1,_Ty2> &) noexcept(<expr>)'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(std::pair<_Ty1,_Ty2> &,std::pair<_Ty1,_Ty2> &) noexcept(<expr>)': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\type_traits(2131,19):
+  or       'void std::swap(_Ty (&)[_Size],_Ty (&)[_Size]) noexcept(<expr>)'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(_Ty (&)[_Size],_Ty (&)[_Size]) noexcept(<expr>)': expects 2 arguments - 1 provided
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\type_traits(2128,19):
+  or       'void std::swap(_Ty &,_Ty &) noexcept(<expr>)'
+  	C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(49,6):
+  	'void std::swap(_Ty &,_Ty &) noexcept(<expr>)': expects 2 arguments - 1 provided
+  
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(45,47): error C1075: '{': no matching token found
