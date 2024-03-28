@@ -2,3 +2,8 @@
 /.vs
 /.vs
 /.vs/SP_Project
+.vs/SP_Project/FileContentIndex/fd15c782-3998-4d2f-b568-3e996501f7c4.vsidx
+*.vsidx
+/.vs/SP_Project/v17
+*.db
+*.json
