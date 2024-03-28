@@ -42,6 +42,14 @@ void SortByBedsAvailable(Hospitals hospital[]);
 void SortByBedsPrice(Hospitals hospital[]);
 void DefinitonOfVariable(Hospitals hospital[]);
 void main() {
+	 Hospitals hospital[NumberOfHospital];
+	 DefinitonOfVariable(hospital);
+	 for (int i = 0; i < NumberOfHospital; i++)
+		  cout << hospital[i].HospitalName << "\n";
+	 cout << "-------------------after sorting---------------------\n";
+	 SortHospitalByName(hospital);
+	 for (int i = 0; i < NumberOfHospital; i++)
+		  cout << hospital[i].HospitalName << "\n";
 }
 void SortHospitalByName(Hospitals hospital[]) {
 	 for (int i = 0; i < NumberOfHospital - 1; ++i) {
@@ -77,5 +85,7 @@ void SortByBedsPrice(Hospitals hospital[]) {
 }
 void DefinitonOfVariable(Hospitals hospital[]) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
-
+	 for (int i = 0; i < NumberOfHospital; i++)
+		  getline(HospitalInfo, hospital[i].HospitalName);
+	 HospitalInfo.close();
 }
