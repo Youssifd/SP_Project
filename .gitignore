@@ -7,3 +7,5 @@
 /.vs/SP_Project/v17
 *.db
 *.json
+*.vsidx
+*.db
