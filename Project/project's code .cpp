@@ -2,20 +2,21 @@
 #include<fstream>
 #include<string>
 using namespace std;
-#define NumberOfHospital 6
+#define NumberOfHospital 5
 #define NumberOfReservation 10
 #define NumberOfUsers 8
-#define NumberOfSpecialties 11
+#define NumberOfSpecialties 7
+#define NumberOfClinics 14
 
 struct Hospitals {
 	 int HospitalID;
 	 int PatientReservationRooms;//BedsAvailable
-	 float ReservationPrice;
-	 float BedsPrice;
+	 float ReservationPrice;//for check-up
+	 float BedsPrice; //for surgery
 	 float HospitalRate;
 	 string HospitalName;
 	 string HospitalSpecialties[NumberOfSpecialties];
-	 string HospitalClinics[NumberOfSpecialties];
+	 string HospitalClinics[NumberOfClinics];
 };
 struct Reservations {
 	 int ReservtionID;
@@ -44,12 +45,20 @@ void DefinitonOfVariable(Hospitals hospital[]);
 void main() {
 	 Hospitals hospital[NumberOfHospital];
 	 DefinitonOfVariable(hospital);
+	 cout << "-------------------Before sorting by name---------------------\n";
 	 for (int i = 0; i < NumberOfHospital; i++)
 		  cout << hospital[i].HospitalName << "\n";
-	 cout << "-------------------after sorting---------------------\n";
+	 cout << "-------------------after sorting by name---------------------\n";
 	 SortHospitalByName(hospital);
 	 for (int i = 0; i < NumberOfHospital; i++)
 		  cout << hospital[i].HospitalName << "\n";
+	 cout << "-------------------Before sorting by Rate---------------------\n";
+	 for (int i = 0; i < NumberOfHospital; i++)
+		  cout << hospital[i].HospitalName<<"--> "<< hospital[i].HospitalRate << "\n";
+	 cout << "-------------------After  sorting by Rate---------------------\n";
+	 SortHospitalByRating(hospital);
+	 for (int i = 0; i < NumberOfHospital; i++)
+		  cout << hospital[i].HospitalName << "--> " << hospital[i].HospitalRate << "\n";
 }
 void SortHospitalByName(Hospitals hospital[]) {
 	 for (int i = 0; i < NumberOfHospital - 1; ++i) {
@@ -87,5 +96,12 @@ void DefinitonOfVariable(Hospitals hospital[]) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
 	 for (int i = 0; i < NumberOfHospital; i++)
 		  getline(HospitalInfo, hospital[i].HospitalName);
+	 for (int i = 0; i < NumberOfHospital; i++) {
+		  HospitalInfo >> hospital[i].HospitalID >> hospital[i].PatientReservationRooms >> hospital[i].ReservationPrice >> hospital[i].BedsPrice >> hospital[i].HospitalRate;
+		  for(int j=0;j< NumberOfSpecialties;j++)
+			   HospitalInfo >> hospital[i].HospitalSpecialties[j];
+		  for (int j = 0; j < NumberOfClinics; j++)
+			   HospitalInfo >> hospital[i].HospitalClinics[j];
+	 }
 	 HospitalInfo.close();
 }

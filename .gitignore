@@ -9,22 +9,3 @@
 /.vs/SP_Project
 *.db
 /.vs/SP_Project/v17
-
-
-# Precompiled Headers
-*.gch
-*.pch
-
-
-*.so
-*.dll
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
