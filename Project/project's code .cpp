@@ -4,7 +4,7 @@
 using namespace std;
 #define NumberOfHospital 5
 #define NumberOfReservation 10
-#define NumberOfUsers 8
+#define NumberOfUsers 15
 #define NumberOfSpecialties 11
 #define NumberOfClinics 19
 
@@ -25,42 +25,66 @@ struct Reservations {
 	 string ReservationDay[7] = { "Saturday","Sunday","Monday","Tuesday","Wednesday"," Thursday","Friday" };
 };
 struct Users {
-	 int userID;
-	 string userType;
+	 int id;
+	 int age;
+	 string userType="Patient";
+	 string name;
+	 string email;
 	 string username;
 	 string password;
-	 /*if (CheckUserType == userType[1]) {
-		  Reservations reservation[NumberOfHospital];
-		  by use pointer
-	 }*/
 };
 
 void PrintHospitalData(Hospitals hospital[]);
-void PrintPatientData(Hospitals hospital[]);
+void PrintPatientData(Users user[], int userCount);
 void SortHospitalByName(Hospitals hospital[]);
 void SortHospitalByRating(Hospitals hospital[]);
 void SortByBedsAvailable(Hospitals hospital[]);
 void SortByBedsPrice(Hospitals hospital[]);
 void DefinitonOfVariable(Hospitals hospital[]);
+void DefinitonOfVariable(Users user[],int& userCount );
 void main() {
 	 Hospitals hospital[NumberOfHospital];
+	 Users user[NumberOfUsers];
+	 int userCount = 0;
 	 DefinitonOfVariable(hospital);
-	 cout << "-------------------Before sorting by Rate---------------------\n";
-	 for (int i = 0; i < NumberOfHospital; i++)
-		  cout << hospital[i].HospitalName<<"--> "<< hospital[i].HospitalRate << "\n";
-	 cout << "-------------------After  sorting by Rate---------------------\n";
-	 SortHospitalByRating(hospital);
-	 for (int i = 0; i < NumberOfHospital; i++)
-		  cout << hospital[i].HospitalName << "--> " << hospital[i].HospitalRate << "\n";
-	 cout << "-------------------Before sorting by name---------------------\n";
-	 for (int i = 0; i < NumberOfHospital; i++)
-		  cout << hospital[i].HospitalName << "\n";
-	 cout << "-------------------after sorting by name---------------------\n";
-	 SortHospitalByName(hospital);
-	 for (int i = 0; i < NumberOfHospital; i++)
-		  cout << hospital[i].HospitalName << "\n";
- cout << "-------------------Print hospital Data---------------------\n";
-	 PrintHospitalData(hospital);
+	 DefinitonOfVariable(user,userCount);
+	 PrintPatientData(user, userCount);
+}
+void PrintHospitalData(Hospitals hospital[]) {
+	 for (int i = 0; i < NumberOfHospital; i++) {
+		  cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate: " << hospital[i].HospitalRate << endl;
+		  cout << "-----------------------------------------------\n";
+		  cout << "Hospital Specialties:\n";
+		  for (int j = 0; j < NumberOfSpecialties; j++)
+		  {
+			   cout << j + 1 << "-" << hospital[i].HospitalSpecialties[j] << ". ";
+			   if ((j - 1) % 2 == 0)
+					cout << "\n";
+		  }
+		  cout << "\n-----------------------------------------------\n";
+		  cout << "Hospital Clinics:\n";
+		  for (int j = 0; j < NumberOfClinics; j++)
+		  {
+			   cout << j + 1 << "-" << hospital[i].HospitalClinics[j] << ". ";
+			   if ((j - 4) % 5 == 0)
+					cout << "\n";
+		  }
+		  cout << "\n============================================\n";
+	 }
+}
+void PrintPatientData(Users user[],int userCount) {
+	 int numberOfPatient = 1;
+	 for (int i = 0; i < userCount; i++)
+	 {
+		  if (user[i].userType != "Admin") {
+			   //npos--> not-found position 
+			   cout << "patient #" << numberOfPatient << " :\n";
+			   cout << "ID: " << user[i].id << "\nAge: " << user[i].age << "\nName:" << user[i].name << "\nEmail: " << user[i].email << "\nUsername: " << user[i].username << endl;
+			   numberOfPatient++;
+			   cout << "--------------------\n";
+		  }
+	 }
+
 }
 void SortHospitalByName(Hospitals hospital[]) {
 	 for (int i = 0; i < NumberOfHospital - 1; ++i) {
@@ -94,28 +118,6 @@ void SortByBedsPrice(Hospitals hospital[]) {
 		  }
 	 }
 }
-void PrintHospitalData(Hospitals hospital[]) {
-	 for (int i = 0; i < NumberOfHospital; i++) {
-		  cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate: " << hospital[i].HospitalRate << endl;
-		  cout << "-----------------------------------------------\n";
-		  cout << "Hospital Specialties:\n";
-		  for (int j = 0; j < NumberOfSpecialties; j++)
-		  {
-			   cout << j + 1 << "-" << hospital[i].HospitalSpecialties[j] << ". ";
-			   if ((j - 1) % 2 == 0)
-					cout << "\n";
-		  }
-		  cout << "\n-----------------------------------------------\n";
-		  cout << "Hospital Clinics:\n";
-		  for (int j = 0; j < NumberOfClinics; j++)
-		  {
-			   cout << j + 1 << "-" << hospital[i].HospitalClinics[j] << ". ";
-			   if ((j - 4) % 5 == 0)
-					cout << "\n";
-		  }
-		  cout << "\n============================================\n";
-	 }
-}
 void DefinitonOfVariable(Hospitals hospital[]) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
 	
@@ -131,26 +133,17 @@ void DefinitonOfVariable(Hospitals hospital[]) {
 	 }
 	 HospitalInfo.close();
 }
-/*
-El-Demerdash
-1931101 664 80 600 3.5
-Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries
-Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine
-Ain Shams Specialized
-1984102 700 250 1200 3.8
-Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries
-Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine
-Al-Qasr Al-Aini
-1827103 536 80 600 4.0
-Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries
-Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine
-Sayed Galal
-1945104 1500 100 400 3.6
-Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries
-Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine
-Dar Al-Fouad
-1999105 1050 300 1200 3.7
-Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries
-Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine
+void DefinitonOfVariable(Users user[],int& userCount ) {
+	 ifstream UserInfo("Data/UserInfo.txt", ios::app);
+	 for (int i = 0; !UserInfo.eof(); i++) {
+		  UserInfo >> user[i].id >> user[i].username >> user[i].age >> user[i].email >> user[i].password;
+		  getline(UserInfo,user[i].name);
+		// UserInfo.ignore();
+		  if (user[i].email.find("@Hadmin.com") != string::npos)
+			   user[i].userType = "Admin";
+		
+		  userCount++;
+	 }
+	 UserInfo.close();
+}
 
-*/
