@@ -5,4 +5,4 @@ hospitalID PatientReservationRooms ReservationPrice BedsPrice hospitalRate
 HospitalSpecialties 
 HospitalClinics
 =========DefinitionOfUsers================
-userID username userType Password
+userID username userAge  email Password full name 
