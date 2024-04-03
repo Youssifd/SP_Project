@@ -34,24 +34,33 @@ struct Users {
 	 string password;
 };
 
-void PrintHospitalData(Hospitals hospital[]);
+void PrintHospitalData(Hospitals hospital[], int HospitalCount);
 void PrintPatientData(Users user[], int userCount);
-void SortHospitalByName(Hospitals hospital[]);
-void SortHospitalByRating(Hospitals hospital[]);
-void SortByBedsAvailable(Hospitals hospital[]);
-void SortByBedsPrice(Hospitals hospital[]);
-void DefinitonOfVariable(Hospitals hospital[]);
+void SortHospitalByName(Hospitals hospital[],int HospitalCount);
+void SortHospitalByRating(Hospitals hospital[], int HospitalCount);
+void SortByBedsAvailable(Hospitals hospital[], int HospitalCount);
+void SortByBedsPrice(Hospitals hospital[], int HospitalCount);
+void DefinitonOfVariable(Hospitals hospital[], int& HospitalCount);
 void DefinitonOfVariable(Users user[],int& userCount );
+bool loginAsAdmin(Users user[], int userCount);
 void main() {
 	 Hospitals hospital[NumberOfHospital];
 	 Users user[NumberOfUsers];
-	 int userCount = 0;
-	 DefinitonOfVariable(hospital);
+	 int userCount = 0, hospitalCount=0;
+	 DefinitonOfVariable(hospital,hospitalCount);
 	 DefinitonOfVariable(user,userCount);
-	 PrintPatientData(user, userCount);
+	
+	 PrintHospitalData(hospital, hospitalCount);
+
+	 if (loginAsAdmin(user, userCount)) {
+		  cout << "\nLogin successful!" << endl;
+	 }
+	 else {
+		  cout << "\nLogin failed. Invalid username or password." << endl;
+	 }
 }
-void PrintHospitalData(Hospitals hospital[]) {
-	 for (int i = 0; i < NumberOfHospital; i++) {
+void PrintHospitalData(Hospitals hospital[], int HospitalCount) {
+	 for (int i = 0; i < HospitalCount; i++) {
 		  cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate: " << hospital[i].HospitalRate << endl;
 		  cout << "-----------------------------------------------\n";
 		  cout << "Hospital Specialties:\n";
@@ -86,42 +95,42 @@ void PrintPatientData(Users user[],int userCount) {
 	 }
 
 }
-void SortHospitalByName(Hospitals hospital[]) {
-	 for (int i = 0; i < NumberOfHospital - 1; ++i) {
-		  for (int j = i + 1; j < NumberOfHospital; j++) {
+void SortHospitalByName(Hospitals hospital[], int HospitalCount) {
+	 for (int i = 0; i < HospitalCount - 1; ++i) {
+		  for (int j = i + 1; j < HospitalCount; j++) {
 			   if (hospital[i].HospitalName > hospital[j].HospitalName)
 					swap(hospital[i], hospital[j]);
 		  }
 	 }
 }
-void SortHospitalByRating(Hospitals hospital[]) {
-	 for (int i = 0; i < NumberOfHospital - 1; ++i) {
-		  for (int j = i + 1; j < NumberOfHospital; j++) {
+void SortHospitalByRating(Hospitals hospital[], int HospitalCount) {
+	 for (int i = 0; i < HospitalCount - 1; ++i) {
+		  for (int j = i + 1; j < HospitalCount; j++) {
 			   if (hospital[i].HospitalRate > hospital[j].HospitalRate)
 					swap(hospital[i], hospital[j]);
 		  }
 	 }
 }
-void SortByBedsAvailable(Hospitals hospital[]) {
-	 for (int i = 0; i < NumberOfHospital - 1; ++i) {
-		  for (int j = i + 1; j < NumberOfHospital; j++) {
+void SortByBedsAvailable(Hospitals hospital[], int HospitalCount) {
+	 for (int i = 0; i < HospitalCount - 1; ++i) {
+		  for (int j = i + 1; j < HospitalCount; j++) {
 			   if (hospital[i].PatientReservationRooms > hospital[j].PatientReservationRooms)
 					swap(hospital[i], hospital[j]);
 		  }
 	 }
 }
-void SortByBedsPrice(Hospitals hospital[]) {
-	 for (int i = 0; i < NumberOfHospital - 1; ++i) {
-		  for (int j = i + 1; j < NumberOfHospital; j++) {
+void SortByBedsPrice(Hospitals hospital[], int HospitalCount) {
+	 for (int i = 0; i < HospitalCount - 1; ++i) {
+		  for (int j = i + 1; j < HospitalCount; j++) {
 			   if (hospital[i].BedsPrice > hospital[j].BedsPrice)
 					swap(hospital[i], hospital[j]);
 		  }
 	 }
 }
-void DefinitonOfVariable(Hospitals hospital[]) {
+void DefinitonOfVariable(Hospitals hospital[], int& HospitalCount) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
 	
-	 for (int i = 0; i < NumberOfHospital; i++) {
+	 for (int i = 0; !HospitalInfo.eof(); i++) {
 		  getline(HospitalInfo, hospital[i].HospitalName);
 		  HospitalInfo >> hospital[i].HospitalID >> hospital[i].PatientReservationRooms >> hospital[i].ReservationPrice >> hospital[i].BedsPrice >> hospital[i].HospitalRate;
 		  for(int j=0;j< NumberOfSpecialties;j++)
@@ -130,6 +139,7 @@ void DefinitonOfVariable(Hospitals hospital[]) {
 			   HospitalInfo >> hospital[i].HospitalClinics[j];
 		  HospitalInfo.ignore();
 		  HospitalInfo.ignore();
+		  HospitalCount++;
 	 }
 	 HospitalInfo.close();
 }
@@ -146,4 +156,34 @@ void DefinitonOfVariable(Users user[],int& userCount ) {
 	 }
 	 UserInfo.close();
 }
+bool loginAsAdmin(Users user[], int userCount) {
+	 bool loggedIn = false;
+	 int count = 0;
+	 string username, password;
 
+	 do {
+		  cout << "Enter username: ";
+		  cin >> username;
+		  cout << '\n';
+		  cout << "Enter password: ";
+		  cin >> password;
+		  cout << '\n';
+
+		  for (int i = 0; i < userCount; i++) {
+			   if (username == user[i].username && password == user[i].password && user[i].userType == "Admin") {
+					loggedIn = true;
+					cout << "Wlecome " << user[i].username << "\n\n";
+					break;
+			   }
+		  }
+
+		  if (loggedIn)
+			   break;
+		  else {
+			   cout << "Login failed Please Try Agin\n\n";
+			   count++;
+		  }
+	 } while (count < 5);
+
+	 return loggedIn;
+}

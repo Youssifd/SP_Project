@@ -1,3 +1,3 @@
 ﻿  project's code .cpp
-C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(45,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\Youse\source\repos\SP_Project\Project\project's code .cpp(46,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
   Project.vcxproj -> C:\Users\Youse\source\repos\SP_Project\x64\Debug\Project.exe
