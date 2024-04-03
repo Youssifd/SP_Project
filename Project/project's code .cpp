@@ -42,13 +42,22 @@ void SortByBedsAvailable(Hospitals hospital[]);
 void SortByBedsPrice(Hospitals hospital[]);
 void DefinitonOfVariable(Hospitals hospital[]);
 void DefinitonOfVariable(Users user[],int& userCount );
+bool loginAsAdmin(Users user[], int userCount);
 void main() {
 	 Hospitals hospital[NumberOfHospital];
 	 Users user[NumberOfUsers];
 	 int userCount = 0;
 	 DefinitonOfVariable(hospital);
 	 DefinitonOfVariable(user,userCount);
-	 PrintPatientData(user, userCount);
+	// PrintPatientData(user, userCount);
+
+	 if (loginAsAdmin(user, userCount)) {
+		  cout << "\nLogin successful!" << endl;
+	 }
+	 else {
+		  cout << "\nLogin failed. Invalid username or password." << endl;
+	 }
+
 }
 void PrintHospitalData(Hospitals hospital[]) {
 	 for (int i = 0; i < NumberOfHospital; i++) {
@@ -121,7 +130,7 @@ void SortByBedsPrice(Hospitals hospital[]) {
 void DefinitonOfVariable(Hospitals hospital[]) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
 	
-	 for (int i = 0; i < NumberOfHospital; i++) {
+	 for (int i = 0; !HospitalInfo.eof(); i++) {
 		  getline(HospitalInfo, hospital[i].HospitalName);
 		  HospitalInfo >> hospital[i].HospitalID >> hospital[i].PatientReservationRooms >> hospital[i].ReservationPrice >> hospital[i].BedsPrice >> hospital[i].HospitalRate;
 		  for(int j=0;j< NumberOfSpecialties;j++)
@@ -146,4 +155,34 @@ void DefinitonOfVariable(Users user[],int& userCount ) {
 	 }
 	 UserInfo.close();
 }
+bool loginAsAdmin(Users user[], int userCount) {
+	 bool loggedIn = false;
+	 int count = 0;
+	 string username, password;
 
+	 do {
+		  cout << "Enter username: ";
+		  cin >> username;
+		  cout << '\n';
+		  cout << "Enter password: ";
+		  cin >> password;
+		  cout << '\n';
+
+		  for (int i = 0; i < userCount; i++) {
+			   if (username == user[i].username && password == user[i].password && user[i].userType == "Admin") {
+					loggedIn = true;
+					cout << "Wlecome " << user[i].username << "\n\n";
+					break;
+			   }
+		  }
+
+		  if (loggedIn)
+			   break;
+		  else {
+			   cout << "Login failed Please Try Agin\n\n";
+			   count++;
+		  }
+	 } while (count < 5);
+
+	 return loggedIn;
+}
