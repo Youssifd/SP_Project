@@ -33,11 +33,13 @@ struct Reservations {
 struct Users {
 	 int id;
 	 int age;
+	 int reserCount = 0;
 	 string userType="Patient";
 	 string name;
 	 string email;
 	 string username;
-	 string password;
+	 string password; 
+	 Reservations* reservationtemp = new Reservations[NumberOfReservation];
 };
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount);//YOUSSIF
 void DefinitonOfVariable(Users user[], int& userCount);//YOUSSIF
@@ -72,6 +74,7 @@ void main(){
 	 {
 		  DisplayAsAdmin(hospital, hospitalCount);
 	 }
+	
 	/*
 		 else if (loginAsPatient()){
 		 DisplayAsPatient();
@@ -105,8 +108,16 @@ void DefinitonOfVariable(Users user[],int& userCount ) {
 		  UserInfo >> user[i].id >> user[i].username >> user[i].age >> user[i].email >> user[i].password;
 		  getline(UserInfo,user[i].name);
 		// UserInfo.ignore();
-		  if (user[i].email.find("@Hadmin.com") != string::npos)
+		  if (user[i].email.find("@Hadmin.com") != string::npos) {
 			   user[i].userType = "Admin";
+					delete[] user[1].reservationtemp;
+					user[1].reservationtemp = NULL;
+			 
+		  }
+		  if (user[i].userType == "Patient")
+		  {
+			   //definition of reser
+		  }
 		
 		  userCount++;
 	 }
