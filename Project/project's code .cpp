@@ -15,8 +15,8 @@ struct Hospitals {
 	 float ReservationPrice; //for check-up
 	 float BedsPrice; //for surgery
 	 float HospitalRate;
-	 int specialtiesCount = 11; // to stop print garbage at other hos.(screen shot)
-	 int clinicsCount = 19;
+	 int specialtiesCount ; // to stop print garbage at other hos.(screen shot)
+	 int clinicsCount ;
 	 string HospitalName;
 	 string HospitalSpecialties[NumberOfSpecialties];
 	 string HospitalClinics[NumberOfClinics];
@@ -43,6 +43,8 @@ struct Users {
 };
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount);//YOUSSIF
 void DefinitonOfVariable(Users user[], int& userCount);//YOUSSIF
+void SaveData(Hospitals hospital[], int hospitalCount);//YOUSSIF
+void SaveData(Users user[], int& userCount);//YOUSSIF
 void PrintHospitalData(Hospitals hospital[], int hospitalCount);//YOUSSIF
 void PrintPatientData(Users user[], int userCount);//YOUSSIF
 void SortHospitalByName(Hospitals hospital[], int hospitalCount);//YOUSSIF
@@ -71,8 +73,7 @@ void main(){
 	 DefinitonOfVariable(hospital, hospitalCount);
 	 DefinitonOfVariable(user, userCount);
 	 
-	 do
-	 { 
+	 while (true) { 
 		  int choice;
 		  cout << "1- Log in\n2- Quit\nPlease enter your choice:";
 		  cin >> choice;
@@ -94,14 +95,14 @@ void main(){
 			   break;
 		  }
 
-	 } while (true);
+	 } 
 }
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
 	
 	 for (int i = 0; !HospitalInfo.eof(); i++) {
 		  getline(HospitalInfo, hospital[i].HospitalName);
-		  HospitalInfo >> hospital[i].HospitalID >> hospital[i].PatientReservationRooms >> hospital[i].ReservationPrice >> hospital[i].BedsPrice >> hospital[i].HospitalRate;
+		  HospitalInfo >> hospital[i].HospitalID >> hospital[i].PatientReservationRooms >> hospital[i].ReservationPrice >> hospital[i].BedsPrice >> hospital[i].HospitalRate>>hospital[i].specialtiesCount>>hospital[i].clinicsCount;
 		  for(int j=0;j< hospital[i].specialtiesCount;j++)
 			   HospitalInfo >> hospital[i].HospitalSpecialties[j];
 		  for (int j = 0; j < hospital[i].clinicsCount; j++)
@@ -132,6 +133,27 @@ void DefinitonOfVariable(Users user[],int& userCount ) {
 		  userCount++;
 	 }
 	 UserInfo.close();
+}
+void SaveData(Hospitals hospital[], int hospitalCount) {
+	 ofstream ExportHospitalInfo("Data/Hospitalinfo.txt");
+
+	 for (int i = 0; i < hospitalCount; i++) {
+		  ExportHospitalInfo << hospital[i].HospitalName << endl;
+		  ExportHospitalInfo << hospital[i].HospitalID << " " << hospital[i].PatientReservationRooms << " " << hospital[i].ReservationPrice << " " << hospital[i].BedsPrice << " " << hospital[i].HospitalRate << endl;
+		  for (int j = 0; j < hospital[i].specialtiesCount; j++)
+			   ExportHospitalInfo << hospital[i].HospitalSpecialties[j] << " ";
+		  ExportHospitalInfo << endl;
+		  for (int j = 0; j < hospital[i].clinicsCount; j++)
+			   ExportHospitalInfo << hospital[i].HospitalClinics[j] << " ";
+		  ExportHospitalInfo << '\n';
+		  ExportHospitalInfo << '\n';
+
+	 }
+	 ExportHospitalInfo.close();
+
+}
+void SaveData(Users user[], int& userCount) {
+
 }
 void PrintHospitalData(Hospitals hospital[],int hospitalCount) {
 	 for (int i = 0; i < hospitalCount; i++) {

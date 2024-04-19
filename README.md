@@ -1,8 +1,9 @@
 ==========DefinitionOfHospitals==========
 hospital name
 -------------
-hospitalID PatientReservationRooms ReservationPrice BedsPrice hospitalRate 
+hospitalID PatientReservationRooms ReservationPrice BedsPrice hospitalRate specialtiesCount clinicCount
 HospitalSpecialties 
 HospitalClinics
 =========DefinitionOfUsers================
-userID username userAge  email Password full name 
+userID username userAge  email Password fullname 
+reservationsdata(if usertype patient)
