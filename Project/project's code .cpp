@@ -139,7 +139,7 @@ void SaveData(Hospitals hospital[], int hospitalCount) {
 
 	 for (int i = 0; i < hospitalCount; i++) {
 		  ExportHospitalInfo << hospital[i].HospitalName << endl;
-		  ExportHospitalInfo << hospital[i].HospitalID << " " << hospital[i].PatientReservationRooms << " " << hospital[i].ReservationPrice << " " << hospital[i].BedsPrice << " " << hospital[i].HospitalRate << endl;
+		  ExportHospitalInfo << hospital[i].HospitalID << " " << hospital[i].PatientReservationRooms << " " << hospital[i].ReservationPrice << " " << hospital[i].BedsPrice << " " << hospital[i].HospitalRate << " " << hospital[i].specialtiesCount  <<" "<< hospital[i].clinicsCount << endl;
 		  for (int j = 0; j < hospital[i].specialtiesCount; j++)
 			   ExportHospitalInfo << hospital[i].HospitalSpecialties[j] << " ";
 		  ExportHospitalInfo << endl;
@@ -356,34 +356,30 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 					case 1:
 						 cout << "Enter the new ID: ";
 						 cin >> hospital[i].HospitalID;
-						 //	cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
+						 
 						 break;
 					case 2:
 						 cout << "Enter the New Number Of Rooms: ";
 						 cin >> hospital[i].PatientReservationRooms;
-						 //	cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
+						 
 						 break;
 					case 3:
 						 cout << "Enter the Reservation Price : ";
-						 cin >> hospital[i].ReservationPrice;
-						 //	cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
+						 cin >> hospital[i].ReservationPrice;						 
 						 break;
-
 					case 4:
 						 cout << "Enter the New Beds Price: ";
 						 cin >> hospital[i].BedsPrice;
-						 //cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
+						
 						 break;
 					case 5:
 						 cout << "Enter the New Hospital Rate: ";
 						 cin >> hospital[i].HospitalRate;
-						 //cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
 						 break;
 					case 6:
 						 cout << "Enter the New Hospital Name: ";
 						 getline(cin, hospital[i].HospitalName);
-						 cin.ignore();
-						 //cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
+						// cin.ignore();
 						 break;
 					case 7:
 
@@ -419,10 +415,7 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 							  if (!Exist)
 							  {
 								   hospital[i].specialtiesCount++;
-								   //	cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
 								   hospital[i].HospitalSpecialties[hospital[i].specialtiesCount - 1] = HospitalSpecialties;
-								   //for (int j = 0; j < hospital[i].specialtiesCount; j++)
-								   //	cout << hospital[i].HospitalSpecialties[j] << endl;
 							  }
 
 						 }
@@ -436,9 +429,7 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 										swap(hospital[i].HospitalSpecialties[hospital[i].specialtiesCount - 1], hospital[i].HospitalSpecialties[j]);
 										hospital[i].specialtiesCount--;
 
-
 								   }
-
 							  }
 							  if (!Exist)
 								   cout << "NOT FOUND" << endl;
@@ -486,10 +477,6 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 							  }
 							  else
 								   cout << "Already Exists\n";
-							  //	cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
-							  //	for (int j = 0; j < hospital[i].clinicsCount; j++)
-								  //	cout << hospital[i].HospitalClinics[j] << endl;
-
 						 }
 						 if (ans == 2)
 						 {
@@ -500,30 +487,13 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 										Exist = true;
 										swap(hospital[i].HospitalClinics[hospital[i].clinicsCount - 1], hospital[i].HospitalClinics[j]);
 										hospital[i].clinicsCount--;
-										//	hospital[i].clinicsCount--;
-											//hospital[i].HospitalClinics[j] = "";
-
-
-								   }
-
-							  }
-							  if (Exist)
-							  {
-								   //cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate : " << hospital[i].HospitalRate << endl;
-								   //for (int j = 0; j < hospital[i].clinicsCount; j++)
-								   {
-										//if (hospital[i].HospitalClinics[j] == "")
-									//		continue;
-									//	cout << hospital[i].HospitalClinics[j] << endl;
 								   }
 
 							  }
 							  if (!Exist)
 								   cout << "NOT FOUND" << endl;
 						 }
-
 						 break;
-					
 					}
 			   }
 
@@ -814,7 +784,7 @@ void viewHospitals(Hospitals hospital[], int HospitalCount)
 }
 void viewHospitalInfo(Hospitals hospital[], int HospitalCount,  string Hospitalname ) {
 	 char ch;
-	 bool Default;//if user want use this fun. out other fun.
+	 bool Default,first=false;//if user want use this fun. out other fun.
 	 if (Hospitalname == "empty")
 		  Default = true;
 	 else
@@ -824,11 +794,13 @@ void viewHospitalInfo(Hospitals hospital[], int HospitalCount,  string Hospitaln
 	 {
 		  if(Default)
 		  {
+			   if(first)
+			   cin.ignore();
 			   cout << "Enter Hospital Name: ";
 			   getline(cin, Hospitalname);
 			   cout << "----------------\n";
-			  // cin.ignore();
 		  }
+		  first = true;
 		  bool found = false;
 
 		  for (int i = 0; i < HospitalCount; i++)
