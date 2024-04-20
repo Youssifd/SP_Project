@@ -129,6 +129,10 @@
   <ItemGroup>
     <ClCompile Include="project%27s code .cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\Hospitalinfo.txt" />
+    <Text Include="Data\UserInfo.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -19,4 +19,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\Hospitalinfo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="Data\UserInfo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

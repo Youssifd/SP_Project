@@ -92,6 +92,7 @@ void main(){
 		  }
 		  if (choice == 2) {
 			   cout << "Thanks for use our system :)\nClosing....";
+			   SaveData(hospital, hospitalCount);
 			   break;
 		  }
 
@@ -99,17 +100,17 @@ void main(){
 }
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
-	
-	 for (int i = 0; !HospitalInfo.eof(); i++) {
+	 HospitalInfo >> hospitalCount;
+	 for (int i = 0;i<hospitalCount; i++) {
 		  getline(HospitalInfo, hospital[i].HospitalName);
 		  HospitalInfo >> hospital[i].HospitalID >> hospital[i].PatientReservationRooms >> hospital[i].ReservationPrice >> hospital[i].BedsPrice >> hospital[i].HospitalRate>>hospital[i].specialtiesCount>>hospital[i].clinicsCount;
 		  for(int j=0;j< hospital[i].specialtiesCount;j++)
 			   HospitalInfo >> hospital[i].HospitalSpecialties[j];
 		  for (int j = 0; j < hospital[i].clinicsCount; j++)
 			   HospitalInfo >> hospital[i].HospitalClinics[j];
-		  HospitalInfo.ignore();
-		  HospitalInfo.ignore();
-		  hospitalCount++;
+		  for (int x = 1; x <= 3; x++)
+			   HospitalInfo.ignore();
+		 // hospitalCount++;
 	 }
 	 HospitalInfo.close();
 }
@@ -136,7 +137,7 @@ void DefinitonOfVariable(Users user[],int& userCount ) {
 }
 void SaveData(Hospitals hospital[], int hospitalCount) {
 	 ofstream ExportHospitalInfo("Data/Hospitalinfo.txt");
-
+	 ExportHospitalInfo << hospitalCount;
 	 for (int i = 0; i < hospitalCount; i++) {
 		  ExportHospitalInfo << hospital[i].HospitalName << endl;
 		  ExportHospitalInfo << hospital[i].HospitalID << " " << hospital[i].PatientReservationRooms << " " << hospital[i].ReservationPrice << " " << hospital[i].BedsPrice << " " << hospital[i].HospitalRate << " " << hospital[i].specialtiesCount  <<" "<< hospital[i].clinicsCount << endl;
@@ -145,8 +146,10 @@ void SaveData(Hospitals hospital[], int hospitalCount) {
 		  ExportHospitalInfo << endl;
 		  for (int j = 0; j < hospital[i].clinicsCount; j++)
 			   ExportHospitalInfo << hospital[i].HospitalClinics[j] << " ";
+		  if (i != (hospitalCount - 1)) {
 		  ExportHospitalInfo << '\n';
 		  ExportHospitalInfo << '\n';
+		  }
 
 	 }
 	 ExportHospitalInfo.close();
@@ -862,7 +865,7 @@ void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount)
 			   {
 					cout << "enter valied choice : ";
 					cin >> Need;
-
+					cout << "-------------------\n";
 					if (Need >= 1 && Need <= 6)
 						 checkChoice = true;
 					else
