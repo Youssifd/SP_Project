@@ -292,11 +292,12 @@ void AddHospital(Hospitals hos[], int& HospitalCount)
 
 		  cout << "Please enter the Hospiral Rate of the Hospital to Add: ";
 		  cin >> hos[HospitalCount - 1].HospitalRate;
-
-		  for (int j = 0; j < NumberOfSpecialties; j++)
+		  hos[HospitalCount - 1].specialtiesCount = hos[0].specialtiesCount;
+		  hos[HospitalCount - 1].clinicsCount = hos[0].clinicsCount;
+		  for (int j = 0; j < hos[0].specialtiesCount; j++)
 			   hos[HospitalCount - 1].HospitalSpecialties[j] = hos[0].HospitalSpecialties[j];
 
-		  for (int z = 0; z < NumberOfClinics; z++)
+		  for (int z = 0; z < hos[0].clinicsCount; z++)
 			   hos[HospitalCount - 1].HospitalClinics[z] = hos[0].HospitalClinics[z];
 
 
