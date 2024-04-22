@@ -52,7 +52,7 @@ struct Users {
 
 };
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount);//YOUSSIF
-void DefinitonOfVariable(Users user[], int& userCount);//YOUSSIF
+void DefinitonOfVariable(Users user[], int& userCount, int& reserv, Hospitals hos[], int hoscount);//YOUSSIF
 void SaveData(Hospitals hospital[], int hospitalCount);//YOUSSIF
 void SaveData(Users user[], int& userCount);//YOUSSIF
 void PrintHospitalData(Hospitals hospital[], int hospitalCount);//YOUSSIF
@@ -65,10 +65,8 @@ bool loginAsAdmin(Users user[], int userCount);//MARWAN
 void AddHospital(Hospitals hos[], int& HospitalCount);//MARWAN
 void ModifyHospital(Hospitals hospital[], int& HospitalCount);//MARIAM 
 void DeleteHospital(Hospitals hospital[], int& HospitalCount);//MARIAM 
-void modifyreservation(Users patient[], Reservations patientreservation[], Hospitals hospital[], int HospitalCount);//TOKA 
-void cancelreservation(Users patient[], Reservations patientreservation[], Hospitals hospital[]);//TOKA 
+void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex);//TOKA 
 void mainReservation(Users patient[], Reservations patientreservation[], Hospitals hospital[], int HospitalCount);//TOKA
-void showreservation(Users patient[], Reservations patientreservation[], Hospitals hospital[]);
 void showspecialists(Hospitals hospital[], int hospital_index);
 void showclinics(Hospitals hospital[], int hospital_index);
 void viewHospitals(Hospitals hospital[], int HospitalCount);//SAMA
@@ -91,7 +89,7 @@ void main(){
 	 Users user[NumberOfUsers];
 	 int userCount = 0, hospitalCount = 0, userID = 1000, reservationID = 1001;
 	 DefinitonOfVariable(hospital, hospitalCount);
-	 DefinitonOfVariable(user, userCount);
+	 DefinitonOfVariable(user, userCount,reservationID,hospital,hospitalCount);
 	 userID += userCount;
 
 	 while (true) { 
@@ -138,23 +136,36 @@ void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount) {
 	 }
 	 HospitalInfo.close();
 }
-void DefinitonOfVariable(Users user[],int& userCount ) {
+void DefinitonOfVariable(Users user[], int& userCount, int& reserv, Hospitals hos[], int hoscount) {
 	 ifstream UserInfo("Data/UserInfo.txt", ios::app);
+	 // int counter = 0;
 	 for (int i = 0; !UserInfo.eof(); i++) {
-		  UserInfo >> user[i].id >> user[i].username >> user[i].age >> user[i].email >> user[i].password;
-		  getline(UserInfo,user[i].name);
-		// UserInfo.ignore();
+		  UserInfo >> user[i].id >> user[i].username >> user[i].age >> user[i].email >> user[i].password >> user[i].reserCount;
+		  getline(UserInfo, user[i].name);
 		  if (user[i].email.find("@Hadmin.com") != string::npos) {
 			   user[i].userType = "Admin";
-					delete[] user[1].reservationtemp;
-					user[1].reservationtemp = NULL;
-			 
+			   delete[] user[1].reservationtemp;
+			   user[1].reservationtemp = NULL;
+
 		  }
-		  if (user[i].userType == "Patient")
-		  {
-			   //definition of reser
+		  if (user[i].userType == "Patient") { //definition of reser
+			   if (user[i].reserCount < NumberOfReservation && user[i].reserCount>0) {
+					for (int j = 0; j < user[i].reserCount; j++) {
+
+						 UserInfo >> user[i].reservationtemp[j].ReservtionID >> user[i].reservationtemp[j].PAge >> user[i].reservationtemp[j].hospital.HospitalID >> user[i].reservationtemp[j].BedPrice >> user[i].reservationtemp[j].surgeryprice >> user[i].reservationtemp[j].Totalprice >> user[i].reservationtemp[j].ReservationType >> user[i].reservationtemp[j].ReservationDay >> user[i].reservationtemp[j].HospitalSpecialty >> user[i].reservationtemp[j].HospitalClinic >> user[i].reservationtemp[j].PatientReservationRoom;
+						 for (int z = 0; z < hoscount; z++) {
+							  if (user[i].reservationtemp[j].hospital.HospitalID == hos[z].HospitalID)
+								   user[i].reservationtemp[j].hospital = hos[z];
+							  user[i].reservationtemp[j].ReservationPrice = hos[z].ReservationPrice;
+
+						 }
+						 UserInfo.ignore();
+						 getline(UserInfo, user[i].reservationtemp[j].PName);
+						 reserv++;
+
+					}
+			   }
 		  }
-		
 		  userCount++;
 	 }
 	 UserInfo.close();
@@ -180,6 +191,23 @@ void SaveData(Hospitals hospital[], int hospitalCount) {
 
 }
 void SaveData(Users user[], int& userCount) {
+	 ofstream ExportUserInfo("Data/UserInfo.txt");
+	 for (int i = 0; i < userCount; i++) {
+		  ExportUserInfo << user[i].id << " " << user[i].username << " " << user[i].age << " " << user[i].email << " " << user[i].password << " " << user[i].reserCount << user[i].name;
+		  if (i != userCount - 1)
+			   ExportUserInfo << endl;
+		  if (user[i].userType == "Patient") { //definition of reser
+			   if (user[i].reserCount < NumberOfReservation && user[i].reserCount>0) {
+					for (int j = 0; j < user[i].reserCount; j++) {
+
+						 ExportUserInfo << user[i].reservationtemp[j].ReservtionID << " " << user[i].reservationtemp[j].PAge << " " << user[i].reservationtemp[j].hospital.HospitalID << " " << user[i].reservationtemp[j].BedPrice << " " << user[i].reservationtemp[j].surgeryprice << " " << user[i].reservationtemp[j].Totalprice << " " << user[i].reservationtemp[j].ReservationType << " " << user[i].reservationtemp[j].ReservationDay << " " << user[i].reservationtemp[j].HospitalSpecialty << " " << user[i].reservationtemp[j].HospitalClinic << " " << user[i].reservationtemp[j].PatientReservationRoom << " " << user[i].reservationtemp[j].PName << endl;
+
+					}
+			   }
+		  }
+	 }
+
+	 ExportUserInfo.close();
 
 }
 void PrintHospitalData(Hospitals hospital[],int hospitalCount) {
@@ -734,14 +762,11 @@ bool loginAsPatient(Users patient[], int userCount) {
 	 return  loginstatus;
 }
 string Password() {
-	 const char BACKSPACE = 8;
-	 const char ENTER = 13;
+	 string password = "";
+	 char ch;
 
-	 string password;
-	 char ch = 0;
-
-	 while ((ch = _getch()) != ENTER) {
-		  if (ch == BACKSPACE) {
+	 while ((ch = _getch()) != '\r') {
+		  if (ch == '\b') {
 			   if (password.length() != 0) {
 					cout << "\b \b";
 					password.resize(password.length() - 1);
@@ -752,7 +777,6 @@ string Password() {
 			   cout << '*';
 		  }
 	 }
-
 	 cout << endl;
 	 return password;
 }

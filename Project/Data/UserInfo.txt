@@ -1,10 +1,14 @@
-1001 habibabasel 18 habibabasel@Hadmin.com 2023170184 habiba basel 
-1002 habibakhaled 19 habibakhaled@Hadmin.com 2023170186 habiba khaled 
-1003 toqaahmed 19 toqaahmed@Hadmin.com 2023170152 toqa ahmed 
-1004 samamohamed 19 Samamohamed@Hadmin.com 2023170271 sama mohamed
-1005 mariamsaid 19 mariamsaid@Hadmin.com 2023170585 mariam said 
-1006 youssifs-14 19 youssifs-14@Hadmin.com 2023170714 youssif elsayed 
-1007 marwansobhy 19 marwansobhy@Hadmin.com 2023170570 marwan sobhy 
-1008 zenabasel 21 zenabasel@Huser.com 1234 zena basel 
-1009 malakahmed 19 malakahmed@Huser.com 1234 malak ahmed 
-1010 baselfathy 19 baselfathy@Huser.com 1234 basel fathy 
+1001 habibabasel 18 habibabasel@Hadmin.com 2023170184 0 habiba basel 
+1002 habibakhaled 19 habibakhaled@Hadmin.com 2023170186 0 habiba khaled 
+1003 toqaahmed 19 toqaahmed@Hadmin.com 2023170152 0 toqa ahmed 
+1004 samamohamed 19 Samamohamed@Hadmin.com 2023170271 0 sama mohamed
+1005 mariamsaid 19 mariamsaid@Hadmin.com 2023170585 0 mariam said 
+1006 youssifs-14 19 youssifs-14@Hadmin.com 2023170714 0 youssif elsayed 
+1007 marwansobhy 19 marwansobhy@Hadmin.com 2023170570 0 marwan sobhy 
+1008 zenabasel 21 zenabasel@Huser.com 1234 4 zena basel
+1001 16 1984102 2650 4000 10000 Check-up Saturday InternalMedicine Dermatology 156 hgvjh vknj blb
+1002 16 1945104 4800 9856 14656 Surgery Saturday Ophthalmology NOT-RESERVATED 141 oyioih ghfcl hg l
+1003 12 1945104 2000 9856 11856 Surgery Tuesday Ophthalmology NOT-RESERVATED 141 you hvh gh
+1004 123 1945104 0 0 0 Check-up Sunday NOT-RESERVATED Ophthalmia NONE uh hb bk
+1009 malakahmed 19 malakahmed@Huser.com 1234 0 malak ahmed 
+1010 baselfathy 19 baselfathy@Huser.com 1234 0 basel fathy 
