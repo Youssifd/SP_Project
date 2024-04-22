@@ -8,13 +8,16 @@ using namespace std;
 #define NumberOfUsers 20
 #define NumberOfSpecialties 20
 #define NumberOfClinics 25
+#define daysInWeek  7
 
+string ReservationDays[daysInWeek] = { "Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday" };
 struct Hospitals {
 	 int HospitalID;
 	 int PatientReservationRooms;//BedsAvailable
 	 float ReservationPrice; //for check-up
 	 float BedsPrice; //for surgery
 	 float HospitalRate;
+	 float surgeryprice;
 	 int specialtiesCount ; // to stop print garbage at other hos.(screen shot)
 	 int clinicsCount ;
 	 string HospitalName;
@@ -23,23 +26,30 @@ struct Hospitals {
 };
 struct Reservations {
 	 int ReservtionID;
+	 int PAge;										   //P-> patient
 	 Hospitals hospital;
+	 string PName;
 	 string ReservationType;
 	 string ReservationDay;
-	 string ReservationSpecialtie = "NOT RESERVATED";
-	 string ReservationClinic = "NOT RESERVATED";
-	 string PatientReservationRoom;
+	 string HospitalSpecialty = "NOT RESERVATED";
+	 string HospitalClinic = "NOT RESERVATED";
+	 string PatientReservationRoom;//asking TA
+	 float ReservationPrice;//for check-up
+	 float BedPrice; //for surgery
+	 float surgeryprice;
+	 float Totalprice;
 };
 struct Users {
 	 int id;
 	 int age;
 	 int reserCount = 0;
-	 string userType="Patient";
+	 string userType = "Patient";
 	 string name;
 	 string email;
 	 string username;
-	 string password; 
+	 string password;
 	 Reservations* reservationtemp = new Reservations[NumberOfReservation];
+
 };
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount);//YOUSSIF
 void DefinitonOfVariable(Users user[], int& userCount);//YOUSSIF
@@ -63,40 +73,54 @@ void showspecialists(Hospitals hospital[], int hospital_index);
 void showclinics(Hospitals hospital[], int hospital_index);
 void viewHospitals(Hospitals hospital[], int HospitalCount);//SAMA
 void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalname="empty");//SAMA
+bool loginAsPatient(Users patient[], int userCount);
+string Password();
+void registerpatient(Users patient[], int& patientCount, int& patientId);
+void personalinfo(Users patient[], int patientCount);
+void editpatientinfo(Users patient[], int patientCount);
+void makeReservation(Users patient[], Hospitals hospital[], int patientCount, int& reservationId, int hospitalCount);
+void showDays();
+void showreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex);
+void cancelreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex, int& reservationId);
+
 
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount);//GEN.
-void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount);//GEN.
+void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount, int& reservationid);//GEN.
 void main(){
 	 Hospitals hospital[NumberOfHospital];
 	 Users user[NumberOfUsers];
-	 int userCount = 0, hospitalCount = 0;
+	 int userCount = 0, hospitalCount = 0, userID = 1000, reservationID = 1001;
 	 DefinitonOfVariable(hospital, hospitalCount);
 	 DefinitonOfVariable(user, userCount);
-	 
+	 userID += userCount;
+
 	 while (true) { 
 		  int choice;
-		  cout << "1- Log in\n2- Quit\nPlease enter your choice:";
+		  cout << "\n1. Register\n2. Login(if you have already registered)\n3. Quit\nPlease enter your choice:";
 		  cin >> choice;
-		  if(choice==1)
+		  if (choice == 1) {
+			   registerpatient(user, userCount, userID);
+		  }
+		  if (choice == 2)
 		  {
-			   if (loginAsAdmin(user, userCount))
-			   {
+			   if (loginAsPatient(user, userCount)) {
+					DisplayAsPatient(hospital, hospitalCount, user, userCount, reservationID);
+					//DisplayAsAdmin(hospital, hospitalCount);
+			   }
+			   if (loginAsAdmin(user, userCount)) {
 					DisplayAsAdmin(hospital, hospitalCount);
 			   }
-	       /*
-		 else if (loginAsPatient()){
-		 DisplayAsPatient();
-		 }
 
-	*/
+
+
 		  }
-		  if (choice == 2) {
+		  if (choice == 3) {
 			   cout << "Thanks for use our system :)\nClosing....";
 			   SaveData(hospital, hospitalCount);
 			   break;
 		  }
 
-	 } 
+	 }
 }
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
@@ -554,220 +578,42 @@ void DeleteHospital(Hospitals hospital[], int& HospitalCount)
 		  cin.ignore(); //hspname
 	 } while (answer == 'y' || answer == 'Y');
 }
-void modifyreservation(Users patient[], Reservations patientreservation[], Hospitals hospital[], int HospitalCount) {
-	 int search;
-	 bool correctid = false;
-	 do {
-		  correctid = false;
-		  cout << "Enter your Reservation ID: ";
-		  cin >> search;
-
-		  for (int i = 0; i < NumberOfReservation; i++) {
-			   if (patientreservation[i].ReservtionID == search) {
-					correctid = true;
-					char editoption;
-					char modifyagine;
-					char typeoption;
-					do {
-						 bool correctchoice = false;
-						 while (correctchoice == false)
-						 {
-							  correctchoice = false;
-							  cout << endl << "What do you want to edit?\n";
-							  cout << "1\\Hospital Name\n2\\Reservation Type\n3\\Reservation Day\n";
-							  cout << "Choice: ";
-							  cin >> editoption;
-							  if (editoption >= '1' && editoption <= '3') {
-								   correctchoice = true;
-								   break;
-							  }
-							  else
-								   cout << "Invalid choice" << endl;
-						 }
-						 if (editoption == '1') {
-							  viewHospitals(hospital, HospitalCount);//
-							  cout << "Enter the new Hospital Name: ";
-							  cin.ignore(1, '\n');
-							  getline(cin, patientreservation[i].hospital.HospitalName);
-						 }
-						 else if (editoption == '2') {
-							  int index = 1;  //delet
-							  bool correctchoice = false;
-							  while (correctchoice == false)
-							  {
-								   correctchoice = false;
-								   cout << "\nEnter the number of new Rservation Type\n1\\Surgery\n2\\Check-up\nchoice: ";
-								   cin >> typeoption;
-								   if (typeoption >= '1' && typeoption <= '2') {
-										correctchoice = true;
-										break;
-								   }
-								   else
-										cout << "Invalid choice" << endl;
-							  }
-							  if (typeoption == '1') {
-								   int specnumber;
-								   int specindex;
-								   patientreservation[i].ReservationType = "Surgery";
-								   showspecialists(hospital, index);
-								   bool correctchoice = false;
-								   while (correctchoice == false)
-								   {
-										correctchoice = false;
-										cout << "Enter the number of specialist for your surgery: ";
-										cin >> specnumber;
-										if (specnumber >= 1 && specnumber <= NumberOfSpecialties) {
-											 correctchoice = true;
-											 break;
-										}
-										else
-											 cout << "Invalid choice" << endl;
-								   }
-								   specindex = specnumber - 1;
-								   patientreservation[i].ReservationSpecialtie = hospital[index].HospitalSpecialties[specindex];
-								   cout << "Successfully changed" << endl;
-							  }
-							  else  if (typeoption == '2') {
-								   int clinicnumber;
-								   int clinicindex;
-								   patientreservation[i].ReservationType = "Check-up";
-								   showclinics(hospital, index);
-								   bool correctchoice = false;
-								   while (correctchoice == false)
-								   {
-										correctchoice = false;
-										cout << "Enter the number of clinic for your Check-up: ";
-										cin >> clinicnumber;
-										if (clinicnumber >= 1 && clinicnumber <= NumberOfClinics) {
-											 correctchoice = true;
-											 break;
-										}
-										else
-											 cout << "Invalid choice" << endl;
-								   }
-								   clinicindex = clinicnumber - 1;
-								   patientreservation[i].ReservationSpecialtie = hospital[index].HospitalSpecialties[clinicindex];
-								   cout << "Successfully changed" << endl;
-							  }
-							  else {
-								   cout << "Invalid choice";
-							  }
-						 }
-						 else if (editoption == '3') {
-							  cout << "Enter the new Reserrvation Day: ";
-							  cin.ignore(1, '\n');
-							  getline(cin, patientreservation[i].ReservationDay);
-						 }
-						 else
-							  cout << "Invalid choice\n";
-						 cout << endl << "Do you want to modify something else? (y|n)\nChoice: ";
-						 cin >> modifyagine;
-
-					} while (modifyagine == 'y' || modifyagine == 'Y');
-
-					break;
-			   }
-		  }
-		  if (!correctid)
-			   cout << "Invalid Reservation ID\n";
-	 } while (!correctid);
-}
-void cancelreservation(Users patient[], Reservations patientreservation[], Hospitals hospital[]) {
-	 int search;
-	 bool correctid = false;
-	 do {
-		  correctid = false;
-		  cout << "Enter your Resevaion ID: ";
-		  cin >> search;
-
-		  for (int i = 0; i < NumberOfReservation; i++) {
-			   if (patientreservation[i].ReservtionID == search) {
-					correctid = true;
-					patientreservation[i].ReservtionID = 0;
-					patientreservation[i].hospital.HospitalName = " ";
-					patientreservation[i].ReservationType = " ";
-					patientreservation[i].ReservationSpecialtie = " ";
-					patientreservation[i].ReservationClinic = " ";
-					patientreservation[i].PatientReservationRoom = " ";
-					patientreservation[i].hospital.BedsPrice = 0;
-					patientreservation[i].ReservationDay = " ";
-					patientreservation[i].hospital.ReservationPrice = 0;
-					cout << endl << "Cancelled successfully" << endl;
-					break;
-			   }
-		  }
-		  if (!correctid)
-			   cout << "Invalid Resevation ID\n";
-	 } while (!correctid);
-}
-void mainReservation(Users patient[], Reservations patientreservation[], Hospitals hospital[], int HospitalCount) {
-	 cout << "Enter your Resevation ID: ";
-	 cin >> patientreservation[0].ReservtionID;
-	 char transaction;
-	 char reservation_again;
-	 do {
-		  bool correctchoice = false;
-		  while (correctchoice == false)
-		  {
-			   correctchoice = false;
-			   cout << endl << "What do you want to do in reservation?" << endl;
-			   cout << "1\\Modify your reservation\n2\\Show your reservation\n3\\Cancel the reservation\nChoice: ";
-			   cin >> transaction;
-			   if (transaction >= '1' && transaction <= '3') {
-					correctchoice = true;
-					break;
-			   }
-			   else
-					cout << "Invalid choice" << endl;
-		  }
-		  if (transaction == '1') {
-			   modifyreservation(patient, patientreservation, hospital, HospitalCount);
-		  }
-		  else if (transaction == '2') {
-			   showreservation(patient, patientreservation, hospital);
-		  }
-		  else if (transaction == '3') {
-			   cancelreservation(patient, patientreservation, hospital);
-		  }
-		  else
-			   cout << "Invalid choice\n";
-		  cout << endl << "Do you want something else from reservation? (y|n)" << endl << "Choice: ";
-		  cin >> reservation_again;
-
-	 } while (reservation_again == 'y' || reservation_again == 'Y');
-}
-void showreservation(Users patient[], Reservations patientreservation[], Hospitals hospital[]) {
-	 int search;
-	 bool correctid = false;
-	 do {
-		  correctid = false;
-		  cout << "Enter your Resevation ID: ";
-		  cin >> search;
-
-		  for (int i = 0; i < NumberOfReservation; i++) {
-			   if (patientreservation[i].ReservtionID == search) {
-					correctid = true;
-					cout << "============================================================" << endl;
-					cout << endl << "Your reservation:" << endl;
-					cout << "Reservatiion ID\t\t: " << patientreservation[i].ReservtionID << endl;
-					cout << "Hospital ID\t\t: " << patientreservation[i].hospital.HospitalID << endl;
-					cout << "Hospital Name\t\t: " << patientreservation[i].hospital.HospitalName << endl;
-					cout << "Hospital Rate\t\t: " << patientreservation[i].hospital.HospitalRate << endl;
-					cout << "Reservation Type\t: " << patientreservation[i].ReservationType << endl;
-					cout << "Hospital Specialtie\t: " << patientreservation[i].ReservationSpecialtie << endl;
-					cout << "Hospital Clinic\t\t: " << patientreservation[i].ReservationClinic << endl;
-					cout << "Number of Room\t\t: " << patientreservation[i].PatientReservationRoom << endl;
-					cout << "Bed Price\t\t: " << patientreservation[i].hospital.BedsPrice << endl;
-					cout << "Reservation Day\t\t: " << patientreservation[i].ReservationDay << endl;
-					cout << "Reservation Price\t: " << patientreservation[i].hospital.ReservationPrice << endl;
-					cout << endl << "============================================================" << endl;
-					break;
-			   }
-		  }
-		  if (!correctid)
-			   cout << "Invalid Resevation ID\n";
-	 } while (!correctid);
-}
+//void mainReservation(Users patient[], Reservations patientreservation[], Hospitals hospital[], int HospitalCount) {
+//	 cout << "Enter your Resevation ID: ";
+//	 cin >> patientreservation[0].ReservtionID;
+//	 char transaction;
+//	 char reservation_again;
+//	 do {
+//		  bool correctchoice = false;
+//		  while (correctchoice == false)
+//		  {
+//			   correctchoice = false;
+//			   cout << endl << "What do you want to do in reservation?" << endl;
+//			   cout << "1\\Modify your reservation\n2\\Show your reservation\n3\\Cancel the reservation\nChoice: ";
+//			   cin >> transaction;
+//			   if (transaction >= '1' && transaction <= '3') {
+//					correctchoice = true;
+//					break;
+//			   }
+//			   else
+//					cout << "Invalid choice" << endl;
+//		  }
+//		  if (transaction == '1') {
+//			   modifyreservation(patient, patientreservation, hospital, HospitalCount);
+//		  }
+//		  else if (transaction == '2') {
+//			   showreservation(patient, patientreservation, hospital);
+//		  }
+//		  else if (transaction == '3') {
+//			   cancelreservation(patient, patientreservation, hospital);
+//		  }
+//		  else
+//			   cout << "Invalid choice\n";
+//		  cout << endl << "Do you want something else from reservation? (y|n)" << endl << "Choice: ";
+//		  cin >> reservation_again;
+//
+//	 } while (reservation_again == 'y' || reservation_again == 'Y');
+//}
 void showspecialists(Hospitals hospital[], int hospital_index) {
 	 for (int i = 0; i < hospital[hospital_index].specialtiesCount; i++) {
 		  cout << i + 1 << "-" << hospital[hospital_index].HospitalSpecialties[i] << endl;
@@ -845,6 +691,999 @@ void viewHospitalInfo(Hospitals hospital[], int HospitalCount,  string Hospitaln
 	 } while (ch == 'y' || ch == 'Y');
 
 }
+bool loginAsPatient(Users patient[], int userCount) {
+	 string username, password;
+	 int id, choice;
+	 cout << "\nEnter username: ";
+	 cin >> username;
+	 bool correctchoice = false;
+	 bool loginstatus = false;
+	 while (correctchoice == false)
+	 {
+		  correctchoice = false;
+		  cout << "\n1 to Enter Password \n2 to Enter ID\n";
+		  cout << "(Enter your ID . if you forgot your Password)\n";
+		  cout << "Choice : ";
+		  cin >> choice;
+		  if (choice >= 1 && choice <= 2) {
+			   correctchoice = true;
+			   break;
+		  }
+		  else
+			   cout << "\nInvalid option selected.\n";
+	 }
+	 if (choice == 1) {
+		  //cin >> password;
+		  cout << "\nEnter password: ";
+		  password = Password();
+	 }
+	 else if (choice == 2) {
+		  cout << "\nEnter ID: ";
+		  cin >> id;
+	 }
+	 for (int i = 0; i < userCount; i++)
+	 {
+		  if ((patient[i].username == username && patient[i].password == password) || (patient[i].username == username && patient[i].id == id))
+		  {
+			   loginstatus = true;			// Login successful
+			   break;
+		  }
+
+		  loginstatus = false;// Login failed
+	 }
+	 return  loginstatus;
+}
+string Password() {
+	 const char BACKSPACE = 8;
+	 const char ENTER = 13;
+
+	 string password;
+	 char ch = 0;
+
+	 while ((ch = _getch()) != ENTER) {
+		  if (ch == BACKSPACE) {
+			   if (password.length() != 0) {
+					cout << "\b \b";
+					password.resize(password.length() - 1);
+			   }
+		  }
+		  else {
+			   password += ch;
+			   cout << '*';
+		  }
+	 }
+
+	 cout << endl;
+	 return password;
+}
+void registerpatient(Users patient[], int& patientCount, int& patientId)
+{
+	 Users newpatient;
+	 /*cout << "\nEnter your First name: ";
+	 cin >> newpatient.firstname;
+
+	 cout << "\nEnter your Middle name: ";
+	 cin >> newpatient.middlename;
+
+	 cout << "\nEnter your Last name: ";
+	 cin >> newpatient.lastname;*/
+	 getline(cin, newpatient.name);
+	 string newusername;
+	 bool usernameExists;
+	 do
+	 {
+		  usernameExists = false;
+
+		  cout << "\nEnter username: ";
+		  cin >> newusername;
+
+		  for (int i = 0; i < patientCount; i++)
+		  {
+			   if (patient[i].username == newusername)
+			   {
+					cout <<
+						 "\nUsername already exists. Please choose a different username.\n";
+					usernameExists = true;
+					break;
+			   }
+		  }
+	 } while (usernameExists);
+
+	 newpatient.username = newusername;
+
+	 int age;
+	 bool validAge = false;
+
+	 do {
+		  cout << "\nEnter age: ";
+		  cin >> age;
+		  if (age < 18) {
+			   char choice;
+			   cout << "\nInvalid age. Age must be 18 or older.\n";
+			   bool correctchoice = false;
+			   while (correctchoice == false)
+			   {
+					correctchoice = false;
+					cout << "Enter 'v' to enter a valid age or 'e' to exit: ";
+					cin >> choice;
+					if (choice == 'e' || choice == 'E' || choice == 'v' || choice == 'V') {
+						 correctchoice = true;
+						 break;
+					}
+					else
+						 cout << "\nInvalid option selected.\n";
+			   }
+			   if (choice == 'e' || choice == 'E') {
+					return;
+			   }
+			   //else if (choice == 'v' || choice == 'V')
+				   //validAge = false;
+		  }
+		  else if (age >= 18)
+		  {
+			   validAge = true;
+		  }
+	 } while (!validAge);
+
+	 newpatient.age = age;
+
+	 string password, confirmpassword;
+	 bool equal = false;
+	 do {
+		  cout << "\nPassword: ";
+		  cin >> password;
+
+		  cout << "\nConfirm Password: ";
+		  cin >> confirmpassword;
+		  if (password == confirmpassword) {
+			   equal = true;
+		  }
+		  else {
+			   cout << "\nPasswords do not match . Please try again\n";
+		  }
+	 } while (!equal);
+	 newpatient.password = password;
+	 newpatient.email = newpatient.username + "@Huser.com";
+
+	 newpatient.id = patientId;
+	 patientId++;
+	 patient[patientCount] = newpatient;
+	 patientCount++;
+
+	 cout << "\nPatient registered successfully!\n";
+	 cout << "\nYour Email is: " << newpatient.email << endl;
+	 cout << "\nYour ID is: " << newpatient.id << endl;
+	 cin.ignore();
+}
+void personalinfo(Users patient[], int patientCount) {
+	 int userid;
+	 bool correctid = false;
+	 do {
+		  correctid = false;
+		  cout << "\nEnter your ID: ";
+		  cin >> userid;
+		  for (int i = 0; i < patientCount; i++)
+		  {
+			   if (patient[i].id == userid)
+			   {
+					cout << "\nPersonal Info :-\n\n";
+					cout << "Full Name: " << patient[i].name << "\n";
+					cout << "Age: " << patient[i].age << "\n";
+					cout << "Usename: " << patient[i].username << "\n";
+					cout << "Password: " << patient[i].password << "\n";
+					cout << "Email: " << patient[i].email << "\n";
+					cout << "ID: " << patient[i].id << "\n";
+					correctid = true;
+					break;
+			   }
+		  }
+		  if (!correctid) {
+			   cout << "Wrong ID\n";
+		  }
+		  return;
+	 } while (!correctid);
+}
+void editpatientinfo(Users patient[], int patientCount) {
+	 for (int i = 0; i < patientCount; i++)
+	 {
+		  int editChoice;
+		  bool editMore = true;
+
+		  while (editMore) {
+			   bool correctchoice = false;
+			   while (correctchoice == false)
+			   {
+					correctchoice = false;
+					cout << "\nSelect what you want to edit:\n1. Name\n2. Age\n3. Username\n4. Password\n";
+					cout << "\nEnter your choice: ";
+					cin >> editChoice;
+					if (editChoice >= 1 && editChoice <= 4) {
+						 correctchoice = true;
+						 break;
+					}
+					else
+						 cout << "\nInvalid choice. Please try again.\n";
+			   }
+
+			   switch (editChoice)
+			   {
+			   case 1:
+			   {
+					/*int choice;
+					bool correctchoice1 = false;
+					while (correctchoice1 == false)
+					{
+						 correctchoice1 = false;
+						 cout << "\nSelect what you want to edit : \n1.First Name\n2.Middle name\n3.Last name\n";
+						 cout << "\nEnter your choice: ";
+						 cin >> choice;
+						 if (choice >= 1 && choice <= 3) {
+							  correctchoice1 = true;
+							  break;
+						 }
+						 else
+							  cout << "\nInvalid choice. Please try again.\n";
+					}
+					if (choice == 1) {
+						 cout << "\nEnter New First Name: ";
+						 cin >> patient[i].firstname;
+					}
+					else if (choice == 2) {
+						 cout << "\nEnter New Middle Name: ";
+						 cin >> patient[i].middlename;
+					}
+					else if (choice == 3) {
+						 cout << "\nEnter New Last Name: ";
+						 cin >> patient[i].lastname;
+					}*/
+					cout << "Enter new full name: ";
+					getline(cin, patient[i].name);
+					break;
+			   }
+			   case 2:
+			   {
+					int age;
+					bool validAge = false;
+
+					do {
+						 cout << "\nEnter new age: ";
+						 cin >> age;
+						 if (age < 18) {
+							  char choice;
+							  cout << "\nInvalid age. Age must be 18 or older.\n";
+							  bool correctchoice = false;
+							  while (correctchoice == false)
+							  {
+								   correctchoice = false;
+								   cout << "Enter 'v' to enter a valid age or 'e' to exit: ";
+								   cin >> choice;
+								   if (choice == 'e' || choice == 'E' || choice == 'v' || choice == 'V') {
+										correctchoice = true;
+										break;
+								   }
+								   else
+										cout << "\nInvalid option selected.\n";
+							  }
+							  if (choice == 'e' || choice == 'E') {
+								   return;
+							  }
+							  //else if (choice == 'v' || choice == 'V')
+								  //validAge = false;
+						 }
+						 else if (age >= 18)
+						 {
+							  validAge = true;
+						 }
+					} while (!validAge);
+					patient[i].age = age;
+					break;
+			   }
+			   case 3:
+			   {
+					string newusername;
+					bool usernameExists;
+					do {
+						 usernameExists = false;
+
+						 cout << "\nEnter new username: ";
+						 cin >> newusername;
+
+						 for (int j = 0; j < patientCount; j++)
+						 {
+							  if (patient[j].username == newusername)
+							  {
+								   cout <<
+										"\nUsername already exists. Please choose a different username.\n";
+								   usernameExists = true;
+								   break;
+							  }
+						 }
+					} while (usernameExists);
+
+					patient[i].username = newusername;
+
+					break;
+			   }
+			   case 4:
+			   {
+					string oldpassword;
+					int id;
+					cout << "\nEnter the old password: ";
+					cin >> oldpassword;
+					if (oldpassword == patient[i].password) {
+						 cout << "\nEnter new password: ";
+						 cin >> patient[i].password;
+					}
+					else {
+						 cout << "\nWrong Password\n";
+						 cout << "\nEnter your ID:";
+						 cin >> id;
+						 if (id == patient[i].id) {
+							  cout << "\nEnter new password: ";
+							  cin >> patient[i].password;
+
+						 }
+						 else {
+							  cout << "\nWrong ID . Sorry you can not edit your password\n";
+							  return;
+						 }
+					}
+					break;
+			   }
+			   }
+			   cout << "Information updated successfully!\n";
+			   char choice;
+			   cout << "Do you want to edit something else? (y/n): ";
+			   cin >> choice;
+			   if (choice != 'y') {
+					editMore = false;
+			   }
+			   cin.ignore();
+		  }
+
+	 }
+}
+void makeReservation(Users patient[], Hospitals hospital[], int patientCount, int& reservationId, int hospitalCount) {
+	 int userid;
+	 bool checkID = false;
+	 cout << "\nEnter your ID: ";
+	 cin >> userid;
+	 for (int i = 0; i < patientCount; i++)
+	 {
+		  if (patient[i].id == userid)
+		  {
+			   if (patient[i].reserCount < NumberOfReservation) {
+					cin.ignore();
+					/*cout << "\nEnter the patient's first name: ";
+					//cin.ignore();
+					cin >> patientreservation[patient[i].reserCount].firstname;
+
+					cout << "\nEnter the patient's middle name: ";
+					cin >> patientreservation[numberofpatientsreservations].middlename;
+
+					cout << "\nEnter the patient's last name: ";
+					cin >> patientreservation[numberofpatientsreservations].lastname;*/
+					cout << "\nEnter the patient's full name: ";
+					getline(cin, patient[i].reservationtemp[patient[i].reserCount].PName);
+
+
+					cout << "\nEnter the patient's age: ";
+					cin >> patient[i].reservationtemp[patient[i].reserCount].PAge;
+
+					viewHospitals(hospital, hospitalCount);
+					int choice, choice2;
+					bool correctchoice = false;
+					while (correctchoice == false)
+					{
+						 correctchoice = false;
+						 cout << "\nSelect the hospital number to make a reservation: ";
+						 cin >> choice;
+						 if (choice >= 1 && choice <= hospitalCount) {
+							  correctchoice = true;
+							  break;
+						 }
+						 else
+							  cout << "\nInvalid option selected.\n";
+					}
+					int index = choice - 1;
+					patient[i].reservationtemp[patient[i].reserCount].hospital = hospital[index];
+					viewHospitalInfo(hospital, index, hospital[index].HospitalName);
+					bool correctchoice1 = false;
+					while (correctchoice1 == false)
+					{
+						 correctchoice1 = false;
+						 cout << "\nEnter 1 for Surgery, 2 for Check-up\n ";
+						 cout << "Choice: ";
+						 cin >> choice2;
+						 if (choice2 == 1 || choice2 == 2) {
+							  correctchoice1 = true;
+							  break;
+						 }
+						 else
+							  cout << "\nInvalid option selected.\n";
+					}
+					int dayNumber, dayindex;
+					if (choice2 == 1) {
+						 int specNumber, specindex;
+						 patient[i].reservationtemp[patient[i].reserCount].ReservationType = "Surgery";
+						 bool correctchoice2 = false;
+						 while (correctchoice2 == false)
+						 {
+							  correctchoice2 = false;
+							  showspecialists(hospital, index);
+							  cin >> specNumber;
+							  if (specNumber >= 1 && specNumber <= hospital[index].specialtiesCount) {
+								   correctchoice2 = true;
+								   break;
+							  }
+							  else
+								   cout << "\nInvalid option selected.\n";
+						 }
+						 specindex = specNumber - 1;
+						 int roomnumber = 100 + rand() % 400;
+						 patient[i].reservationtemp[patient[i].reserCount].HospitalSpecialty = hospital[index].HospitalSpecialties[specindex];
+						 patient[i].reservationtemp[patient[i].reserCount].PatientReservationRoom = to_string(roomnumber);
+						 hospital[index].PatientReservationRooms -= 1;
+						 bool correctchoice3 = false;
+						 int daysnum;
+						 while (correctchoice3 == false)
+						 {
+							  correctchoice3 = false;
+							  cout << "\nHow many days do you need to stay in the room ?";
+							  cin >> daysnum;
+							  if (daysnum >= 1) {
+								   correctchoice3 = true;
+								   break;
+							  }
+							  else
+								   cout << "\nInvalid number of days.Please enter number 1 or more\n";
+						 }
+						 patient[i].reservationtemp[patient[i].reserCount].BedPrice = daysnum * (hospital[index].BedsPrice);
+						 patient[i].reservationtemp[patient[i].reserCount].surgeryprice = hospital[index].surgeryprice;
+						 patient[i].reservationtemp[patient[i].reserCount].Totalprice = (daysnum * (hospital[index].BedsPrice)) + (hospital[index].surgeryprice);
+						 bool correctchoice5 = false;
+						 while (correctchoice5 == false)
+						 {
+							  correctchoice5 = false;
+							  showDays();
+							  cout << "\nPlease Enter the number of your first day in the room: ";
+							  cin >> dayNumber;
+							  if (dayNumber >= 1 && dayNumber <= daysInWeek) {
+								   correctchoice5 = true;
+								   break;
+							  }
+							  else
+								   cout << "\nInvalid option selected.\n";
+						 }
+
+					}
+					else if (choice2 == 2) {
+						 int clinicNumber, clinicindex;
+						 patient[i].reservationtemp[patient[i].reserCount].ReservationType = "Check-up";
+						 bool correctchoice4 = false;
+						 while (correctchoice4 == false)
+						 {
+							  correctchoice4 = false;
+							  showclinics(hospital, index);
+							  cin >> clinicNumber;
+							  if (clinicNumber >= 1 && clinicNumber <= hospital[index].clinicsCount) {
+								   correctchoice4 = true;
+								   break;
+							  }
+							  else
+								   cout << "\nInvalid option selected.\n";
+						 }
+						 clinicindex = clinicNumber - 1;
+						 patient[i].reservationtemp[patient[i].reserCount].HospitalClinic = hospital[index].HospitalClinics[clinicindex];
+						 bool correctchoice5 = false;
+						 while (correctchoice5 == false)
+						 {
+							  correctchoice5 = false;
+							  showDays();
+							  cout << "\nPlease Enter the number of your reservation day: ";
+							  cin >> dayNumber;
+							  if (dayNumber >= 1 && dayNumber <= daysInWeek) {
+								   correctchoice5 = true;
+								   break;
+							  }
+							  else
+								   cout << "\nInvalid option selected.\n";
+						 }
+						 patient[i].reservationtemp[patient[i].reserCount].ReservationPrice = hospital[index].ReservationPrice;
+
+					}
+					dayindex = dayNumber - 1;
+					patient[i].reservationtemp[patient[i].reserCount].ReservationDay = ReservationDays[dayindex];
+					patient[i].reservationtemp[patient[i].reserCount].ReservtionID = reservationId;
+					cout << "Your reservation has been confirmed.\n";
+					cout << "Your Reservation ID is : " << reservationId << endl;
+					patient[i].reserCount++;
+					reservationId++;
+			   }
+			   else {
+					cout << "\nThe maximum number of reservations has been reached today . Try another day\n ";
+			   }
+			   checkID = true;
+		  }
+
+	 }
+	 if (!checkID)
+		  cout << "\nWrong ID\n";
+}
+int hospitalindex(Hospitals hospital[], int hospitalCount) {
+	 viewHospitals(hospital, hospitalCount);
+	 int choice;
+	 bool correctchoice = false;
+	 while (correctchoice == false)
+	 {
+		  correctchoice = false;
+		  cout << "\nSelect the hospital number: ";
+		  cin >> choice;
+		  if (choice >= 1 && choice <= hospitalCount) {
+			   correctchoice = true;
+			   break;
+		  }
+		  else
+			   cout << "\nInvalid option selected.\n";
+	 }
+	 int index = choice - 1;
+	 return index;
+}
+void showDays() {
+	 for (int i = 0; i < daysInWeek; i++) {
+
+		  cout << i + 1 << " - " << ReservationDays[i] << "\n";
+	 }
+}
+void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex) {
+	 //PIndex ->user index loged in 
+	 int search;
+	 bool correctid = false;
+	 do {
+		  correctid = false;
+		  cout << "\nEnter your Reservation ID: ";
+		  cin >> search;
+
+		  for (int i = 0; i < patient[PIndex].reserCount; i++) {
+			   if (patient[PIndex].reservationtemp[i].ReservtionID == search) {
+					correctid = true;
+					char editoption;
+					char modifyagain;
+					char typeoption;
+					int index2 = hospitalindex(hospital, hospitalCount);
+					do {
+						 if (patient[PIndex].reservationtemp[i].ReservationType == "Surgery") {
+							  bool correctchoice = false;
+							  while (correctchoice == false)
+							  {
+								   correctchoice = false;
+								   cout << endl << "\nWhat do you want to edit?\n";
+								   cout << "1\\Patient's Name\n\n2\\Patient's age\n\n3\\Hospital\n\n4\\Reservation Type\n\n5\\Reservation Day (First day in the room)\n\n6\\Number of days in the room\n\n";
+								   cout << "Choice: ";
+								   cin >> editoption;
+								   if (editoption >= '1' && editoption <= '6') {
+										correctchoice = true;
+										break;
+								   }
+								   else
+										cout << "\nInvalid choice\n" << endl;
+							  }
+						 }
+						 else if (patient[PIndex].reservationtemp[i].ReservationType == "Check-up") {
+							  bool correctchoice = false;
+							  while (correctchoice == false)
+							  {
+								   correctchoice = false;
+								   cout << endl << "\nWhat do you want to edit?\n";
+								   cout << "1\\Patient's Name\n\n2\\Patient's age\n\n3\\Hospital\n\n4\\Reservation Type\n\n5\\Reservation Day\n\n";
+								   cout << "Choice: ";
+								   cin >> editoption;
+								   if (editoption >= '1' && editoption <= '5') {
+										correctchoice = true;
+										break;
+								   }
+								   else
+										cout << "\nInvalid choice\n" << endl;
+							  }
+						 }
+						 if (editoption == '1')
+						 {/*
+							  int choice;
+							  bool correctchoice1 = false;
+							  while (correctchoice1 == false)
+							  {
+								   correctchoice1 = false;
+								   cout << "\nSelect what you want to edit : \n1.First Name\n2.Middle name\n3.Last name\n";
+								   cout << "\nEnter your choice: ";
+								   cin >> choice;
+								   if (choice >= 1 && choice <= 3) {
+										correctchoice1 = true;
+										break;
+								   }
+								   else
+										cout << "\nInvalid choice. Please try again.\n";
+							  }
+							  if (choice == 1) {
+								   cout << "\nEnter First Name: ";
+								   cin >> patientreservation[numberofpatientsreservations].firstname;
+							  }
+							  else if (choice == 2) {
+								   cout << "\nEnter Middle Name: ";
+								   cin >> patientreservation[i].middlename;
+							  }
+							  else if (choice == 3) {
+								   cout << "\nEnter Last Name: ";
+								   cin >> patientreservation[i].lastname;
+							  }*/
+							  cout << "Enter new patient's name: ";
+							  getline(cin, patient[i].name);
+							  break;
+						 }
+						 else if (editoption == '2') {
+							  cout << "\nEnter Age: ";
+							  cin >> patient[PIndex].reservationtemp[i].PAge;
+						 }
+						 else if (editoption == '3') {
+							  index2 = hospitalindex(hospital, hospitalCount);
+							  patient[PIndex].reservationtemp[i].hospital.HospitalName = hospital[index2].HospitalName;
+							  viewHospitalInfo(hospital, index2);
+							  int choice1;
+							  bool correctchoice1 = false;
+							  while (correctchoice1 == false)
+							  {
+								   correctchoice1 = false;
+								   cout << "\nEnter 1 for Surgery, 2 for Check-up\n ";
+								   cout << "Choice: ";
+								   cin >> choice1;
+								   if (choice1 == 1 || choice1 == 2) {
+										correctchoice1 = true;
+										break;
+								   }
+								   else
+										cout << "\nInvalid option selected.\n";
+							  }
+							  int dayNumber, dayindex;
+							  if (choice1 == 1) {
+								   int specNumber, specindex;
+								   patient[PIndex].reservationtemp[i].ReservationType = "Surgery";
+								   bool correctchoice2 = false;
+								   while (correctchoice2 == false)
+								   {
+										correctchoice2 = false;
+										showspecialists(hospital, index2);
+										cin >> specNumber;
+										if (specNumber >= 1 && specNumber <= hospital[index2].specialtiesCount) {
+											 correctchoice2 = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid option selected.\n";
+								   }
+								   specindex = specNumber - 1;
+								   int number = 101 + rand() % 400;
+								   patient[PIndex].reservationtemp[i].HospitalSpecialty = hospital[index2].HospitalSpecialties[specindex];
+								   patient[PIndex].reservationtemp[i].PatientReservationRoom = to_string(number);
+								   //hospital[index2].PatientReservationRooms;//string = int
+								   bool correctchoice3 = false;
+								   int daysnum;
+								   while (correctchoice3 == false)
+								   {
+										correctchoice3 = false;
+										cout << "\nHow many days do you need to stay in the room ?";
+										cin >> daysnum;
+										if (daysnum >= 1) {
+											 correctchoice3 = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid number of days.Please enter number 1 or more\n";
+								   }
+								   patient[PIndex].reservationtemp[i].BedPrice = daysnum * (hospital[index2].BedsPrice);
+								   patient[PIndex].reservationtemp[i].surgeryprice = hospital[index2].surgeryprice;
+								   patient[PIndex].reservationtemp[i].Totalprice = (daysnum * (hospital[index2].BedsPrice)) + (hospital[index2].surgeryprice);
+								   bool correctchoice5 = false;
+								   while (correctchoice5 == false)
+								   {
+										correctchoice5 = false;
+										showDays();
+										cout << "\nPlease Enter the number of your first day in the room: ";
+										cin >> dayNumber;
+										if (dayNumber >= 1 && dayNumber <= daysInWeek) {
+											 correctchoice5 = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid option selected.\n";
+								   }
+
+							  }
+							  else if (choice1 == 2) {
+								   int clinicNumber, clinicindex;
+								   patient[PIndex].reservationtemp[i].ReservationType = "Check-up";
+								   bool correctchoice4 = false;
+								   while (correctchoice4 == false)
+								   {
+										correctchoice4 = false;
+										showclinics(hospital, index2);
+										cin >> clinicNumber;
+										if (clinicNumber >= 1 && clinicNumber <= NumberOfClinics) {
+											 correctchoice4 = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid option selected.\n";
+								   }
+								   clinicindex = clinicNumber - 1;
+								   patient[PIndex].reservationtemp[i].HospitalClinic = hospital[index2].HospitalClinics[clinicindex];
+								   bool correctchoice5 = false;
+								   while (correctchoice5 == false)
+								   {
+										correctchoice5 = false;
+										showDays();
+										cout << "\nPlease Enter the number of your reservation day: ";
+										cin >> dayNumber;
+										if (dayNumber >= 1 && dayNumber <= daysInWeek) {
+											 correctchoice5 = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid option selected.\n";
+								   }
+								   patient[PIndex].reservationtemp[i].ReservationPrice = hospital[index2].ReservationPrice;
+
+							  }
+							  dayindex = dayNumber - 1;
+							  patient[PIndex].reservationtemp[i].ReservationDay = ReservationDays[dayindex];
+						 }
+						 else if (editoption == '4') {
+							  bool correctchoice = false;
+							  while (correctchoice == false)
+							  {
+								   correctchoice = false;
+								   cout << "\nEnter the number of new Reservation Type\n1\\Surgery\n2\\Check-up\nchoice: ";
+								   cin >> typeoption;
+								   if (typeoption >= '1' && typeoption <= '2') {
+										correctchoice = true;
+										break;
+								   }
+								   else
+										cout << "\nInvalid choice\n" << endl;
+							  }
+							  int dayNumber, dayindex;
+							  if (typeoption == '1') {
+								   int specnumber;
+								   int specindex;
+								   patient[PIndex].reservationtemp[i].ReservationType = "Surgery";
+								   bool correctchoice = false;
+								   while (correctchoice == false)
+								   {
+										correctchoice = false;
+										showspecialists(hospital, index2);
+										cin >> specnumber;
+										if (specnumber >= 1 && specnumber <= NumberOfSpecialties) {
+											 correctchoice = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid choice\n" << endl;
+								   }
+								   specindex = specnumber - 1;
+								   patient[PIndex].reservationtemp[i].HospitalSpecialty = hospital[index2].HospitalSpecialties[specindex];
+								   patient[PIndex].reservationtemp[i].PatientReservationRoom = hospital[index2].PatientReservationRooms;
+								   bool correctchoice3 = false;
+								   int daysnum;
+								   while (correctchoice3 == false)
+								   {
+										correctchoice3 = false;
+										cout << "\nHow many days do you need to stay in the room ?";
+										cin >> daysnum;
+										if (daysnum >= 1) {
+											 correctchoice3 = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid number of days.Please enter number 1 or more\n";
+								   }
+								   patient[PIndex].reservationtemp[i].BedPrice = daysnum * (hospital[index2].BedsPrice);
+								   patient[PIndex].reservationtemp[i].surgeryprice = hospital[index2].surgeryprice;
+								   patient[PIndex].reservationtemp[i].Totalprice = (daysnum * (hospital[index2].BedsPrice)) + (hospital[index2].surgeryprice);
+								   bool correctchoice5 = false;
+								   while (correctchoice5 == false)
+								   {
+										correctchoice5 = false;
+										showDays();
+										cout << "\nPlease Enter the number of your first day in the room: ";
+										cin >> dayNumber;
+										if (dayNumber >= 1 && dayNumber <= daysInWeek) {
+											 correctchoice5 = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid option selected.\n";
+								   }
+							  }
+							  else  if (typeoption == '2') {
+								   int clinicnumber;
+								   int clinicindex;
+								   patient[PIndex].reservationtemp[i].ReservationType = "Check-up";
+								   bool correctchoice = false;
+								   while (correctchoice == false)
+								   {
+										correctchoice = false;
+										showclinics(hospital, index2);
+										cin >> clinicnumber;
+										if (clinicnumber >= 1 && clinicnumber <= NumberOfClinics) {
+											 correctchoice = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid choice\n" << endl;
+								   }
+								   clinicindex = clinicnumber - 1;
+								   patient[PIndex].reservationtemp[i].HospitalClinic = hospital[index2].HospitalClinics[clinicindex];
+								   bool correctchoice5 = false;
+								   while (correctchoice5 == false)
+								   {
+										correctchoice5 = false;
+										showDays();
+										cout << "\nPlease Enter the number of your reservation day: ";
+										cin >> dayNumber;
+										if (dayNumber >= 1 && dayNumber <= daysInWeek) {
+											 correctchoice5 = true;
+											 break;
+										}
+										else
+											 cout << "\nInvalid option selected.\n";
+								   }
+								   patient[PIndex].reservationtemp[i].ReservationPrice = hospital[index2].ReservationPrice;
+								   dayindex = dayNumber - 1;
+								   patient[PIndex].reservationtemp[i].ReservationDay = ReservationDays[dayindex];
+							  }
+
+						 }
+						 else if (editoption == '5') {
+							  int dayNumber, dayindex;
+							  bool correctchoice5 = false;
+							  while (correctchoice5 == false)
+							  {
+								   correctchoice5 = false;
+								   showDays();
+								   cout << "\nPlease Enter the number of your new reservation day: ";
+								   cin >> dayNumber;
+								   if (dayNumber >= 1 && dayNumber <= daysInWeek) {
+										correctchoice5 = true;
+										break;
+								   }
+								   else
+										cout << "\nInvalid option selected.\n";
+							  }
+							  dayindex = dayNumber - 1;
+							  patient[PIndex].reservationtemp[i].ReservationDay = ReservationDays[dayindex];
+						 }
+						 else if (editoption == '6') {
+							  bool correctchoice3 = false;
+							  int daysnum;
+							  while (correctchoice3 == false)
+							  {
+								   correctchoice3 = false;
+								   cout << "\nHow many days do you need to stay in the room ?";
+								   cin >> daysnum;
+								   if (daysnum >= 1) {
+										correctchoice3 = true;
+										break;
+								   }
+								   else
+										cout << "\nInvalid number of days.Please enter number 1 or more\n";
+							  }
+							  patient[PIndex].reservationtemp[i].BedPrice = daysnum * hospital[index2].BedsPrice;
+							  patient[PIndex].reservationtemp[i].Totalprice = (daysnum * (hospital[index2].BedsPrice)) + (hospital[index2].surgeryprice);
+
+						 }
+						 cout << endl << "\nDo you want to modify something else? (y|n)\nChoice: ";
+						 cin >> modifyagain;
+
+					} while (modifyagain == 'y' || modifyagain == 'Y');
+					cout << "\nSuccessfully changed\n";
+					break;
+			   }
+		  }
+		  if (!correctid) {
+			   cout << "\nInvalid Reservation ID\n";
+			   return;
+		  }
+	 } while (!correctid);
+}
+void showreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex) {
+	 int search;
+	 bool correctid = false;
+	 do {
+		  correctid = false;
+		  cout << "\nEnter your Resevation ID: ";
+		  cin >> search;
+
+		  for (int i = 0; i < NumberOfReservation; i++) {
+			   if (patient[PIndex].reservationtemp[i].ReservtionID == search) {
+					correctid = true;
+					if (patient[PIndex].reservationtemp[i].ReservationType == "Surgery") {
+						 cout << endl << "\nYour reservation:-" << endl << endl;
+						 cout << "Patient's Name: " << patient[PIndex].reservationtemp[i].PName << endl;
+						 cout << "Patient's Age: " << patient[PIndex].reservationtemp[i].PAge << endl << endl;
+						 cout << "Reservatiion ID: " << patient[PIndex].reservationtemp[i].ReservtionID << endl << endl;
+						 cout << "Hospital ID: " << patient[PIndex].reservationtemp[i].hospital.HospitalID << endl << endl;
+						 cout << "Hospital Name: " << patient[PIndex].reservationtemp[i].hospital.HospitalName << endl << endl;
+						 cout << "Hospital Rate: " << patient[PIndex].reservationtemp[i].hospital.HospitalRate << endl << endl;
+						 cout << "Reservation Type: " << patient[PIndex].reservationtemp[i].ReservationType << endl << endl;
+						 cout << "Hospital Specialty: " << patient[PIndex].reservationtemp[i].HospitalSpecialty << endl << endl;
+						 cout << "Patient Room: " << patient[PIndex].reservationtemp[i].PatientReservationRoom << endl << endl;
+						 cout << "Reservation Day (First day in the room): " << patient[PIndex].reservationtemp[i].ReservationDay << endl << endl;
+						 cout << "Bed Price: " << patient[PIndex].reservationtemp[i].hospital.BedsPrice << endl << endl;
+						 cout << "surgery price: " << patient[PIndex].reservationtemp[i].surgeryprice << endl << endl;
+						 cout << "Total Reservation Price :" << patient[PIndex].reservationtemp[i].Totalprice << endl << endl;
+						 break;
+					}
+					else if (patient[PIndex].reservationtemp[i].ReservationType == "Check-up") {
+						 cout << endl << "\nYour reservation:-" << endl << endl;
+						 cout << "Patient's Name: " << patient[PIndex].reservationtemp->PName << endl;
+						 cout << "Patient's Age: " << patient[PIndex].reservationtemp[i].PAge << endl << endl;
+						 cout << "Reservatiion ID: " << patient[PIndex].reservationtemp[i].ReservtionID << endl << endl;
+						 cout << "Hospital ID: " << patient[PIndex].reservationtemp[i].hospital.HospitalID << endl << endl;
+						 cout << "Hospital Name: " << patient[PIndex].reservationtemp[i].hospital.HospitalName << endl << endl;
+						 cout << "Hospital Rate: " << patient[PIndex].reservationtemp[i].hospital.HospitalRate << endl << endl;
+						 cout << "Reservation Type: " << patient[PIndex].reservationtemp[i].ReservationType << endl << endl;
+						 cout << "Hospital Clinic: " << patient[PIndex].reservationtemp[i].HospitalClinic << endl << endl;
+						 cout << "Reservation Day: " << patient[PIndex].reservationtemp[i].ReservationDay << endl << endl;
+						 cout << "Reservation Price: " << patient[PIndex].reservationtemp[i].ReservationPrice << endl << endl;
+						 break;
+					}
+			   }
+		  }
+		  if (!correctid)
+		  {
+			   cout << "\nInvalid Resevation ID\n";
+			   return;
+		  }
+	 } while (!correctid);
+}
+void cancelreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex, int& reservationId) {
+	 int search;
+	 bool correctid = false;
+	 do {
+		  correctid = false;
+		  cout << "\nEnter your Resevaion ID: ";
+		  cin >> search;
+
+		  for (int i = 0; i < patient[PIndex].reserCount; i++) {
+			   if (patient[PIndex].reservationtemp[i].ReservtionID == search) {
+					correctid = true;
+					patient[PIndex].reservationtemp[i].PName = " ";
+					patient[PIndex].reservationtemp[i].PAge = 0;
+					patient[PIndex].reservationtemp[i].ReservtionID = 0;
+					patient[PIndex].reservationtemp[i].hospital.HospitalName = " ";
+					patient[PIndex].reservationtemp[i].ReservationType = " ";
+					patient[PIndex].reservationtemp[i].HospitalSpecialty = "NOT RESERVED";
+					patient[PIndex].reservationtemp[i].HospitalClinic = "NOT RESERVED";
+					patient[PIndex].reservationtemp[i].PatientReservationRoom = " ";
+					patient[PIndex].reservationtemp[i].BedPrice = 0;
+					patient[PIndex].reservationtemp[i].ReservationDay = " ";
+					patient[PIndex].reservationtemp[i].ReservationPrice = 0;
+					patient[PIndex].reservationtemp[i].surgeryprice = 0;
+					patient[PIndex].reservationtemp[i].Totalprice = 0;
+					cout << endl << "\nCancelled successfully" << endl;
+					if (i != patient[PIndex].reserCount - 1)
+						 swap(patient[PIndex].reservationtemp[i], patient[PIndex].reservationtemp[patient[PIndex].reserCount - 1]);
+					patient[PIndex].reserCount--;//update
+
+					break;
+			   }
+		  }
+		  if (!correctid) {
+			   cout << "\nInvalid Resevation ID\n";
+			   return;
+		  }
+	 } while (!correctid);
+}
+
+
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount)
 {
 	 char Cho;
@@ -920,6 +1759,46 @@ void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount)
 	 //} while (Cho == 'y' || Cho == 'Y');
 
 }
-void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount) {
+void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount, int& reservationid) {
+	 int choice;
+
+
+
+	 cout << "\nLogin successful. Welcome!\n\n";
+
+	 int option;
+	 do {
+		  cout << "\n1 to View Personal Info.\n" << "2 to View All Hospitals Information.\n" << "3 to Edit your Information.\n" << "4 to make a new reservation.\n" << "5 to View your reservation.\n" << "6 to Modify an existing reservation.\n" << "7 to Cancel a reservation.\n" << "8 to log out.\n";
+		  cout << "Enter the number you want to do : ";
+		  cin >> option;
+		  switch (option)
+		  {
+		  case 1:
+			   personalinfo(user, userCount);
+			   break;
+		  case 2:
+			   PrintHospitalData(hospital, HospitalCount);
+			   break;
+		  case 3:
+			   editpatientinfo(user, userCount);
+			   break;
+		  case 4:
+			   makeReservation(user, hospital, userCount, reservationid, HospitalCount);
+			   break;
+		  case 5:
+			   showreservation(user, userCount, hospital, HospitalCount, 7);
+			   break;
+		  case 6:
+			   modifyreservation(user, userCount, hospital, HospitalCount, 7);
+			   break;
+		  case 7:
+			   cancelreservation(user, userCount, hospital, HospitalCount, 7, reservationid);
+			   break;
+		  case 8:
+			   break;
+		  default:
+			   cout << "\nInvalid option selected.\n";
+		  }
+	 } while (option != 8);
 
 }
