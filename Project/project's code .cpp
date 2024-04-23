@@ -81,7 +81,7 @@ void showDays();
 void showreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex);
 void cancelreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex, int& reservationId);
 bool Type(Users user[], int& usercount, string Email);
-
+void infinit(int num, int max, int min);
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount);//GEN.
 void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount, int& reservationid);//GEN.
 void main(){
@@ -93,7 +93,7 @@ void main(){
 	 userID += userCount;
 
 	 while (true) { 
-		 int Need;
+		 int Need=0;
 		 string Email = "";
 		 int choice;
 		 cout << "\n1. Register\n2. Login(if you have already registered)\n3. Quit\nPlease enter your choice: ";
@@ -110,19 +110,20 @@ void main(){
 				 if (loginAsAdmin(user, userCount))
 				 {
 					 cout << "What You Need Display As \n1- Admin\n2- Patient\nAdd Your Choice: ";
-					 while (true)
-					 {
-						 cin >> Need;
-						 cout << "-------------------\n";
-						 if (Need >= 1 && Need <= 2)
-							 //checkChoice = true;
-							 break;
-						 else
-						 {
-							 cout << "In Valied Choice" << endl;
-							 cout << "enter valied choice : ";
-						 }
-					 }
+					 infinit(Need, 2, 1);
+					 //while (true)
+					 //{
+						// cin >> Need;
+						// cout << "-------------------\n";
+						// if (Need >= 1 && Need <= 2)
+						//	 //checkChoice = true;
+						//	 break;
+						// else
+						// {
+						//	 cout << "In Valied Choice" << endl;
+						//	 cout << "enter valied choice : ";
+						// }
+					 //}
 					 switch (Need)
 					 {
 
@@ -149,6 +150,22 @@ void main(){
 			 break;
 		 }
 	 }
+}
+void infinit(int num, int max, int min) {
+
+	while (true)
+	{
+		cin >> num;
+		cout << "-------------------\n";
+		if (num >= min && num <= max)
+			break;
+
+		else
+		{
+			cout << "In Valied Choice" << endl;
+			cout << "enter valied choice : ";
+		}
+	}
 }
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount) {
 	 ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
@@ -400,7 +417,6 @@ void AddHospital(Hospitals hos[], int& HospitalCount)
 void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 {
 	 string hsptlname;
-	 int choice;
 	 char answer;
 	 bool found = false;
 	 bool Exist = false;
@@ -411,14 +427,15 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 	 string HospitalSpecialties;
 	 do
 	 {
+	 int choice=0;
 
 		  bool Checkans = false;
 		  bool checkChoice = false;
 		  cout << "what do you want to modify ?" << endl;
 		  cout << "1-Hospital ID\n2-Patient Reservation Rooms\n3-Reservation Price\n4-BedsPrice\n5-Hospital Rate\n6-Hospital Name\n7-Hospital Specialties\n8-Hospital Clinics" << endl;
 		  cout << "enter your choice: ";
-
-		  while (!checkChoice)
+		  infinit(choice, 8, 1);
+		 /* while (!checkChoice)
 		  {
 			   cin >> choice;
 
@@ -430,7 +447,7 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 					cout << "In Valied Choice" << endl;
 					cout << "enter valied choice : ";
 			   }
-		  }
+		  }*/
 		  cin.ignore(); // name hospital
 		  cout << "please enter hospitalname: ";
 		  getline(cin, hsptlname);
@@ -943,12 +960,12 @@ void personalinfo(Users patient[], int patientCount) {
 void editpatientinfo(Users patient[], int patientCount) {
 	 for (int i = 0; i < patientCount; i++)
 	 {
-		  int editChoice;
+		  int editChoice=0;
 		  bool editMore = true;
 
 		  while (editMore) {
-			   bool correctchoice = false;
-			   while (correctchoice == false)
+			  // bool correctchoice = false;
+			   /*while (correctchoice == false)
 			   {
 					correctchoice = false;
 					cout << "\nSelect what you want to edit:\n1. Name\n2. Age\n3. Username\n4. Password\n";
@@ -960,8 +977,8 @@ void editpatientinfo(Users patient[], int patientCount) {
 					}
 					else
 						 cout << "\nInvalid choice. Please try again.\n";
-			   }
-
+			   }*/
+			  infinit(editChoice, 4, 1);
 			   switch (editChoice)
 			   {
 			   case 1:
@@ -1128,9 +1145,9 @@ void makeReservation(Users patient[], Hospitals hospital[], int patientCount, in
 					cin >> patient[i].reservationtemp[patient[i].reserCount].PAge;
 
 					viewHospitals(hospital, hospitalCount);
-					int choice, choice2;
-					bool correctchoice = false;
-					while (correctchoice == false)
+					int choice=0, choice2=0;
+				//	bool correctchoice = false;
+					/*while (correctchoice == false)
 					{
 						 correctchoice = false;
 						 cout << "\nSelect the hospital number to make a reservation: ";
@@ -1141,12 +1158,13 @@ void makeReservation(Users patient[], Hospitals hospital[], int patientCount, in
 						 }
 						 else
 							  cout << "\nInvalid option selected.\n";
-					}
+					}*/
+					infinit(choice, hospitalCount, 1);
 					int index = choice - 1;
 					patient[i].reservationtemp[patient[i].reserCount].hospital = hospital[index];
 					viewHospitalInfo(hospital, index, hospital[index].HospitalName);
 					bool correctchoice1 = false;
-					while (correctchoice1 == false)
+					/*while (correctchoice1 == false)
 					{
 						 correctchoice1 = false;
 						 cout << "\nEnter 1 for Surgery, 2 for Check-up\n ";
@@ -1158,7 +1176,8 @@ void makeReservation(Users patient[], Hospitals hospital[], int patientCount, in
 						 }
 						 else
 							  cout << "\nInvalid option selected.\n";
-					}
+					}*/
+					infinit(choice2, 2, 1);
 					int dayNumber, dayindex;
 					if (choice2 == 1) {
 						 int specNumber, specindex;
@@ -1269,9 +1288,9 @@ void makeReservation(Users patient[], Hospitals hospital[], int patientCount, in
 }
 int hospitalindex(Hospitals hospital[], int hospitalCount) {
 	 viewHospitals(hospital, hospitalCount);
-	 int choice;
-	 bool correctchoice = false;
-	 while (correctchoice == false)
+	 int choice=0;
+	// bool correctchoice = false;
+	 /*while (correctchoice == false)
 	 {
 		  correctchoice = false;
 		  cout << "\nSelect the hospital number: ";
@@ -1282,7 +1301,8 @@ int hospitalindex(Hospitals hospital[], int hospitalCount) {
 		  }
 		  else
 			   cout << "\nInvalid option selected.\n";
-	 }
+	 }*/
+	 infinit(choice, hospitalCount, 1);
 	 int index = choice - 1;
 	 return index;
 }
@@ -1746,29 +1766,30 @@ void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount)
 	 char Cho;
 	 int Ansewr;
 	 cout << "Welcome To Hospital\n";
-	 int Need;
 	 bool checkChoice ,logOut=false;
 	 char x;
 	// string temp = "Sayed Galal";
 	 cout << "\nLogin successful!" << endl;
 		  while (true)
 		  {
-			   checkChoice = false;
+	 int Need=0;
+			   //checkChoice = false;
 
 			   cout << "1- To Add Hospital\n2- To Delete Hospital\n3- To Modify\n4- print Data For All Hospital\n5- To print Data For Any Hospital You choose it\n6- Exit\n\n";
 
-			   while (!checkChoice)
-			   {
-					cout << "enter valied choice : ";
-					cin >> Need;
-					cout << "-------------------\n";
-					if (Need >= 1 && Need <= 6)
-						 checkChoice = true;
-					else
-					{
-						 cout << "In Valied Choice" << endl;
-					}
-			   }
+			  // while (!checkChoice)
+			  // {
+					//cout << "enter valied choice : ";
+					//cin >> Need;
+					//cout << "-------------------\n";
+					//if (Need >= 1 && Need <= 6)
+					//	 checkChoice = true;
+					//else
+					//{
+					//	 cout << "In Valied Choice" << endl;
+					//}
+			  // }
+			   infinit(Need, 6, 1);
 			   cin.ignore(); // áæ ÔáÊåÇ ÏÇíãÇ åíÎÔ Ý ÈÏÇíÉ ßá ÝÇäÔßä ÛáØ 
 			   switch (Need)
 			   {
