@@ -35,3 +35,4 @@
 *.ilk
 *.pdb
 /x64
+*.recipe

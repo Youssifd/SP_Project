@@ -225,7 +225,7 @@ void SaveData(Hospitals hospital[], int hospitalCount) {
 	 ExportHospitalInfo << hospitalCount;
 	 for (int i = 0; i < hospitalCount; i++) {
 		  ExportHospitalInfo << hospital[i].HospitalName << endl;
-		  ExportHospitalInfo << hospital[i].HospitalID << " " << hospital[i].PatientReservationRooms << " " << hospital[i].ReservationPrice << " " << hospital[i].BedsPrice << " " << hospital[i].HospitalRate << " " << hospital[i].specialtiesCount  <<" "<< hospital[i].clinicsCount << endl;
+		  ExportHospitalInfo << hospital[i].HospitalID << " " << hospital[i].PatientReservationRooms << " " << hospital[i].ReservationPrice << " " << hospital[i].BedsPrice << " " << hospital[i].surgeryprice << " " << hospital[i].HospitalRate << " " << hospital[i].specialtiesCount  <<" "<< hospital[i].clinicsCount << endl;
 		  for (int j = 0; j < hospital[i].specialtiesCount; j++)
 			   ExportHospitalInfo << hospital[i].HospitalSpecialties[j] << " ";
 		  ExportHospitalInfo << endl;
