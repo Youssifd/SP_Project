@@ -90,13 +90,13 @@ void main() {
 	 DefinitonOfVariable(user, userCount, reservationID, hospital, hospitalCount);
 	 userID += userCount;
 
-	 cout << "Welcome To Our Hospital Management syatem :)";
+	 cout << "Welcome To Our Hospital Management syatem :)\n";
 	 while (true) {
 		  int patientAccount = 0;
 
 		  string Email = "";
 		  int choice;
-		  cout << "\n1. Register\n2. Login(if you have already registered)\n3. Quit\nPlease enter your choice: ";
+		  cout << "1. Register\n2. Login(if you have already registered)\n3. Quit\nPlease enter your choice: ";
 		  cin >> choice;
 		  if (choice == 1) {
 			   registerpatient(user, userCount, userID);
@@ -651,43 +651,53 @@ bool loginAsPatient(Users patient[], int userCount, int& index) {
 	 string username, password = "";
 	 char chForPass;
 	 int id = 0, choice;
-	 cout << "Enter username: ";
-	 cin >> username;
-	 bool loginstatus = false;
-	 cout << "\n1 to Enter Password \n2 to Enter ID\n";
-	 cout << "(Enter your ID . if you forgot your Password)\n";
-	 cout << "Choice : ";
-	 infinit(choice, 2, 1);
-	 if (choice == 1) {
+	 int count = 0;
+		 bool loginstatus = false;
+	 do {
+			 loginstatus = false;// Login failed
+		 cout << "Enter username: ";
+		 cin >> username;
+		 cout << "\n1 to Enter Password \n2 to Enter ID\n";
+		 cout << "(Enter your ID . if you forgot your Password)\n";
+		 cout << "Choice : ";
+		 infinit(choice, 2, 1);
+		 if (choice == 1) {
 
-		  cout << "Enter password: ";
-		  while ((chForPass = getch()) != '\r') {
-			   if (chForPass != '\b') {
-					cout << "*";
-					password += chForPass;
-			   }
-			   else if (!password.empty()) {
-					cout << "\b \b";
-					password.erase(password.size() - 1);
-			   }
-		  }
-		  cout << '\n';
-	 }
-	 else if (choice == 2) {
-		  cout << "\nEnter ID: ";
-		  cin >> id;
-	 }
-	 for (int i = 0; i < userCount; i++)
-	 {
-		  if ((patient[i].username == username && patient[i].password == password) || (patient[i].username == username && patient[i].id == id))
-		  {
-			   index = i;
-			   loginstatus = true;			// Login successful
-			   break;
-		  }
-
-		  loginstatus = false;// Login failed
-	 }
+			 cout << "Enter password: ";
+			 while ((chForPass = getch()) != '\r') {
+				 if (chForPass != '\b') {
+					 cout << "*";
+					 password += chForPass;
+				 }
+				 else if (!password.empty()) {
+					 cout << "\b \b";
+					 password.erase(password.size() - 1);
+				 }
+			 }
+			 cout << '\n';
+		 }
+		 else if (choice == 2) {
+			 cout << "Enter ID: ";
+			 cin >> id;
+		 }
+		 for (int i = 0; i < userCount; i++)
+		 {
+			 if ((patient[i].username == username && patient[i].password == password) || (patient[i].username == username && patient[i].id == id))
+			 {
+				 index = i;
+				 loginstatus = true;			// Login successful
+				 break;
+			 }
+		 }
+			 if (loginstatus)
+				 break;
+			 else
+			 {
+				 cout << "Login failed Please Try Agin\n";
+				 count++;
+			 }
+	 } while (count < 5);
+	 
 	 return  loginstatus;
 }
 void registerpatient(Users patient[], int& patientCount, int& patientId)
