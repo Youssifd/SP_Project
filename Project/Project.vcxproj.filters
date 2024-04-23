@@ -20,10 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Data\Hospitalinfo.txt">
+    <Text Include="Hospitalinfo.txt">
       <Filter>Source Files</Filter>
     </Text>
-    <Text Include="Data\UserInfo.txt">
+    <Text Include="UserInfo.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
