@@ -172,7 +172,7 @@ void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount) {
 	 HospitalInfo >> hospitalCount;
 	 for (int i = 0;i<hospitalCount; i++) {
 		  getline(HospitalInfo, hospital[i].HospitalName);
-		  HospitalInfo >> hospital[i].HospitalID >> hospital[i].PatientReservationRooms >> hospital[i].ReservationPrice >> hospital[i].BedsPrice >> hospital[i].HospitalRate>>hospital[i].specialtiesCount>>hospital[i].clinicsCount;
+		  HospitalInfo >> hospital[i].HospitalID >> hospital[i].PatientReservationRooms >> hospital[i].ReservationPrice >> hospital[i].BedsPrice >>hospital[i].surgeryprice >> hospital[i].HospitalRate >> hospital[i].specialtiesCount >> hospital[i].clinicsCount;
 		  for(int j=0;j< hospital[i].specialtiesCount;j++)
 			   HospitalInfo >> hospital[i].HospitalSpecialties[j];
 		  for (int j = 0; j < hospital[i].clinicsCount; j++)
