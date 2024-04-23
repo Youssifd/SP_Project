@@ -80,7 +80,7 @@ void makeReservation(Users patient[], Hospitals hospital[], int patientCount, in
 void showDays();
 void showreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex);
 void cancelreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex, int& reservationId);
-
+bool Type(Users user[], int& usercount, string Email);
 
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount);//GEN.
 void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount, int& reservationid);//GEN.
@@ -93,31 +93,61 @@ void main(){
 	 userID += userCount;
 
 	 while (true) { 
-		  int choice;
-		  cout << "\n1. Register\n2. Login(if you have already registered)\n3. Quit\nPlease enter your choice:";
-		  cin >> choice;
-		  if (choice == 1) {
-			   registerpatient(user, userCount, userID);
-		  }
-		  if (choice == 2)
-		  {
-			   if (loginAsPatient(user, userCount)) {
-					DisplayAsPatient(hospital, hospitalCount, user, userCount, reservationID);
-					//DisplayAsAdmin(hospital, hospitalCount);
-			   }
-			   if (loginAsAdmin(user, userCount)) {
-					DisplayAsAdmin(hospital, hospitalCount);
-			   }
+		 int Need;
+		 string Email = "";
+		 int choice;
+		 cout << "\n1. Register\n2. Login(if you have already registered)\n3. Quit\nPlease enter your choice: ";
+		 cin >> choice;
+		 if (choice == 1) {
+			 registerpatient(user, userCount, userID);
+		 }
+		 if (choice == 2)
+		 {
+			 cout << "Plese Enter Your Email: ";
+			 cin >> Email;
+			 if (Type(user, userCount, Email))
+			 {
+				 if (loginAsAdmin(user, userCount))
+				 {
+					 cout << "What You Need Display As \n1- Admin\n2- Patient\nAdd Your Choice: ";
+					 while (true)
+					 {
+						 cin >> Need;
+						 cout << "-------------------\n";
+						 if (Need >= 1 && Need <= 2)
+							 //checkChoice = true;
+							 break;
+						 else
+						 {
+							 cout << "In Valied Choice" << endl;
+							 cout << "enter valied choice : ";
+						 }
+					 }
+					 switch (Need)
+					 {
+
+					 case 1:
+						 DisplayAsAdmin(hospital, hospitalCount);
+						 break;
+					 case 2:
+						 DisplayAsPatient(hospital, hospitalCount, user, userCount, reservationID);
+						 break;
+					 }
+				 }
+			 }
+			 else
+			 {
+				 if (loginAsPatient(user, userCount))
+					 DisplayAsPatient(hospital, hospitalCount, user, userCount, reservationID);
+			 }
 
 
-
-		  }
-		  if (choice == 3) {
-			   cout << "Thanks for use our system :)\nClosing....";
-			   SaveData(hospital, hospitalCount);
-			   break;
-		  }
-
+		 }
+		 if (choice == 3) {
+			 cout << "Thanks for use our system :)\nClosing....";
+			 SaveData(hospital, hospitalCount);
+			 break;
+		 }
 	 }
 }
 void DefinitonOfVariable(Hospitals hospital[],int& hospitalCount) {
@@ -1828,4 +1858,19 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 		  }
 	 } while (option != 8);
 
+}
+bool Type(Users user[], int& usercount, string Email)
+{
+
+	bool checkType = false;
+	for (int i = 0; i < usercount; i++)
+	{
+
+		if (Email.find("@Hadmin.com") != string::npos) {
+			user[i].userType = "Admin";
+			checkType = true; // admin
+			break;
+		}
+	}
+	return checkType;
 }
