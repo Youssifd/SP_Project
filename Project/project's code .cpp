@@ -154,10 +154,13 @@ void DefinitonOfVariable(Users user[], int& userCount, int& reserv, Hospitals ho
 
 						 UserInfo >> user[i].reservationtemp[j].ReservtionID >> user[i].reservationtemp[j].PAge >> user[i].reservationtemp[j].hospital.HospitalID >> user[i].reservationtemp[j].BedPrice >> user[i].reservationtemp[j].surgeryprice >> user[i].reservationtemp[j].Totalprice >> user[i].reservationtemp[j].ReservationType >> user[i].reservationtemp[j].ReservationDay >> user[i].reservationtemp[j].HospitalSpecialty >> user[i].reservationtemp[j].HospitalClinic >> user[i].reservationtemp[j].PatientReservationRoom;
 						 for (int z = 0; z < hoscount; z++) {
-							  if (user[i].reservationtemp[j].hospital.HospitalID == hos[z].HospitalID)
+							  if (user[i].reservationtemp[j].hospital.HospitalID == hos[z].HospitalID) 
 								   user[i].reservationtemp[j].hospital = hos[z];
-							  user[i].reservationtemp[j].ReservationPrice = hos[z].ReservationPrice;
 
+							  if (user[i].reservationtemp[j].ReservationType == "Surgery")
+								   hos[z].PatientReservationRooms -= 1;
+							  else
+								   user[i].reservationtemp[j].ReservationPrice = hos[z].ReservationPrice;
 						 }
 						 UserInfo.ignore();
 						 getline(UserInfo, user[i].reservationtemp[j].PName);
@@ -200,7 +203,7 @@ void SaveData(Users user[], int& userCount) {
 			   if (user[i].reserCount < NumberOfReservation && user[i].reserCount>0) {
 					for (int j = 0; j < user[i].reserCount; j++) {
 
-						 ExportUserInfo << user[i].reservationtemp[j].ReservtionID << " " << user[i].reservationtemp[j].PAge << " " << user[i].reservationtemp[j].hospital.HospitalID << " " << user[i].reservationtemp[j].BedPrice << " " << user[i].reservationtemp[j].surgeryprice << " " << user[i].reservationtemp[j].Totalprice << " " << user[i].reservationtemp[j].ReservationType << " " << user[i].reservationtemp[j].ReservationDay << " " << user[i].reservationtemp[j].HospitalSpecialty << " " << user[i].reservationtemp[j].HospitalClinic << " " << user[i].reservationtemp[j].PatientReservationRoom << " " << user[i].reservationtemp[j].PName << endl;
+						 ExportUserInfo << user[i].reservationtemp[j].ReservtionID << " " << user[i].reservationtemp[j].PAge << " " <<user[i].reservationtemp[j].ReservationPrice<< " " << user[i].reservationtemp[j].hospital.HospitalID << " " << user[i].reservationtemp[j].BedPrice << " " << user[i].reservationtemp[j].surgeryprice << " " << user[i].reservationtemp[j].Totalprice << " " << user[i].reservationtemp[j].ReservationType << " " << user[i].reservationtemp[j].ReservationDay << " " << user[i].reservationtemp[j].HospitalSpecialty << " " << user[i].reservationtemp[j].HospitalClinic << " " << user[i].reservationtemp[j].PatientReservationRoom << " " << user[i].reservationtemp[j].PName << endl;
 
 					}
 			   }
