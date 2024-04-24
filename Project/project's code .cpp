@@ -78,7 +78,7 @@ void showDays();
 void LogOut(bool& checkLog, int& PIndex);
 void showreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex);
 void cancelreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex, int& reservationId);
-bool Type(Users user[], int& usercount);
+bool Type(Users user[], int& usercount,Users patient[], int& patientCount, int& patientId);
 void infinit(int& num, int max, int min);
 int hospitalindex(Hospitals hospital[], int hospitalCount);
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount);//GEN.
@@ -105,7 +105,7 @@ void main() {
 		  if (choice == 2)
 		  {
 			  
-			   if (Type(user, userCount))
+			   if (Type(user, userCount, user, userCount, userID))
 			   {
 					if (loginAsAdmin(user, userCount))
 					{
@@ -1443,10 +1443,11 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 	 } while (!logOut);
 
 }
-bool Type(Users user[], int& usercount)
+bool Type(Users user[], int& usercount, Users patient[], int& patientCount, int& patientId)
 {
 	 bool checkType = false;
 	 bool check = false;
+	 char choice;
 	 do
 	 {
 		  string Email = "";
@@ -1466,6 +1467,10 @@ bool Type(Users user[], int& usercount)
 		  }
 		  if (!check)
 			   cout << "Email Not Found\n";
+		  cout << "Do You Want Add This Email ? (y|n): ";
+		  cin >> choice;
+		  if (choice == 'y' || choice == 'Y')
+			  registerpatient(patient, patientCount, patientId);
 	 } while (!check);
 	 return checkType;
 }
