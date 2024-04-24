@@ -1379,7 +1379,11 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 	 int option = 0;
 
 	 do {
-		  cout << "1 to View Personal Info.\n" << "2 to View All Hospitals Information.\n" << "3 to Edit your Information.\n" << "4 to make a new reservation.\n" << "5 to View your reservation.\n" << "6 to Modify an existing reservation.\n" << "7 to Cancel a reservation.\n" << "8 to log out.\n";
+		  int sortChoice=0;
+		  char showhos;
+		  cout << "1- to View Personal Info.\n" << "2- to View All Hospitals Information.\n";
+		  cout << "3-To sort hospital\n" << "4- to Edit your Information.\n" << "5- to make a new reservation.\n";
+		  cout<< "6- to View your reservation.\n" << "7- to Modify an existing reservation.\n" << "8- to Cancel a reservation.\n" << "9- to log out.\n";
 		  cout << "Enter the number you want to do : ";
 		  infinit(option, 8, 1);
 		  switch (option)
@@ -1391,22 +1395,40 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 			   PrintHospitalData(hospital, HospitalCount);
 			   break;
 		  case 3:
-			   editpatientinfo(user, userCount, PIndex);
+			   cout << "1- Name\n2- Rate\n3- Beds Available\n4- Beds Price\n";
+			   cout << "what you want sort by(1->4):";
+					infinit(sortChoice, 4, 1);
+					if (sortChoice == 1)
+						 SortHospitalByName(hospital, HospitalCount);
+					else if (sortChoice == 2)
+						 SortHospitalByRating(hospital, HospitalCount);
+					else if (sortChoice == 3)
+						 SortByBedsAvailable(hospital, HospitalCount);
+					else
+						 SortByBedsPrice(hospital, HospitalCount);
+					cout << "do you want see result of sorting (y/n)?";
+						 cin >> showhos;
+						 if (showhos == 'y' || showhos == 'Y')
+							  viewHospitals(hospital, HospitalCount);
+						 cout << "\n----------------------------\n";
 			   break;
 		  case 4:
+			   editpatientinfo(user, userCount, PIndex);
+			   break;
 			   makeReservation(user, hospital, userCount, reservationid, HospitalCount, PIndex);
-			   break;
 		  case 5:
-			   showreservation(user, userCount, hospital, HospitalCount, PIndex);
 			   break;
+			   showreservation(user, userCount, hospital, HospitalCount, PIndex);
 		  case 6:
-			   modifyreservation(user, userCount, hospital, HospitalCount, PIndex);
 			   break;
 		  case 7:
-			   cancelreservation(user, userCount, hospital, HospitalCount, PIndex, reservationid);
+			   modifyreservation(user, userCount, hospital, HospitalCount, PIndex);
 			   break;
 		  case 8:
+			   cancelreservation(user, userCount, hospital, HospitalCount, PIndex, reservationid);
 			   break;
+		  case 9:
+				break;
 		  }
 	 } while (option != 8);
 
