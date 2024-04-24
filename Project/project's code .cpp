@@ -91,6 +91,7 @@ void main() {
 	DefinitonOfVariable(user, userCount, reservationID, hospital, hospitalCount);
 	userID += userCount;
 
+<<<<<<< Updated upstream
 	cout << "Welcome To Our Hospital Management syatem :)\n";
 	while (true) {
 		int patientAccount;
@@ -117,6 +118,34 @@ void main() {
 				if (loginAsPatient(user, userCount, patientAccount))
 					DisplayAsPatient(hospital, hospitalCount, user, userCount, reservationID, patientAccount);
 			}
+=======
+	 cout << "Welcome To Our Hospital Management syatem :)\n";
+	 while (true) {
+		  int patientAccount;
+
+
+		  int choice;
+		  cout << "1. Register\n2. Login(if you have already registered)\n3. Quit\nPlease enter your choice: ";
+		  cin >> choice;
+		  if (choice == 1) {
+			   registerpatient(user, userCount, userID);
+		  }
+		  if (choice == 2)
+		  {
+
+			   if (Type(user, userCount, user, userCount, userID))
+			   {
+					if (loginAsAdmin(user, userCount))
+					{
+						 DisplayAsAdmin(hospital, hospitalCount);
+					}
+			   }
+			   else
+			   {
+					if (loginAsPatient(user, userCount, patientAccount))
+						 DisplayAsPatient(hospital, hospitalCount, user, userCount, reservationID, patientAccount);
+			   }
+>>>>>>> Stashed changes
 
 
 		}
@@ -341,6 +370,7 @@ bool loginAsAdmin(Users user[], int userCount) {
 }
 void AddHospital(Hospitals hos[], int& HospitalCount)
 {
+<<<<<<< Updated upstream
 	char choice;
 	do {
 		HospitalCount++;
@@ -370,6 +400,53 @@ void AddHospital(Hospitals hos[], int& HospitalCount)
 
 		for (int z = 0; z < hos[0].clinicsCount; z++)
 			hos[HospitalCount - 1].HospitalClinics[z] = hos[0].HospitalClinics[z];
+=======
+	 char choice;
+	 do {
+		  string hosname = "";
+		  bool check = true;
+		  cout << "Please enter the name of the Hospital to Add: ";
+		  getline(cin, hosname);
+		  for (int i = 0; i < HospitalCount; i++)
+		  {
+			   if (hosname == hos[i].HospitalName)
+			   {
+					check = false;
+					break;
+			   }
+		  }
+
+		  if (check)
+		  {
+			   HospitalCount++;
+			   hos[HospitalCount - 1].HospitalName = hosname;
+			   cout << "Please enter the ID of the Hospital to Add: ";
+			   cin >> hos[HospitalCount - 1].HospitalID;
+
+			   cout << "Please enter the Nunmber of beds available of the Hospital to Add: ";
+			   cin >> hos[HospitalCount - 1].PatientReservationRooms;
+
+			   cout << "Please enter the Beds price per night of the Hospital to Add: ";
+			   cin >> hos[HospitalCount - 1].BedsPrice;
+
+			   cout << "Please enter the  Reservation price for check-up of the Hospital to Add: ";
+			   cin >> hos[HospitalCount - 1].ReservationPrice;
+
+			   cout << "Please enter the Hospiral Rate of the Hospital to Add: ";
+			   cin >> hos[HospitalCount - 1].HospitalRate;
+
+			   hos[HospitalCount - 1].specialtiesCount = hos[0].specialtiesCount;
+			   hos[HospitalCount - 1].clinicsCount = hos[0].clinicsCount;
+
+			   for (int j = 0; j < hos[0].specialtiesCount; j++)
+					hos[HospitalCount - 1].HospitalSpecialties[j] = hos[0].HospitalSpecialties[j];
+
+			   for (int z = 0; z < hos[0].clinicsCount; z++)
+					hos[HospitalCount - 1].HospitalClinics[z] = hos[0].HospitalClinics[z];
+		  }
+		  else
+			   cout << "Hospital Elready Exists\n";
+>>>>>>> Stashed changes
 
 		cout << "Press 'y' to Add another hospital: ";
 		cin >> choice;
@@ -380,6 +457,7 @@ void AddHospital(Hospitals hos[], int& HospitalCount)
 }
 void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 {
+<<<<<<< Updated upstream
 	string hsptlname;
 	char answer;
 	bool found = false;
@@ -440,6 +518,34 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 					cin.ignore();
 					getline(cin, HospitalSpecialties);
 					if (ans == 1)
+=======
+	 string hsptlname;
+	 char answer;
+	 bool found = false;
+	 bool Exist = false;
+	 int ans;
+	 string Hospitalclinics;
+	 string HospitalSpecialties;
+	 do
+	 {
+		  int choice = 0;
+		  bool Checkans = false;
+		  bool checkChoice = false;
+		  cout << "please enter hospitalname: ";
+		  getline(cin, hsptlname);
+		  for (int i = 0; i < HospitalCount; i++)
+		  {
+			   if (hospital[i].HospitalName == hsptlname)
+			   {
+					found = true;
+					cout << "search successfully " << endl;
+					cout << "what do you want to modify ?" << endl;
+					cout << "1-Hospital ID\n2-Patient Reservation Rooms\n3-Reservation Price\n4-BedsPrice\n5-Hospital Rate\n6-Hospital Name\n7-Hospital Specialties\n8-Hospital Clinics" << endl;
+					cout << "enter your choice: ";
+					infinit(choice, 8, 1);
+					cin.ignore();
+					switch (choice)
+>>>>>>> Stashed changes
 					{
 						for (int j = 0; j < hospital[i].specialtiesCount; j++)
 						{
@@ -583,6 +689,7 @@ void showclinics(Hospitals hospital) {
 }
 void viewHospitals(Hospitals hospital[], int HospitalCount)
 {
+<<<<<<< Updated upstream
 	cout << " Available hospitals : - " << "\n";
 	for (int i = 0; i < HospitalCount; i++)
 	{
@@ -608,6 +715,33 @@ void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalna
 		}
 		first = true;
 		bool found = false;
+=======
+	 cout << "Available hospitals : - " << "\n";
+	 for (int i = 0; i < HospitalCount; i++)
+	 {
+		  cout << i + 1 << " - " << hospital[i].HospitalName << endl;
+	 }
+}
+void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalname) {
+	 char ch;
+	 bool Default, first = false;//if user want use this fun. out other fun.
+	 if (Hospitalname == "empty")
+		  Default = true;
+	 else
+		  Default = false;
+	 do
+	 {
+		  if (Default)
+		  {
+			 //  if (first)
+					cin.ignore();
+			   cout << "Enter Hospital Name: ";
+			   getline(cin, Hospitalname);
+			   cout << "----------------\n";
+		  }
+		  first = true;
+		  bool found = false;
+>>>>>>> Stashed changes
 
 		for (int i = 0; i < HospitalCount; i++)
 		{
@@ -648,6 +782,7 @@ void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalna
 
 }
 bool loginAsPatient(Users patient[], int userCount, int& index) {
+<<<<<<< Updated upstream
 	string username, password;
 	char chForPass;
 	int id = 0, choice;
@@ -700,6 +835,60 @@ bool loginAsPatient(Users patient[], int userCount, int& index) {
 	} while (count < 5);
 
 	return  loginstatus;
+=======
+	 string username, password;
+	 char chForPass;
+	 int id = 0, choice;
+	 int count = 0;
+	 bool loginstatus = false;
+	 do {
+		  password = "";
+		  loginstatus = false;// Login failed
+		  cout << "Enter username: ";
+		  cin >> username;
+		  cout << "\n1 to Enter Password \n2 to Enter ID\n";
+		  cout << "(Enter your ID . if you forgot your Password)\n";
+		  cout << "Choice : ";
+		  infinit(choice, 2, 1);
+		  if (choice == 1) {
+
+			   cout << "Enter password: ";
+			   while ((chForPass = getch()) != '\r') {
+					if (chForPass != '\b') {
+						 cout << "*";
+						 password += chForPass;
+					}
+					else if (!password.empty()) {
+						 cout << "\b \b";
+						 password.erase(password.size() - 1);
+					}
+			   }
+			   cout << '\n';
+		  }
+		  else if (choice == 2) {
+			   cout << "Enter ID: ";
+			   cin >> id;
+		  }
+		  for (int i = 0; i < userCount; i++)
+		  {
+			   if ((patient[i].username == username && patient[i].password == password) || (patient[i].username == username && patient[i].id == id))
+			   {
+					index = i;
+					loginstatus = true;			// Login successful
+					break;
+			   }
+		  }
+		  if (loginstatus)
+			   break;
+		  else
+		  {
+			   cout << "Login failed Please Try Agin\n";
+			   count++;
+		  }
+	 } while (count < 5);
+
+	 return  loginstatus;
+>>>>>>> Stashed changes
 }
 void registerpatient(Users patient[], int& patientCount, int& patientId)
 {
@@ -815,12 +1004,63 @@ void personalinfo(Users patient[], int patientCount, int PIndex) {
 		  if (!correctid) {
 			   cout << "Wrong ID\n";
 		  }
+<<<<<<< Updated upstream
 		  return;
 	 } while (!correctid);*/
 	 //all this =PIndex
 }
 void editpatientinfo(Users patient[], int patientCount, int PIndex) {
 	// for (int i = 0; i < patientCount; i++)
+=======
+		  else if (age >= 18)
+		  {
+			   validAge = true;
+		  }
+	 } while (!validAge);
+
+	 newpatient.age = age;
+
+	 string password, confirmpassword;
+	 bool equal = false;
+	 do {
+		  cout << "Password: ";
+		  cin >> password;
+
+		  cout << "Confirm Password: ";
+		  cin >> confirmpassword;
+		  if (password == confirmpassword) {
+			   equal = true;
+		  }
+		  else {
+			   cout << "Passwords do not match . Please try again\n";
+		  }
+	 } while (!equal);
+	 newpatient.password = password;
+	 newpatient.email = newpatient.username + "@Huser.com";
+
+	 newpatient.id = patientId;
+	 patientId++;
+	 patient[patientCount] = newpatient;
+	 patientCount++;
+
+	 cout << "Patient registered successfully!\n";
+	 cout << "Your Email is: " << newpatient.email << endl;
+	 cout << "Your ID is: " << newpatient.id << endl;
+	 cin.ignore();
+}
+void personalinfo(Users patient[], int patientCount, int PIndex) {
+	 cout << "\nPersonal Info :-\n\n";
+	 cout << "Full Name: " << patient[PIndex].name << "\n";
+	 cout << "Age: " << patient[PIndex].age << "\n";
+	 cout << "Usename: " << patient[PIndex].username << "\n";
+	 cout << "Password: " << patient[PIndex].password << "\n";
+	 cout << "Email: " << patient[PIndex].email << "\n";
+	 cout << "ID: " << patient[PIndex].id << "\n";
+
+}
+void editpatientinfo(Users patient[], int patientCount, int PIndex) {
+
+>>>>>>> Stashed changes
 
 	int editChoice = 0;
 
@@ -939,11 +1179,19 @@ void editpatientinfo(Users patient[], int patientCount, int PIndex) {
 
 }
 void makeReservation(Users patient[], Hospitals hospital[], int patientCount, int& reservationId, int hospitalCount, int PIndex) {
+<<<<<<< Updated upstream
 	int userid;
 	bool checkID = false;
 	cout << "\nEnter your ID: ";
 	cin >> userid;
 	/* for (int i = 0; i < patientCount; i++)
+=======
+	 int userid;
+	 bool checkID = false;
+	 cout << "\nEnter your ID: ";
+	 cin >> userid;
+	 if (patient[PIndex].id == userid)
+>>>>>>> Stashed changes
 	 {
 	 useless
 	 }*/
@@ -959,6 +1207,7 @@ void makeReservation(Users patient[], Hospitals hospital[], int patientCount, in
 			cout << "\nEnter the patient's age: ";
 			cin >> patient[PIndex].reservation[patient[PIndex].reserCount].PAge;
 
+<<<<<<< Updated upstream
 			viewHospitals(hospital, hospitalCount);
 			int choice = 0, choice2 = 0;
 
@@ -1012,6 +1261,66 @@ void makeReservation(Users patient[], Hospitals hospital[], int patientCount, in
 				while (correctchoice5 == false)
 				{
 					correctchoice5 = false;
+=======
+			   int choice = 0, choice2 = 0;
+			   viewHospitals(hospital, hospitalCount);
+			   cout << "Enter hospital number: ";
+			   cout << hospitalCount << endl;
+			   infinit(choice, hospitalCount, 1);
+			   int index = choice - 1;
+			   patient[PIndex].reservation[patient[PIndex].reserCount].hospital = hospital[index];
+			   char Continue;
+			   cout << "Do you want see hopital info (y/n)?";
+			   cin >> Continue;
+			   if(Continue=='y'||Continue=='Y')
+			   viewHospitalInfo(hospital, hospitalCount, hospital[index].HospitalName);
+			   cout << "1. Surgery\n2. Check-up\nChoice: ";
+			   infinit(choice2, 2, 1);
+			   int dayNumber = 0, dayindex;
+			   if (choice2 == 1) {
+					int specNumber, specindex;
+					patient[PIndex].reservation[patient[PIndex].reserCount].ReservationType = "Surgery";
+	 				 showspecialists(patient[PIndex].reservation[patient[PIndex].reserCount].hospital);
+					cout << "Enter specialty number: ";
+					infinit(specNumber, hospital[index].specialtiesCount, 1);
+					specindex = specNumber - 1;
+					int roomnumber = 100 + rand() % 400;
+					patient[PIndex].reservation[patient[PIndex].reserCount].HospitalSpecialty = hospital[index].HospitalSpecialties[specindex];
+					patient[PIndex].reservation[patient[PIndex].reserCount].PatientReservationRoom = to_string(roomnumber);
+					hospital[index].PatientReservationRooms -= 1;
+					bool correctchoice = false;
+					int daysnum;
+					while (correctchoice == false)
+					{
+						 correctchoice = false;
+						 cout << "\nHow many days do you need to stay in the room ?";
+						 cin >> daysnum;
+						 if (daysnum >= 1) {
+							  correctchoice = true;
+							  break;
+						 }
+						 else
+							  cout << "\nInvalid number of days.Please enter number 1 or more\n";
+					}
+					patient[PIndex].reservation[patient[PIndex].reserCount].BedPrice = daysnum * (hospital[index].BedsPrice);
+					patient[PIndex].reservation[patient[PIndex].reserCount].surgeryprice = hospital[index].surgeryprice;
+					patient[PIndex].reservation[patient[PIndex].reserCount].Totalprice = (daysnum * (hospital[index].BedsPrice)) + (hospital[index].surgeryprice);
+					cout << "---------------------\n";
+						 showDays();
+						 cout << "Please Enter the number of your first day in the room: ";
+						 infinit(dayNumber, 7, 1);
+
+			   }
+			   else if (choice2 == 2) {
+					int clinicNumber, clinicindex;
+					patient[PIndex].reservation[patient[PIndex].reserCount].ReservationType = "Check-up";
+						 showclinics(patient[PIndex].reservation[patient[PIndex].reserCount].hospital);
+						 cout << "Enter Clinic number: ";
+					infinit(clinicNumber, hospital[index].clinicsCount, 1);
+					clinicindex = clinicNumber - 1;
+					patient[PIndex].reservation[patient[PIndex].reserCount].HospitalClinic = hospital[index].HospitalClinics[clinicindex];
+					cout << "---------------------\n";
+>>>>>>> Stashed changes
 					showDays();
 					cout << "\nPlease Enter the number of your first day in the room: ";
 					cin >> dayNumber;
@@ -1337,6 +1646,7 @@ void cancelreservation(Users patient[], int userCount, Hospitals hospital[], int
 }
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount)
 {
+<<<<<<< Updated upstream
 	char Cho;
 	int Ansewr;
 	cout << "Welcome To Hospital\n";
@@ -1441,10 +1751,119 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 			break;
 		}
 	} while (!logOut);
+=======
+	 char Cho;
+	 int Ansewr;
+	 bool checkChoice, logOut = false;
+	 char x;
+	 cout << "Login successful!" << endl;
+	 while (true)
+	 {
+		  int Need = 0;
+		  cout << "1- To Add Hospital\n2- To Delete Hospital\n3- To Modify\n4- print Data For All Hospital\n5- To print Data For Any Hospital You choose it\n6- Exit\n";
+		  cout << "Enter your choice: ";
+		  infinit(Need, 6, 1);
+		  cin.ignore(); // áæ ÔáÊåÇ ÏÇíãÇ åíÎÔ Ý ÈÏÇíÉ ßá ÝÇäÔßä ÛáØ 
+		  switch (Need)
+		  {
+		  case 1:
+			   AddHospital(hospital, HospitalCount);
+			   break;
+		  case 2:
+			   DeleteHospital(hospital, HospitalCount);
+			   break;
+		  case 3:
+			   ModifyHospital(hospital, HospitalCount);
+			   break;
+		  case 4:
+			   PrintHospitalData(hospital, HospitalCount);
+			   break;
+		  case 5:
+			   viewHospitalInfo(hospital, HospitalCount);
+			   break;
+		  case 6:
+			   logOut = true;//fun.log out or  bool var. to end loop
+			   break;
+		  }
+		  if (logOut)
+			   break;
+	 }
+}
+void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount, int& reservationid, int PIndex) {
+	 cout << "Login successful. Welcome" << user[PIndex].name << "!\n";
+	 int option = 0;
+
+	 bool logOut = false;
+	 do {
+		  int Choice = 0;
+		  char showhos;
+		  cout << "1- to View Personal Info.\n" << "2- to View Hospital(s) Information.\n";
+		  cout << "3-To sort hospital\n" << "4- to Edit your Information.\n" << "5- to make a new reservation.\n";
+		  cout << "6- to View your reservation.\n" << "7- to Modify an existing reservation.\n" << "8- to Cancel a reservation.\n" << "9- to log out.\n";
+		  cout << "Enter the number you want to do : ";
+		  infinit(option, 9, 1);
+		  switch (option)
+		  {
+		  case 1:
+			   personalinfo(user, userCount, PIndex);
+			   break;
+		  case 2:
+			   cout << "1. All hospital\n2. Certain hospital\n ";
+			   cout << "Enter your choice: ";
+			   infinit(Choice, 2, 1);
+			   if (Choice == 1)
+					PrintHospitalData(hospital, HospitalCount);
+			   else
+			   {
+					//cin.ignore();
+					viewHospitalInfo(hospital, HospitalCount);
+			   }
+			   break;
+		  case 3:
+			   cout << "1- Name\n2- Rate\n3- Beds Available\n4- Beds Price\n";
+			   cout << "what you want sort by(1->4):";
+			   infinit(Choice, 4, 1);
+			   if (Choice == 1)
+					SortHospitalByName(hospital, HospitalCount);
+			   else if (Choice == 2)
+					SortHospitalByRating(hospital, HospitalCount);
+			   else if (Choice == 3)
+					SortByBedsAvailable(hospital, HospitalCount);
+			   else
+					SortByBedsPrice(hospital, HospitalCount);
+			   cout << "do you want see result of sorting (y/n)?";
+			   cin >> showhos;
+			   if (showhos == 'y' || showhos == 'Y')
+					viewHospitals(hospital, HospitalCount);
+			   cout << "\n----------------------------\n";
+			   break;
+		  case 4:
+			   editpatientinfo(user, userCount, PIndex);
+			   break;
+		  case 5:
+			   makeReservation(user, hospital, userCount, reservationid, HospitalCount, PIndex);
+			   break;
+		  case 6:
+			   showreservation(user, userCount, hospital, HospitalCount, PIndex);
+			   break;
+		  case 7:
+			   modifyreservation(user, userCount, hospital, HospitalCount, PIndex);
+			   break;
+		  case 8:
+			   cancelreservation(user, userCount, hospital, HospitalCount, PIndex, reservationid);
+			   break;
+		  case 9:
+			   LogOut(logOut, PIndex);
+			   cout << "Log out.....\n";
+			   break;
+		  }
+	 } while (!logOut);
+>>>>>>> Stashed changes
 
 }
 bool Type(Users user[], int& usercount, Users patient[], int& patientCount, int& patientId)
 {
+<<<<<<< Updated upstream
 	bool checkType = false;
 	bool check = false;
 	char choice;
@@ -1475,6 +1894,37 @@ bool Type(Users user[], int& usercount, Users patient[], int& patientCount, int&
 		}
 	} while (!check);
 	return checkType;
+=======
+	 bool checkType = false;
+	 bool check = false;
+	 char choice;
+	 do
+	 {
+		  string Email = "";
+		  cout << "Plese Enter Your Email: ";
+		  cin >> Email;
+		  for (int i = 0; i < usercount; i++)
+		  {
+			   if (Email == user[i].email)
+			   {
+					check = true;
+					if (Email.find("@Hadmin.com") != string::npos) {
+						 user[i].userType = "Admin";
+						 checkType = true; // admin
+						 break;
+					}
+			   }
+		  }
+		  if (!check) {
+			   cout << "Email Not Found\n";
+			   cout << "Do You Want Add This Email ? (y|n): ";
+			   cin >> choice;
+			   if (choice == 'y' || choice == 'Y')
+					registerpatient(patient, patientCount, patientId);
+		  }
+	 } while (!check);
+	 return checkType;
+>>>>>>> Stashed changes
 }
 void LogOut(bool& checkLog, int& PIndex) {
 	checkLog = true;
