@@ -1,7 +1,0 @@
-﻿  project's code .cpp
-D:\C++\Hospital Management System\SP_Project\Project\project's code .cpp(86,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-D:\C++\Hospital Management System\SP_Project\Project\project's code .cpp(1341,6): warning C4101: 'Ansewr': unreferenced local variable
-D:\C++\Hospital Management System\SP_Project\Project\project's code .cpp(1344,7): warning C4101: 'x': unreferenced local variable
-D:\C++\Hospital Management System\SP_Project\Project\project's code .cpp(1343,7): warning C4101: 'checkChoice': unreferenced local variable
-D:\C++\Hospital Management System\SP_Project\Project\project's code .cpp(1340,7): warning C4101: 'Cho': unreferenced local variable
-  Project.vcxproj -> D:\C++\Hospital Management System\SP_Project\x64\Debug\Project.exe

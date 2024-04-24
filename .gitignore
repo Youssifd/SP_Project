@@ -9,3 +9,7 @@
 /.vs/SP_Project
 *.db
 /.vs/SP_Project/v17
+/x64
+/Project/x64
+/.vs
+/Project/x64
