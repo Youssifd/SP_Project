@@ -800,6 +800,7 @@ void personalinfo(Users patient[], int patientCount, int PIndex) {
 	 cout << "Password: " << patient[PIndex].password << "\n";
 	 cout << "Email: " << patient[PIndex].email << "\n";
 	 cout << "ID: " << patient[PIndex].id << "\n";
+	 cout << "Number of your reservation: " << patient[PIndex].reserCount << endl;
 	 /* int userid;
 	  bool correctid = false;
 	  do {
@@ -825,6 +826,7 @@ void editpatientinfo(Users patient[], int patientCount, int PIndex) {
 	 // for (int i = 0; i < patientCount; i++)
 
 	 int editChoice = 0;
+	  char choice='y';
 
 	 while (true) {
 		  cout << "Select what you want to edit:\n1. Name\n2. Age\n3. Username\n4. Password\n";
@@ -928,17 +930,21 @@ void editpatientinfo(Users patient[], int patientCount, int PIndex) {
 			   }
 			   break;
 		  }
-		  }
+
 		  cout << "Information updated successfully!\n";
-		  char choice;
+
+		  }
 		  cout << "Do you want to edit something else? (y/n): ";
 		  cin >> choice;
-		  if (choice != 'y' || choice != 'Y') {
+		  if (choice == 'y' || choice == 'Y')
+			   continue;
+		  else
 			   break;
-		  }
-		  cin.ignore();
-	 }
 
+
+		  
+			   cin.ignore();
+	 }
 }
 void makeReservation(Users patient[], Hospitals hospital[], int patientCount, int& reservationId, int hospitalCount, int PIndex) {
 	 int userid;
@@ -1358,7 +1364,7 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 
 	 bool logOut = false;
 	 do {
-		  int Choice = 0;
+		  int Choice = 0,HChoice=0,Hindex;
 		  char showhos;
 		  cout << "1- to View Personal Info.\n" << "2- to View Hospital(s) Information.\n";
 		  cout << "3-To sort hospital\n" << "4- to Edit your Information.\n" << "5- to make a new reservation.\n";
@@ -1376,8 +1382,14 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 			   infinit(Choice, 2, 1);
 			   if (Choice == 1)
 					PrintHospitalData(hospital, HospitalCount);
-			   else
-					viewHospitalInfo(hospital, HospitalCount);
+			   else {
+					viewHospitals(hospital, HospitalCount);
+					cout << "Enter hospital number: ";
+					infinit(HChoice, HospitalCount, 1);
+					Hindex = HChoice - 1;
+
+					viewHospitalInfo(hospital, HospitalCount, hospital[Hindex].HospitalName);
+			   }
 			   break;
 		  case 3:
 			   cout << "1- Name\n2- Rate\n3- Beds Available\n4- Beds Price\n";
