@@ -86,7 +86,7 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 void main() {
 	 Hospitals hospital[NumberOfHospital];
 	 Users user[NumberOfUsers];
-	 int userCount = 0, hospitalCount = 0, userID = 1000, reservationID = 1001;
+	 int userCount = 0, hospitalCount = 0, userID = 1001, reservationID = 1001;
 	 DefinitonOfVariable(hospital, hospitalCount);
 	 DefinitonOfVariable(user, userCount, reservationID, hospital, hospitalCount);
 	 userID += userCount;
@@ -704,6 +704,8 @@ bool loginAsPatient(Users patient[], int userCount, int& index) {
 void registerpatient(Users patient[], int& patientCount, int& patientId)
 {
 	 Users newpatient;
+	 cin.ignore();
+	 cout << "Enter your full name: ";
 	 getline(cin, newpatient.name);
 	 string newusername;
 	 bool usernameExists;
