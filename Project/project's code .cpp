@@ -60,31 +60,38 @@ void SaveData(Users user[], int& userCount);//YOUSSIF
 void PrintHospitalData(Hospitals hospital[], int hospitalCount);//YOUSSIF
 void PrintPatientData(Users user[], int userCount);//YOUSSIF
 void LogOut(bool& checkLog, int& PIndex);//YOUSSIF
+
 void SortHospitalByName(Hospitals hospital[], int hospitalCount);//MARWAN
 void SortHospitalByRating(Hospitals hospital[], int hospitalCount);//MARWAN
 void SortByBedsAvailable(Hospitals hospital[], int hospitalCount);//MARWAN
 void SortByBedsPrice(Hospitals hospital[], int hospitalCount);//MARWAN
-bool loginAsAdmin(Users user[], int userCount, int PIndex);//MARWAN
+bool loginAsAdmin(Users user[], int userCount, int& PIndex, string& email);//MARWAN
 void AddHospital(Hospitals hos[], int& HospitalCount);//MARWAN
+
 void ModifyHospital(Hospitals hospital[], int& HospitalCount);//MARIAM 
 void DeleteHospital(Hospitals hospital[], int& HospitalCount);//MARIAM 
+
 void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex);//TOKA 
 void showspecialists(Hospitals hospital);
 void showclinics(Hospitals hospital);
+
 void viewHospitals(Hospitals hospital[], int HospitalCount);//SAMA
 void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalname );//SAMA
-bool loginAsPatient(Users patient[], int userCount, int& index);
+
+bool loginAsPatient(Users patient[], int userCount, int& PIndex, string& email);
 void registerpatient(Users patient[], int& patientCount, int& patientId);
 void personalinfo(Users patient[], int patientCount, int PIndex);
 void editpatientinfo(Users patient[], int patientCount, int PIndex);
 void makeReservation(Users patient[], Hospitals hospital[], int patientCount, int& reservationId, int hospitalCount, int PIndex);
+
 void showDays();
 void showreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex);
 void cancelreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex, int& reservationId);
-bool Type(Users user[], int& usercount, int& patientId);
+bool Type(Users user[], int& usercount, int& patientId, string& email);
 void infinit(int& num, int max, int min);
 bool validPhoneNumber(string phoneNumber);
 int hospitalindex(Hospitals hospital[], int hospitalCount);
+
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount, int PIndex);//MARWAN.
 void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount, int& reservationid, int PIndex);//YOUSSIF.
 void main() {
@@ -95,10 +102,11 @@ void main() {
 	 DefinitonOfVariable(user, userCount, reservationID, hospital, hospitalCount);
 	 userID += userCount;
 
-	 cout << "Welcome To Our Hospital Management syatem :)\n";
+	 cout << "\t\t\t\tWelcome To Our Hospital Management syatem :)\n";
+	 cout << "\t\t\t\t********************************************\n";
 	 while (true) {
-		  int patientAccount;
-
+		  int patientAccount=0;
+		  string email = "";
 		  int choice;
 		  cout << "1. Register\n2. Login(if you have already registered)\n3. Quit\nPlease enter your choice: ";
 		  infinit(choice, 3, 1);
@@ -108,16 +116,16 @@ void main() {
 		  if (choice == 2)
 		  {
 
-			   if (Type(user, userCount,userID))
+			   if (Type(user, userCount,userID,email))
 			   {
-					if (loginAsAdmin(user, userCount, patientAccount))
+					if (loginAsAdmin(user,userCount,patientAccount,email))
 					{
 						 DisplayAsAdmin(hospital, hospitalCount, patientAccount);
 					}
 			   }
 			   else
 			   {
-					if (loginAsPatient(user, userCount, patientAccount)) {
+					if (loginAsPatient(user, userCount, patientAccount, email)) {
 					
 						 DisplayAsPatient(hospital, hospitalCount, user, userCount, reservationID, patientAccount);
 					}
@@ -248,6 +256,10 @@ void SaveData(Users user[], int& userCount) {
 	 }
 	 ExportUserInfo.close();
 }
+void LogOut(bool& checkLog, int& PIndex) {
+	 checkLog = true;
+	 PIndex = -1;
+}
 void PrintHospitalData(Hospitals hospital[], int hospitalCount) {
 	 for (int i = 0; i < hospitalCount; i++) {
 		  cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate: " << hospital[i].HospitalRate << endl;
@@ -285,6 +297,7 @@ void PrintPatientData(Users user[], int userCount) {
 		  }
 	 }
 }
+
 void SortHospitalByName(Hospitals hospital[], int hospitalCount) {
 	 for (int i = 0; i < hospitalCount - 1; ++i) {
 		  for (int j = i + 1; j < hospitalCount; j++) {
@@ -317,7 +330,8 @@ void SortByBedsPrice(Hospitals hospital[], int hospitalCount) {
 		  }
 	 }
 }
-bool loginAsAdmin(Users user[], int userCount, int PIndex) {
+
+bool loginAsAdmin(Users user[], int userCount, int& PIndex, string& email) {
 	 int count = 0;
 	 bool loggedIn = false;
 	 char chForPass;
@@ -339,9 +353,10 @@ bool loginAsAdmin(Users user[], int userCount, int PIndex) {
 		  }
 		  cout << '\n';
 		  for (int i = 0; i < userCount; i++) {
-			   if (username == user[i].username && password == user[i].password && user[i].userType == "Admin") {
+			   if (username == user[i].username && password == user[i].password && user[i].userType == "Admin" && email == user[i].email) {
 					loggedIn = true;
-					cout << "Wlecome " << user[i].name << "\n\n";
+					cout << "Welcome " << user[i].name << "\n\n";
+					PIndex = i;
 					break;
 			   }
 		  }
@@ -620,116 +635,7 @@ void DeleteHospital(Hospitals hospital[], int& HospitalCount)
 		  cin.ignore(); //hspname
 	 } while (answer == 'y' || answer == 'Y');
 }
-void showspecialists(Hospitals hospital) {
-	 cout << " hospitals' specialties :\n";
-	 for (int i = 0; i < hospital.specialtiesCount; i++) {
-		  cout << i + 1 << "-" << hospital.HospitalSpecialties[i] << endl;
-	 }
-}
-void showclinics(Hospitals hospital) {
-	 cout << " hospitals' clinics :\n";
-	 for (int i = 0; i < hospital.clinicsCount; i++) {
-		  cout << i + 1 << "-" << hospital.HospitalClinics[i] << endl;
-	 }
-}
-void viewHospitals(Hospitals hospital[], int HospitalCount)
-{
-	 cout << " Available hospitals : - " << "\n";
-	 for (int i = 0; i < HospitalCount; i++)
-	 {
-		  cout << i + 1 << " - " << hospital[i].HospitalName << endl;
-	 }
-}
-void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalname) {
-	
-	 bool found;
 
-		  for (int i = 0; i < HospitalCount; i++)
-		  {
-			   if (Hospitalname == hospital[i].HospitalName)
-			   {					
-					found = true;
-
-					cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate: " << hospital[i].HospitalRate << endl;
-					cout << "------------------------------------------------\n";
-					cout << "         Hospital Specialties         \n";
-					cout << "         --------------------         \n";
-					for (int j = 0; j < hospital[i].specialtiesCount; j++)
-					{
-						 cout << j + 1 << "-" << hospital[i].HospitalSpecialties[j] << ". ";
-						 if ((j - 1) % 2 == 0)
-							  cout << "\n";
-					}
-					cout << "\n-----------------------------------------------\n";
-					cout << "         Hospital Clinics         \n";
-					cout << "         ----------------         \n";
-					for (int j = 0; j < hospital[i].clinicsCount; j++)
-					{
-						 cout << j + 1 << "-" << hospital[i].HospitalClinics[j] << ". ";
-						 if ((j - 4) % 5 == 0)
-							  cout << "\n";
-					}
-					cout << "\n============================================\n";
-			   }
-		  }
-
-		  if (!found)
-			   cout << "This hospital not exist. \n";
-}
-bool loginAsPatient(Users patient[], int userCount, int& index) {
-	 string username, password;
-	 char chForPass;
-	 int id = 0, choice;
-	 int count = 0;
-	 bool loginstatus = false;
-	 do {
-		  password = "";
-		  loginstatus = false;// Login failed
-		  cout << "Enter username: ";
-		  cin >> username;
-		  cout << "\n1 to Enter Password \n2 to Enter ID\n";
-		  cout << "(Enter your ID . if you forgot your Password)\n";
-		  cout << "Choice : ";
-		  infinit(choice, 2, 1);
-		  if (choice == 1) {
-
-			   cout << "Enter password: ";
-			   while ((chForPass = getch()) != '\r') {
-					if (chForPass != '\b') {
-						 cout << "*";
-						 password += chForPass;
-					}
-					else if (!password.empty()) {
-						 cout << "\b \b";
-						 password.erase(password.size() - 1);
-					}
-			   }
-			   cout << '\n';
-		  }
-		  else if (choice == 2) {
-			   cout << "Enter ID: ";
-			   cin >> id;
-		  }
-		  for (int i = 0; i < userCount; i++)
-		  {
-			   if ((patient[i].username == username && patient[i].password == password) || (patient[i].username == username && patient[i].id == id))
-			   {
-					index = i;
-					loginstatus = true;			// Login successful
-					break;
-			   }
-		  }
-		  if (loginstatus)
-			   break;
-		  else
-		  {
-			   cout << "Login failed Please Try Agin\n";
-			   count++;
-		  }
-	 } while (count < 5);
-
-	 return  loginstatus;
-}
 void registerpatient(Users patient[], int& patientCount, int& patientId)
 {
 	 Users newpatient;
@@ -831,6 +737,105 @@ void registerpatient(Users patient[], int& patientCount, int& patientId)
 	 cout << "Your Email is: " << newpatient.email << endl;
 	 cout << "Your ID is: " << newpatient.id << endl;
 	 cin.ignore();
+}
+bool loginAsPatient(Users patient[], int userCount, int& index, string& email) {
+	 string username, password;
+	 char chForPass;
+	 int id = 0, choice;
+	 int count = 0;
+	 bool loginstatus = false;
+	 do {
+		  string infinity = "";
+		  password = "";
+		  loginstatus = false;// Login failed
+		  cout << "Enter username: ";
+		  cin >> username;
+		  cout << "\n1 to Enter Password \n2 to Enter ID\n";
+		  cout << "(Enter your ID . if you forgot your Password)\n";
+		  cout << "Choice : ";
+		  infinit(choice, 2, 1);
+		  if (choice == 1) {
+
+			   cout << "Enter password: ";
+			   while ((chForPass = getch()) != '\r') {
+					if (chForPass != '\b') {
+						 cout << "*";
+						 password += chForPass;
+					}
+					else if (!password.empty()) {
+						 cout << "\b \b";
+						 password.erase(password.size() - 1);
+					}
+			   }
+			   cout << '\n';
+		  }
+		  else if (choice == 2) {
+			   cout << "Enter ID: ";
+			   cin >> id;
+		  }
+		  for (int i = 0; i < userCount; i++)
+		  {
+			   if ((patient[i].username == username && patient[i].password == password && email == patient[i].email) || (patient[i].username == username && patient[i].id == id && email == patient[i].email))
+			   {
+					index = i;
+					loginstatus = true;			// Login successful
+					break;
+			   }
+		  }
+		  if (loginstatus)
+			   break;
+		  else
+		  {
+			   cout << "Login failed Please Try Agin\n";
+			   count++;
+		  }
+	 } while (count < 5);
+
+	 return  loginstatus;
+}
+void viewHospitals(Hospitals hospital[], int HospitalCount) {
+
+	 cout << " Available hospitals : - " << "\n";
+	 for (int i = 0; i < HospitalCount; i++)
+	 {
+		  cout << i + 1 << " - " << hospital[i].HospitalName << endl;
+	 }
+}
+void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalname) {
+
+	 bool found = false;
+
+	 for (int i = 0; i < HospitalCount; i++)
+	 {
+		  if (Hospitalname == hospital[i].HospitalName)
+		  {
+			   found = true;
+
+			   cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate: " << hospital[i].HospitalRate << endl;
+			   cout << "------------------------------------------------\n";
+			   cout << "         Hospital Specialties         \n";
+			   cout << "         --------------------         \n";
+			   for (int j = 0; j < hospital[i].specialtiesCount; j++)
+			   {
+					cout << j + 1 << "-" << hospital[i].HospitalSpecialties[j] << ". ";
+					if ((j - 1) % 2 == 0)
+						 cout << "\n";
+			   }
+			   cout << "\n-----------------------------------------------\n";
+			   cout << "         Hospital Clinics         \n";
+			   cout << "         ----------------         \n";
+			   for (int j = 0; j < hospital[i].clinicsCount; j++)
+			   {
+					cout << j + 1 << "-" << hospital[i].HospitalClinics[j] << ". ";
+					if ((j - 4) % 5 == 0)
+						 cout << "\n";
+			   }
+			   cout << "\n============================================\n";
+		  }
+	 }
+
+	 if (!found)
+		  cout << "This hospital not exist. \n";
 }
 void personalinfo(Users patient[], int patientCount, int PIndex) {
 	 cout << "\Personal Info :-\n";
@@ -1117,19 +1122,6 @@ void makeReservation(Users patient[], Hospitals hospital[], int patientCount, in
 	 }
 	 if (!checkID)
 		  cout << "\nWrong ID\n";
-}
-int hospitalindex(Hospitals hospital[], int hospitalCount) {
-	 viewHospitals(hospital, hospitalCount);
-	 int choice = 0;
-	 cout << "Enter your choice: ";
-	 infinit(choice, hospitalCount, 1);
-	 int index = choice - 1;
-	 return index;
-}
-void showDays() {
-	 for (int i = 0; i < daysInWeek; i++) {
-		  cout << i + 1 << " - " << ReservationDays[i] << "\n";
-	 }
 }
 void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int hospitalCount, int PIndex) {
 	 int search; //PIndex ->user index loged in 
@@ -1424,6 +1416,73 @@ void cancelreservation(Users patient[], int userCount, Hospitals hospital[], int
 		  }
 	 } while (!correctid);
 }
+
+void showspecialists(Hospitals hospital) {
+	 cout << " hospitals' specialties :\n";
+	 for (int i = 0; i < hospital.specialtiesCount; i++) {
+		  cout << i + 1 << "-" << hospital.HospitalSpecialties[i] << endl;
+	 }
+}
+void showclinics(Hospitals hospital) {
+	 cout << " hospitals' clinics :\n";
+	 for (int i = 0; i < hospital.clinicsCount; i++) {
+		  cout << i + 1 << "-" << hospital.HospitalClinics[i] << endl;
+	 }
+}
+bool Type(Users user[], int& userCount, int& patientId, string& email)
+{
+	 bool checkType = false;
+	 bool check = false;
+	 char choice;
+	 do
+	 {
+		  string Email = "";
+		  cout << "Plese Enter Your Email: ";
+		  cin >> Email;
+		  for (int i = 0; i < userCount; i++)
+		  {
+			   if (Email == user[i].email)
+			   {
+					email = Email;
+					check = true;
+					if (Email.find("@Hadmin.com") != string::npos) {
+						 user[i].userType = "Admin";
+						 checkType = true; // admin
+
+						 break;
+					}
+			   }
+		  }
+		  if (!check) {
+			   cout << "Email Not Found\n";
+			   cout << "Do You Want Add This Email ? (y|n): ";
+			   cin >> choice;
+			   if (choice == 'y' || choice == 'Y')
+					registerpatient(user, userCount, patientId);
+		  }
+	 } while (!check);
+	 return checkType;
+}
+bool validPhoneNumber(string phoneNumber) {
+	 if (phoneNumber.size() != 11 || phoneNumber[0] != '0' || phoneNumber[1] != '1') {
+		  return false;
+	 }
+	 return true;
+}
+int hospitalindex(Hospitals hospital[], int hospitalCount) {
+	 viewHospitals(hospital, hospitalCount);
+	 int choice = 0;
+	 cout << "Enter your choice: ";
+	 infinit(choice, hospitalCount, 1);
+	 int index = choice - 1;
+	 return index;
+}
+void showDays() {
+	 for (int i = 0; i < daysInWeek; i++) {
+		  cout << i + 1 << " - " << ReservationDays[i] << "\n";
+	 }
+}
+
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount, int PIndex)
 {
 	 int Hindex, HChoice = 0;
@@ -1550,46 +1609,4 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 	 } while (!logOut);
 	 cout << "===========================================\n";
 
-}
-bool Type(Users user[], int& userCount, int& patientId)
-{
-	 bool checkType = false;
-	 bool check = false;
-	 char choice;
-	 do
-	 {
-		  string Email = "";
-		  cout << "Plese Enter Your Email: ";
-		  cin >> Email;
-		  for (int i = 0; i < userCount; i++)
-		  {
-			   if (Email == user[i].email)
-			   {
-					check = true;
-					if (Email.find("@Hadmin.com") != string::npos) {
-						 user[i].userType = "Admin";
-						 checkType = true; // admin
-						 break;
-					}
-			   }
-		  }
-		  if (!check) {
-			   cout << "Email Not Found\n";
-			   cout << "Do You Want Add This Email ? (y|n): ";
-			   cin >> choice;
-			   if (choice == 'y' || choice == 'Y')
-					registerpatient(user, userCount, patientId);
-		  }
-	 } while (!check);
-	 return checkType;
-}
-void LogOut(bool& checkLog, int& PIndex) {
-	 checkLog = true;
-	 PIndex = -1;
-}
-bool validPhoneNumber(string phoneNumber) {
-	 if (phoneNumber.size() != 11 || phoneNumber[0] != '0' || phoneNumber[1] != '1') {
-		  return false;
-	 }
-	 return true;
 }
