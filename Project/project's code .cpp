@@ -109,7 +109,6 @@ void main() {
 	 DefinitonOfVariable(hospital, hospitalCount);
 	 DefinitonOfVariable(user, userCount, reservationID, hospital, hospitalCount);
 	 userID += userCount;
-	 viewHospitals(hospital, hospitalCount);
 	 cout << "\t\t\t\tWelcome To Our Hospital Management syatem :)\n";
 	 cout << "\t\t\t\t********************************************\n";
 	 
@@ -576,8 +575,7 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 								   if (!Exist)
 										cout << "NOT FOUND" << endl;
 							  }
-							  cout << "do you want to continue ADD or Delete(y/n)? ";
-							  cin >> AD;
+							  cout << "Do you want to continue add or delete Specialties of " << hospital[i].HospitalName << "(y/n) ? ";							  cin >> AD;
 						 } while (AD == 'y' || AD == 'Y');
 						 break;
 
@@ -633,13 +631,20 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 								   if (!Exist)
 										cout << "NOT FOUND" << endl;
 							  }
-							  cout << "do you want to continue ADD or Delete(y/n)? ";
+							  cout << "Do you want to continue add or delete clinics of " << hospital[i].HospitalName << "(y/n) ? ";
 							  cin >> AD;
 						 } while (AD == 'y' || AD == 'Y');
 						 break;
 					}
+					char CheckAnother;
+					cout << "Do you wnat edit another thing(y/n)? ";
+					cin >> CheckAnother;
+					if (CheckAnother == 'y' || CheckAnother == 'Y')
+						 i--;//back one step
+					else
+						 break;
 			   }
-
+			  
 		  }
 		  if (!found)
 			   cout << "Hospital Not Found\n ";
@@ -873,7 +878,7 @@ void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalna
 		  if (Hospitalname == hospital[i].HospitalName)
 		  {
 			   found = true;
-
+			   cout << "\n.......................\n";
 			   cout << "Hospital name: " << hospital[i].HospitalName << "\nHospital ID: " << hospital[i].HospitalID << "\nNunmber of beds available: " << hospital[i].PatientReservationRooms << "\nBeds price per night: " << hospital[i].BedsPrice << "\nReservation price for check-up: " << hospital[i].ReservationPrice << "\nHospiral Rate: " << hospital[i].HospitalRate << endl;
 			   cout << "------------------------------------------------\n";
 			   cout << "         Hospital Specialties         \n";
@@ -1550,14 +1555,19 @@ void infinit(int& num, int max, int min) {
 	 while (true)
 	 {
 		  cin >> num;
-		  if (num >= min && num <= max)
-			   break;
+		  if (cin.fail()) {
+			   cout << "Invalid input.\nPlease enter a valid number: " << endl;
+			   cin.clear();
+			   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		  }
 
+		  else if (num >= min && num <= max)
+			   break;
 		  else
 		  {
-		  cout << "---------------------------------\n";
+		   cout << "-------------------\n";
 			   cout << "In Valied Choice" << endl;
-			   cout << "enter valied choice : ";
+			   cout << "enter valied choice : ";
 		  }
 	 }
 }
