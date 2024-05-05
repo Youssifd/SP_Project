@@ -96,7 +96,7 @@ void sort(Hospitals hos[], int hoscount);//MARWAN
 int hospitalindex(Hospitals hospital[], int hospitalCount);//TOKA
 void Ambulancecall(Hospitals hospital[], int HospitalCount);//SAMA,HABIBABASEL
 void medicalLaboratory(Hospitals hospital[], int HospitalCount, Users user, int& reservationnumber);//HABIBABASEL
-void pharmacy(Hospitals hospital[], int hospitalCount);//HABIBABASEL
+void pharmacy(Hospitals hospital[], int hospitalCount);//TOKA
 void FirstAid();//HABIBABASEL
 
 
@@ -287,10 +287,10 @@ void PrintPatientData(Users user[], int userCount) {
 	{
 		if (user[i].userType != "Admin") {
 			//npos--> not-found position 
+			cout << "--------------------\n";
 			cout << "patient #" << numberOfPatient << " :\n";
 			cout << "ID: " << user[i].id << "\nAge: " << user[i].age << "\nName:" << user[i].name << "\nEmail: " << user[i].email << "\nUsername: " << user[i].username << endl;
 			numberOfPatient++;
-			cout << "--------------------\n";
 		}
 	}
 }
@@ -332,7 +332,7 @@ void SortHospitalByRating(Hospitals hospital[], int hospitalCount) {
 }
 void SortByBedsAvailable(Hospitals hospital[], int hospitalCount) {
 	 char x;
-	for (int i = 0; i < hospitalCount ; ++i) {
+	for (int i = 0; i < hospitalCount-1 ; ++i) {
 		for (int j = i + 1; j < hospitalCount; j++) {
 			if (hospital[i].PatientReservationRooms > hospital[j].PatientReservationRooms)
 				swap(hospital[i], hospital[j]);
@@ -341,7 +341,7 @@ void SortByBedsAvailable(Hospitals hospital[], int hospitalCount) {
 	cout << "Sort Done\nDo you want new list of Hospitals(y/n)?: ";
 	cin >> x;
 	if (x == 'y' || x == 'Y') {
-		for (int i = 0; i < hospitalCount - 1; ++i) {
+		for (int i = 0; i < hospitalCount ; ++i) {
 			cout << i + 1 << "-" << hospital[i].HospitalName << "( " << hospital[i].PatientReservationRooms << " )" << endl;
 
 		}
@@ -349,7 +349,7 @@ void SortByBedsAvailable(Hospitals hospital[], int hospitalCount) {
 }
 void SortByBedsPrice(Hospitals hospital[], int hospitalCount) {
 	 char x;
-	for (int i = 0; i < hospitalCount ; ++i) {
+	for (int i = 0; i < hospitalCount-1 ; ++i) {
 		for (int j = i + 1; j < hospitalCount; j++) {
 			if (hospital[i].BedsPrice > hospital[j].BedsPrice)
 				swap(hospital[i], hospital[j]);
@@ -358,7 +358,7 @@ void SortByBedsPrice(Hospitals hospital[], int hospitalCount) {
 	cout << "Sort Done\nDo you want new list of Hospitals(y/n)?: ";
 	cin >> x;
 	if (x == 'y' || x == 'Y') {
-		for (int i = 0; i < hospitalCount - 1; ++i) {
+		for (int i = 0; i < hospitalCount ; ++i) {
 			cout << i + 1 << "-" << hospital[i].HospitalName << "(" << hospital[i].BedsPrice << ")" << endl;
 		}
 	}
@@ -388,7 +388,7 @@ bool loginAsAdmin(Users user[], int userCount, int& PIndex, string& email) {
 		for (int i = 0; i < userCount; i++) {
 			if (username == user[i].username && password == user[i].password && user[i].userType == "Admin" && email == user[i].email) {
 				loggedIn = true;
-				cout << "Login successful ✓" << endl;
+				cout << "Login successful " << endl;
 				cout << "--------------------------------\n";
 				PIndex = i;
 				break;
@@ -409,6 +409,7 @@ void AddHospital(Hospitals hos[], int& HospitalCount)
 	do {
 		string hosname = "";
 		bool check = true;
+		cout << " .......................\n";
 		cout << "Please enter the name of the Hospital to Add: ";
 		getline(cin, hosname);
 		for (int i = 0; i < HospitalCount; i++)
@@ -422,10 +423,33 @@ void AddHospital(Hospitals hos[], int& HospitalCount)
 
 		if (check)
 		{
+			 int ID;
+			 bool CheckID = false;
 			HospitalCount++;
 			hos[HospitalCount - 1].HospitalName = hosname;
-			cout << "Please enter the ID of the Hospital to Add: ";
-			cin >> hos[HospitalCount - 1].HospitalID;
+			cout << "Please enter the ID of the Hospital to Add (Must be 7 digi): ";
+			while (!CheckID) {
+				 cin >> ID;
+				 if ((ID > 1000000) && (ID < 10000000)) {
+					  for (int i = 0; i < HospitalCount - 2; i++) {
+						   if (hos[i].HospitalID == ID) {
+								cout << "This ID is exist !\nPlease enter another ID: ";
+								CheckID = false;
+								break;
+						   }
+						   else
+								CheckID = true;
+					  }
+				 }
+				 else {
+					  cout << "Invalid ID! Try again:";
+					  continue;
+
+				 }
+				
+			}
+			hos[HospitalCount - 1].HospitalID = ID;
+
 
 			cout << "Please enter the Nunmber of beds available of the Hospital to Add: ";
 			cin >> hos[HospitalCount - 1].PatientReservationRooms;
@@ -480,15 +504,18 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 		bool Exist = false;
 		int choice = 0;
 		bool Checkans = false;
-		bool checkChoice = false;
+		bool checkChoice = false,first=true;
 		cout << "please enter hospitalname: ";
 		getline(cin, hsptlname);
 		for (int i = 0; i < HospitalCount; i++)
 		{
 			if (hospital[i].HospitalName == hsptlname)
 			{
+				 bool CheckID=false;
 				found = true;
-				cout << "search successfully " << endl;
+				cout << ".......................\n";
+				if (first)
+					 cout << "search successfully " << endl;
 				cout << "what do you want to modify ?" << endl;
 				cout << "1-Hospital ID\n2-Patient Reservation Rooms\n3-Reservation Price\n4-BedsPrice\n5-Hospital Rate\n6-Hospital Name\n7-Hospital Specialties\n8-Hospital Clinics" << endl;
 				cout << "enter your choice: ";
@@ -497,8 +524,29 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 				switch (choice)
 				{
 				case 1:
-					cout << "Enter the new ID: ";
+					cout << "Enter the new ID(Must be 7 digit): ";
+					while (!CheckID) {
+					
 					cin >> hospital[i].HospitalID;
+						 if ((hospital[i].HospitalID > 1000000) && (hospital[i].HospitalID < 10000000)) {
+							  for (int z = 0; z < HospitalCount - 2; z++) {
+								   if (hospital[z].HospitalID == hospital[i].HospitalID) {
+										cout << "This ID is exist !\nPlease enter another ID: ";
+										CheckID = false;
+										break;
+								   }
+								   else
+										CheckID = true;
+							  }
+						 }
+						 else {
+							  cout << "Invalid ID! Try again:";
+							  continue;
+
+						 }
+
+					}
+					
 					break;
 				case 2:
 					cout << "Enter the New Number Of Rooms: ";
@@ -639,8 +687,10 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 				char CheckAnother;
 				cout << "Do you wnat edit another thing(y/n)? ";
 				cin >> CheckAnother;
-				if (CheckAnother == 'y' || CheckAnother == 'Y')
+				if (CheckAnother == 'y' || CheckAnother == 'Y') {
 					i--;//back one step
+					first = false;
+				}
 				else
 					break;
 			}
@@ -738,12 +788,12 @@ void registerpatient(Users patient[], int& patientCount, int& patientId)
 			bool correctchoice = false;
 			while (correctchoice == false)
 			{
-				correctchoice = false;
+				
 				cout << "Enter 'v' to enter a valid age or 'e' to exit: ";
 				cin >> choice;
 				if (choice == 'e' || choice == 'E' || choice == 'v' || choice == 'V') {
 					correctchoice = true;
-					break;
+					
 				}
 				else
 					cout << "Invalid option selected.\n";
@@ -813,7 +863,6 @@ bool loginAsPatient(Users patient[], int userCount, int& index, string& email) {
 	int count = 0;
 	bool loginstatus = false;
 	do {
-		string infinity = "";
 		password = "";
 		loginstatus = false;// Login failed
 		cout << "Enter username: ";
@@ -1571,7 +1620,7 @@ int infinit(int& num, int max, int min) {
 				else {
 
 					cout << "-------------------\n";
-					cout << "In Valied Choice ✕" << endl;
+					cout << "In Valied Choice !" << endl;
 					cout << "enter valied choice : ";
 				}
 			}
@@ -1731,7 +1780,7 @@ void medicalLaboratory(Hospitals hospital[], int HospitalCount, Users user, int&
 	labReservation++;
 }
 void FirstAid() {
-	string instructions[10] = { "Remember the (Three Ps.):- \nPreserve life\nPrevent further injury\nPromote recovery\n","Check the scene for danger before you provide help.\n","To treat cutsand scrapes:-\n. apply gentle pressure, disinfectant,and bandages.\n","To treat sprains:-\n. apply iceand compression at intervalsand keep the limb elevated.\n","To treat heat exhaustion:-\n. use cool fluids, cool cloths,and shade.\n","To treat hypothermia:-\n. use warm fluidsand warm covering.\n","To treat burns:-\n. determine the burn type and severity.\n. Cover the wound with loose cloth to prevent infection.\n","Use an EpiPen to treat allergic reactions.\n","To treat fractures:-\n. keep the fractured area stableand immobilized,and apply a cold pack.\n","Perform CPR if an injured person stops breathing." };
+	string instructions[10] = { "Remember the (Three Ps.):- \nPreserve life\nPrevent further injury\nPromote recovery\n","Check the scene for danger before you provide help.\n","To treat cutsand scrapes:-\napply gentle pressure, disinfectant,and bandages.\n","To treat sprains:-\napply iceand compression at intervalsand keep the limb elevated.\n","To treat heat exhaustion:-\nuse cool fluids, cool cloths,and shade.\n","To treat hypothermia:-\nuse warm fluidsand warm covering.\n","To treat burns:-\ndetermine the burn type and severity.\nCover the wound with loose cloth to prevent infection.\n","Use an EpiPen to treat allergic reactions.\n","To treat fractures:-\nkeep the fractured area stableand immobilized,and apply a cold pack.\n","Perform CPR if an injured person stops breathing." };
 	for (int i = 0; i < 10; i++) {
 		cout << i + 1 << "- " << instructions[i] << "\n";
 	}
@@ -1780,7 +1829,6 @@ void pharmacy(Hospitals hospital[], int hospitalCount) {
 		  cout << "the order is on the way for you ,we are waiting your opinion :)\n";
 	 }
 }
-
 
 
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount, int& PIndex, Users user[], int usercount)
