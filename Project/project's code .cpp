@@ -811,13 +811,27 @@ void registerpatient(Users patient[], int& patientCount, int& patientId)
 
 	newpatient.age = age;
 	string phoneNumber;
+	bool phoneNumExist = true;
 	do {
 		cout << "Enter your Phone Number (Example : 01*********): ";
 		cin >> phoneNumber;
 		if (!validPhoneNumber(phoneNumber)) {
 			cout << "Invalid phone number. Please try again.\n";
+
 		}
-	} while (!validPhoneNumber(phoneNumber));
+		for (int i = 0; i < patientCount; i++) {
+			
+			 if (phoneNumber == patient[i].phonenumber) {
+				  cout << "This Phone number is exist try again\n";
+				  phoneNumExist = true;
+				  break;
+			 }
+			 else {
+				  phoneNumExist = false;
+			 }
+
+		}
+	} while (phoneNumExist);
 	newpatient.phonenumber = phoneNumber;
 	cout << "Phone number accepted.\n";
 	int choiceGender = 0;
@@ -864,7 +878,6 @@ bool loginAsPatient(Users patient[], int userCount, int& index, string& email) {
 	bool loginstatus = false;
 	do {
 		password = "";
-		loginstatus = false;// Login failed
 		cout << "Enter username: ";
 		cin >> username;
 		cout << "\n1 to Enter Password \n2 to Enter ID\n";
@@ -965,7 +978,8 @@ void personalinfo(Users patient[], int patientCount, int PIndex) {
 	cout << "Password: " << patient[PIndex].password << "\n";
 	cout << "Email: " << patient[PIndex].email << "\n";
 	cout << "ID: " << patient[PIndex].id << "\n";
-	cout << "Number of your reservation: " << patient[PIndex].reserCount << endl;
+	if (patient[PIndex].userType == "Patient")
+		 cout << "Number of your reservation: " << patient[PIndex].reserCount << endl;
 }
 void editpatientinfo(Users patient[], int patientCount, int PIndex) {
 
@@ -999,12 +1013,12 @@ void editpatientinfo(Users patient[], int patientCount, int PIndex) {
 					bool correctchoice = false;
 					while (correctchoice == false)
 					{
-						correctchoice = false;
+					
 						cout << "Enter 'v' to enter a valid age or 'e' to exit: ";
 						cin >> choice;
 						if (choice == 'e' || choice == 'E' || choice == 'v' || choice == 'V') {
 							correctchoice = true;
-							break;
+							
 						}
 						else
 							cout << "\nInvalid option selected.\n";
@@ -1078,13 +1092,27 @@ void editpatientinfo(Users patient[], int patientCount, int PIndex) {
 		case 5:
 		{
 			string phoneNumber;
+				 bool phoneNumExist=true;
 			do {
 				cout << "Enter New Phone Number: ";
 				cin >> phoneNumber;
 				if (!validPhoneNumber(phoneNumber)) {
 					cout << "Invalid phone number. Please try again.\n";
 				}
-			} while (!validPhoneNumber(phoneNumber));
+				for (int i = 0; i < patientCount; i++) {
+					 if (i = PIndex)
+						  continue;
+					 if (phoneNumber == patient[i].phonenumber) {
+						  cout << "This Phone number is exist try again\n";
+						  phoneNumExist = true;
+						  break;
+					 }
+					 else {
+						  phoneNumExist = false;
+					 }
+
+				}
+			} while (phoneNumExist);
 			patient[PIndex].phonenumber = phoneNumber;
 			cout << "Phone number accepted.\n";
 			break;
@@ -1316,7 +1344,7 @@ void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int
 							patient[PIndex].reservation[i].ReservationPrice = hospital[index2].ReservationPrice;
 						else {
 							patient[PIndex].reservation[i].surgeryprice = hospital[index2].surgeryprice;
-							patient[PIndex].reservation[i].BedPrice = hospital[i].BedsPrice;
+							patient[PIndex].reservation[i].BedPrice = hospital[index2].BedsPrice;
 							patient[PIndex].reservation[i].Totalprice += patient[PIndex].reservation[i].surgeryprice + (patient[PIndex].reservation[i].numberOfDays * patient[PIndex].reservation[i].BedPrice);
 							hospital[index2].PatientReservationRooms -= 1;
 						}
