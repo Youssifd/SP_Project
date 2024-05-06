@@ -4,12 +4,12 @@ Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatri
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
 
 Al-Qasr Al-Aini
-1827103 495 80 600 8740 4 11 19
+1827103 496 80 600 8740 4 11 19
 Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
 
 Dar Al-Fouad
-1999105 545 300 1200 7450 3.7 11 19
+1999105 544 300 1200 7450 3.7 11 19
 Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
 
@@ -19,6 +19,6 @@ Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatri
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
 
 Sayed Galal
-1945104 595 100 400 9850 3.6 11 19
+1945104 594 100 400 9850 3.6 11 19
 Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
