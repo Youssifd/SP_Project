@@ -105,7 +105,7 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 void main() {
 	Hospitals hospital[NumberOfHospital];
 	Users user[NumberOfUsers];
-	int userCount = 0, hospitalCount = 0, userID = 1001, reservationID = 101, labReservation = 101;
+	int userCount = 0, hospitalCount = 0, userID = 1001, reservationID = 101, labReservation = 501;
 	int patientAccount = 0;
 	DefinitonOfVariable(hospital, hospitalCount);
 	DefinitonOfVariable(user, userCount, reservationID, hospital, hospitalCount);
@@ -117,6 +117,7 @@ void main() {
 		int choice;
 		cout << "\n1. Register\n2. Login(if you have already registered)\n3. Call an Ambulance\n4. Display First Aid\n5. Quit\nPlease enter your choice: ";
 		infinit(choice, 5, 1);
+		cout << ".........................\n";
 		if (choice == 1) {
 			registerpatient(user, userCount, userID);
 		}
@@ -813,12 +814,19 @@ void registerpatient(Users patient[], int& patientCount, int& patientId)
 	string phoneNumber;
 	bool phoneNumExist = true;
 	do {
-		cout << "Enter your Phone Number (Example : 01*********): ";
-		cin >> phoneNumber;
-		if (!validPhoneNumber(phoneNumber)) {
-			cout << "Invalid phone number. Please try again.\n";
-
-		}
+		 int counter = 5;
+		 do {
+			  cout << "Enter your Phone Number (Example : 01*********): ";
+			  cin >> phoneNumber;
+			  if (!validPhoneNumber(phoneNumber)) {
+			  counter--;
+			  if (counter == 0) {
+				   cout << "registeration failed :(\n";
+				   return;
+			  }
+				   cout << "Invalid phone number.\nYou have "<<counter<<" attempts left Please try again\n";
+			  }
+		 } while (!validPhoneNumber(phoneNumber));
 		for (int i = 0; i < patientCount; i++) {
 			
 			 if (phoneNumber == patient[i].phonenumber) {
@@ -970,14 +978,14 @@ void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalna
 void personalinfo(Users patient[], int patientCount, int PIndex) {
 	 cout << ".......................\n";
 	cout << "\Personal Info :-\n";
-	cout << "Full Name: " << patient[PIndex].name << "\n";
-	cout << "Gender: " << patient[PIndex].gender << endl;
-	cout << "Age: " << patient[PIndex].age << "\n";
-	cout << "Usename: " << patient[PIndex].username << "\n";
-	cout << "Phone Number: " << patient[PIndex].phonenumber << "\n";
-	cout << "Password: " << patient[PIndex].password << "\n";
-	cout << "Email: " << patient[PIndex].email << "\n";
 	cout << "ID: " << patient[PIndex].id << "\n";
+	cout << "Full Name: " << patient[PIndex].name << "\n";
+	cout << "Age: " << patient[PIndex].age << "\n";
+	cout << "Phone Number: " << patient[PIndex].phonenumber << "\n";
+	cout << "Gender: " << patient[PIndex].gender << endl;
+	cout << "Usename: " << patient[PIndex].username << "\n";
+	cout << "Email: " << patient[PIndex].email << "\n";
+	cout << "Password: " << patient[PIndex].password << "\n";
 	if (patient[PIndex].userType == "Patient")
 		 cout << "Number of your reservation: " << patient[PIndex].reserCount << endl;
 }
@@ -1092,27 +1100,13 @@ void editpatientinfo(Users patient[], int patientCount, int PIndex) {
 		case 5:
 		{
 			string phoneNumber;
-				 bool phoneNumExist=true;
 			do {
-				cout << "Enter New Phone Number: ";
-				cin >> phoneNumber;
-				if (!validPhoneNumber(phoneNumber)) {
-					cout << "Invalid phone number. Please try again.\n";
-				}
-				for (int i = 0; i < patientCount; i++) {
-					 if (i = PIndex)
-						  continue;
-					 if (phoneNumber == patient[i].phonenumber) {
-						  cout << "This Phone number is exist try again\n";
-						  phoneNumExist = true;
-						  break;
-					 }
-					 else {
-						  phoneNumExist = false;
-					 }
-
-				}
-			} while (phoneNumExist);
+				 cout << "Enter your Phone Number (Example : 01*********): ";
+				 cin >> phoneNumber;
+				 if (!validPhoneNumber(phoneNumber)) {
+					  cout << "Invalid phone number. Please try again.\n";
+				 }
+			} while (!validPhoneNumber(phoneNumber));
 			patient[PIndex].phonenumber = phoneNumber;
 			cout << "Phone number accepted.\n";
 			break;
@@ -1602,7 +1596,7 @@ bool Type(Users user[], int& userCount, int& patientId, string& email)
 		}
 		if (!check) {
 			cout << "Email Not Found\n";
-			cout << "Do You Want Add This Email ? (y|n): ";
+			cout << "Do You Want registration ? (y|n): ";
 			cin >> choice;
 			if (choice == 'y' || choice == 'Y')
 				registerpatient(user, userCount, patientId);
@@ -1928,9 +1922,9 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 		  char Cho;
 		  cout << "1- to View Personal Info.\n" << "2- to View Hospital(s) Information.\n";
 		  cout << "3- to sort hospital\n" << "4- to Edit your Information.\n" << "5- to make a new reservation.\n";
-		  cout << "6- to View your reservation.\n" << "7- to Modify an existing reservation.\n" << "8- to Cancel a reservation.\n" << "9- to Book an appointment for medical test of X-ray.\n" << "10- to Order from the Pharmacy.\n" << "11- to logout.\n";
+		  cout << "6- to View your reservation.\n" << "7- to Modify an existing reservation.\n" << "8- to Cancel a reservation.\n" << "9- to Book an appointment for medical test of X-ray.\n\n" << "10- to Order from the Pharmacy.\n"<<"11- to call an Ambulance\n" << "12- to logout.\n";
 		  cout << "Enter the number you want to do : ";
-		  infinit(option, 11, 1);
+		  infinit(option, 12, 1);
 		  switch (option)
 		  {
 		  case 1:
@@ -1981,6 +1975,9 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 			   pharmacy(hospital, HospitalCount);
 			   break;
 		  case 11:
+			   Ambulancecall(hospital, HospitalCount);
+			   break;
+		  case 12:
 			   LogOut(logOut, PIndex);
 			   break;
 		  }
