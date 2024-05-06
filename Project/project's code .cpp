@@ -529,7 +529,7 @@ void ModifyHospital(Hospitals hospital[], int& HospitalCount)
 					cout << "Enter the new ID(Must be 7 digit): ";
 					while (!CheckID) {
 						 cin >> ID;
-						 if ((hospital[i].HospitalID > 1000000) && (hospital[i].HospitalID < 10000000)) {
+						 if ((ID > 1000000) && (ID < 10000000)) {
 							  for (int z = 0; z < HospitalCount ; z++) {
 								   if (hospital[z].HospitalID == ID) {
 										cout << "This ID is exist !\nPlease enter another ID: ";
@@ -1348,7 +1348,7 @@ void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int
 						else {
 							 do{
 								  for (int z = 7; z < userCount; z++) {
-									   for (int j = 0; j < patient[z].reserCount; z++) {
+									   for (int j = 0; j < patient[z].reserCount; j++) {
 											if ((hospital[index2].HospitalID == patient[z].reservation[j].hospital.HospitalID)&&
 												 (patient[z].reservation[j].PatientReservationRoom== patient[PIndex].reservation[i].PatientReservationRoom)) {
 												 roomnumber = 100 + rand() % 400;
