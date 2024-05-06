@@ -432,7 +432,7 @@ void AddHospital(Hospitals hos[], int& HospitalCount)
 			while (!CheckID) {
 				 cin >> ID;
 				 if ((ID > 1000000) && (ID < 10000000)) {
-					  for (int i = 0; i < HospitalCount - 2; i++) {
+					  for (int i = 0; i < HospitalCount - 1; i++) {
 						   if (hos[i].HospitalID == ID) {
 								cout << "This ID is exist !\nPlease enter another ID: ";
 								CheckID = false;
@@ -1372,6 +1372,7 @@ void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int
 							 patient[PIndex].reservation[i].PatientReservationRoom = to_string(roomnumber);
 							patient[PIndex].reservation[i].surgeryprice = hospital[index2].surgeryprice;
 							patient[PIndex].reservation[i].BedPrice = patient[PIndex].reservation[i].numberOfDays*hospital[index2].BedsPrice;
+							patient[PIndex].reservation[i].Totalprice = 0;
 							patient[PIndex].reservation[i].Totalprice += patient[PIndex].reservation[i].surgeryprice + (patient[PIndex].reservation[i].numberOfDays * patient[PIndex].reservation[i].BedPrice);
 							hospital[index2].PatientReservationRooms -= 1;
 						}
