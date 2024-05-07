@@ -229,7 +229,7 @@ void SaveData(Hospitals hospital[], int hospitalCount) {
 			ExportHospitalInfo << '\n';
 		}
 
-	}
+	} 
 	ExportHospitalInfo.close();
 
 }
@@ -1456,7 +1456,11 @@ void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int
 							cout << "Enter your choice: ";
 							infinit(clinicnumber, 19, 1);
 							clinicindex = clinicnumber - 1;
-							patient[PIndex].reservation[i].HospitalClinic = hospital[index2].HospitalClinics[clinicindex];
+							patient[PIndex].reservation[i].HospitalClinic = patient[PIndex].reservation[i].hospital.HospitalClinics[clinicindex];
+							patient[PIndex].reservation[i].ReservationPrice = patient[PIndex].reservation[i].hospital.ReservationPrice;
+							patient[PIndex].reservation[i].BedPrice = 0;
+							patient[PIndex].reservation[i].surgeryprice = 0;
+							patient[PIndex].reservation[i].Totalprice = 0;
 							showDays();
 							cout << "\nPlease Enter the number of your reservation day: ";
 							infinit(dayNumber, 7, 1);
@@ -1864,6 +1868,7 @@ void FirstAid() {
 	for (int i = 0; i < 10; i++) {
 		cout << i + 1 << "- " << instructions[i] << "\n";
 	}
+	cout << "...........................";
 }
 void pharmacy(Hospitals hospital[], int hospitalCount) {
 	 string medicines[20];
