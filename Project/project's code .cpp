@@ -2,7 +2,9 @@
 #include<fstream>
 #include<iostream>
 #include<string>
+#include <SFML/Graphics.hpp>
 using namespace std;
+using namespace sf;
 #define NumberOfHospital 10
 #define NumberOfReservation 20
 #define NumberOfUsers 20
@@ -90,8 +92,8 @@ void showDays();//HABIBAKHALED
 void showspecialists(Hospitals hospital);//HABIBAKHALED
 void showclinics(Hospitals hospital);//HABIBAKHALED
 bool Type(Users user[], int& usercount, int& patientId, string& email);//MARWAN
-int infinit(int& num, int max, int min);//MARWAN
 bool validPhoneNumber(string phoneNumber);//HABIBABASEL
+int infinit(int& num, int max, int min);//MARWAN
 void sort(Hospitals hos[], int hoscount);//MARWAN
 int hospitalindex(Hospitals hospital[], int hospitalCount);//TOKA
 void Ambulancecall(Hospitals hospital[], int HospitalCount);//SAMA,HABIBABASEL
@@ -103,6 +105,10 @@ void FirstAid();//HABIBABASEL
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount, int& PIndex, Users user[], int usercount);//MARWAN.
 void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int userCount, int& reservationid, int PIndex, int& labReservation);//YOUSSIF.
 void main() {
+	RenderWindow window(VideoMode(800, 600), "Tester");
+	CircleShape shapest(50.0f);
+	shapest.setFillColor(Color::Blue);
+	shapest.setPosition(100,100);//Test SFML files
 	Hospitals hospital[NumberOfHospital];
 	Users user[NumberOfUsers];
 	int userCount = 0, hospitalCount = 0, userID = 1001, reservationID = 101, labReservation = 501;
@@ -110,6 +116,21 @@ void main() {
 	DefinitonOfVariable(hospital, hospitalCount);
 	DefinitonOfVariable(user, userCount, reservationID, hospital, hospitalCount);
 	userID += userCount;
+
+	while (window.isOpen()) {
+		 Event event;
+		 while (window.pollEvent(event)) {
+			  if (event.type == Event::Closed) {
+				   window.close();
+			  }
+		 }
+		 window.clear();
+		 window.draw(shapest);
+		 window.display();
+
+	}
+
+
 	cout << "\t\t\t\t  Welcome To Our Hospital Management syatem (^_^)\n";
 	cout << "\t\t\t\t***************************************************\n";
 	while (true) {
@@ -1391,9 +1412,9 @@ void modifyreservation(Users patient[], int userCount, Hospitals hospital[], int
 							roomNumber = 101 + rand() % 400;
 							do {
 								 roomNumber = 100 + rand() % 400;
-								 for (int i = 0; i < userCount; i++) {
+								 for (int z = 0; z < userCount; z++) {
 									  for (int j = 0; j < patient[i].reserCount; j++) {
-										   if (patient[i].reservation[j].PatientReservationRoom == to_string(roomNumber) && (patient[PIndex].reservation[i].hospital.HospitalName == patient[i].reservation[j].hospital.HospitalName))
+										   if (patient[z].reservation[j].PatientReservationRoom == to_string(roomNumber) && (patient[PIndex].reservation[i].hospital.HospitalName == patient[z].reservation[j].hospital.HospitalName))
 										   {
 												exist = true;
 												break;
