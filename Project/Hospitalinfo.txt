@@ -1,4 +1,4 @@
-5Al-Qasr Al-Aini
+Al-Qasr Al-Aini
 1827103 495 80 600 8740 4 11 19
 Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
