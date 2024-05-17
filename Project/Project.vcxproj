@@ -132,6 +132,9 @@
   <ItemGroup>
     <ClCompile Include="project%27s code .cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Structs.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

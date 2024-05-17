@@ -1,62 +1,4 @@
-﻿#include<conio.h>
-#include<fstream>
-#include<iostream>
-#include<string>
-#include <SFML/Graphics.hpp>
-using namespace std;
-using namespace sf;
-#define NumberOfHospital 10
-#define NumberOfReservation 20
-#define NumberOfUsers 20
-#define NumberOfSpecialties 20
-#define NumberOfClinics 25
-#define daysInWeek  7
-
-string ReservationDays[daysInWeek] = { "Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday" };
-struct Hospitals {
-	int HospitalID;
-	int PatientReservationRooms;//BedsAvailable
-	float ReservationPrice; //for check-up
-	float BedsPrice; //for surgeryd
-	float HospitalRate;
-	float surgeryprice;
-	int specialtiesCount; // to stop print garbage at other hos.(screen shot)
-	int clinicsCount;
-	string HospitalName;
-	string HospitalSpecialties[NumberOfSpecialties];
-	string HospitalClinics[NumberOfClinics];
-};
-struct Reservations {
-	int ReservtionID;
-	int PAge;
-	int numberOfDays = 0;//P-> patient
-	Hospitals hospital;
-	string PName;
-	string ReservationType;
-	string ReservationDay;
-	string HospitalSpecialty = "NOT-RESERVATED";
-	string HospitalClinic = "NOT-RESERVATED";
-	string PatientReservationRoom = "NONE";//asking TA
-	string PhoneNumber = "";
-	float ReservationPrice;//for check-up
-	float BedPrice = 0; //for surgery
-	float surgeryprice = 0;
-	float Totalprice = 0;
-};
-struct Users {
-	int id;
-	int age;
-	int reserCount = 0;
-	string userType = "Patient";
-	string name;
-	string email;
-	string username;
-	string password;
-	string phonenumber;
-	string gender;
-	Reservations* reservation = new Reservations[NumberOfReservation];
-};
-int  reservationID = 101, labReservation = 501, userCount = 0, hospitalCount = 0;
+﻿#include "Structs.h"
 
 void DefinitonOfVariable(Hospitals hospital[]);//YOUSSIF
 void DefinitonOfVariable(Users user[], Hospitals hos[]);//YOUSSIF
@@ -66,10 +8,10 @@ void PrintHospitalData(Hospitals hospital[]);//YOUSSIF
 void PrintPatientData(Users user[]);//YOUSSIF
 void LogOut(bool& checkLog, int& PIndex);//YOUSSIF
 
-void SortHospitalByName(Hospitals hospital[], int hospitalCount);//HABIBAKHALED
-void SortHospitalByRating(Hospitals hospital[], int hospitalCount);//HABIBAKHALED
-void SortByBedsAvailable(Hospitals hospital[], int hospitalCount);//HABIBAKHALED
-void SortByBedsPrice(Hospitals hospital[], int hospitalCount);//HABIBAKHALED
+void SortHospitalByName(Hospitals hospital[]);//HABIBAKHALED
+void SortHospitalByRating(Hospitals hospital[]);//HABIBAKHALED
+void SortByBedsAvailable(Hospitals hospital[]);//HABIBAKHALED
+void SortByBedsPrice(Hospitals hospital[]);//HABIBAKHALED
 
 bool loginAsAdmin(Users user[], int userCount, int& PIndex, string& email);//MARWAN
 void AddHospital(Hospitals hos[], int& HospitalCount);//MARWAN
@@ -95,7 +37,7 @@ void showclinics(Hospitals hospital);//HABIBAKHALED
 bool Type(Users user[], int& patientId, string& email);//MARWAN
 bool validPhoneNumber(string phoneNumber);//HABIBABASEL
 int infinit(int& num, int max, int min);//MARWAN
-void sort(Hospitals hos[], int hoscount);//MARWAN
+void sort(Hospitals hos[]);//MARWAN
 int hospitalindex(Hospitals hospital[], int hospitalCount);//TOKA
 void Ambulancecall(Hospitals hospital[], int HospitalCount);//SAMA,HABIBABASEL
 void medicalLaboratory(Hospitals hospital[], int HospitalCount, Users user);//HABIBABASEL
@@ -318,7 +260,7 @@ void PrintPatientData(Users user[]) {
 	}
 }
 
-void SortHospitalByName(Hospitals hospital[], int hospitalCount) {
+void SortHospitalByName(Hospitals hospital[]) {
 	char x;
 	for (int i = 0; i < hospitalCount - 1; ++i) {
 		for (int j = i + 1; j < hospitalCount; j++) {
@@ -336,7 +278,7 @@ void SortHospitalByName(Hospitals hospital[], int hospitalCount) {
 	}
 
 }
-void SortHospitalByRating(Hospitals hospital[], int hospitalCount) {
+void SortHospitalByRating(Hospitals hospital[]) {
 	 char x;
 	for (int i = 0; i < hospitalCount - 1; ++i) {
 		for (int j = i + 1; j < hospitalCount; j++) {
@@ -353,7 +295,7 @@ void SortHospitalByRating(Hospitals hospital[], int hospitalCount) {
 		}
 	}
 }
-void SortByBedsAvailable(Hospitals hospital[], int hospitalCount) {
+void SortByBedsAvailable(Hospitals hospital[]) {
 	 char x;
 	for (int i = 0; i < hospitalCount-1 ; ++i) {
 		for (int j = i + 1; j < hospitalCount; j++) {
@@ -370,7 +312,7 @@ void SortByBedsAvailable(Hospitals hospital[], int hospitalCount) {
 		}
 	}
 }
-void SortByBedsPrice(Hospitals hospital[], int hospitalCount) {
+void SortByBedsPrice(Hospitals hospital[]) {
 	 char x;
 	for (int i = 0; i < hospitalCount-1 ; ++i) {
 		for (int j = i + 1; j < hospitalCount; j++) {
@@ -1741,32 +1683,28 @@ int infinit(int& num, int max, int min) {
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	}
 }
-void sort(Hospitals hos[], int hoscount)
+void sort(Hospitals hos[])
 {
 	int help;
-	char x;
 	cout << "What Do you sort by?\n1- By name\n2- By Beds Available\n3- By Beds price\n4- By rating\n";
 	cout << "Choice: ";
 	infinit(help, 4, 1);
 	switch (help)
 	{
 	case 1:
-		SortHospitalByName(hos, hoscount);
+		SortHospitalByName(hos);
 		break;
 	case 2:
-		SortByBedsAvailable(hos, hoscount);
+		SortByBedsAvailable(hos);
 		break;
 	case 3:
-		SortByBedsPrice(hos, hoscount);
+		SortByBedsPrice(hos);
 		break;
 	case 4:
-		SortHospitalByRating(hos, hoscount);
+		SortHospitalByRating(hos);
 		break;
 	}
-	/* cout << "Sort Done\nDo you want new list of Hospitals(y/n)?: ";
-	 cin >> x;
-	 if (x == 'y' || x == 'Y')
-		  viewHospitals(hos, hoscount);*/
+	
 }
 void Ambulancecall(Hospitals hospital[], int HospitalCount) {
 	int choice;
@@ -1984,7 +1922,7 @@ void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount, int& PIndex, Users
 			PrintPatientData(user);
 			break;
 		case 7:
-			sort(hospital, HospitalCount);
+			sort(hospital);
 			break;
 		case 8:
 			personalinfo(user, PIndex);
@@ -2036,7 +1974,7 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 			   }
 			   break;
 		  case 3:
-			   sort(hospital, HospitalCount);
+			   sort(hospital);
 			   break;
 		  case 4:
 			   editpatientinfo(user, PIndex);
