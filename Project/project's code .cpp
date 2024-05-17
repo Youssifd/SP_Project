@@ -22,8 +22,8 @@ void modifyreservation(Users patient[], Hospitals hospital[], int PIndex);//TOKA
 void cancelreservation(Users patient[], Hospitals hospital[], int PIndex);//TOKA
 void showreservation(Users patient[], Hospitals hospital[], int PIndex);//TOKA
 
-void viewHospitals(Hospitals hospital[], int HospitalCount);//SAMA
-void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalname);//SAMA
+void viewHospitals(Hospitals hospital[]);//SAMA
+void viewHospitalInfo(Hospitals hospital[], string Hospitalname);//SAMA
 
 bool loginAsPatient(Users patient[], int userCount, int& PIndex, string& email);//HABIBABASEL
 void registerpatient(Users patient[], int& patientCount, int& patientId);//HABIBABASEL
@@ -38,15 +38,15 @@ bool Type(Users user[], int& patientId, string& email);//MARWAN
 bool validPhoneNumber(string phoneNumber);//HABIBABASEL
 int infinit(int& num, int max, int min);//MARWAN
 void sort(Hospitals hos[]);//MARWAN
-int hospitalindex(Hospitals hospital[], int hospitalCount);//TOKA
-void Ambulancecall(Hospitals hospital[], int HospitalCount);//SAMA,HABIBABASEL
-void medicalLaboratory(Hospitals hospital[], int HospitalCount, Users user);//HABIBABASEL
-void pharmacy(Hospitals hospital[], int hospitalCount);//TOKA
+int hospitalindex(Hospitals hospital[]);//TOKA
+void Ambulancecall(Hospitals hospital[]);//SAMA,HABIBABASEL
+void medicalLaboratory(Hospitals hospital[], Users user);//HABIBABASEL
+void pharmacy(Hospitals hospital[]);//TOKA
 void FirstAid();//HABIBABASEL
 
 
 void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount, int& PIndex, Users user[]);//MARWAN.
-void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int PIndex);//YOUSSIF.
+void DisplayAsPatient(Hospitals hospital[], Users user[], int PIndex);//YOUSSIF.
 void main() {
 /*	RenderWindow window(VideoMode(800, 600), "Tester");
 	CircleShape shapest(50.0f);
@@ -97,13 +97,13 @@ void main() {
 			{
 				if (loginAsPatient(user, userCount, patientAccount, email)) {
 
-					DisplayAsPatient(hospital, hospitalCount, user, patientAccount);
+					DisplayAsPatient(hospital, user, patientAccount);
 				}
 			}
 		}
 
 		if (choice == 3) {
-			Ambulancecall(hospital, hospitalCount);
+			Ambulancecall(hospital);
 		}
 		if (choice == 4) {
 			FirstAid();
@@ -896,19 +896,19 @@ bool loginAsPatient(Users patient[], int userCount, int& index, string& email) {
 
 	return  loginstatus;
 }
-void viewHospitals(Hospitals hospital[], int HospitalCount) {
+void viewHospitals(Hospitals hospital[]) {
 
 	cout << "Available hospitals : - " << "\n";
-	for (int i = 0; i < HospitalCount; i++)
+	for (int i = 0; i < hospitalCount; i++)
 	{
 		cout << i + 1 << "- " << hospital[i].HospitalName << endl;
 	}
 }
-void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalname) {
+void viewHospitalInfo(Hospitals hospital[], string Hospitalname) {
 
 	bool found = false;
 
-	for (int i = 0; i < HospitalCount; i++)
+	for (int i = 0; i < hospitalCount; i++)
 	{
 		if (Hospitalname == hospital[i].HospitalName)
 		{
@@ -941,7 +941,7 @@ void viewHospitalInfo(Hospitals hospital[], int HospitalCount, string Hospitalna
 }
 void personalinfo(Users patient[], int PIndex) {
 	 cout << ".......................\n";
-	cout << "\Personal Info :-\n";
+	cout << "Personal Info :-\n";
 	cout << "ID: " << patient[PIndex].id << "\n";
 	cout << "Full Name: " << patient[PIndex].name << "\n";
 	cout << "Age: " << patient[PIndex].age << "\n";
@@ -1136,7 +1136,7 @@ void makeReservation(Users patient[], Hospitals hospital[] ,int PIndex) {
 			}
 			int choice = 0, choice2 = 0;
 
-			viewHospitals(hospital, hospitalCount);
+			viewHospitals(hospital);
 			cout << "Enter hospital number: ";
 			infinit(choice, hospitalCount, 1);
 			int index = choice - 1;
@@ -1145,7 +1145,7 @@ void makeReservation(Users patient[], Hospitals hospital[] ,int PIndex) {
 			cout << "Do you want see hospital info(y/n)? ";
 			cin >> Continue;
 			if (Continue == 'y' || Continue == 'Y')
-				viewHospitalInfo(hospital, hospitalCount, hospital[index].HospitalName);
+				viewHospitalInfo(hospital, hospital[index].HospitalName);
 			cout << "1. Surgery\n2. Check-up\nChoice: ";
 			infinit(choice2, 2, 1);
 			int dayNumber = 0, dayindex;
@@ -1296,7 +1296,7 @@ void modifyreservation(Users patient[], Hospitals hospital[], int PIndex) {
 						 int roomnumber;
 						 bool done = false;
 						char select;
-						index2 = hospitalindex(hospital, hospitalCount);
+						index2 = hospitalindex(hospital);
 						for (int z = 0; z < hospitalCount; z++) {
 							if (patient[PIndex].reservation[i].hospital.HospitalName == hospital[z].HospitalName)
 							{
@@ -1329,7 +1329,7 @@ void modifyreservation(Users patient[], Hospitals hospital[], int PIndex) {
 									  cout << "Do you want see hospital reservation info(y/n)? ";
 						cin >> select;
 						if (select == 'y' || select == 'Y')
-							viewHospitalInfo(hospital, hospitalCount, patient[PIndex].reservation[i].hospital.HospitalName);
+							viewHospitalInfo(hospital,  patient[PIndex].reservation[i].hospital.HospitalName);
 						break;
 					}
 					case 5:
@@ -1636,8 +1636,8 @@ bool validPhoneNumber(string phoneNumber) {
 	}
 	return true;
 }
-int hospitalindex(Hospitals hospital[], int hospitalCount) {
-	viewHospitals(hospital, hospitalCount);
+int hospitalindex(Hospitals hospital[]) {
+	viewHospitals(hospital);
 	int choice = 0;
 	cout << "Enter your choice: ";
 	infinit(choice, hospitalCount, 1);
@@ -1706,14 +1706,14 @@ void sort(Hospitals hos[])
 	}
 	
 }
-void Ambulancecall(Hospitals hospital[], int HospitalCount) {
+void Ambulancecall(Hospitals hospital[]) {
 	int choice;
 	string address;
 	string phoneNumber;
 	string Hospitalname;
-	viewHospitals(hospital, HospitalCount);
+	viewHospitals(hospital);
 	cout << "Enter the number of the nearest hospital to you : ";
-	infinit(choice, HospitalCount, 1);
+	infinit(choice, hospitalCount, 1);
 	int index = choice - 1;
 	Hospitalname = hospital[index].HospitalName;
 	cout << "Enter your address : ";
@@ -1730,7 +1730,7 @@ void Ambulancecall(Hospitals hospital[], int HospitalCount) {
 	cout << "An Ambulance is on its way to you ....";
 	cout << "\nWe will contact you on your number : " << phoneNumber << "\nkeep your phone available!..\n";
 }
-void medicalLaboratory(Hospitals hospital[], int HospitalCount, Users user) {
+void medicalLaboratory(Hospitals hospital[], Users user) {
 	 int choice, choice2, choice3, age;
 	 char Check;
 	 string labname, testname, Hospitalname, patientname, gender;
@@ -1800,9 +1800,9 @@ void medicalLaboratory(Hospitals hospital[], int HospitalCount, Users user) {
 		  cout << "Test or X-ray Name: " << testname << endl;
 	 }
 	 else if (choice == 2) {
-		  viewHospitals(hospital, HospitalCount);
+		  viewHospitals(hospital);
 		  cout << "\nEnter the number of the nearest hospital to you : ";
-		  infinit(choice2, HospitalCount, 1);
+		  infinit(choice2, hospitalCount, 1);
 		  int index = choice2 - 1;
 		  Hospitalname = hospital[index].HospitalName;
 		  for (int j = 0; j < 15; j++) {
@@ -1830,7 +1830,7 @@ void FirstAid() {
 	}
 	cout << "...........................";
 }
-void pharmacy(Hospitals hospital[], int hospitalCount) {
+void pharmacy(Hospitals hospital[]) {
 	 string medicines[20];
 	 int num_medicine;
 	 string adress;
@@ -1853,7 +1853,7 @@ void pharmacy(Hospitals hospital[], int hospitalCount) {
 	 cout << "where will you take the order?\n1. hospital\n2. home\nchoice: ";
 	 infinit(ans2, 2, 1);
 	 if (ans2 == 1) {
-		  viewHospitals(hospital, hospitalCount);
+		  viewHospitals(hospital);
 		  cout << "enter the number of hospital do you want to order from: ";
 		  infinit(ans, hospitalCount, 1);
 		  cout << "the total price : " << 100 + rand() % 230 << endl;
@@ -1907,11 +1907,11 @@ void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount, int& PIndex, Users
 			break;
 		case 5:
 			do {
-				viewHospitals(hospital, HospitalCount);
+				viewHospitals(hospital);
 				cout << "Enter hospital number: ";
 				infinit(HChoice, HospitalCount, 1);
 				Hindex = HChoice - 1;
-				viewHospitalInfo(hospital, HospitalCount, hospital[Hindex].HospitalName);
+				viewHospitalInfo(hospital, hospital[Hindex].HospitalName);
 
 				cout << "Do you want view another hospital(y/n) ?";
 				cin >> Cho;
@@ -1934,7 +1934,7 @@ void DisplayAsAdmin(Hospitals hospital[], int& HospitalCount, int& PIndex, Users
 		cout << "---------------------------------\n";
 	}
 }
-void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], int PIndex ) {
+void DisplayAsPatient(Hospitals hospital[], Users user[], int PIndex ) {
 	 cout << "Login successful ✓.\nWelcome " << user[PIndex].name << "(^0^)\n";
 	 cout << "********************\n";
 	 int option = 0;
@@ -1961,11 +1961,11 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 					PrintHospitalData(hospital);
 			   else {
 					do {
-						 viewHospitals(hospital, HospitalCount);
+						 viewHospitals(hospital);
 						 cout << "Enter hospital number: ";
-						 infinit(HChoice, HospitalCount, 1);
+						 infinit(HChoice, hospitalCount, 1);
 						 Hindex = HChoice - 1;
-						 viewHospitalInfo(hospital, HospitalCount , hospital[Hindex].HospitalName);
+						 viewHospitalInfo(hospital , hospital[Hindex].HospitalName);
 
 						 cout << "Do you want view another hospital(y/n) ?";
 						 cin >> Cho;
@@ -1992,13 +1992,13 @@ void DisplayAsPatient(Hospitals hospital[], int& HospitalCount, Users user[], in
 			   cancelreservation(user,  hospital,  PIndex);
 			   break;
 		  case 9:
-			   medicalLaboratory(hospital, HospitalCount, user[PIndex]);
+			   medicalLaboratory(hospital, user[PIndex]);
 			   break;
 		  case 10:
-			   pharmacy(hospital, HospitalCount);
+			   pharmacy(hospital);
 			   break;
 		  case 11:
-			   Ambulancecall(hospital, HospitalCount);
+			   Ambulancecall(hospital);
 			   break;
 		  case 12:
 			   LogOut(logOut, PIndex);
