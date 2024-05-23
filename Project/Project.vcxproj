@@ -133,6 +133,7 @@
     <ClCompile Include="project%27s code .cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="mainFun.h" />
     <ClInclude Include="Structs.h" />
   </ItemGroup>
   <ItemGroup>
