@@ -133,6 +133,11 @@
     <Text Include="Hospitalinfo.txt" />
     <Text Include="UserInfo.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="mainPage.resx">
+      <DependentUpon>mainPage.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

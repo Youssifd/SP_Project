@@ -3,10 +3,7 @@
 #include<fstream>
 #include<iostream>
 #include<string>
-#include <SFML/Graphics.hpp>
-
 using namespace std;
-using namespace sf;
 #define NumberOfHospital 10
 #define NumberOfReservation 20
 #define NumberOfUsers 20

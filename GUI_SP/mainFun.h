@@ -208,44 +208,15 @@ public:
 		  }
 	 }
 	 //admin
-	 bool loginAsAdmin(Users user[], int& PIndex, string& email) {
-		  int count = 0;
-		  bool loggedIn = false;
-		  char chForPass;
-		  do {
-			   string username, password = "";
-			   cout << "Enter username: ";
-			   cin >> username;
-			   cout << '\n';
-			   cout << "Enter password: ";
-			   while ((chForPass = getch()) != '\r') {
-					if (chForPass != '\b') {
-						 cout << "*";
-						 password += chForPass;
-					}
-					else if (!password.empty()) {
-						 cout << "\b \b";
-						 password.erase(password.size() - 1);
-					}
+	 bool loginAsAdmin(Users user[], Users& temp) {
+		  for (int i = 0; i < userCount; i++) {
+			   if (temp.username == user[i].username && temp.password == user[i].password && user[i].userType == "Admin") {
+					temp = user[i];
+					return true;
+
 			   }
-			   cout << '\n';
-			   for (int i = 0; i < userCount; i++) {
-					if (username == user[i].username && password == user[i].password && user[i].userType == "Admin" && email == user[i].email) {
-						 loggedIn = true;
-						 cout << "Login successful " << endl;
-						 cout << "--------------------------------\n";
-						 PIndex = i;
-						 break;
-					}
-			   }
-			   if (loggedIn)
-					break;
-			   else {
-					cout << "Login failed Please Try Agin\n";
-					count++;
-			   }
-		  } while (count < 5);
-		  return loggedIn;
+		  }
+		  return false;
 	 }
 	 void AddHospital(Hospitals hos[])
 	 {
@@ -722,57 +693,17 @@ public:
 		  cout << "Your ID is: " << newpatient.id << endl;
 		  cin.ignore();
 	 }
-	 bool loginAsPatient(Users patient[], int& index, string& email) {
-		  string username, password;
-		  char chForPass;
-		  int id = 0, choice;
-		  int count = 0;
+	 bool loginAsPatient(Users patient[], Users& temp) {
+
 		  bool loginstatus = false;
-		  do {
-			   password = "";
-			   cout << "Enter username: ";
-			   cin >> username;
-			   cout << "\n1 to Enter Password \n2 to Enter ID\n";
-			   cout << "(Enter your ID . if you forgot your Password)\n";
-			   cout << "Choice : ";
-			   infinit(choice, 2, 1);
-			   if (choice == 1) {
-
-					cout << "Enter password: ";
-					while ((chForPass = getch()) != '\r') {
-						 if (chForPass != '\b') {
-							  cout << "*";
-							  password += chForPass;
-						 }
-						 else if (!password.empty()) {
-							  cout << "\b \b";
-							  password.erase(password.size() - 1);
-						 }
-					}
-					cout << '\n';
-			   }
-			   else if (choice == 2) {
-					cout << "Enter ID: ";
-					cin >> id;
-			   }
-			   for (int i = 0; i < userCount; i++)
+		  for (int i = 0; i < userCount; i++) {
+			   if (patient[i].username == temp.username && patient[i].password == temp.password && patient[i].userType == "Patient")
 			   {
-					if ((patient[i].username == username && patient[i].password == password && email == patient[i].email) || (patient[i].username == username && patient[i].id == id && email == patient[i].email))
-					{
-						 index = i;
-						 loginstatus = true;			// Login successful
-						 break;
-					}
-			   }
-			   if (loginstatus)
+					temp = patient[i];
+					loginstatus = true;
 					break;
-			   else
-			   {
-					cout << "Login failed Please Try Agin\n";
-					count++;
 			   }
-		  } while (count < 5);
-
+		  }
 		  return  loginstatus;
 	 }
 	 void viewHospitals(Hospitals hospital[]) {
@@ -1475,40 +1406,6 @@ public:
 			   cout << i + 1 << "-" << hospital.HospitalClinics[i] << endl;
 		  }
 	 }
-	 bool Type(Users user[], int& patientId, string& email)
-	 {
-		  bool checkType = false;
-		  bool check = false;
-		  char choice;
-		  do
-		  {
-			   string Email = "";
-			   cout << "Plese Enter Your Email: ";
-			   cin >> Email;
-			   for (int i = 0; i < userCount; i++)
-			   {
-					if (Email == user[i].email)
-					{
-						 email = Email;
-						 check = true;
-						 if (Email.find("@Hadmin.com") != string::npos) {
-							  user[i].userType = "Admin";
-							  checkType = true; // admin
-
-							  break;
-						 }
-					}
-			   }
-			   if (!check) {
-					cout << "Email Not Found\n";
-					cout << "Do You Want registration ? (y|n): ";
-					cin >> choice;
-					if (choice == 'y' || choice == 'Y')
-						 registerpatient(user, patientId);
-			   }
-		  } while (!check);
-		  return checkType;
-	 }
 	 bool validPhoneNumber(string phoneNumber) {
 		  if (phoneNumber.size() != 11 || phoneNumber[0] != '0' || phoneNumber[1] != '1') {
 			   return false;
@@ -1559,7 +1456,7 @@ public:
 					cout << "Invalid input ✕.\nPlease enter a valid number: ";
 			   }
 			   cin.clear();
-			   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			   cin.ignore();
 		  }
 	 }
 	 void sort(Hospitals hos[])
@@ -1587,4 +1484,3 @@ public:
 	 }
 
 };
-
