@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include"Structs.h"
+
 class mainFun
 {
 public:
@@ -749,19 +750,8 @@ public:
 
 
 	 }
-	 void personalinfo(Users patient[], int PIndex) {
-		  cout << ".......................\n";
-		  cout << "Personal Info :-\n";
-		  cout << "ID: " << patient[PIndex].id << "\n";
-		  cout << "Full Name: " << patient[PIndex].name << "\n";
-		  cout << "Age: " << patient[PIndex].age << "\n";
-		  cout << "Phone Number: " << patient[PIndex].phonenumber << "\n";
-		  cout << "Gender: " << patient[PIndex].gender << endl;
-		  cout << "Usename: " << patient[PIndex].username << "\n";
-		  cout << "Email: " << patient[PIndex].email << "\n";
-		  cout << "Password: " << patient[PIndex].password << "\n";
-		  if (patient[PIndex].userType == "Patient")
-			   cout << "Number of your reservation: " << patient[PIndex].reserCount << endl;
+	 void personalinfo(Users patient[]) {
+		 
 	 }
 	 void editpatientinfo(Users patient[], int PIndex) {
 

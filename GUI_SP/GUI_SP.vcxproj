@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -124,9 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainFun.h" />
-    <ClInclude Include="mainPage.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
+    <ClInclude Include="mainPage.h" />
     <ClInclude Include="Structs.h" />
   </ItemGroup>
   <ItemGroup>
@@ -134,9 +132,7 @@
     <Text Include="UserInfo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="mainPage.resx">
-      <DependentUpon>mainPage.h</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="mainPage.resx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
