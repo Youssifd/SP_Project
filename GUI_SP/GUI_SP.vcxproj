@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{C4332694-9D08-4EE0-A077-6B468F367663}</ProjectGuid>
+    <ProjectGuid>{AC74A6D6-6FAB-4A12-8E68-3C0912AB2D20}</ProjectGuid>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>GUISP</RootNamespace>
@@ -130,13 +130,7 @@
     <ClInclude Include="Structs.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Hospitalinfo.txt" />
-    <Text Include="UserInfo.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="mainPage.resx">
-      <DependentUpon>mainPage.h</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="mainPage.resx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

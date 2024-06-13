@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include"Structs.h"
+
 class mainFun
 {
 public:
@@ -564,134 +565,56 @@ public:
 		  } while (answer == 'y' || answer == 'Y');
 	 }
 	 //patient
-	 void registerpatient(Users patient[], int& patientId)
+	 void registerpatient(Users patient[], Users temp)
 	 {
-		  Users newpatient;
-		  cin.ignore();
-		  cout << "Enter your full name: ";
-		  getline(cin, newpatient.name);
-		  string newusername;
+
 		  bool usernameExists;
-		  do
+
+		  usernameExists = false;
+
+
+
+		  for (int i = 0; i < userCount; i++)
 		  {
-			   usernameExists = false;
-
-			   cout << "Enter username: ";
-			   cin >> newusername;
-
-			   for (int i = 0; i < userCount; i++)
+			   if (patient[i].username == temp.username)
 			   {
-					if (patient[i].username == newusername)
-					{
-						 cout << "Username already exists. \nPlease choose a different username.\n";
-						 usernameExists = true;
-						 break;
-					}
+
+					usernameExists = true;
+					break;
 			   }
-		  } while (usernameExists);
+		  }
+		  /* bool phoneNumExist = true;
+		   do {
+				int counter = 5;
 
-		  newpatient.username = newusername;
+				for (int i = 0; i < userCount; i++) {
 
-		  int age;
-		  bool validAge = false;
+					 if (temp.phonenumber == patient[i].phonenumber) {
+						  cout << "This Phone number is exist try again\n";
+						  phoneNumExist = true;
+						  break;
+					 }
+					 else {
+						  phoneNumExist = false;
+					 }
 
-		  do {
-			   cout << "Enter age: ";
-			   cin >> age;
-			   if (age < 18) {
-					char choice;
-					cout << "Invalid age. Age must be 18 or older.\n";
-					bool correctchoice = false;
-					while (correctchoice == false)
-					{
+				}
+		   } while (phoneNumExist);
+		   may be make it in GUI
+		   */
 
-						 cout << "Enter 'v' to enter a valid age or 'e' to exit: ";
-						 cin >> choice;
-						 if (choice == 'e' || choice == 'E' || choice == 'v' || choice == 'V') {
-							  correctchoice = true;
 
-						 }
-						 else
-							  cout << "Invalid option selected.\n";
-					}
-					if (choice == 'e' || choice == 'E') {
-						 return;
-					}
+		   /*if (choiceGender == 1)
+				newpatient.gender = "Male";
+		   else
+				newpatient.gender = "Female";
+				may be important */
+		  temp.email = temp.username + "@Huser.com";
 
-			   }
-			   else if (age >= 18)
-			   {
-					validAge = true;
-			   }
-		  } while (!validAge);
-
-		  newpatient.age = age;
-		  string phoneNumber;
-		  bool phoneNumExist = true;
-		  do {
-			   int counter = 5;
-			   do {
-					cout << "Enter your Phone Number (Example : 01*********): ";
-					cin >> phoneNumber;
-					if (!validPhoneNumber(phoneNumber)) {
-						 counter--;
-						 if (counter == 0) {
-							  cout << "registeration failed :(\n";
-							  return;
-						 }
-						 cout << "Invalid phone number.\nYou have " << counter << " attempts left Please try again\n";
-					}
-			   } while (!validPhoneNumber(phoneNumber));
-			   for (int i = 0; i < userCount; i++) {
-
-					if (phoneNumber == patient[i].phonenumber) {
-						 cout << "This Phone number is exist try again\n";
-						 phoneNumExist = true;
-						 break;
-					}
-					else {
-						 phoneNumExist = false;
-					}
-
-			   }
-		  } while (phoneNumExist);
-		  newpatient.phonenumber = phoneNumber;
-		  cout << "Phone number accepted.\n";
-		  int choiceGender = 0;
-		  cout << "Select your gender:\n1-Male.\n2-Female.\nChoice:";
-		  infinit(choiceGender, 2, 1);
-		  if (choiceGender == 1)
-			   newpatient.gender = "Male";
-		  else
-			   newpatient.gender = "Female";
-
-		  string password, confirmpassword;
-		  bool equal = false;
-		  do {
-			   cout << "Password: ";
-			   cin >> password;
-
-			   cout << "Confirm Password: ";
-			   cin >> confirmpassword;
-			   if (password == confirmpassword) {
-					equal = true;
-			   }
-			   else {
-					cout << "Passwords do not match . Please try again\n";
-			   }
-		  } while (!equal);
-		  newpatient.password = password;
-		  newpatient.email = newpatient.username + "@Huser.com";
-
-		  newpatient.id = patientId;
-		  patientId++;
-		  patient[userCount] = newpatient;
+		  temp.id = userID;
+		  userID++;
+		  patient[userCount] = temp;
 		  userCount++;
-
-		  cout << "Patient registered successfully!\n";
-		  cout << "Your Email is: " << newpatient.email << endl;
-		  cout << "Your ID is: " << newpatient.id << endl;
-		  cin.ignore();
 	 }
 	 bool loginAsPatient(Users patient[], Users& temp) {
 
@@ -749,20 +672,7 @@ public:
 
 
 	 }
-	 void personalinfo(Users patient[], int PIndex) {
-		  cout << ".......................\n";
-		  cout << "Personal Info :-\n";
-		  cout << "ID: " << patient[PIndex].id << "\n";
-		  cout << "Full Name: " << patient[PIndex].name << "\n";
-		  cout << "Age: " << patient[PIndex].age << "\n";
-		  cout << "Phone Number: " << patient[PIndex].phonenumber << "\n";
-		  cout << "Gender: " << patient[PIndex].gender << endl;
-		  cout << "Usename: " << patient[PIndex].username << "\n";
-		  cout << "Email: " << patient[PIndex].email << "\n";
-		  cout << "Password: " << patient[PIndex].password << "\n";
-		  if (patient[PIndex].userType == "Patient")
-			   cout << "Number of your reservation: " << patient[PIndex].reserCount << endl;
-	 }
+	
 	 void editpatientinfo(Users patient[], int PIndex) {
 
 		  int editChoice = 0;

@@ -55,4 +55,4 @@ struct Users {
 	 string gender;
 	 Reservations* reservation = new Reservations[NumberOfReservation];
 };
-int  reservationID = 101, labReservation = 501, userCount = 0, hospitalCount = 0;
+int  reservationID = 101, labReservation = 501, userCount = 0, hospitalCount = 0,userID=1001;

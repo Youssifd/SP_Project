@@ -15,6 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="mainPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="mainPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -26,16 +31,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Hospitalinfo.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="UserInfo.txt">
-      <Filter>Source Files</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="mainPage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <EmbeddedResource Include="mainPage.resx">
+      <Filter>Header Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
