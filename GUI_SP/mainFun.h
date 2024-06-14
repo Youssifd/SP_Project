@@ -211,7 +211,7 @@ public:
 	 //admin
 	 bool loginAsAdmin(Users user[], Users& temp) {
 		  for (int i = 0; i < userCount; i++) {
-			   if (temp.username == user[i].username && temp.password == user[i].password && user[i].userType == "Admin") {
+			   if (temp.username == user[i].username && (temp.password == user[i].password||temp.id==user[i].id) && user[i].userType == "Admin") {
 					temp = user[i];
 					return true;
 
@@ -620,7 +620,7 @@ public:
 
 		  bool loginstatus = false;
 		  for (int i = 0; i < userCount; i++) {
-			   if (patient[i].username == temp.username && patient[i].password == temp.password && patient[i].userType == "Patient")
+			   if (patient[i].username == temp.username && (temp.password == patient[i].password || temp.id == patient[i].id) && patient[i].userType == "Patient")
 			   {
 					temp = patient[i];
 					loginstatus = true;
