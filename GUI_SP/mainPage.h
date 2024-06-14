@@ -5,6 +5,7 @@
 mainFun f;
 Users user[NumberOfUsers], temp;
 Hospitals hospital[NumberOfHospital];
+
 namespace GUISP {
 
 	 using namespace System;
@@ -93,7 +94,7 @@ namespace GUISP {
 	 private: System::Windows::Forms::Panel^ AD_view_Hinfo;
 	 private: System::Windows::Forms::Label^ label1;
 	 private: System::Windows::Forms::Label^ label5;
-	 private: System::Windows::Forms::Label^ label6;
+
 	 private: System::Windows::Forms::Panel^ AD_editAinfo;
 	 private: System::Windows::Forms::Label^ label8;
 	 private: System::Windows::Forms::Panel^ AD_viewAinfo;
@@ -102,7 +103,8 @@ namespace GUISP {
 	 private: System::Windows::Forms::Panel^ PA_startwindow;
 	 private: System::Windows::Forms::Label^ label9;
 	 private: System::Windows::Forms::Panel^ PA_viewHinfo;
-	 private: System::Windows::Forms::Label^ label10;
+	 private: System::Windows::Forms::Label^ PA_Hinfo_ID;
+
 	 private: System::Windows::Forms::Panel^ PA_reservlist;
 	 private: System::Windows::Forms::Label^ label11;
 	 private: System::Windows::Forms::Panel^ PA_ModifyReserv;
@@ -226,6 +228,51 @@ private: System::Windows::Forms::Panel^ PA_modifyHRTRDsLayout;
 private: System::Windows::Forms::ComboBox^ PA_listOfHRtypeRdays;
 private: System::Windows::Forms::Label^ PA_StateOflist;
 private: System::Windows::Forms::Label^ PA_OrderOflist;
+private: System::Windows::Forms::Panel^ PA_viewHinfoHeader;
+private: System::Windows::Forms::ComboBox^ PA_viewHList;
+
+
+private: System::Windows::Forms::Label^ PA_Hinfo_Beds_AvaiNum;
+
+private: System::Windows::Forms::Label^ PA_Hinfo_rate;
+private: System::Windows::Forms::Label^ PA_Hinfo_Name;
+
+private: System::Windows::Forms::Label^ PA_Hinfo_Bedprice;
+
+private: System::Windows::Forms::Label^ PA_Hinfo_surgeryprice;
+
+private: System::Windows::Forms::Label^ PA_Hinfo_Rprice;
+private: System::Windows::Forms::ComboBox^ PA_Hinfo_HSplist;
+private: System::Windows::Forms::ComboBox^ PA_Hinfo_HCLlist;
+private: System::Windows::Forms::Button^ PA_viewHButton;
+
+private: System::Windows::Forms::ComboBox^ AD_viewHinfo_HCllist;
+
+private: System::Windows::Forms::ComboBox^ AD_viewHinfo_HSplist;
+
+private: System::Windows::Forms::Label^ AD_viewHinfo_BedsPrice;
+
+private: System::Windows::Forms::Label^ AD_viewHinfo_surgeryPrice;
+
+private: System::Windows::Forms::Label^ AD_viewHinfo_Rprice;
+
+private: System::Windows::Forms::Label^ AD_viewHinfo_bedsAva;
+
+private: System::Windows::Forms::Label^ AD_viewHinfo_Rate;
+
+private: System::Windows::Forms::Label^ AD_viewHinfo_Name;
+
+private: System::Windows::Forms::Panel^ AD_viewHinfoHeader;
+private: System::Windows::Forms::Button^ AD_viewHbutton;
+
+private: System::Windows::Forms::ComboBox^ AD_viewHList;
+
+
+private: System::Windows::Forms::Label^ AD_viewHinfo_ID;
+
+
+
+
 	 protected:
 	 private:
 		  System::ComponentModel::Container^ components;
@@ -264,6 +311,19 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->warning_massage = (gcnew System::Windows::Forms::Label());
 			   this->AD_conpage = (gcnew System::Windows::Forms::Panel());
 			   this->AD_pages = (gcnew System::Windows::Forms::Panel());
+			   this->AD_view_Hinfo = (gcnew System::Windows::Forms::Panel());
+			   this->AD_viewHinfo_HCllist = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_viewHinfo_HSplist = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_viewHinfo_BedsPrice = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewHinfo_surgeryPrice = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewHinfo_Rprice = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewHinfo_bedsAva = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewHinfo_Rate = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewHinfo_Name = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewHinfoHeader = (gcnew System::Windows::Forms::Panel());
+			   this->AD_viewHbutton = (gcnew System::Windows::Forms::Button());
+			   this->AD_viewHList = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_viewHinfo_ID = (gcnew System::Windows::Forms::Label());
 			   this->AD_modify_Hinfo = (gcnew System::Windows::Forms::Panel());
 			   this->AD_Modifyinput = (gcnew System::Windows::Forms::Panel());
 			   this->AD_ModifyHSClist = (gcnew System::Windows::Forms::ComboBox());
@@ -329,8 +389,6 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->AD_view_Pinfo = (gcnew System::Windows::Forms::Panel());
 			   this->label5 = (gcnew System::Windows::Forms::Label());
-			   this->AD_view_Hinfo = (gcnew System::Windows::Forms::Panel());
-			   this->label6 = (gcnew System::Windows::Forms::Label());
 			   this->side_AD_bar_pn = (gcnew System::Windows::Forms::Panel());
 			   this->AD_logout_but = (gcnew System::Windows::Forms::Button());
 			   this->AD_dispatient_hos_but = (gcnew System::Windows::Forms::Button());
@@ -345,6 +403,19 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->AD_pic = (gcnew System::Windows::Forms::PictureBox());
 			   this->PA_conpage = (gcnew System::Windows::Forms::Panel());
 			   this->PA_pages = (gcnew System::Windows::Forms::Panel());
+			   this->PA_viewHinfo = (gcnew System::Windows::Forms::Panel());
+			   this->PA_Hinfo_HCLlist = (gcnew System::Windows::Forms::ComboBox());
+			   this->PA_Hinfo_HSplist = (gcnew System::Windows::Forms::ComboBox());
+			   this->PA_Hinfo_Bedprice = (gcnew System::Windows::Forms::Label());
+			   this->PA_Hinfo_surgeryprice = (gcnew System::Windows::Forms::Label());
+			   this->PA_Hinfo_Rprice = (gcnew System::Windows::Forms::Label());
+			   this->PA_Hinfo_Beds_AvaiNum = (gcnew System::Windows::Forms::Label());
+			   this->PA_Hinfo_rate = (gcnew System::Windows::Forms::Label());
+			   this->PA_Hinfo_Name = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewHinfoHeader = (gcnew System::Windows::Forms::Panel());
+			   this->PA_viewHButton = (gcnew System::Windows::Forms::Button());
+			   this->PA_viewHList = (gcnew System::Windows::Forms::ComboBox());
+			   this->PA_Hinfo_ID = (gcnew System::Windows::Forms::Label());
 			   this->PA_ModifyReserv = (gcnew System::Windows::Forms::Panel());
 			   this->PA_modifyHRTRDsLayout = (gcnew System::Windows::Forms::Panel());
 			   this->PA_listOfHRtypeRdays = (gcnew System::Windows::Forms::ComboBox());
@@ -410,8 +481,6 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->PA_PID = (gcnew System::Windows::Forms::Label());
 			   this->PA_startwindow = (gcnew System::Windows::Forms::Panel());
 			   this->label9 = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewHinfo = (gcnew System::Windows::Forms::Panel());
-			   this->label10 = (gcnew System::Windows::Forms::Label());
 			   this->PA_reservlist = (gcnew System::Windows::Forms::Panel());
 			   this->label11 = (gcnew System::Windows::Forms::Label());
 			   this->PA_editPinfo = (gcnew System::Windows::Forms::Panel());
@@ -433,6 +502,8 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->login_pn->SuspendLayout();
 			   this->AD_conpage->SuspendLayout();
 			   this->AD_pages->SuspendLayout();
+			   this->AD_view_Hinfo->SuspendLayout();
+			   this->AD_viewHinfoHeader->SuspendLayout();
 			   this->AD_modify_Hinfo->SuspendLayout();
 			   this->AD_Modifyinput->SuspendLayout();
 			   this->AD_modifyHSC_layout->SuspendLayout();
@@ -448,12 +519,13 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->AD_editAinfo->SuspendLayout();
 			   this->AD_startWindow->SuspendLayout();
 			   this->AD_view_Pinfo->SuspendLayout();
-			   this->AD_view_Hinfo->SuspendLayout();
 			   this->side_AD_bar_pn->SuspendLayout();
 			   this->AD_info_pn->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AD_pic))->BeginInit();
 			   this->PA_conpage->SuspendLayout();
 			   this->PA_pages->SuspendLayout();
+			   this->PA_viewHinfo->SuspendLayout();
+			   this->PA_viewHinfoHeader->SuspendLayout();
 			   this->PA_ModifyReserv->SuspendLayout();
 			   this->PA_modifyHRTRDsLayout->SuspendLayout();
 			   this->PA_editNAPhnumlayout->SuspendLayout();
@@ -467,7 +539,6 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			   this->PA_viewPinfo->SuspendLayout();
 			   this->PA_startwindow->SuspendLayout();
-			   this->PA_viewHinfo->SuspendLayout();
 			   this->PA_reservlist->SuspendLayout();
 			   this->PA_editPinfo->SuspendLayout();
 			   this->side_PA_bar_pn->SuspendLayout();
@@ -809,18 +880,173 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   // 
 			   // AD_pages
 			   // 
+			   this->AD_pages->Controls->Add(this->AD_view_Hinfo);
 			   this->AD_pages->Controls->Add(this->AD_modify_Hinfo);
 			   this->AD_pages->Controls->Add(this->AD_viewAinfo);
 			   this->AD_pages->Controls->Add(this->AD_edit_Hlist);
 			   this->AD_pages->Controls->Add(this->AD_editAinfo);
 			   this->AD_pages->Controls->Add(this->AD_startWindow);
 			   this->AD_pages->Controls->Add(this->AD_view_Pinfo);
-			   this->AD_pages->Controls->Add(this->AD_view_Hinfo);
 			   this->AD_pages->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_pages->Location = System::Drawing::Point(273, 0);
 			   this->AD_pages->Name = L"AD_pages";
 			   this->AD_pages->Size = System::Drawing::Size(757, 654);
 			   this->AD_pages->TabIndex = 1;
+			   // 
+			   // AD_view_Hinfo
+			   // 
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_HCllist);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_HSplist);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_ID);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_BedsPrice);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_surgeryPrice);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Rprice);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_bedsAva);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Rate);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Name);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfoHeader);
+			   this->AD_view_Hinfo->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_view_Hinfo->Location = System::Drawing::Point(0, 0);
+			   this->AD_view_Hinfo->Name = L"AD_view_Hinfo";
+			   this->AD_view_Hinfo->Size = System::Drawing::Size(757, 654);
+			   this->AD_view_Hinfo->TabIndex = 0;
+			   // 
+			   // AD_viewHinfo_HCllist
+			   // 
+			   this->AD_viewHinfo_HCllist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_HCllist->FormattingEnabled = true;
+			   this->AD_viewHinfo_HCllist->Location = System::Drawing::Point(441, 333);
+			   this->AD_viewHinfo_HCllist->Name = L"AD_viewHinfo_HCllist";
+			   this->AD_viewHinfo_HCllist->Size = System::Drawing::Size(252, 34);
+			   this->AD_viewHinfo_HCllist->TabIndex = 9;
+			   this->AD_viewHinfo_HCllist->Text = L"Hospital Clinics";
+			   // 
+			   // AD_viewHinfo_HSplist
+			   // 
+			   this->AD_viewHinfo_HSplist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_HSplist->FormattingEnabled = true;
+			   this->AD_viewHinfo_HSplist->Location = System::Drawing::Point(441, 197);
+			   this->AD_viewHinfo_HSplist->Name = L"AD_viewHinfo_HSplist";
+			   this->AD_viewHinfo_HSplist->Size = System::Drawing::Size(252, 34);
+			   this->AD_viewHinfo_HSplist->TabIndex = 8;
+			   this->AD_viewHinfo_HSplist->Text = L"Hospital Specialties";
+			   // 
+			   // AD_viewHinfo_BedsPrice
+			   // 
+			   this->AD_viewHinfo_BedsPrice->AutoSize = true;
+			   this->AD_viewHinfo_BedsPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_BedsPrice->Location = System::Drawing::Point(26, 514);
+			   this->AD_viewHinfo_BedsPrice->Name = L"AD_viewHinfo_BedsPrice";
+			   this->AD_viewHinfo_BedsPrice->Size = System::Drawing::Size(159, 36);
+			   this->AD_viewHinfo_BedsPrice->TabIndex = 7;
+			   this->AD_viewHinfo_BedsPrice->Text = L"Beds Price";
+			   // 
+			   // AD_viewHinfo_surgeryPrice
+			   // 
+			   this->AD_viewHinfo_surgeryPrice->AutoSize = true;
+			   this->AD_viewHinfo_surgeryPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_surgeryPrice->Location = System::Drawing::Point(25, 445);
+			   this->AD_viewHinfo_surgeryPrice->Name = L"AD_viewHinfo_surgeryPrice";
+			   this->AD_viewHinfo_surgeryPrice->Size = System::Drawing::Size(196, 36);
+			   this->AD_viewHinfo_surgeryPrice->TabIndex = 6;
+			   this->AD_viewHinfo_surgeryPrice->Text = L"Surgery Price";
+			   // 
+			   // AD_viewHinfo_Rprice
+			   // 
+			   this->AD_viewHinfo_Rprice->AutoSize = true;
+			   this->AD_viewHinfo_Rprice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_Rprice->Location = System::Drawing::Point(25, 376);
+			   this->AD_viewHinfo_Rprice->Name = L"AD_viewHinfo_Rprice";
+			   this->AD_viewHinfo_Rprice->Size = System::Drawing::Size(227, 36);
+			   this->AD_viewHinfo_Rprice->TabIndex = 5;
+			   this->AD_viewHinfo_Rprice->Text = L"Check-UP Price";
+			   // 
+			   // AD_viewHinfo_bedsAva
+			   // 
+			   this->AD_viewHinfo_bedsAva->AutoSize = true;
+			   this->AD_viewHinfo_bedsAva->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_bedsAva->Location = System::Drawing::Point(25, 307);
+			   this->AD_viewHinfo_bedsAva->Name = L"AD_viewHinfo_bedsAva";
+			   this->AD_viewHinfo_bedsAva->Size = System::Drawing::Size(213, 36);
+			   this->AD_viewHinfo_bedsAva->TabIndex = 4;
+			   this->AD_viewHinfo_bedsAva->Text = L"Beds Avaliable";
+			   // 
+			   // AD_viewHinfo_Rate
+			   // 
+			   this->AD_viewHinfo_Rate->AutoSize = true;
+			   this->AD_viewHinfo_Rate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_Rate->Location = System::Drawing::Point(25, 238);
+			   this->AD_viewHinfo_Rate->Name = L"AD_viewHinfo_Rate";
+			   this->AD_viewHinfo_Rate->Size = System::Drawing::Size(193, 36);
+			   this->AD_viewHinfo_Rate->TabIndex = 3;
+			   this->AD_viewHinfo_Rate->Text = L"Hospital Rate";
+			   // 
+			   // AD_viewHinfo_Name
+			   // 
+			   this->AD_viewHinfo_Name->AutoSize = true;
+			   this->AD_viewHinfo_Name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_Name->Location = System::Drawing::Point(24, 169);
+			   this->AD_viewHinfo_Name->Name = L"AD_viewHinfo_Name";
+			   this->AD_viewHinfo_Name->Size = System::Drawing::Size(208, 36);
+			   this->AD_viewHinfo_Name->TabIndex = 2;
+			   this->AD_viewHinfo_Name->Text = L"Hospital Name";
+			   // 
+			   // AD_viewHinfoHeader
+			   // 
+			   this->AD_viewHinfoHeader->Controls->Add(this->AD_viewHbutton);
+			   this->AD_viewHinfoHeader->Controls->Add(this->AD_viewHList);
+			   this->AD_viewHinfoHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->AD_viewHinfoHeader->Location = System::Drawing::Point(0, 0);
+			   this->AD_viewHinfoHeader->Name = L"AD_viewHinfoHeader";
+			   this->AD_viewHinfoHeader->Size = System::Drawing::Size(757, 84);
+			   this->AD_viewHinfoHeader->TabIndex = 1;
+			   // 
+			   // AD_viewHbutton
+			   // 
+			   this->AD_viewHbutton->FlatAppearance->BorderSize = 0;
+			   this->AD_viewHbutton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_viewHbutton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_viewHbutton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_viewHbutton.Image")));
+			   this->AD_viewHbutton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
+			   this->AD_viewHbutton->Location = System::Drawing::Point(399, 23);
+			   this->AD_viewHbutton->Margin = System::Windows::Forms::Padding(3, 50, 3, 3);
+			   this->AD_viewHbutton->Name = L"AD_viewHbutton";
+			   this->AD_viewHbutton->Size = System::Drawing::Size(119, 36);
+			   this->AD_viewHbutton->TabIndex = 5;
+			   this->AD_viewHbutton->Text = L"View";
+			   this->AD_viewHbutton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->AD_viewHbutton->UseVisualStyleBackColor = true;
+			   // 
+			   // AD_viewHList
+			   // 
+			   this->AD_viewHList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHList->FormattingEnabled = true;
+			   this->AD_viewHList->Location = System::Drawing::Point(33, 21);
+			   this->AD_viewHList->Name = L"AD_viewHList";
+			   this->AD_viewHList->Size = System::Drawing::Size(247, 37);
+			   this->AD_viewHList->TabIndex = 0;
+			   this->AD_viewHList->Text = L"Hospital list";
+			   // 
+			   // AD_viewHinfo_ID
+			   // 
+			   this->AD_viewHinfo_ID->AutoSize = true;
+			   this->AD_viewHinfo_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_ID->Location = System::Drawing::Point(25, 111);
+			   this->AD_viewHinfo_ID->Name = L"AD_viewHinfo_ID";
+			   this->AD_viewHinfo_ID->Size = System::Drawing::Size(160, 36);
+			   this->AD_viewHinfo_ID->TabIndex = 0;
+			   this->AD_viewHinfo_ID->Text = L"Hospital ID";
 			   // 
 			   // AD_modify_Hinfo
 			   // 
@@ -1630,26 +1856,6 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->label5->TabIndex = 1;
 			   this->label5->Text = L"label5";
 			   // 
-			   // AD_view_Hinfo
-			   // 
-			   this->AD_view_Hinfo->Controls->Add(this->label6);
-			   this->AD_view_Hinfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_view_Hinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_view_Hinfo->Name = L"AD_view_Hinfo";
-			   this->AD_view_Hinfo->Size = System::Drawing::Size(757, 654);
-			   this->AD_view_Hinfo->TabIndex = 0;
-			   // 
-			   // label6
-			   // 
-			   this->label6->AutoSize = true;
-			   this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 23.81538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->label6->Location = System::Drawing::Point(335, 302);
-			   this->label6->Name = L"label6";
-			   this->label6->Size = System::Drawing::Size(138, 51);
-			   this->label6->TabIndex = 1;
-			   this->label6->Text = L"label6";
-			   // 
 			   // side_AD_bar_pn
 			   // 
 			   this->side_AD_bar_pn->BackColor = System::Drawing::SystemColors::ActiveCaption;
@@ -1832,11 +2038,11 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   // 
 			   // PA_pages
 			   // 
+			   this->PA_pages->Controls->Add(this->PA_viewHinfo);
 			   this->PA_pages->Controls->Add(this->PA_ModifyReserv);
 			   this->PA_pages->Controls->Add(this->PA_editReserv);
 			   this->PA_pages->Controls->Add(this->PA_viewPinfo);
 			   this->PA_pages->Controls->Add(this->PA_startwindow);
-			   this->PA_pages->Controls->Add(this->PA_viewHinfo);
 			   this->PA_pages->Controls->Add(this->PA_reservlist);
 			   this->PA_pages->Controls->Add(this->PA_editPinfo);
 			   this->PA_pages->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -1844,6 +2050,161 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->PA_pages->Name = L"PA_pages";
 			   this->PA_pages->Size = System::Drawing::Size(766, 654);
 			   this->PA_pages->TabIndex = 3;
+			   // 
+			   // PA_viewHinfo
+			   // 
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_HCLlist);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_HSplist);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_Bedprice);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_surgeryprice);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_Rprice);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_Beds_AvaiNum);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_rate);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_Name);
+			   this->PA_viewHinfo->Controls->Add(this->PA_viewHinfoHeader);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_ID);
+			   this->PA_viewHinfo->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->PA_viewHinfo->Location = System::Drawing::Point(0, 0);
+			   this->PA_viewHinfo->Name = L"PA_viewHinfo";
+			   this->PA_viewHinfo->Size = System::Drawing::Size(766, 654);
+			   this->PA_viewHinfo->TabIndex = 5;
+			   // 
+			   // PA_Hinfo_HCLlist
+			   // 
+			   this->PA_Hinfo_HCLlist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_HCLlist->FormattingEnabled = true;
+			   this->PA_Hinfo_HCLlist->Location = System::Drawing::Point(441, 333);
+			   this->PA_Hinfo_HCLlist->Name = L"PA_Hinfo_HCLlist";
+			   this->PA_Hinfo_HCLlist->Size = System::Drawing::Size(252, 34);
+			   this->PA_Hinfo_HCLlist->TabIndex = 9;
+			   this->PA_Hinfo_HCLlist->Text = L"Hospital Clinics";
+			   // 
+			   // PA_Hinfo_HSplist
+			   // 
+			   this->PA_Hinfo_HSplist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_HSplist->FormattingEnabled = true;
+			   this->PA_Hinfo_HSplist->Location = System::Drawing::Point(441, 197);
+			   this->PA_Hinfo_HSplist->Name = L"PA_Hinfo_HSplist";
+			   this->PA_Hinfo_HSplist->Size = System::Drawing::Size(252, 34);
+			   this->PA_Hinfo_HSplist->TabIndex = 8;
+			   this->PA_Hinfo_HSplist->Text = L"Hospital Specialties";
+			   // 
+			   // PA_Hinfo_Bedprice
+			   // 
+			   this->PA_Hinfo_Bedprice->AutoSize = true;
+			   this->PA_Hinfo_Bedprice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_Bedprice->Location = System::Drawing::Point(26, 514);
+			   this->PA_Hinfo_Bedprice->Name = L"PA_Hinfo_Bedprice";
+			   this->PA_Hinfo_Bedprice->Size = System::Drawing::Size(159, 36);
+			   this->PA_Hinfo_Bedprice->TabIndex = 7;
+			   this->PA_Hinfo_Bedprice->Text = L"Beds Price";
+			   // 
+			   // PA_Hinfo_surgeryprice
+			   // 
+			   this->PA_Hinfo_surgeryprice->AutoSize = true;
+			   this->PA_Hinfo_surgeryprice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_surgeryprice->Location = System::Drawing::Point(25, 445);
+			   this->PA_Hinfo_surgeryprice->Name = L"PA_Hinfo_surgeryprice";
+			   this->PA_Hinfo_surgeryprice->Size = System::Drawing::Size(196, 36);
+			   this->PA_Hinfo_surgeryprice->TabIndex = 6;
+			   this->PA_Hinfo_surgeryprice->Text = L"Surgery Price";
+			   // 
+			   // PA_Hinfo_Rprice
+			   // 
+			   this->PA_Hinfo_Rprice->AutoSize = true;
+			   this->PA_Hinfo_Rprice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_Rprice->Location = System::Drawing::Point(25, 376);
+			   this->PA_Hinfo_Rprice->Name = L"PA_Hinfo_Rprice";
+			   this->PA_Hinfo_Rprice->Size = System::Drawing::Size(224, 36);
+			   this->PA_Hinfo_Rprice->TabIndex = 5;
+			   this->PA_Hinfo_Rprice->Text = L"Check-UP price";
+			   // 
+			   // PA_Hinfo_Beds_AvaiNum
+			   // 
+			   this->PA_Hinfo_Beds_AvaiNum->AutoSize = true;
+			   this->PA_Hinfo_Beds_AvaiNum->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_Beds_AvaiNum->Location = System::Drawing::Point(25, 307);
+			   this->PA_Hinfo_Beds_AvaiNum->Name = L"PA_Hinfo_Beds_AvaiNum";
+			   this->PA_Hinfo_Beds_AvaiNum->Size = System::Drawing::Size(213, 36);
+			   this->PA_Hinfo_Beds_AvaiNum->TabIndex = 4;
+			   this->PA_Hinfo_Beds_AvaiNum->Text = L"Beds Avaliable";
+			   // 
+			   // PA_Hinfo_rate
+			   // 
+			   this->PA_Hinfo_rate->AutoSize = true;
+			   this->PA_Hinfo_rate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_rate->Location = System::Drawing::Point(25, 238);
+			   this->PA_Hinfo_rate->Name = L"PA_Hinfo_rate";
+			   this->PA_Hinfo_rate->Size = System::Drawing::Size(193, 36);
+			   this->PA_Hinfo_rate->TabIndex = 3;
+			   this->PA_Hinfo_rate->Text = L"Hospital Rate";
+			   // 
+			   // PA_Hinfo_Name
+			   // 
+			   this->PA_Hinfo_Name->AutoSize = true;
+			   this->PA_Hinfo_Name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_Name->Location = System::Drawing::Point(24, 169);
+			   this->PA_Hinfo_Name->Name = L"PA_Hinfo_Name";
+			   this->PA_Hinfo_Name->Size = System::Drawing::Size(208, 36);
+			   this->PA_Hinfo_Name->TabIndex = 2;
+			   this->PA_Hinfo_Name->Text = L"Hospital Name";
+			   // 
+			   // PA_viewHinfoHeader
+			   // 
+			   this->PA_viewHinfoHeader->Controls->Add(this->PA_viewHButton);
+			   this->PA_viewHinfoHeader->Controls->Add(this->PA_viewHList);
+			   this->PA_viewHinfoHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->PA_viewHinfoHeader->Location = System::Drawing::Point(0, 0);
+			   this->PA_viewHinfoHeader->Name = L"PA_viewHinfoHeader";
+			   this->PA_viewHinfoHeader->Size = System::Drawing::Size(766, 84);
+			   this->PA_viewHinfoHeader->TabIndex = 1;
+			   // 
+			   // PA_viewHButton
+			   // 
+			   this->PA_viewHButton->FlatAppearance->BorderSize = 0;
+			   this->PA_viewHButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->PA_viewHButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->PA_viewHButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_viewHButton.Image")));
+			   this->PA_viewHButton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
+			   this->PA_viewHButton->Location = System::Drawing::Point(399, 23);
+			   this->PA_viewHButton->Margin = System::Windows::Forms::Padding(3, 50, 3, 3);
+			   this->PA_viewHButton->Name = L"PA_viewHButton";
+			   this->PA_viewHButton->Size = System::Drawing::Size(119, 36);
+			   this->PA_viewHButton->TabIndex = 5;
+			   this->PA_viewHButton->Text = L"View";
+			   this->PA_viewHButton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->PA_viewHButton->UseVisualStyleBackColor = true;
+			   // 
+			   // PA_viewHList
+			   // 
+			   this->PA_viewHList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewHList->FormattingEnabled = true;
+			   this->PA_viewHList->Location = System::Drawing::Point(33, 21);
+			   this->PA_viewHList->Name = L"PA_viewHList";
+			   this->PA_viewHList->Size = System::Drawing::Size(247, 37);
+			   this->PA_viewHList->TabIndex = 0;
+			   this->PA_viewHList->Text = L"Hospital list";
+			   // 
+			   // PA_Hinfo_ID
+			   // 
+			   this->PA_Hinfo_ID->AutoSize = true;
+			   this->PA_Hinfo_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->PA_Hinfo_ID->Location = System::Drawing::Point(24, 100);
+			   this->PA_Hinfo_ID->Name = L"PA_Hinfo_ID";
+			   this->PA_Hinfo_ID->Size = System::Drawing::Size(160, 36);
+			   this->PA_Hinfo_ID->TabIndex = 0;
+			   this->PA_Hinfo_ID->Text = L"Hospital ID";
 			   // 
 			   // PA_ModifyReserv
 			   // 
@@ -1886,7 +2247,7 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->PA_StateOflist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.969231F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_StateOflist->ForeColor = System::Drawing::Color::Red;
-			   this->PA_StateOflist->Location = System::Drawing::Point(30, 152);
+			   this->PA_StateOflist->Location = System::Drawing::Point(34, 152);
 			   this->PA_StateOflist->Name = L"PA_StateOflist";
 			   this->PA_StateOflist->Size = System::Drawing::Size(93, 22);
 			   this->PA_StateOflist->TabIndex = 5;
@@ -2661,26 +3022,6 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->label9->TabIndex = 0;
 			   this->label9->Text = L"start patient page";
 			   // 
-			   // PA_viewHinfo
-			   // 
-			   this->PA_viewHinfo->Controls->Add(this->label10);
-			   this->PA_viewHinfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->PA_viewHinfo->Location = System::Drawing::Point(0, 0);
-			   this->PA_viewHinfo->Name = L"PA_viewHinfo";
-			   this->PA_viewHinfo->Size = System::Drawing::Size(766, 654);
-			   this->PA_viewHinfo->TabIndex = 5;
-			   // 
-			   // label10
-			   // 
-			   this->label10->AutoSize = true;
-			   this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 23.81538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->label10->Location = System::Drawing::Point(279, 191);
-			   this->label10->Name = L"label10";
-			   this->label10->Size = System::Drawing::Size(377, 51);
-			   this->label10->TabIndex = 0;
-			   this->label10->Text = L"view hospital page";
-			   // 
 			   // PA_reservlist
 			   // 
 			   this->PA_reservlist->Controls->Add(this->label11);
@@ -2915,6 +3256,9 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->login_pn->PerformLayout();
 			   this->AD_conpage->ResumeLayout(false);
 			   this->AD_pages->ResumeLayout(false);
+			   this->AD_view_Hinfo->ResumeLayout(false);
+			   this->AD_view_Hinfo->PerformLayout();
+			   this->AD_viewHinfoHeader->ResumeLayout(false);
 			   this->AD_modify_Hinfo->ResumeLayout(false);
 			   this->AD_Modifyinput->ResumeLayout(false);
 			   this->AD_Modifyinput->PerformLayout();
@@ -2938,14 +3282,15 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->AD_startWindow->PerformLayout();
 			   this->AD_view_Pinfo->ResumeLayout(false);
 			   this->AD_view_Pinfo->PerformLayout();
-			   this->AD_view_Hinfo->ResumeLayout(false);
-			   this->AD_view_Hinfo->PerformLayout();
 			   this->side_AD_bar_pn->ResumeLayout(false);
 			   this->AD_info_pn->ResumeLayout(false);
 			   this->AD_info_pn->PerformLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AD_pic))->EndInit();
 			   this->PA_conpage->ResumeLayout(false);
 			   this->PA_pages->ResumeLayout(false);
+			   this->PA_viewHinfo->ResumeLayout(false);
+			   this->PA_viewHinfo->PerformLayout();
+			   this->PA_viewHinfoHeader->ResumeLayout(false);
 			   this->PA_ModifyReserv->ResumeLayout(false);
 			   this->PA_modifyHRTRDsLayout->ResumeLayout(false);
 			   this->PA_modifyHRTRDsLayout->PerformLayout();
@@ -2966,8 +3311,6 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   this->PA_viewPinfo->PerformLayout();
 			   this->PA_startwindow->ResumeLayout(false);
 			   this->PA_startwindow->PerformLayout();
-			   this->PA_viewHinfo->ResumeLayout(false);
-			   this->PA_viewHinfo->PerformLayout();
 			   this->PA_reservlist->ResumeLayout(false);
 			   this->PA_reservlist->PerformLayout();
 			   this->PA_editPinfo->ResumeLayout(false);
@@ -2992,7 +3335,7 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 		  temp.username = context.marshal_as<string>(userBox->Text);
 		  temp.password = context.marshal_as<string>(passBox->Text);
 		  if (f.loginAsAdmin(user, temp)) {
-			   name_user = gcnew String(temp.name.c_str());
+			   name_user = gcnew String(user[Uindex].name.c_str());
 
 			   AD_conpage->BringToFront();
 			   AD_startWindow->BringToFront();
@@ -3002,7 +3345,7 @@ private: System::Windows::Forms::Label^ PA_OrderOflist;
 			   userBox->Text = "";
 		  }
 		  else if (f.loginAsPatient(user, temp)) {
-			   name_user = gcnew String(temp.name.c_str());
+			   name_user = gcnew String(user[Uindex].name.c_str());
 			   FName_PA_lab->Text = name_user;
 			   PA_conpage->BringToFront();
 			   PA_startwindow->BringToFront();

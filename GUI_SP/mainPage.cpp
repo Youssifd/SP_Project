@@ -13,13 +13,13 @@ void main()
 	 Application::Run(% form);
 }
 void GUISP::mainPage::personalinfo() {
-	 String^ ID = gcnew String(to_string(temp.id).c_str());
-	 String^ Age = gcnew String(to_string(temp.age).c_str());
-	 String^ phonenumber = gcnew String(temp.phonenumber.c_str());
-	 String^ gender = gcnew String(temp.gender.c_str());
-	 String^ email = gcnew String(temp.email.c_str());
-	 String^ NumOfreserv = gcnew String(to_string(temp.reserCount).c_str());
-	 String^ totalpaid = gcnew String(to_string(temp.totalpaid).c_str());
+	 String^ ID = gcnew String(to_string(user[Uindex].id).c_str());
+	 String^ Age = gcnew String(to_string(user[Uindex].age).c_str());
+	 String^ phonenumber = gcnew String(user[Uindex].phonenumber.c_str());
+	 String^ gender = gcnew String(user[Uindex].gender.c_str());
+	 String^ email = gcnew String(user[Uindex].email.c_str());
+	 String^ NumOfreserv = gcnew String(to_string(user[Uindex].reserCount).c_str());
+	 String^ totalpaid = gcnew String(to_string(user[Uindex].totalpaid).c_str());
 	 if (temp.userType == "Admin") {
 	 AD_AID->Text = "ID: " + ID;
 	 AD_Aage->Text = "Age: " + Age;

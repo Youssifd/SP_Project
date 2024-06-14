@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include"Structs.h"
+#include"mainPage.h"
 
 class mainFun
 {
@@ -213,6 +214,7 @@ public:
 		  for (int i = 0; i < userCount; i++) {
 			   if (temp.username == user[i].username && (temp.password == user[i].password||temp.id==user[i].id) && user[i].userType == "Admin") {
 					temp = user[i];
+					Uindex=i;
 					return true;
 
 			   }
@@ -623,6 +625,7 @@ public:
 			   if (patient[i].username == temp.username && (temp.password == patient[i].password || temp.id == patient[i].id) && patient[i].userType == "Patient")
 			   {
 					temp = patient[i];
+					Uindex = i;
 					loginstatus = true;
 					break;
 			   }

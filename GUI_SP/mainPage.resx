@@ -538,6 +538,18 @@
         2kGgSPkAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="AD_viewHbutton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFRSURBVEhL3ZW7
+        LgVBGMe3EBISp3MrcJ6AUPEGLi9ARHJ4AwqhJXgWFMSlQEXUSjoNncKlUvH7z8xO1mZyMuuM5vyS3+ab
+        2cn37VzOnAxG8Bq/8DuRynWFw2iSb2KnGolQri28VEPVUibP6ULlNlP6L0zucoF5nLNhywQLvOObDT0a
+        E2sR0y53zuKMDVsmWCAlbVrgDm9t6NmoYJFgASW/saFnv4JFggVS0qYFYq6KftzBe/x0Kt7GPsw50qNc
+        IHRVFFnEZ1SyMex2jqOK6t0Cig49ygWaXRXL+ID6kxK6kledisUoasySaUHsHkzjEw6YlkVLcIpneKgO
+        xyBq7JQasQVOcM2GHq19L9bwQx0F1vFYQdUZ6Oty9NXneIEH6nAM4a8ZNPMVdWpEvgdaZ6F1X8GGi0Ud
+        H9HvQVV0il5wFyewxzmJe6h3+Sn6M5G/gyz7AfYZh4+cDO6JAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="AD_confirmedit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
@@ -1778,6 +1790,18 @@
         zZb31RNaRbDouOhcWFK/uPBEwxXu5EEIIYR2c8mROiE9VYupFnvin7qzrH7W3soT8/ZXD5Fi8ANyODYX
         SgaWHxdhhSUio+h4/dKi4w17pJP4veQNyfrGkwohhBBaQXq6X36sXrx69LZ45fAt8dKhGs8yvqa/5t8h
         BfodZQ1Td5bfnrG3omzW3oqv5uyvXk+D+7QL+vfd9/8AOJ2qFK1bS1wAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="PA_viewHButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFRSURBVEhL3ZW7
+        LgVBGMe3EBISp3MrcJ6AUPEGLi9ARHJ4AwqhJXgWFMSlQEXUSjoNncKlUvH7z8xO1mZyMuuM5vyS3+ab
+        2cn37VzOnAxG8Bq/8DuRynWFw2iSb2KnGolQri28VEPVUibP6ULlNlP6L0zucoF5nLNhywQLvOObDT0a
+        E2sR0y53zuKMDVsmWCAlbVrgDm9t6NmoYJFgASW/saFnv4JFggVS0qYFYq6KftzBe/x0Kt7GPsw50qNc
+        IHRVFFnEZ1SyMex2jqOK6t0Cig49ygWaXRXL+ID6kxK6kledisUoasySaUHsHkzjEw6YlkVLcIpneKgO
+        xyBq7JQasQVOcM2GHq19L9bwQx0F1vFYQdUZ6Oty9NXneIEH6nAM4a8ZNPMVdWpEvgdaZ6F1X8GGi0Ud
+        H9HvQVV0il5wFyewxzmJe6h3+Sn6M5G/gyz7AfYZh4+cDO6JAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="PA_delRlist.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
