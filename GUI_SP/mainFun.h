@@ -222,93 +222,6 @@ public:
 		  }
 		  return false;
 	 }
-	 void AddHospital(Hospitals hos[])
-	 {
-		  char choice;
-		  do {
-			   string hosname = "";
-			   bool check = true;
-			   cout << " .......................\n";
-			   cout << "Please enter the name of the Hospital to Add: ";
-			   getline(cin, hosname);
-			   for (int i = 0; i < hospitalCount; i++)
-			   {
-					if (hosname == hos[i].HospitalName)
-					{
-						 check = false;
-						 break;
-					}
-			   }
-
-			   if (check)
-			   {
-					int ID;
-					bool CheckID = false;
-					hospitalCount++;
-					hos[hospitalCount - 1].HospitalName = hosname;
-					cout << "Please enter the ID of the Hospital to Add (Must be 7 digi): ";
-					while (!CheckID) {
-						 cin >> ID;
-						 if ((ID > 1000000) && (ID < 10000000)) {
-							  for (int i = 0; i < hospitalCount - 1; i++) {
-								   if (hos[i].HospitalID == ID) {
-										cout << "This ID is exist !\nPlease enter another ID: ";
-										CheckID = false;
-										break;
-								   }
-								   else
-										CheckID = true;
-							  }
-						 }
-						 else {
-							  cout << "Invalid ID! Try again:";
-							  continue;
-
-						 }
-
-					}
-					hos[hospitalCount - 1].HospitalID = ID;
-
-
-					cout << "Please enter the Nunmber of beds available of the Hospital to Add: ";
-					cin >> hos[hospitalCount - 1].PatientReservationRooms;
-
-					cout << "Please enter the Beds price per night of the Hospital to Add: ";
-					cin >> hos[hospitalCount - 1].BedsPrice;
-
-					cout << "Please enter the Reservation price for check-up of the Hospital to Add: ";
-					cin >> hos[hospitalCount - 1].ReservationPrice;
-
-					cout << "Please enter the Hospital surgeryprice of the Hospital to Add: ";
-					cin >> hos[hospitalCount - 1].surgeryprice;
-
-					cout << "Please enter the Hospital Rate of the Hospital to Add(0->5): ";
-					do {
-						 cin >> hos[hospitalCount - 1].HospitalRate;
-						 if (hos[hospitalCount - 1].HospitalRate <= 5 && hos[hospitalCount - 1].HospitalRate >= 0)
-							  break;
-						 cout << "Wrong rate.\nPlease try again: ";
-					} while (true);
-
-					hos[hospitalCount - 1].specialtiesCount = hos[0].specialtiesCount;
-					hos[hospitalCount - 1].clinicsCount = hos[0].clinicsCount;
-
-					for (int j = 0; j < hos[0].specialtiesCount; j++)
-						 hos[hospitalCount - 1].HospitalSpecialties[j] = hos[0].HospitalSpecialties[j];
-
-					for (int z = 0; z < hos[0].clinicsCount; z++)
-						 hos[hospitalCount - 1].HospitalClinics[z] = hos[0].HospitalClinics[z];
-			   }
-			   else
-					cout << "Hospital Elready Exists\n";
-
-			   cout << "Press 'y' to Add another hospital: ";
-			   cin >> choice;
-			   if (choice != 'y' || choice != 'Y')
-					cout << '\n';
-			   cin.ignore(); //added
-		  } while (choice == 'y' || choice == 'Y');
-	 }
 	 void ModifyHospital(Hospitals hospital[])
 	 {
 		  char answer;
@@ -525,15 +438,13 @@ public:
 		  } while (answer == 'y' || answer == 'Y');
 
 	 }
-	 void DeleteHospital(Hospitals hospital[])
+	 void DeleteHospital(Hospitals hospital[], string hsptlname)
 	 {
-		  string hsptlname;
-		  char answer;
-		  do
-		  {
+		 
+		 
+		  
 			   bool found = false;
-			   cout << "which hospital do you want to delete? ";
-			   getline(cin, hsptlname);
+			   
 			   for (int i = 0; i < hospitalCount; i++)
 			   {
 					if (hsptlname == hospital[i].HospitalName)
@@ -559,13 +470,8 @@ public:
 						 hospitalCount--;
 					}
 			   }
-			   if (!found)
-					cout << "Hospital Not Found\n ";
-
-			   cout << "Do you want to continue?";
-			   cin >> answer;
-			   cin.ignore(); //hspname
-		  } while (answer == 'y' || answer == 'Y');
+			  
+				
 	 }
 	 //patient
 	 void registerpatient(Users patient[], Users temp)

@@ -73,11 +73,10 @@ void GUISP::mainPage::displayHinfo() {
 		  }
 		  for (int i = 0; i < hospital[Hindex].clinicsCount; i++)
 		  {
-			  PA_Hinfo_HCLlist->Items->Add(gcnew String(hospital[Hindex].HospitalClinics[i].c_str()));
+			   PA_Hinfo_HCLlist->Items->Add(gcnew String(hospital[Hindex].HospitalClinics[i].c_str()));
 		  }
-
 	 }
-	 
+	 Exist->Visible = false;
 }
 void GUISP::mainPage::displayPinfo() {
 		  AD_viewPinfo_Name->Text = "Name: " + gcnew String(user[Pindex].name.c_str());
@@ -90,6 +89,73 @@ void GUISP::mainPage::displayPinfo() {
 		  AD_viewPinfo_Totalpaid->Text = "Total paid: " + gcnew INT(user[Pindex].totalpaid);	 
 	  
 }
+void GUISP::mainPage::AddHospital(Hospitals hos[]) {
+	 Htemp.HospitalName = msclr::interop::marshal_as<string>(AD_HNorder_TB->Text);
+	 Htemp.BedsPrice =stof (msclr::interop::marshal_as<string>(AD_HBPorder_TB->Text));
+	 Htemp.surgeryprice = stof( msclr::interop::marshal_as<string>(AD_HSPorder_TB->Text));
+	 Htemp.ReservationPrice = stof(msclr::interop::marshal_as<string>(AD_HRPorder_TB->Text));
+	 Htemp.PatientReservationRooms = stoi(msclr::interop::marshal_as<string>(AD_HPRBsorder_TB->Text));
+	 Htemp.HospitalRate = stof(msclr::interop::marshal_as<string>(AD_HRateorder_TB->Text));
+	 Htemp.HospitalID = stoi(msclr::interop::marshal_as < string>(AD_HIDorder_TB->Text));
+
+	 for (int i = 0; i < hospitalCount; i++)
+	 {
+		  if (Htemp.HospitalName == hos[i].HospitalName)
+		  {
+			   AD_Herror->Text = "Hospital already exists";
+			   return;
+		  }
+	 }
+
+	 cout << "Please enter the ID of the Hospital to Add (Must be 7 digi): ";
+	 if ((Htemp.HospitalID > 1000000) && (Htemp.HospitalID < 10000000)) {
+		  for (int i = 0; i < hospitalCount - 1; i++) {
+			   if (hos[i].HospitalID == Htemp.HospitalID) {
+					AD_Herror->Text= "This ID is exist !\nPlease enter another ID";
+					return;
+			   }
+			   
+		  }
+	 }
+	 else {
+		  AD_Herror->Text = "Invalid ID! Try again:";
+		  return;
+
+	 }
+	 
+		  
+	 if ((Htemp.HospitalRate > 5)||(Htemp.HospitalRate<0)) {
+
+		  AD_Herror->Text = "Wrong rate.\nPlease Enetr another(5-0) ";
+		  return ;
+	 }
+	
+	 Htemp.specialtiesCount = hos[0].specialtiesCount;
+	 Htemp.clinicsCount = hos[0].clinicsCount;
+	 hos[hospitalCount] = Htemp;
+
+	 for (int j = 0; j < hos[0].specialtiesCount; j++)
+		  hos[hospitalCount].HospitalSpecialties[j] = hos[0].HospitalSpecialties[j];
+
+	 for (int z = 0; z < hos[0].clinicsCount; z++)
+		  hos[hospitalCount].HospitalClinics[z] = hos[0].HospitalClinics[z];
+
+	 hospitalCount++; 
+	 AD_addcom->Text="Hospital Added Successfully";
+	 AD_HIDorder_TB->Text = "";
+	 AD_HRateorder_TB->Text = "";
+	 AD_HPRBsorder_TB->Text = "";
+	 AD_HSPorder_TB->Text = "";
+	 AD_HBPorder_TB->Text = "";
+	 AD_HNorder_TB->Text = "";
+	 AD_HRPorder_TB->Text = "";
+}
+
+
+
+
+
+
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {
 		  if (hospital[i].HospitalName == Ser) {
