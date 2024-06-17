@@ -107,7 +107,7 @@ void GUISP::mainPage::AddHospital(Hospitals hos[]) {
 		  }
 	 }
 
-	 cout << "Please enter the ID of the Hospital to Add (Must be 7 digi): ";
+	
 	 if ((Htemp.HospitalID > 1000000) && (Htemp.HospitalID < 10000000)) {
 		  for (int i = 0; i < hospitalCount - 1; i++) {
 			   if (hos[i].HospitalID == Htemp.HospitalID) {
@@ -150,11 +150,79 @@ void GUISP::mainPage::AddHospital(Hospitals hos[]) {
 	 AD_HNorder_TB->Text = "";
 	 AD_HRPorder_TB->Text = "";
 }
+void GUISP::mainPage::modifyHospital() {
 
+	 if (AD_nameOfinput->Text == "Hospital ID") {
+		  Htemp.HospitalID = stoi(msclr::interop::marshal_as < string>(AD_TBinput->Text));
+		  if ((Htemp.HospitalID > 1000000) && (Htemp.HospitalID < 10000000)) {
+			   for (int i = 0; i < hospitalCount - 1; i++) {
+					if (hospital[i].HospitalID == Htemp.HospitalID) {
+						 AD_warning1->Text = "This ID is exist !\nPlease enter another ID";
+						 return;
+					}
 
+			   }
+		  }
+		  else {
+			   AD_warning1->Text = "must be 7 digit!";
+			   return;
+		  }
+		
+		  hospital[Hindex].HospitalID=Htemp.HospitalID;
+	 }
+	 else if (AD_nameOfinput->Text == "Hospital Name") {
+		  Htemp.HospitalName = msclr::interop::marshal_as<string>(AD_TBinput->Text);
+		  for (int i = 0; i < hospitalCount; i++)
+		  {
+			   if (Htemp.HospitalName == hospital[i].HospitalName)
+			   {
+					AD_warning1->Text = "Hospital already exists";
+					return;
+			   }
+		  }
+		  hospital[Hindex].HospitalName = Htemp.HospitalName;
+		
+	 }
+	 else if (AD_nameOfinput->Text == "Hospital Rate") {
+		  Htemp.HospitalRate = stof(msclr::interop::marshal_as<string>(AD_TBinput->Text));
+		  if ((Htemp.HospitalRate > 5) || (Htemp.HospitalRate < 0)) {
 
+			   AD_warning1->Text = "Wrong rate.\nPlease Enetr another(5-0) ";
+			   return;
+		  }
+		  hospital[Hindex].HospitalRate = Htemp.HospitalRate;
+	 }
+	 else if (AD_nameOfinput->Text == "Number of Avaliable rooms") {
+		  Htemp.PatientReservationRooms = stoi(msclr::interop::marshal_as<string>(AD_TBinput->Text));
+		  hospital[Hindex].PatientReservationRooms = Htemp.PatientReservationRooms;
+		  
+	 }
+	 else if (AD_nameOfinput->Text == "Bed Price") {
+		  Htemp.BedsPrice = stof(msclr::interop::marshal_as<string>(AD_TBinput->Text));
+		  hospital[Hindex].BedsPrice = Htemp.BedsPrice;
+		 
+	 }
+	 else if (AD_nameOfinput->Text == "Hospital Specialties") {
+		  string Hspindex= msclr::interop::marshal_as<string>(AD_ModifyHSClist->Text);
+		  string Sptemp = msclr::interop::marshal_as<string>(AD_TBinput->Text);
+		  searchSPindex(Hspindex);
+		  hospital[Hindex].HospitalSpecialties[SPindex] = Sptemp;
 
+	 }
+	 else if (AD_nameOfinput->Text == "Hospital Clinics") {
+		  string Hclindex= msclr::interop::marshal_as<string>(AD_ModifyHSClist->Text);
+		  string cltemp = msclr::interop::marshal_as<string>(AD_TBinput->Text);
+		  searchCLindex(Hclindex);
+		  hospital[Hindex].HospitalClinics[SPindex] = cltemp;
 
+	 }
+	 else if (AD_nameOfinput->Text == "Reservation Price") {
+		  Htemp.ReservationPrice = stof(msclr::interop::marshal_as<string>(AD_TBinput->Text));
+		  hospital[Hindex].ReservationPrice = Htemp.ReservationPrice;
+		 
+	 }
+	 AD_warning1->Text = "edit sucss";
+}
 
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {
@@ -177,6 +245,24 @@ void GUISP::mainPage::searchPindex(string Ser) {
 	 for (int i = 0; i < userCount; i++) {
 		  if (user[i].username == Ser) {
 			   Pindex = i;
+			   break;
+		  }
+	 }
+
+}
+void GUISP::mainPage::searchCLindex(string Ser) {
+	 for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
+		  if (hospital[i].HospitalClinics[i] == Ser) {
+			   CLindex = i;
+			   break;
+		  }
+	 }
+
+}
+void GUISP::mainPage::searchSPindex(string Ser) {
+	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
+		  if (hospital[i].HospitalSpecialties[i] == Ser) {
+			   SPindex = i;
 			   break;
 		  }
 	 }
