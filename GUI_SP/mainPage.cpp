@@ -38,23 +38,57 @@ void GUISP::mainPage::personalinfo() {
 	 }
 }
 void GUISP::mainPage::displayHinfo() {
-	 AD_viewHinfo_HSplist->Items->Clear();
-	 AD_viewHinfo_HCllist->Items->Clear();
-	 AD_viewHinfo_ID->Text = "ID: " + gcnew INT(hospital[Hindex].HospitalID);
-	 AD_viewHinfo_Name->Text = "Name: " + gcnew String(hospital[Hindex].HospitalName.c_str());
-	 AD_viewHinfo_Rate->Text = "Rate: " + gcnew FLOAT(hospital[Hindex].HospitalRate);
-	 AD_viewHinfo_bedsAva->Text = "Beds Available: " + gcnew INT(hospital[Hindex].PatientReservationRooms);
-	 AD_viewHinfo_Rprice->Text = "Reservation Price: " + gcnew INT(hospital[Hindex].ReservationPrice);
-	 AD_viewHinfo_surgeryPrice->Text = "Surgery Price: " + gcnew INT(hospital[Hindex].surgeryprice);
-	 AD_viewHinfo_BedsPrice->Text = "Beds Price: " + gcnew INT(hospital[Hindex].BedsPrice);
-	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++)
-	 {
-		  AD_viewHinfo_HSplist->Items->Add(gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str()));
+	 if (user[Lindex].userType == "Admin") {
+		  AD_viewHinfo_HSplist->Items->Clear();
+		  AD_viewHinfo_HCllist->Items->Clear();
+		  AD_viewHinfo_ID->Text = "ID: " + gcnew INT(hospital[Hindex].HospitalID);
+		  AD_viewHinfo_Name->Text = "Name: " + gcnew String(hospital[Hindex].HospitalName.c_str());
+		  AD_viewHinfo_Rate->Text = "Rate: " + gcnew FLOAT(hospital[Hindex].HospitalRate);
+		  AD_viewHinfo_bedsAva->Text = "Beds Available: " + gcnew INT(hospital[Hindex].PatientReservationRooms);
+		  AD_viewHinfo_Rprice->Text = "Reservation Price: " + gcnew INT(hospital[Hindex].ReservationPrice);
+		  AD_viewHinfo_surgeryPrice->Text = "Surgery Price: " + gcnew INT(hospital[Hindex].surgeryprice);
+		  AD_viewHinfo_BedsPrice->Text = "Beds Price: " + gcnew INT(hospital[Hindex].BedsPrice);
+		  for (int i = 0; i < hospital[Hindex].specialtiesCount; i++)
+		  {
+			   AD_viewHinfo_HSplist->Items->Add(gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str()));
+		  }
+		  for (int i = 0; i < hospital[Hindex].clinicsCount; i++)
+		  {
+			   AD_viewHinfo_HCllist->Items->Add(gcnew String(hospital[Hindex].HospitalClinics[i].c_str()));
+		  }
 	 }
-	 for (int i = 0; i < hospital[Hindex].clinicsCount; i++)
-	 {
-		  AD_viewHinfo_HCllist->Items->Add(gcnew String(hospital[Hindex].HospitalClinics[i].c_str()));
+	 else {
+		  PA_Hinfo_HSplist->Items->Clear();
+		  PA_Hinfo_HCLlist->Items->Clear();
+		  PA_Hinfo_ID->Text = "ID: " + gcnew INT(hospital[Hindex].HospitalID);
+		  PA_Hinfo_Name->Text = "Name: " + gcnew String(hospital[Hindex].HospitalName.c_str());
+		  PA_Hinfo_rate->Text = "Rate: " + gcnew FLOAT(hospital[Hindex].HospitalRate);
+		  PA_Hinfo_bedsAva->Text = "Beds Available: " + gcnew INT(hospital[Hindex].PatientReservationRooms);
+		  AD_viewHinfo_Rprice->Text = "Reservation Price: " + gcnew INT(hospital[Hindex].ReservationPrice);
+		  AD_viewHinfo_surgeryPrice->Text = "Surgery Price: " + gcnew INT(hospital[Hindex].surgeryprice);
+		  AD_viewHinfo_BedsPrice->Text = "Beds Price: " + gcnew INT(hospital[Hindex].BedsPrice);
+		  for (int i = 0; i < hospital[Hindex].specialtiesCount; i++)
+		  {
+			   PA_Hinfo_HSplist->Items->Add(gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str()));
+		  }
+		  for (int i = 0; i < hospital[Hindex].clinicsCount; i++)
+		  {
+			  PA_Hinfo_HCLlist->Items->Add(gcnew String(hospital[Hindex].HospitalClinics[i].c_str()));
+		  }
+
 	 }
+	 
+}
+void GUISP::mainPage::displayPinfo() {
+		  AD_viewPinfo_Name->Text = "Name: " + gcnew String(user[Pindex].name.c_str());
+		  AD_viewPinfo_ID->Text = "ID: " + gcnew INT(user[Pindex].id);
+		  AD_viewPinfo_Age->Text = "Age: " + gcnew INT(user[Pindex].age);
+		  AD_viewPinfo_PhNum->Text = "Phone Number: " + gcnew String(user[Pindex].phonenumber.c_str());
+		  AD_viewPinfo_Gender->Text = "Gender: " + gcnew String(user[Pindex].gender.c_str());
+		  AD_viewPinfo_Email->Text = "Email: " + gcnew String(user[Pindex].email.c_str());
+		  AD_viewPinfo_NumOfR->Text = "Patient bookings: " + gcnew INT(user[Pindex].reserCount);
+		  AD_viewPinfo_Totalpaid->Text = "Total paid: " + gcnew INT(user[Pindex].totalpaid);	 
+	  
 }
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {

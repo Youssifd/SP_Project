@@ -28,6 +28,7 @@ namespace GUISP {
 		  void searchRindex(int Ser);
 		  void searchPindex(string Ser);
 		  void displayHinfo();
+		  void displayPinfo();
 
 	 protected:
 	
@@ -231,17 +232,19 @@ private: System::Windows::Forms::Label^ PA_StateOflist;
 private: System::Windows::Forms::Label^ PA_OrderOflist;
 private: System::Windows::Forms::Panel^ PA_viewHinfoHeader;
 private: System::Windows::Forms::ComboBox^ PA_viewHList;
-private: System::Windows::Forms::Label^ PA_Hinfo_Beds_AvaiNum;
+private: System::Windows::Forms::Label^ PA_Hinfo_bedsAva;
+
+
 private: System::Windows::Forms::Label^ PA_Hinfo_rate;
 private: System::Windows::Forms::Label^ PA_Hinfo_Name;
 private: System::Windows::Forms::Label^ PA_Hinfo_Bedprice;
 private: System::Windows::Forms::Label^ PA_Hinfo_surgeryprice;
 private: System::Windows::Forms::Label^ PA_Hinfo_Rprice;
-private: System::Windows::Forms::ComboBox^ PA_Hinfo_HSplist;
-private: System::Windows::Forms::ComboBox^ PA_Hinfo_HCLlist;
+
+
 private: System::Windows::Forms::Button^ PA_viewHButton;
-private: System::Windows::Forms::ComboBox^ AD_viewHinfo_HCllist;
-private: System::Windows::Forms::ComboBox^ AD_viewHinfo_HSplist;
+
+
 private: System::Windows::Forms::Label^ AD_viewHinfo_BedsPrice;
 private: System::Windows::Forms::Label^ AD_viewHinfo_surgeryPrice;
 private: System::Windows::Forms::Label^ AD_viewHinfo_Rprice;
@@ -311,6 +314,19 @@ private: System::Windows::Forms::Panel^ AD_edit_wiating;
 private: System::Windows::Forms::Label^ label10;
 private: System::Windows::Forms::Panel^ PA_edit_waiting;
 private: System::Windows::Forms::Label^ label8;
+private: System::Windows::Forms::ListBox^ AD_viewHinfo_HCllist;
+private: System::Windows::Forms::ListBox^ AD_viewHinfo_HSplist;
+private: System::Windows::Forms::Label^ AD_text2;
+private: System::Windows::Forms::Label^ AD_text1;
+private: System::Windows::Forms::Label^ PA_text2;
+
+
+
+private: System::Windows::Forms::Label^ PA_text1;
+
+private: System::Windows::Forms::ListBox^ PA_Hinfo_HCLlist;
+private: System::Windows::Forms::ListBox^ PA_Hinfo_HSplist;
+private: System::Windows::Forms::Label^ AD_viewPinfo_ID;
  protected:
 	 private:
 		  System::ComponentModel::Container^ components;
@@ -349,9 +365,78 @@ private: System::Windows::Forms::Label^ label8;
 			   this->regis_name_lab = (gcnew System::Windows::Forms::Label());
 			   this->AD_conpage = (gcnew System::Windows::Forms::Panel());
 			   this->AD_pages = (gcnew System::Windows::Forms::Panel());
+			   this->AD_edit_Hlist = (gcnew System::Windows::Forms::Panel());
+			   this->AD_waitingP = (gcnew System::Windows::Forms::Panel());
+			   this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			   this->AD_addHlayout = (gcnew System::Windows::Forms::Panel());
+			   this->AD_HPRBsorder_lab = (gcnew System::Windows::Forms::Label());
+			   this->AD_HPRBsorder_TB = (gcnew System::Windows::Forms::TextBox());
+			   this->AD_HIDorder_lab = (gcnew System::Windows::Forms::Label());
+			   this->AD_HIDorder_TB = (gcnew System::Windows::Forms::TextBox());
+			   this->AD_HRateorder_lab = (gcnew System::Windows::Forms::Label());
+			   this->AD_HRateorder_TB = (gcnew System::Windows::Forms::TextBox());
+			   this->AD_HRPorder_lab = (gcnew System::Windows::Forms::Label());
+			   this->AD_HRPorder_TB = (gcnew System::Windows::Forms::TextBox());
+			   this->AD_HBPorder_lab = (gcnew System::Windows::Forms::Label());
+			   this->AD_HBPorder_TB = (gcnew System::Windows::Forms::TextBox());
+			   this->AD_addH = (gcnew System::Windows::Forms::Button());
+			   this->AD_HNorder_lab = (gcnew System::Windows::Forms::Label());
+			   this->AD_HNorder_TB = (gcnew System::Windows::Forms::TextBox());
+			   this->AD_Hstate = (gcnew System::Windows::Forms::Label());
+			   this->AD_deleteHlayout = (gcnew System::Windows::Forms::Panel());
+			   this->AD_messegeState = (gcnew System::Windows::Forms::Label());
+			   this->AD_HdeleteCOM = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_selectHD = (gcnew System::Windows::Forms::Button());
+			   this->AD_header_editH = (gcnew System::Windows::Forms::Panel());
+			   this->AD_deleteH = (gcnew System::Windows::Forms::Button());
+			   this->AD_addH_but = (gcnew System::Windows::Forms::Button());
+			   this->AD_modify_Hinfo = (gcnew System::Windows::Forms::Panel());
+			   this->AD_Modifyinput = (gcnew System::Windows::Forms::Panel());
+			   this->AD_ModifyHSClist = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_confirmedit = (gcnew System::Windows::Forms::Button());
+			   this->AD_deleteHSC = (gcnew System::Windows::Forms::Button());
+			   this->AD_addHSC = (gcnew System::Windows::Forms::Button());
+			   this->AD_modifyHSC_layout = (gcnew System::Windows::Forms::Panel());
+			   this->AD_confirmAdd = (gcnew System::Windows::Forms::Button());
+			   this->AD_stateHSC = (gcnew System::Windows::Forms::Label());
+			   this->AD_selectHSC = (gcnew System::Windows::Forms::Button());
+			   this->AD_TBforAddHSC = (gcnew System::Windows::Forms::TextBox());
+			   this->AD_HSCorder = (gcnew System::Windows::Forms::Label());
+			   this->AD_HSClist = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_closeModify = (gcnew System::Windows::Forms::Button());
+			   this->AD_TBinput = (gcnew System::Windows::Forms::TextBox());
+			   this->AD_nameOfinput = (gcnew System::Windows::Forms::Label());
+			   this->AD_groupchoice = (gcnew System::Windows::Forms::Panel());
+			   this->AD_HCselected = (gcnew System::Windows::Forms::Button());
+			   this->AD_HSselected = (gcnew System::Windows::Forms::Button());
+			   this->AD_HNselected = (gcnew System::Windows::Forms::Button());
+			   this->AD_HRselected = (gcnew System::Windows::Forms::Button());
+			   this->AD_BPselected = (gcnew System::Windows::Forms::Button());
+			   this->AD_RPselected = (gcnew System::Windows::Forms::Button());
+			   this->AD_PRRselected = (gcnew System::Windows::Forms::Button());
+			   this->AD_IDselected = (gcnew System::Windows::Forms::Button());
+			   this->AD_headerModify = (gcnew System::Windows::Forms::Panel());
+			   this->AD_Hlist_combox = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_HCselect = (gcnew System::Windows::Forms::Button());
+			   this->AD_startWindow = (gcnew System::Windows::Forms::Panel());
+			   this->label1 = (gcnew System::Windows::Forms::Label());
+			   this->AD_view_Pinfo = (gcnew System::Windows::Forms::Panel());
+			   this->AD_viewPinfo_ID = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewPinfo_NumOfR = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewPinfo_Totalpaid = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewPinfo_Email = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewPinfo_Gender = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewPinfo_PhNum = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewPinfo_Age = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewPlist_header = (gcnew System::Windows::Forms::Panel());
+			   this->AD_viewPButton = (gcnew System::Windows::Forms::Button());
+			   this->AD_viewPlist = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_viewPinfo_Name = (gcnew System::Windows::Forms::Label());
 			   this->AD_view_Hinfo = (gcnew System::Windows::Forms::Panel());
-			   this->AD_viewHinfo_HCllist = (gcnew System::Windows::Forms::ComboBox());
-			   this->AD_viewHinfo_HSplist = (gcnew System::Windows::Forms::ComboBox());
+			   this->AD_text2 = (gcnew System::Windows::Forms::Label());
+			   this->AD_text1 = (gcnew System::Windows::Forms::Label());
+			   this->AD_viewHinfo_HSplist = (gcnew System::Windows::Forms::ListBox());
+			   this->AD_viewHinfo_HCllist = (gcnew System::Windows::Forms::ListBox());
 			   this->AD_viewHinfo_ID = (gcnew System::Windows::Forms::Label());
 			   this->AD_viewHinfo_BedsPrice = (gcnew System::Windows::Forms::Label());
 			   this->AD_viewHinfo_surgeryPrice = (gcnew System::Windows::Forms::Label());
@@ -382,78 +467,12 @@ private: System::Windows::Forms::Label^ label8;
 			   this->AD_editusername = (gcnew System::Windows::Forms::Button());
 			   this->AD_editAge = (gcnew System::Windows::Forms::Button());
 			   this->AD_editName = (gcnew System::Windows::Forms::Button());
-			   this->AD_view_Pinfo = (gcnew System::Windows::Forms::Panel());
-			   this->AD_viewPinfo_NumOfR = (gcnew System::Windows::Forms::Label());
-			   this->AD_viewPinfo_Totalpaid = (gcnew System::Windows::Forms::Label());
-			   this->AD_viewPinfo_Email = (gcnew System::Windows::Forms::Label());
-			   this->AD_viewPinfo_Gender = (gcnew System::Windows::Forms::Label());
-			   this->AD_viewPinfo_PhNum = (gcnew System::Windows::Forms::Label());
-			   this->AD_viewPinfo_Age = (gcnew System::Windows::Forms::Label());
-			   this->AD_viewPlist_header = (gcnew System::Windows::Forms::Panel());
-			   this->AD_viewPButton = (gcnew System::Windows::Forms::Button());
-			   this->AD_viewPlist = (gcnew System::Windows::Forms::ComboBox());
-			   this->AD_viewPinfo_Name = (gcnew System::Windows::Forms::Label());
-			   this->AD_modify_Hinfo = (gcnew System::Windows::Forms::Panel());
-			   this->AD_Modifyinput = (gcnew System::Windows::Forms::Panel());
-			   this->AD_ModifyHSClist = (gcnew System::Windows::Forms::ComboBox());
-			   this->AD_confirmedit = (gcnew System::Windows::Forms::Button());
-			   this->AD_deleteHSC = (gcnew System::Windows::Forms::Button());
-			   this->AD_addHSC = (gcnew System::Windows::Forms::Button());
-			   this->AD_modifyHSC_layout = (gcnew System::Windows::Forms::Panel());
-			   this->AD_confirmAdd = (gcnew System::Windows::Forms::Button());
-			   this->AD_stateHSC = (gcnew System::Windows::Forms::Label());
-			   this->AD_selectHSC = (gcnew System::Windows::Forms::Button());
-			   this->AD_TBforAddHSC = (gcnew System::Windows::Forms::TextBox());
-			   this->AD_HSCorder = (gcnew System::Windows::Forms::Label());
-			   this->AD_HSClist = (gcnew System::Windows::Forms::ComboBox());
-			   this->AD_closeModify = (gcnew System::Windows::Forms::Button());
-			   this->AD_TBinput = (gcnew System::Windows::Forms::TextBox());
-			   this->AD_nameOfinput = (gcnew System::Windows::Forms::Label());
-			   this->AD_groupchoice = (gcnew System::Windows::Forms::Panel());
-			   this->AD_HCselected = (gcnew System::Windows::Forms::Button());
-			   this->AD_HSselected = (gcnew System::Windows::Forms::Button());
-			   this->AD_HNselected = (gcnew System::Windows::Forms::Button());
-			   this->AD_HRselected = (gcnew System::Windows::Forms::Button());
-			   this->AD_BPselected = (gcnew System::Windows::Forms::Button());
-			   this->AD_RPselected = (gcnew System::Windows::Forms::Button());
-			   this->AD_PRRselected = (gcnew System::Windows::Forms::Button());
-			   this->AD_IDselected = (gcnew System::Windows::Forms::Button());
-			   this->AD_headerModify = (gcnew System::Windows::Forms::Panel());
-			   this->AD_Hlist_combox = (gcnew System::Windows::Forms::ComboBox());
-			   this->AD_HCselect = (gcnew System::Windows::Forms::Button());
 			   this->AD_viewAinfo = (gcnew System::Windows::Forms::Panel());
 			   this->AD_AEmail = (gcnew System::Windows::Forms::Label());
 			   this->AD_AGender = (gcnew System::Windows::Forms::Label());
 			   this->AD_AphoneN = (gcnew System::Windows::Forms::Label());
 			   this->AD_Aage = (gcnew System::Windows::Forms::Label());
 			   this->AD_AID = (gcnew System::Windows::Forms::Label());
-			   this->AD_edit_Hlist = (gcnew System::Windows::Forms::Panel());
-			   this->AD_addHlayout = (gcnew System::Windows::Forms::Panel());
-			   this->AD_HPRBsorder_lab = (gcnew System::Windows::Forms::Label());
-			   this->AD_HPRBsorder_TB = (gcnew System::Windows::Forms::TextBox());
-			   this->AD_HIDorder_lab = (gcnew System::Windows::Forms::Label());
-			   this->AD_HIDorder_TB = (gcnew System::Windows::Forms::TextBox());
-			   this->AD_HRateorder_lab = (gcnew System::Windows::Forms::Label());
-			   this->AD_HRateorder_TB = (gcnew System::Windows::Forms::TextBox());
-			   this->AD_HRPorder_lab = (gcnew System::Windows::Forms::Label());
-			   this->AD_HRPorder_TB = (gcnew System::Windows::Forms::TextBox());
-			   this->AD_HBPorder_lab = (gcnew System::Windows::Forms::Label());
-			   this->AD_HBPorder_TB = (gcnew System::Windows::Forms::TextBox());
-			   this->AD_addH = (gcnew System::Windows::Forms::Button());
-			   this->AD_HNorder_lab = (gcnew System::Windows::Forms::Label());
-			   this->AD_HNorder_TB = (gcnew System::Windows::Forms::TextBox());
-			   this->AD_Hstate = (gcnew System::Windows::Forms::Label());
-			   this->AD_waitingP = (gcnew System::Windows::Forms::Panel());
-			   this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			   this->AD_deleteHlayout = (gcnew System::Windows::Forms::Panel());
-			   this->AD_messegeState = (gcnew System::Windows::Forms::Label());
-			   this->AD_HdeleteCOM = (gcnew System::Windows::Forms::ComboBox());
-			   this->AD_selectHD = (gcnew System::Windows::Forms::Button());
-			   this->AD_header_editH = (gcnew System::Windows::Forms::Panel());
-			   this->AD_deleteH = (gcnew System::Windows::Forms::Button());
-			   this->AD_addH_but = (gcnew System::Windows::Forms::Button());
-			   this->AD_startWindow = (gcnew System::Windows::Forms::Panel());
-			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->side_AD_bar_pn = (gcnew System::Windows::Forms::Panel());
 			   this->AD_logout_but = (gcnew System::Windows::Forms::Button());
 			   this->AD_dispatient_hos_but = (gcnew System::Windows::Forms::Button());
@@ -469,12 +488,14 @@ private: System::Windows::Forms::Label^ label8;
 			   this->PA_conpage = (gcnew System::Windows::Forms::Panel());
 			   this->PA_pages = (gcnew System::Windows::Forms::Panel());
 			   this->PA_viewHinfo = (gcnew System::Windows::Forms::Panel());
-			   this->PA_Hinfo_HCLlist = (gcnew System::Windows::Forms::ComboBox());
-			   this->PA_Hinfo_HSplist = (gcnew System::Windows::Forms::ComboBox());
+			   this->PA_Hinfo_HCLlist = (gcnew System::Windows::Forms::ListBox());
+			   this->PA_Hinfo_HSplist = (gcnew System::Windows::Forms::ListBox());
+			   this->PA_text2 = (gcnew System::Windows::Forms::Label());
+			   this->PA_text1 = (gcnew System::Windows::Forms::Label());
 			   this->PA_Hinfo_Bedprice = (gcnew System::Windows::Forms::Label());
 			   this->PA_Hinfo_surgeryprice = (gcnew System::Windows::Forms::Label());
 			   this->PA_Hinfo_Rprice = (gcnew System::Windows::Forms::Label());
-			   this->PA_Hinfo_Beds_AvaiNum = (gcnew System::Windows::Forms::Label());
+			   this->PA_Hinfo_bedsAva = (gcnew System::Windows::Forms::Label());
 			   this->PA_Hinfo_rate = (gcnew System::Windows::Forms::Label());
 			   this->PA_Hinfo_Name = (gcnew System::Windows::Forms::Label());
 			   this->PA_viewHinfoHeader = (gcnew System::Windows::Forms::Panel());
@@ -596,6 +617,20 @@ private: System::Windows::Forms::Label^ label8;
 			   this->regis_pn->SuspendLayout();
 			   this->AD_conpage->SuspendLayout();
 			   this->AD_pages->SuspendLayout();
+			   this->AD_edit_Hlist->SuspendLayout();
+			   this->AD_waitingP->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			   this->AD_addHlayout->SuspendLayout();
+			   this->AD_deleteHlayout->SuspendLayout();
+			   this->AD_header_editH->SuspendLayout();
+			   this->AD_modify_Hinfo->SuspendLayout();
+			   this->AD_Modifyinput->SuspendLayout();
+			   this->AD_modifyHSC_layout->SuspendLayout();
+			   this->AD_groupchoice->SuspendLayout();
+			   this->AD_headerModify->SuspendLayout();
+			   this->AD_startWindow->SuspendLayout();
+			   this->AD_view_Pinfo->SuspendLayout();
+			   this->AD_viewPlist_header->SuspendLayout();
 			   this->AD_view_Hinfo->SuspendLayout();
 			   this->AD_viewHinfoHeader->SuspendLayout();
 			   this->AD_editAinfo->SuspendLayout();
@@ -603,21 +638,7 @@ private: System::Windows::Forms::Label^ label8;
 			   this->AD_editpass->SuspendLayout();
 			   this->AD_editRemain->SuspendLayout();
 			   this->AD_GofCHEditAinfo->SuspendLayout();
-			   this->AD_view_Pinfo->SuspendLayout();
-			   this->AD_viewPlist_header->SuspendLayout();
-			   this->AD_modify_Hinfo->SuspendLayout();
-			   this->AD_Modifyinput->SuspendLayout();
-			   this->AD_modifyHSC_layout->SuspendLayout();
-			   this->AD_groupchoice->SuspendLayout();
-			   this->AD_headerModify->SuspendLayout();
 			   this->AD_viewAinfo->SuspendLayout();
-			   this->AD_edit_Hlist->SuspendLayout();
-			   this->AD_addHlayout->SuspendLayout();
-			   this->AD_waitingP->SuspendLayout();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			   this->AD_deleteHlayout->SuspendLayout();
-			   this->AD_header_editH->SuspendLayout();
-			   this->AD_startWindow->SuspendLayout();
 			   this->side_AD_bar_pn->SuspendLayout();
 			   this->AD_info_pn->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AD_pic))->BeginInit();
@@ -701,7 +722,7 @@ private: System::Windows::Forms::Label^ label8;
 			   this->SignIUP_but->TabIndex = 5;
 			   this->SignIUP_but->Text = L"Sign in";
 			   this->SignIUP_but->UseVisualStyleBackColor = true;
-			   this->SignIUP_but->Click += gcnew System::EventHandler(this, &mainPage::SignIUP_but_Click);
+			   this->SignIUP_but->Click += gcnew System::EventHandler(this, &mainPage::SignIIN_but_Click);
 			   // 
 			   // StartUP_page
 			   // 
@@ -984,546 +1005,318 @@ private: System::Windows::Forms::Label^ label8;
 			   // 
 			   // AD_pages
 			   // 
+			   this->AD_pages->Controls->Add(this->AD_edit_Hlist);
+			   this->AD_pages->Controls->Add(this->AD_modify_Hinfo);
+			   this->AD_pages->Controls->Add(this->AD_startWindow);
+			   this->AD_pages->Controls->Add(this->AD_view_Pinfo);
 			   this->AD_pages->Controls->Add(this->AD_view_Hinfo);
 			   this->AD_pages->Controls->Add(this->AD_editAinfo);
-			   this->AD_pages->Controls->Add(this->AD_view_Pinfo);
-			   this->AD_pages->Controls->Add(this->AD_modify_Hinfo);
 			   this->AD_pages->Controls->Add(this->AD_viewAinfo);
-			   this->AD_pages->Controls->Add(this->AD_edit_Hlist);
-			   this->AD_pages->Controls->Add(this->AD_startWindow);
 			   this->AD_pages->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_pages->Location = System::Drawing::Point(273, 0);
 			   this->AD_pages->Name = L"AD_pages";
 			   this->AD_pages->Size = System::Drawing::Size(757, 654);
 			   this->AD_pages->TabIndex = 1;
 			   // 
-			   // AD_view_Hinfo
+			   // AD_edit_Hlist
 			   // 
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_HCllist);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_HSplist);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_ID);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_BedsPrice);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_surgeryPrice);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Rprice);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_bedsAva);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Rate);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Name);
-			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfoHeader);
-			   this->AD_view_Hinfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_view_Hinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_view_Hinfo->Name = L"AD_view_Hinfo";
-			   this->AD_view_Hinfo->Size = System::Drawing::Size(757, 654);
-			   this->AD_view_Hinfo->TabIndex = 0;
+			   this->AD_edit_Hlist->Controls->Add(this->AD_waitingP);
+			   this->AD_edit_Hlist->Controls->Add(this->AD_addHlayout);
+			   this->AD_edit_Hlist->Controls->Add(this->AD_deleteHlayout);
+			   this->AD_edit_Hlist->Controls->Add(this->AD_header_editH);
+			   this->AD_edit_Hlist->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_edit_Hlist->Location = System::Drawing::Point(0, 0);
+			   this->AD_edit_Hlist->Name = L"AD_edit_Hlist";
+			   this->AD_edit_Hlist->Size = System::Drawing::Size(757, 654);
+			   this->AD_edit_Hlist->TabIndex = 2;
 			   // 
-			   // AD_viewHinfo_HCllist
+			   // AD_waitingP
 			   // 
-			   this->AD_viewHinfo_HCllist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+			   this->AD_waitingP->BackColor = System::Drawing::SystemColors::ControlLight;
+			   this->AD_waitingP->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			   this->AD_waitingP->Controls->Add(this->pictureBox1);
+			   this->AD_waitingP->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_waitingP->Location = System::Drawing::Point(0, 80);
+			   this->AD_waitingP->Name = L"AD_waitingP";
+			   this->AD_waitingP->Size = System::Drawing::Size(757, 574);
+			   this->AD_waitingP->TabIndex = 17;
+			   // 
+			   // pictureBox1
+			   // 
+			   this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			   this->pictureBox1->Location = System::Drawing::Point(247, 131);
+			   this->pictureBox1->Name = L"pictureBox1";
+			   this->pictureBox1->Size = System::Drawing::Size(264, 277);
+			   this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			   this->pictureBox1->TabIndex = 0;
+			   this->pictureBox1->TabStop = false;
+			   // 
+			   // AD_addHlayout
+			   // 
+			   this->AD_addHlayout->BackColor = System::Drawing::SystemColors::ControlLight;
+			   this->AD_addHlayout->Controls->Add(this->AD_HPRBsorder_lab);
+			   this->AD_addHlayout->Controls->Add(this->AD_HPRBsorder_TB);
+			   this->AD_addHlayout->Controls->Add(this->AD_HIDorder_lab);
+			   this->AD_addHlayout->Controls->Add(this->AD_HIDorder_TB);
+			   this->AD_addHlayout->Controls->Add(this->AD_HRateorder_lab);
+			   this->AD_addHlayout->Controls->Add(this->AD_HRateorder_TB);
+			   this->AD_addHlayout->Controls->Add(this->AD_HRPorder_lab);
+			   this->AD_addHlayout->Controls->Add(this->AD_HRPorder_TB);
+			   this->AD_addHlayout->Controls->Add(this->AD_HBPorder_lab);
+			   this->AD_addHlayout->Controls->Add(this->AD_HBPorder_TB);
+			   this->AD_addHlayout->Controls->Add(this->AD_addH);
+			   this->AD_addHlayout->Controls->Add(this->AD_HNorder_lab);
+			   this->AD_addHlayout->Controls->Add(this->AD_HNorder_TB);
+			   this->AD_addHlayout->Controls->Add(this->AD_Hstate);
+			   this->AD_addHlayout->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_addHlayout->Location = System::Drawing::Point(0, 80);
+			   this->AD_addHlayout->Name = L"AD_addHlayout";
+			   this->AD_addHlayout->Size = System::Drawing::Size(757, 574);
+			   this->AD_addHlayout->TabIndex = 14;
+			   // 
+			   // AD_HPRBsorder_lab
+			   // 
+			   this->AD_HPRBsorder_lab->AutoSize = true;
+			   this->AD_HPRBsorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_HCllist->FormattingEnabled = true;
-			   this->AD_viewHinfo_HCllist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
-			   this->AD_viewHinfo_HCllist->Location = System::Drawing::Point(447, 120);
-			   this->AD_viewHinfo_HCllist->Name = L"AD_viewHinfo_HCllist";
-			   this->AD_viewHinfo_HCllist->Size = System::Drawing::Size(252, 34);
-			   this->AD_viewHinfo_HCllist->TabIndex = 9;
-			   this->AD_viewHinfo_HCllist->Text = L"Hospital Clinics";
+			   this->AD_HPRBsorder_lab->Location = System::Drawing::Point(373, 227);
+			   this->AD_HPRBsorder_lab->Name = L"AD_HPRBsorder_lab";
+			   this->AD_HPRBsorder_lab->Size = System::Drawing::Size(182, 29);
+			   this->AD_HPRBsorder_lab->TabIndex = 20;
+			   this->AD_HPRBsorder_lab->Text = L"Beds Avaliable";
 			   // 
-			   // AD_viewHinfo_HSplist
+			   // AD_HPRBsorder_TB
 			   // 
-			   this->AD_viewHinfo_HSplist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+			   this->AD_HPRBsorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			   this->AD_HPRBsorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_HSplist->FormattingEnabled = true;
-			   this->AD_viewHinfo_HSplist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
-			   this->AD_viewHinfo_HSplist->Location = System::Drawing::Point(447, 308);
-			   this->AD_viewHinfo_HSplist->Name = L"AD_viewHinfo_HSplist";
-			   this->AD_viewHinfo_HSplist->Size = System::Drawing::Size(252, 34);
-			   this->AD_viewHinfo_HSplist->TabIndex = 8;
-			   this->AD_viewHinfo_HSplist->Text = L"Hospital Specialties";
+			   this->AD_HPRBsorder_TB->Location = System::Drawing::Point(378, 275);
+			   this->AD_HPRBsorder_TB->Name = L"AD_HPRBsorder_TB";
+			   this->AD_HPRBsorder_TB->Size = System::Drawing::Size(238, 29);
+			   this->AD_HPRBsorder_TB->TabIndex = 21;
 			   // 
-			   // AD_viewHinfo_ID
+			   // AD_HIDorder_lab
 			   // 
-			   this->AD_viewHinfo_ID->AutoSize = true;
-			   this->AD_viewHinfo_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+			   this->AD_HIDorder_lab->AutoSize = true;
+			   this->AD_HIDorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_ID->Location = System::Drawing::Point(25, 111);
-			   this->AD_viewHinfo_ID->Name = L"AD_viewHinfo_ID";
-			   this->AD_viewHinfo_ID->Size = System::Drawing::Size(160, 36);
-			   this->AD_viewHinfo_ID->TabIndex = 0;
-			   this->AD_viewHinfo_ID->Text = L"Hospital ID";
+			   this->AD_HIDorder_lab->Location = System::Drawing::Point(373, 34);
+			   this->AD_HIDorder_lab->Name = L"AD_HIDorder_lab";
+			   this->AD_HIDorder_lab->Size = System::Drawing::Size(136, 29);
+			   this->AD_HIDorder_lab->TabIndex = 18;
+			   this->AD_HIDorder_lab->Text = L"Hospital ID";
 			   // 
-			   // AD_viewHinfo_BedsPrice
+			   // AD_HIDorder_TB
 			   // 
-			   this->AD_viewHinfo_BedsPrice->AutoSize = true;
-			   this->AD_viewHinfo_BedsPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+			   this->AD_HIDorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			   this->AD_HIDorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_BedsPrice->Location = System::Drawing::Point(26, 514);
-			   this->AD_viewHinfo_BedsPrice->Name = L"AD_viewHinfo_BedsPrice";
-			   this->AD_viewHinfo_BedsPrice->Size = System::Drawing::Size(159, 36);
-			   this->AD_viewHinfo_BedsPrice->TabIndex = 7;
-			   this->AD_viewHinfo_BedsPrice->Text = L"Beds Price";
+			   this->AD_HIDorder_TB->Location = System::Drawing::Point(378, 82);
+			   this->AD_HIDorder_TB->Name = L"AD_HIDorder_TB";
+			   this->AD_HIDorder_TB->Size = System::Drawing::Size(238, 29);
+			   this->AD_HIDorder_TB->TabIndex = 19;
 			   // 
-			   // AD_viewHinfo_surgeryPrice
+			   // AD_HRateorder_lab
 			   // 
-			   this->AD_viewHinfo_surgeryPrice->AutoSize = true;
-			   this->AD_viewHinfo_surgeryPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+			   this->AD_HRateorder_lab->AutoSize = true;
+			   this->AD_HRateorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_surgeryPrice->Location = System::Drawing::Point(25, 445);
-			   this->AD_viewHinfo_surgeryPrice->Name = L"AD_viewHinfo_surgeryPrice";
-			   this->AD_viewHinfo_surgeryPrice->Size = System::Drawing::Size(196, 36);
-			   this->AD_viewHinfo_surgeryPrice->TabIndex = 6;
-			   this->AD_viewHinfo_surgeryPrice->Text = L"Surgery Price";
+			   this->AD_HRateorder_lab->Location = System::Drawing::Point(372, 130);
+			   this->AD_HRateorder_lab->Name = L"AD_HRateorder_lab";
+			   this->AD_HRateorder_lab->Size = System::Drawing::Size(66, 29);
+			   this->AD_HRateorder_lab->TabIndex = 16;
+			   this->AD_HRateorder_lab->Text = L"Rate";
 			   // 
-			   // AD_viewHinfo_Rprice
+			   // AD_HRateorder_TB
 			   // 
-			   this->AD_viewHinfo_Rprice->AutoSize = true;
-			   this->AD_viewHinfo_Rprice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+			   this->AD_HRateorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			   this->AD_HRateorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_Rprice->Location = System::Drawing::Point(25, 376);
-			   this->AD_viewHinfo_Rprice->Name = L"AD_viewHinfo_Rprice";
-			   this->AD_viewHinfo_Rprice->Size = System::Drawing::Size(227, 36);
-			   this->AD_viewHinfo_Rprice->TabIndex = 5;
-			   this->AD_viewHinfo_Rprice->Text = L"Check-UP Price";
+			   this->AD_HRateorder_TB->Location = System::Drawing::Point(377, 178);
+			   this->AD_HRateorder_TB->Name = L"AD_HRateorder_TB";
+			   this->AD_HRateorder_TB->Size = System::Drawing::Size(238, 29);
+			   this->AD_HRateorder_TB->TabIndex = 17;
 			   // 
-			   // AD_viewHinfo_bedsAva
+			   // AD_HRPorder_lab
 			   // 
-			   this->AD_viewHinfo_bedsAva->AutoSize = true;
-			   this->AD_viewHinfo_bedsAva->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+			   this->AD_HRPorder_lab->AutoSize = true;
+			   this->AD_HRPorder_lab->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_HRPorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_bedsAva->Location = System::Drawing::Point(25, 307);
-			   this->AD_viewHinfo_bedsAva->Name = L"AD_viewHinfo_bedsAva";
-			   this->AD_viewHinfo_bedsAva->Size = System::Drawing::Size(213, 36);
-			   this->AD_viewHinfo_bedsAva->TabIndex = 4;
-			   this->AD_viewHinfo_bedsAva->Text = L"Beds Avaliable";
+			   this->AD_HRPorder_lab->Location = System::Drawing::Point(25, 221);
+			   this->AD_HRPorder_lab->Name = L"AD_HRPorder_lab";
+			   this->AD_HRPorder_lab->Size = System::Drawing::Size(213, 29);
+			   this->AD_HRPorder_lab->TabIndex = 14;
+			   this->AD_HRPorder_lab->Text = L"Reservation Price";
 			   // 
-			   // AD_viewHinfo_Rate
+			   // AD_HRPorder_TB
 			   // 
-			   this->AD_viewHinfo_Rate->AutoSize = true;
-			   this->AD_viewHinfo_Rate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+			   this->AD_HRPorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			   this->AD_HRPorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_Rate->Location = System::Drawing::Point(25, 238);
-			   this->AD_viewHinfo_Rate->Name = L"AD_viewHinfo_Rate";
-			   this->AD_viewHinfo_Rate->Size = System::Drawing::Size(193, 36);
-			   this->AD_viewHinfo_Rate->TabIndex = 3;
-			   this->AD_viewHinfo_Rate->Text = L"Hospital Rate";
+			   this->AD_HRPorder_TB->Location = System::Drawing::Point(30, 268);
+			   this->AD_HRPorder_TB->Name = L"AD_HRPorder_TB";
+			   this->AD_HRPorder_TB->Size = System::Drawing::Size(238, 29);
+			   this->AD_HRPorder_TB->TabIndex = 15;
 			   // 
-			   // AD_viewHinfo_Name
+			   // AD_HBPorder_lab
 			   // 
-			   this->AD_viewHinfo_Name->AutoSize = true;
-			   this->AD_viewHinfo_Name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+			   this->AD_HBPorder_lab->AutoSize = true;
+			   this->AD_HBPorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHinfo_Name->Location = System::Drawing::Point(24, 169);
-			   this->AD_viewHinfo_Name->Name = L"AD_viewHinfo_Name";
-			   this->AD_viewHinfo_Name->Size = System::Drawing::Size(208, 36);
-			   this->AD_viewHinfo_Name->TabIndex = 2;
-			   this->AD_viewHinfo_Name->Text = L"Hospital Name";
+			   this->AD_HBPorder_lab->Location = System::Drawing::Point(25, 127);
+			   this->AD_HBPorder_lab->Name = L"AD_HBPorder_lab";
+			   this->AD_HBPorder_lab->Size = System::Drawing::Size(136, 29);
+			   this->AD_HBPorder_lab->TabIndex = 12;
+			   this->AD_HBPorder_lab->Text = L"Beds Price";
 			   // 
-			   // AD_viewHinfoHeader
+			   // AD_HBPorder_TB
 			   // 
-			   this->AD_viewHinfoHeader->BackColor = System::Drawing::Color::DarkGray;
-			   this->AD_viewHinfoHeader->Controls->Add(this->AD_viewHbutton);
-			   this->AD_viewHinfoHeader->Controls->Add(this->AD_viewHList);
-			   this->AD_viewHinfoHeader->Location = System::Drawing::Point(0, 0);
-			   this->AD_viewHinfoHeader->Name = L"AD_viewHinfoHeader";
-			   this->AD_viewHinfoHeader->Size = System::Drawing::Size(757, 84);
-			   this->AD_viewHinfoHeader->TabIndex = 1;
+			   this->AD_HBPorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			   this->AD_HBPorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_HBPorder_TB->Location = System::Drawing::Point(30, 174);
+			   this->AD_HBPorder_TB->Name = L"AD_HBPorder_TB";
+			   this->AD_HBPorder_TB->Size = System::Drawing::Size(238, 29);
+			   this->AD_HBPorder_TB->TabIndex = 13;
 			   // 
-			   // AD_viewHbutton
+			   // AD_addH
 			   // 
-			   this->AD_viewHbutton->FlatAppearance->BorderSize = 0;
-			   this->AD_viewHbutton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_viewHbutton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			   this->AD_addH->FlatAppearance->BorderSize = 0;
+			   this->AD_addH->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_addH->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.93846F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->AD_viewHbutton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_viewHbutton.Image")));
-			   this->AD_viewHbutton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_viewHbutton->Location = System::Drawing::Point(399, 23);
-			   this->AD_viewHbutton->Margin = System::Windows::Forms::Padding(3, 50, 3, 3);
-			   this->AD_viewHbutton->Name = L"AD_viewHbutton";
-			   this->AD_viewHbutton->Size = System::Drawing::Size(119, 36);
-			   this->AD_viewHbutton->TabIndex = 5;
-			   this->AD_viewHbutton->Text = L"View";
-			   this->AD_viewHbutton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			   this->AD_viewHbutton->UseVisualStyleBackColor = true;
-			   this->AD_viewHbutton->Click += gcnew System::EventHandler(this, &mainPage::AD_viewHbutton_Click);
+			   this->AD_addH->Location = System::Drawing::Point(166, 413);
+			   this->AD_addH->Name = L"AD_addH";
+			   this->AD_addH->Size = System::Drawing::Size(222, 72);
+			   this->AD_addH->TabIndex = 11;
+			   this->AD_addH->Text = L"Add";
+			   this->AD_addH->UseVisualStyleBackColor = true;
 			   // 
-			   // AD_viewHList
+			   // AD_HNorder_lab
 			   // 
-			   this->AD_viewHList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_viewHList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+			   this->AD_HNorder_lab->AutoSize = true;
+			   this->AD_HNorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewHList->FormattingEnabled = true;
-			   this->AD_viewHList->Location = System::Drawing::Point(33, 21);
-			   this->AD_viewHList->Name = L"AD_viewHList";
-			   this->AD_viewHList->Size = System::Drawing::Size(247, 37);
-			   this->AD_viewHList->TabIndex = 0;
-			   this->AD_viewHList->Text = L"Hospital list";
+			   this->AD_HNorder_lab->Location = System::Drawing::Point(25, 33);
+			   this->AD_HNorder_lab->Name = L"AD_HNorder_lab";
+			   this->AD_HNorder_lab->Size = System::Drawing::Size(180, 29);
+			   this->AD_HNorder_lab->TabIndex = 7;
+			   this->AD_HNorder_lab->Text = L"Hospital Name";
 			   // 
-			   // AD_editAinfo
+			   // AD_HNorder_TB
 			   // 
-			   this->AD_editAinfo->Controls->Add(this->AD_edit_wiating);
-			   this->AD_editAinfo->Controls->Add(this->AD_editpass);
-			   this->AD_editAinfo->Controls->Add(this->AD_editRemain);
-			   this->AD_editAinfo->Controls->Add(this->AD_GofCHEditAinfo);
-			   this->AD_editAinfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_editAinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_editAinfo->Name = L"AD_editAinfo";
-			   this->AD_editAinfo->Size = System::Drawing::Size(757, 654);
-			   this->AD_editAinfo->TabIndex = 6;
+			   this->AD_HNorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			   this->AD_HNorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_HNorder_TB->Location = System::Drawing::Point(30, 80);
+			   this->AD_HNorder_TB->Name = L"AD_HNorder_TB";
+			   this->AD_HNorder_TB->Size = System::Drawing::Size(238, 29);
+			   this->AD_HNorder_TB->TabIndex = 8;
 			   // 
-			   // AD_edit_wiating
+			   // AD_Hstate
 			   // 
-			   this->AD_edit_wiating->Controls->Add(this->label10);
-			   this->AD_edit_wiating->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_edit_wiating->Location = System::Drawing::Point(195, 0);
-			   this->AD_edit_wiating->Name = L"AD_edit_wiating";
-			   this->AD_edit_wiating->Size = System::Drawing::Size(562, 654);
-			   this->AD_edit_wiating->TabIndex = 15;
-			   // 
-			   // label10
-			   // 
-			   this->label10->AutoSize = true;
-			   this->label10->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->AD_Hstate->AutoSize = true;
+			   this->AD_Hstate->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 9.969231F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->label10->Location = System::Drawing::Point(248, 279);
-			   this->label10->Name = L"label10";
-			   this->label10->Size = System::Drawing::Size(136, 24);
-			   this->label10->TabIndex = 0;
-			   this->label10->Text = L"waiting select";
+			   this->AD_Hstate->ForeColor = System::Drawing::Color::Red;
+			   this->AD_Hstate->Location = System::Drawing::Point(37, 330);
+			   this->AD_Hstate->Name = L"AD_Hstate";
+			   this->AD_Hstate->Size = System::Drawing::Size(53, 19);
+			   this->AD_Hstate->TabIndex = 10;
+			   this->AD_Hstate->Text = L"label2";
 			   // 
-			   // AD_editpass
+			   // AD_deleteHlayout
 			   // 
-			   this->AD_editpass->Controls->Add(this->AD_askconfPass_TB);
-			   this->AD_editpass->Controls->Add(this->AD_askconfPass_lab);
-			   this->AD_editpass->Controls->Add(this->AD_askNewPass_TB);
-			   this->AD_editpass->Controls->Add(this->AD_askNewPass_lab);
-			   this->AD_editpass->Controls->Add(this->AD_askOldPass_TB);
-			   this->AD_editpass->Controls->Add(this->AD_askOldPass_lab);
-			   this->AD_editpass->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_editpass->Location = System::Drawing::Point(195, 0);
-			   this->AD_editpass->Name = L"AD_editpass";
-			   this->AD_editpass->Size = System::Drawing::Size(562, 654);
-			   this->AD_editpass->TabIndex = 13;
+			   this->AD_deleteHlayout->BackColor = System::Drawing::SystemColors::ControlLight;
+			   this->AD_deleteHlayout->Controls->Add(this->AD_messegeState);
+			   this->AD_deleteHlayout->Controls->Add(this->AD_HdeleteCOM);
+			   this->AD_deleteHlayout->Controls->Add(this->AD_selectHD);
+			   this->AD_deleteHlayout->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_deleteHlayout->Location = System::Drawing::Point(0, 80);
+			   this->AD_deleteHlayout->Name = L"AD_deleteHlayout";
+			   this->AD_deleteHlayout->Size = System::Drawing::Size(757, 574);
+			   this->AD_deleteHlayout->TabIndex = 16;
 			   // 
-			   // AD_askconfPass_TB
+			   // AD_messegeState
 			   // 
-			   this->AD_askconfPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+			   this->AD_messegeState->AutoSize = true;
+			   this->AD_messegeState->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_askconfPass_TB->Location = System::Drawing::Point(57, 334);
-			   this->AD_askconfPass_TB->Name = L"AD_askconfPass_TB";
-			   this->AD_askconfPass_TB->Size = System::Drawing::Size(236, 32);
-			   this->AD_askconfPass_TB->TabIndex = 6;
+			   this->AD_messegeState->Location = System::Drawing::Point(54, 111);
+			   this->AD_messegeState->Name = L"AD_messegeState";
+			   this->AD_messegeState->Size = System::Drawing::Size(81, 29);
+			   this->AD_messegeState->TabIndex = 10;
+			   this->AD_messegeState->Text = L"label4";
 			   // 
-			   // AD_askconfPass_lab
+			   // AD_HdeleteCOM
 			   // 
-			   this->AD_askconfPass_lab->AutoSize = true;
-			   this->AD_askconfPass_lab->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular,
+			   this->AD_HdeleteCOM->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_askconfPass_lab->Location = System::Drawing::Point(56, 294);
-			   this->AD_askconfPass_lab->Name = L"AD_askconfPass_lab";
-			   this->AD_askconfPass_lab->Size = System::Drawing::Size(229, 24);
-			   this->AD_askconfPass_lab->TabIndex = 5;
-			   this->AD_askconfPass_lab->Text = L"Confirm new password";
+			   this->AD_HdeleteCOM->FormattingEnabled = true;
+			   this->AD_HdeleteCOM->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"empty" });
+			   this->AD_HdeleteCOM->Location = System::Drawing::Point(47, 43);
+			   this->AD_HdeleteCOM->Name = L"AD_HdeleteCOM";
+			   this->AD_HdeleteCOM->Size = System::Drawing::Size(251, 37);
+			   this->AD_HdeleteCOM->TabIndex = 6;
+			   this->AD_HdeleteCOM->Text = L"Hospital List";
 			   // 
-			   // AD_askNewPass_TB
+			   // AD_selectHD
 			   // 
-			   this->AD_askNewPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_askNewPass_TB->Location = System::Drawing::Point(57, 240);
-			   this->AD_askNewPass_TB->Name = L"AD_askNewPass_TB";
-			   this->AD_askNewPass_TB->Size = System::Drawing::Size(236, 32);
-			   this->AD_askNewPass_TB->TabIndex = 4;
-			   // 
-			   // AD_askNewPass_lab
-			   // 
-			   this->AD_askNewPass_lab->AutoSize = true;
-			   this->AD_askNewPass_lab->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_askNewPass_lab->Location = System::Drawing::Point(56, 200);
-			   this->AD_askNewPass_lab->Name = L"AD_askNewPass_lab";
-			   this->AD_askNewPass_lab->Size = System::Drawing::Size(206, 24);
-			   this->AD_askNewPass_lab->TabIndex = 3;
-			   this->AD_askNewPass_lab->Text = L"Enter new password ";
-			   // 
-			   // AD_askOldPass_TB
-			   // 
-			   this->AD_askOldPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_askOldPass_TB->Location = System::Drawing::Point(57, 142);
-			   this->AD_askOldPass_TB->Name = L"AD_askOldPass_TB";
-			   this->AD_askOldPass_TB->Size = System::Drawing::Size(236, 32);
-			   this->AD_askOldPass_TB->TabIndex = 2;
-			   // 
-			   // AD_askOldPass_lab
-			   // 
-			   this->AD_askOldPass_lab->AutoSize = true;
-			   this->AD_askOldPass_lab->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_askOldPass_lab->Location = System::Drawing::Point(56, 102);
-			   this->AD_askOldPass_lab->Name = L"AD_askOldPass_lab";
-			   this->AD_askOldPass_lab->Size = System::Drawing::Size(191, 24);
-			   this->AD_askOldPass_lab->TabIndex = 1;
-			   this->AD_askOldPass_lab->Text = L"Enter old password";
-			   // 
-			   // AD_editRemain
-			   // 
-			   this->AD_editRemain->Controls->Add(this->AD_editRemain_state);
-			   this->AD_editRemain->Controls->Add(this->AD_editRemain_TB);
-			   this->AD_editRemain->Controls->Add(this->AD_editRemain_lab);
-			   this->AD_editRemain->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_editRemain->Location = System::Drawing::Point(195, 0);
-			   this->AD_editRemain->Name = L"AD_editRemain";
-			   this->AD_editRemain->Size = System::Drawing::Size(562, 654);
-			   this->AD_editRemain->TabIndex = 14;
-			   // 
-			   // AD_editRemain_state
-			   // 
-			   this->AD_editRemain_state->AutoSize = true;
-			   this->AD_editRemain_state->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 9.969231F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_editRemain_state->ForeColor = System::Drawing::Color::Red;
-			   this->AD_editRemain_state->Location = System::Drawing::Point(53, 200);
-			   this->AD_editRemain_state->Name = L"AD_editRemain_state";
-			   this->AD_editRemain_state->Size = System::Drawing::Size(53, 19);
-			   this->AD_editRemain_state->TabIndex = 2;
-			   this->AD_editRemain_state->Text = L"label2";
-			   // 
-			   // AD_editRemain_TB
-			   // 
-			   this->AD_editRemain_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_editRemain_TB->Location = System::Drawing::Point(49, 133);
-			   this->AD_editRemain_TB->Name = L"AD_editRemain_TB";
-			   this->AD_editRemain_TB->Size = System::Drawing::Size(236, 32);
-			   this->AD_editRemain_TB->TabIndex = 1;
-			   // 
-			   // AD_editRemain_lab
-			   // 
-			   this->AD_editRemain_lab->AutoSize = true;
-			   this->AD_editRemain_lab->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_editRemain_lab->Location = System::Drawing::Point(45, 87);
-			   this->AD_editRemain_lab->Name = L"AD_editRemain_lab";
-			   this->AD_editRemain_lab->Size = System::Drawing::Size(66, 24);
-			   this->AD_editRemain_lab->TabIndex = 0;
-			   this->AD_editRemain_lab->Text = L"label2";
-			   // 
-			   // AD_GofCHEditAinfo
-			   // 
-			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editPhNum);
-			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editpass_button);
-			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editusername);
-			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editAge);
-			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editName);
-			   this->AD_GofCHEditAinfo->Dock = System::Windows::Forms::DockStyle::Left;
-			   this->AD_GofCHEditAinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_GofCHEditAinfo->Name = L"AD_GofCHEditAinfo";
-			   this->AD_GofCHEditAinfo->Size = System::Drawing::Size(195, 654);
-			   this->AD_GofCHEditAinfo->TabIndex = 12;
-			   // 
-			   // AD_editPhNum
-			   // 
-			   this->AD_editPhNum->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->AD_editPhNum->FlatAppearance->BorderSize = 0;
-			   this->AD_editPhNum->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_editPhNum->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			   this->AD_selectHD->FlatAppearance->BorderSize = 0;
+			   this->AD_selectHD->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_selectHD->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.861538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->AD_editPhNum->Location = System::Drawing::Point(0, 488);
-			   this->AD_editPhNum->Name = L"AD_editPhNum";
-			   this->AD_editPhNum->Size = System::Drawing::Size(195, 122);
-			   this->AD_editPhNum->TabIndex = 6;
-			   this->AD_editPhNum->Text = L"Edit Phone Number";
-			   this->AD_editPhNum->UseVisualStyleBackColor = true;
-			   this->AD_editPhNum->Click += gcnew System::EventHandler(this, &mainPage::AD_editPhNum_Click);
+			   this->AD_selectHD->Location = System::Drawing::Point(348, 48);
+			   this->AD_selectHD->Name = L"AD_selectHD";
+			   this->AD_selectHD->Size = System::Drawing::Size(125, 33);
+			   this->AD_selectHD->TabIndex = 9;
+			   this->AD_selectHD->Text = L"Select";
+			   this->AD_selectHD->UseVisualStyleBackColor = true;
 			   // 
-			   // AD_editpass_button
+			   // AD_header_editH
 			   // 
-			   this->AD_editpass_button->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->AD_editpass_button->FlatAppearance->BorderSize = 0;
-			   this->AD_editpass_button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_editpass_button->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_editpass_button->Location = System::Drawing::Point(0, 366);
-			   this->AD_editpass_button->Name = L"AD_editpass_button";
-			   this->AD_editpass_button->Size = System::Drawing::Size(195, 122);
-			   this->AD_editpass_button->TabIndex = 5;
-			   this->AD_editpass_button->Text = L"Change password";
-			   this->AD_editpass_button->UseVisualStyleBackColor = true;
-			   this->AD_editpass_button->Click += gcnew System::EventHandler(this, &mainPage::AD_editpass_button_Click);
+			   this->AD_header_editH->Controls->Add(this->AD_deleteH);
+			   this->AD_header_editH->Controls->Add(this->AD_addH_but);
+			   this->AD_header_editH->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->AD_header_editH->Location = System::Drawing::Point(0, 0);
+			   this->AD_header_editH->Name = L"AD_header_editH";
+			   this->AD_header_editH->Size = System::Drawing::Size(757, 80);
+			   this->AD_header_editH->TabIndex = 15;
 			   // 
-			   // AD_editusername
+			   // AD_deleteH
 			   // 
-			   this->AD_editusername->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->AD_editusername->FlatAppearance->BorderSize = 0;
-			   this->AD_editusername->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_editusername->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			   this->AD_deleteH->FlatAppearance->BorderSize = 0;
+			   this->AD_deleteH->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_deleteH->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->AD_editusername->Location = System::Drawing::Point(0, 244);
-			   this->AD_editusername->Name = L"AD_editusername";
-			   this->AD_editusername->Size = System::Drawing::Size(195, 122);
-			   this->AD_editusername->TabIndex = 4;
-			   this->AD_editusername->Text = L"Edit username";
-			   this->AD_editusername->UseVisualStyleBackColor = true;
-			   this->AD_editusername->Click += gcnew System::EventHandler(this, &mainPage::AD_editusername_Click);
+			   this->AD_deleteH->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_deleteH.Image")));
+			   this->AD_deleteH->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
+			   this->AD_deleteH->Location = System::Drawing::Point(432, 10);
+			   this->AD_deleteH->Name = L"AD_deleteH";
+			   this->AD_deleteH->Size = System::Drawing::Size(120, 60);
+			   this->AD_deleteH->TabIndex = 13;
+			   this->AD_deleteH->Text = L"Delete";
+			   this->AD_deleteH->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->AD_deleteH->UseVisualStyleBackColor = true;
+			   this->AD_deleteH->Click += gcnew System::EventHandler(this, &mainPage::AD_deleteH_Click);
 			   // 
-			   // AD_editAge
+			   // AD_addH_but
 			   // 
-			   this->AD_editAge->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->AD_editAge->FlatAppearance->BorderSize = 0;
-			   this->AD_editAge->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_editAge->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			   this->AD_addH_but->FlatAppearance->BorderSize = 0;
+			   this->AD_addH_but->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_addH_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->AD_editAge->Location = System::Drawing::Point(0, 122);
-			   this->AD_editAge->Name = L"AD_editAge";
-			   this->AD_editAge->Size = System::Drawing::Size(195, 122);
-			   this->AD_editAge->TabIndex = 3;
-			   this->AD_editAge->Text = L"Edit Age";
-			   this->AD_editAge->UseVisualStyleBackColor = true;
-			   this->AD_editAge->Click += gcnew System::EventHandler(this, &mainPage::AD_editAge_Click);
-			   // 
-			   // AD_editName
-			   // 
-			   this->AD_editName->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->AD_editName->FlatAppearance->BorderSize = 0;
-			   this->AD_editName->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_editName->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->AD_editName->Location = System::Drawing::Point(0, 0);
-			   this->AD_editName->Name = L"AD_editName";
-			   this->AD_editName->Size = System::Drawing::Size(195, 122);
-			   this->AD_editName->TabIndex = 2;
-			   this->AD_editName->Text = L"Edit Name";
-			   this->AD_editName->UseVisualStyleBackColor = true;
-			   this->AD_editName->Click += gcnew System::EventHandler(this, &mainPage::AD_editName_Click);
-			   // 
-			   // AD_view_Pinfo
-			   // 
-			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_NumOfR);
-			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Totalpaid);
-			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Email);
-			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Gender);
-			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_PhNum);
-			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Age);
-			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPlist_header);
-			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Name);
-			   this->AD_view_Pinfo->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_view_Pinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_view_Pinfo->Name = L"AD_view_Pinfo";
-			   this->AD_view_Pinfo->Size = System::Drawing::Size(757, 654);
-			   this->AD_view_Pinfo->TabIndex = 1;
-			   // 
-			   // AD_viewPinfo_NumOfR
-			   // 
-			   this->AD_viewPinfo_NumOfR->AutoSize = true;
-			   this->AD_viewPinfo_NumOfR->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewPinfo_NumOfR->Location = System::Drawing::Point(31, 575);
-			   this->AD_viewPinfo_NumOfR->Name = L"AD_viewPinfo_NumOfR";
-			   this->AD_viewPinfo_NumOfR->Size = System::Drawing::Size(314, 38);
-			   this->AD_viewPinfo_NumOfR->TabIndex = 6;
-			   this->AD_viewPinfo_NumOfR->Text = L"Number Of reserved";
-			   // 
-			   // AD_viewPinfo_Totalpaid
-			   // 
-			   this->AD_viewPinfo_Totalpaid->AutoSize = true;
-			   this->AD_viewPinfo_Totalpaid->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewPinfo_Totalpaid->Location = System::Drawing::Point(31, 500);
-			   this->AD_viewPinfo_Totalpaid->Name = L"AD_viewPinfo_Totalpaid";
-			   this->AD_viewPinfo_Totalpaid->Size = System::Drawing::Size(169, 38);
-			   this->AD_viewPinfo_Totalpaid->TabIndex = 5;
-			   this->AD_viewPinfo_Totalpaid->Text = L"Total price";
-			   // 
-			   // AD_viewPinfo_Email
-			   // 
-			   this->AD_viewPinfo_Email->AutoSize = true;
-			   this->AD_viewPinfo_Email->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewPinfo_Email->Location = System::Drawing::Point(33, 425);
-			   this->AD_viewPinfo_Email->Name = L"AD_viewPinfo_Email";
-			   this->AD_viewPinfo_Email->Size = System::Drawing::Size(200, 38);
-			   this->AD_viewPinfo_Email->TabIndex = 4;
-			   this->AD_viewPinfo_Email->Text = L"patient email";
-			   // 
-			   // AD_viewPinfo_Gender
-			   // 
-			   this->AD_viewPinfo_Gender->AutoSize = true;
-			   this->AD_viewPinfo_Gender->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewPinfo_Gender->Location = System::Drawing::Point(31, 350);
-			   this->AD_viewPinfo_Gender->Name = L"AD_viewPinfo_Gender";
-			   this->AD_viewPinfo_Gender->Size = System::Drawing::Size(224, 38);
-			   this->AD_viewPinfo_Gender->TabIndex = 3;
-			   this->AD_viewPinfo_Gender->Text = L"patient gender";
-			   // 
-			   // AD_viewPinfo_PhNum
-			   // 
-			   this->AD_viewPinfo_PhNum->AutoSize = true;
-			   this->AD_viewPinfo_PhNum->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewPinfo_PhNum->Location = System::Drawing::Point(33, 275);
-			   this->AD_viewPinfo_PhNum->Name = L"AD_viewPinfo_PhNum";
-			   this->AD_viewPinfo_PhNum->Size = System::Drawing::Size(332, 38);
-			   this->AD_viewPinfo_PhNum->TabIndex = 2;
-			   this->AD_viewPinfo_PhNum->Text = L"patient phone number";
-			   // 
-			   // AD_viewPinfo_Age
-			   // 
-			   this->AD_viewPinfo_Age->AutoSize = true;
-			   this->AD_viewPinfo_Age->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewPinfo_Age->Location = System::Drawing::Point(33, 200);
-			   this->AD_viewPinfo_Age->Name = L"AD_viewPinfo_Age";
-			   this->AD_viewPinfo_Age->Size = System::Drawing::Size(181, 38);
-			   this->AD_viewPinfo_Age->TabIndex = 1;
-			   this->AD_viewPinfo_Age->Text = L"patient Age";
-			   // 
-			   // AD_viewPlist_header
-			   // 
-			   this->AD_viewPlist_header->Controls->Add(this->AD_viewPButton);
-			   this->AD_viewPlist_header->Controls->Add(this->AD_viewPlist);
-			   this->AD_viewPlist_header->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->AD_viewPlist_header->Location = System::Drawing::Point(0, 0);
-			   this->AD_viewPlist_header->Name = L"AD_viewPlist_header";
-			   this->AD_viewPlist_header->Size = System::Drawing::Size(757, 97);
-			   this->AD_viewPlist_header->TabIndex = 2;
-			   // 
-			   // AD_viewPButton
-			   // 
-			   this->AD_viewPButton->FlatAppearance->BorderSize = 0;
-			   this->AD_viewPButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_viewPButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->AD_viewPButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_viewPButton.Image")));
-			   this->AD_viewPButton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_viewPButton->Location = System::Drawing::Point(451, 24);
-			   this->AD_viewPButton->Margin = System::Windows::Forms::Padding(3, 50, 3, 3);
-			   this->AD_viewPButton->Name = L"AD_viewPButton";
-			   this->AD_viewPButton->Size = System::Drawing::Size(119, 36);
-			   this->AD_viewPButton->TabIndex = 6;
-			   this->AD_viewPButton->Text = L"View";
-			   this->AD_viewPButton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			   this->AD_viewPButton->UseVisualStyleBackColor = true;
-			   // 
-			   // AD_viewPlist
-			   // 
-			   this->AD_viewPlist->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_viewPlist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewPlist->FormattingEnabled = true;
-			   this->AD_viewPlist->Location = System::Drawing::Point(59, 23);
-			   this->AD_viewPlist->Name = L"AD_viewPlist";
-			   this->AD_viewPlist->Size = System::Drawing::Size(247, 37);
-			   this->AD_viewPlist->TabIndex = 1;
-			   this->AD_viewPlist->Text = L"Patient list";
-			   // 
-			   // AD_viewPinfo_Name
-			   // 
-			   this->AD_viewPinfo_Name->AutoSize = true;
-			   this->AD_viewPinfo_Name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_viewPinfo_Name->Location = System::Drawing::Point(33, 125);
-			   this->AD_viewPinfo_Name->Name = L"AD_viewPinfo_Name";
-			   this->AD_viewPinfo_Name->Size = System::Drawing::Size(214, 38);
-			   this->AD_viewPinfo_Name->TabIndex = 1;
-			   this->AD_viewPinfo_Name->Text = L"Patient Name";
+			   this->AD_addH_but->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_addH_but.Image")));
+			   this->AD_addH_but->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
+			   this->AD_addH_but->Location = System::Drawing::Point(183, 10);
+			   this->AD_addH_but->Name = L"AD_addH_but";
+			   this->AD_addH_but->Size = System::Drawing::Size(105, 60);
+			   this->AD_addH_but->TabIndex = 12;
+			   this->AD_addH_but->Text = L"Add";
+			   this->AD_addH_but->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->AD_addH_but->UseVisualStyleBackColor = true;
+			   this->AD_addH_but->Click += gcnew System::EventHandler(this, &mainPage::AD_addH_but_Click);
 			   // 
 			   // AD_modify_Hinfo
 			   // 
@@ -1905,6 +1698,593 @@ private: System::Windows::Forms::Label^ label8;
 			   this->AD_HCselect->Text = L"Select";
 			   this->AD_HCselect->UseVisualStyleBackColor = true;
 			   // 
+			   // AD_startWindow
+			   // 
+			   this->AD_startWindow->Controls->Add(this->label1);
+			   this->AD_startWindow->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_startWindow->Location = System::Drawing::Point(0, 0);
+			   this->AD_startWindow->Name = L"AD_startWindow";
+			   this->AD_startWindow->Size = System::Drawing::Size(757, 654);
+			   this->AD_startWindow->TabIndex = 4;
+			   // 
+			   // label1
+			   // 
+			   this->label1->AutoSize = true;
+			   this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 23.81538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->label1->Location = System::Drawing::Point(279, 191);
+			   this->label1->Name = L"label1";
+			   this->label1->Size = System::Drawing::Size(138, 51);
+			   this->label1->TabIndex = 0;
+			   this->label1->Text = L"label1";
+			   // 
+			   // AD_view_Pinfo
+			   // 
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_ID);
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_NumOfR);
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Totalpaid);
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Email);
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Gender);
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_PhNum);
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Age);
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPlist_header);
+			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Name);
+			   this->AD_view_Pinfo->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_view_Pinfo->Location = System::Drawing::Point(0, 0);
+			   this->AD_view_Pinfo->Name = L"AD_view_Pinfo";
+			   this->AD_view_Pinfo->Size = System::Drawing::Size(757, 654);
+			   this->AD_view_Pinfo->TabIndex = 1;
+			   // 
+			   // AD_viewPinfo_ID
+			   // 
+			   this->AD_viewPinfo_ID->AutoSize = true;
+			   this->AD_viewPinfo_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPinfo_ID->Location = System::Drawing::Point(498, 200);
+			   this->AD_viewPinfo_ID->Name = L"AD_viewPinfo_ID";
+			   this->AD_viewPinfo_ID->Size = System::Drawing::Size(155, 38);
+			   this->AD_viewPinfo_ID->TabIndex = 7;
+			   this->AD_viewPinfo_ID->Text = L"patient ID";
+			   // 
+			   // AD_viewPinfo_NumOfR
+			   // 
+			   this->AD_viewPinfo_NumOfR->AutoSize = true;
+			   this->AD_viewPinfo_NumOfR->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPinfo_NumOfR->Location = System::Drawing::Point(31, 575);
+			   this->AD_viewPinfo_NumOfR->Name = L"AD_viewPinfo_NumOfR";
+			   this->AD_viewPinfo_NumOfR->Size = System::Drawing::Size(314, 38);
+			   this->AD_viewPinfo_NumOfR->TabIndex = 6;
+			   this->AD_viewPinfo_NumOfR->Text = L"Number Of reserved";
+			   // 
+			   // AD_viewPinfo_Totalpaid
+			   // 
+			   this->AD_viewPinfo_Totalpaid->AutoSize = true;
+			   this->AD_viewPinfo_Totalpaid->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPinfo_Totalpaid->Location = System::Drawing::Point(31, 500);
+			   this->AD_viewPinfo_Totalpaid->Name = L"AD_viewPinfo_Totalpaid";
+			   this->AD_viewPinfo_Totalpaid->Size = System::Drawing::Size(169, 38);
+			   this->AD_viewPinfo_Totalpaid->TabIndex = 5;
+			   this->AD_viewPinfo_Totalpaid->Text = L"Total price";
+			   // 
+			   // AD_viewPinfo_Email
+			   // 
+			   this->AD_viewPinfo_Email->AutoSize = true;
+			   this->AD_viewPinfo_Email->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPinfo_Email->Location = System::Drawing::Point(33, 425);
+			   this->AD_viewPinfo_Email->Name = L"AD_viewPinfo_Email";
+			   this->AD_viewPinfo_Email->Size = System::Drawing::Size(200, 38);
+			   this->AD_viewPinfo_Email->TabIndex = 4;
+			   this->AD_viewPinfo_Email->Text = L"patient email";
+			   // 
+			   // AD_viewPinfo_Gender
+			   // 
+			   this->AD_viewPinfo_Gender->AutoSize = true;
+			   this->AD_viewPinfo_Gender->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPinfo_Gender->Location = System::Drawing::Point(31, 350);
+			   this->AD_viewPinfo_Gender->Name = L"AD_viewPinfo_Gender";
+			   this->AD_viewPinfo_Gender->Size = System::Drawing::Size(224, 38);
+			   this->AD_viewPinfo_Gender->TabIndex = 3;
+			   this->AD_viewPinfo_Gender->Text = L"patient gender";
+			   // 
+			   // AD_viewPinfo_PhNum
+			   // 
+			   this->AD_viewPinfo_PhNum->AutoSize = true;
+			   this->AD_viewPinfo_PhNum->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPinfo_PhNum->Location = System::Drawing::Point(33, 275);
+			   this->AD_viewPinfo_PhNum->Name = L"AD_viewPinfo_PhNum";
+			   this->AD_viewPinfo_PhNum->Size = System::Drawing::Size(332, 38);
+			   this->AD_viewPinfo_PhNum->TabIndex = 2;
+			   this->AD_viewPinfo_PhNum->Text = L"patient phone number";
+			   // 
+			   // AD_viewPinfo_Age
+			   // 
+			   this->AD_viewPinfo_Age->AutoSize = true;
+			   this->AD_viewPinfo_Age->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPinfo_Age->Location = System::Drawing::Point(33, 200);
+			   this->AD_viewPinfo_Age->Name = L"AD_viewPinfo_Age";
+			   this->AD_viewPinfo_Age->Size = System::Drawing::Size(181, 38);
+			   this->AD_viewPinfo_Age->TabIndex = 1;
+			   this->AD_viewPinfo_Age->Text = L"patient Age";
+			   // 
+			   // AD_viewPlist_header
+			   // 
+			   this->AD_viewPlist_header->Controls->Add(this->AD_viewPButton);
+			   this->AD_viewPlist_header->Controls->Add(this->AD_viewPlist);
+			   this->AD_viewPlist_header->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->AD_viewPlist_header->Location = System::Drawing::Point(0, 0);
+			   this->AD_viewPlist_header->Name = L"AD_viewPlist_header";
+			   this->AD_viewPlist_header->Size = System::Drawing::Size(757, 97);
+			   this->AD_viewPlist_header->TabIndex = 2;
+			   // 
+			   // AD_viewPButton
+			   // 
+			   this->AD_viewPButton->FlatAppearance->BorderSize = 0;
+			   this->AD_viewPButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_viewPButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_viewPButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_viewPButton.Image")));
+			   this->AD_viewPButton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
+			   this->AD_viewPButton->Location = System::Drawing::Point(451, 24);
+			   this->AD_viewPButton->Margin = System::Windows::Forms::Padding(3, 50, 3, 3);
+			   this->AD_viewPButton->Name = L"AD_viewPButton";
+			   this->AD_viewPButton->Size = System::Drawing::Size(119, 36);
+			   this->AD_viewPButton->TabIndex = 6;
+			   this->AD_viewPButton->Text = L"View";
+			   this->AD_viewPButton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->AD_viewPButton->UseVisualStyleBackColor = true;
+			   this->AD_viewPButton->Click += gcnew System::EventHandler(this, &mainPage::AD_viewPButton_Click);
+			   // 
+			   // AD_viewPlist
+			   // 
+			   this->AD_viewPlist->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_viewPlist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPlist->FormattingEnabled = true;
+			   this->AD_viewPlist->Location = System::Drawing::Point(59, 23);
+			   this->AD_viewPlist->Name = L"AD_viewPlist";
+			   this->AD_viewPlist->Size = System::Drawing::Size(247, 37);
+			   this->AD_viewPlist->TabIndex = 1;
+			   this->AD_viewPlist->Text = L"Patient list";
+			   // 
+			   // AD_viewPinfo_Name
+			   // 
+			   this->AD_viewPinfo_Name->AutoSize = true;
+			   this->AD_viewPinfo_Name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.27692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewPinfo_Name->Location = System::Drawing::Point(33, 125);
+			   this->AD_viewPinfo_Name->Name = L"AD_viewPinfo_Name";
+			   this->AD_viewPinfo_Name->Size = System::Drawing::Size(214, 38);
+			   this->AD_viewPinfo_Name->TabIndex = 1;
+			   this->AD_viewPinfo_Name->Text = L"Patient Name";
+			   // 
+			   // AD_view_Hinfo
+			   // 
+			   this->AD_view_Hinfo->Controls->Add(this->AD_text2);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_text1);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_HSplist);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_HCllist);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_ID);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_BedsPrice);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_surgeryPrice);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Rprice);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_bedsAva);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Rate);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfo_Name);
+			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfoHeader);
+			   this->AD_view_Hinfo->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_view_Hinfo->Location = System::Drawing::Point(0, 0);
+			   this->AD_view_Hinfo->Name = L"AD_view_Hinfo";
+			   this->AD_view_Hinfo->Size = System::Drawing::Size(757, 654);
+			   this->AD_view_Hinfo->TabIndex = 0;
+			   // 
+			   // AD_text2
+			   // 
+			   this->AD_text2->AutoSize = true;
+			   this->AD_text2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_text2->Location = System::Drawing::Point(413, 323);
+			   this->AD_text2->Name = L"AD_text2";
+			   this->AD_text2->Size = System::Drawing::Size(142, 25);
+			   this->AD_text2->TabIndex = 13;
+			   this->AD_text2->Text = L"Specialties List";
+			   this->AD_text2->Visible = false;
+			   // 
+			   // AD_text1
+			   // 
+			   this->AD_text1->AutoSize = true;
+			   this->AD_text1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_text1->Location = System::Drawing::Point(412, 133);
+			   this->AD_text1->Name = L"AD_text1";
+			   this->AD_text1->Size = System::Drawing::Size(116, 29);
+			   this->AD_text1->TabIndex = 12;
+			   this->AD_text1->Text = L"Clinic List";
+			   this->AD_text1->Visible = false;
+			   // 
+			   // AD_viewHinfo_HSplist
+			   // 
+			   this->AD_viewHinfo_HSplist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_HSplist->FormattingEnabled = true;
+			   this->AD_viewHinfo_HSplist->ItemHeight = 26;
+			   this->AD_viewHinfo_HSplist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Specialties List" });
+			   this->AD_viewHinfo_HSplist->Location = System::Drawing::Point(412, 353);
+			   this->AD_viewHinfo_HSplist->Name = L"AD_viewHinfo_HSplist";
+			   this->AD_viewHinfo_HSplist->Size = System::Drawing::Size(267, 108);
+			   this->AD_viewHinfo_HSplist->TabIndex = 11;
+			   // 
+			   // AD_viewHinfo_HCllist
+			   // 
+			   this->AD_viewHinfo_HCllist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_HCllist->FormattingEnabled = true;
+			   this->AD_viewHinfo_HCllist->ItemHeight = 26;
+			   this->AD_viewHinfo_HCllist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Clinic List" });
+			   this->AD_viewHinfo_HCllist->Location = System::Drawing::Point(412, 160);
+			   this->AD_viewHinfo_HCllist->Name = L"AD_viewHinfo_HCllist";
+			   this->AD_viewHinfo_HCllist->Size = System::Drawing::Size(267, 108);
+			   this->AD_viewHinfo_HCllist->TabIndex = 10;
+			   // 
+			   // AD_viewHinfo_ID
+			   // 
+			   this->AD_viewHinfo_ID->AutoSize = true;
+			   this->AD_viewHinfo_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_ID->Location = System::Drawing::Point(25, 111);
+			   this->AD_viewHinfo_ID->Name = L"AD_viewHinfo_ID";
+			   this->AD_viewHinfo_ID->Size = System::Drawing::Size(160, 36);
+			   this->AD_viewHinfo_ID->TabIndex = 0;
+			   this->AD_viewHinfo_ID->Text = L"Hospital ID";
+			   // 
+			   // AD_viewHinfo_BedsPrice
+			   // 
+			   this->AD_viewHinfo_BedsPrice->AutoSize = true;
+			   this->AD_viewHinfo_BedsPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_BedsPrice->Location = System::Drawing::Point(26, 514);
+			   this->AD_viewHinfo_BedsPrice->Name = L"AD_viewHinfo_BedsPrice";
+			   this->AD_viewHinfo_BedsPrice->Size = System::Drawing::Size(159, 36);
+			   this->AD_viewHinfo_BedsPrice->TabIndex = 7;
+			   this->AD_viewHinfo_BedsPrice->Text = L"Beds Price";
+			   // 
+			   // AD_viewHinfo_surgeryPrice
+			   // 
+			   this->AD_viewHinfo_surgeryPrice->AutoSize = true;
+			   this->AD_viewHinfo_surgeryPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_surgeryPrice->Location = System::Drawing::Point(25, 445);
+			   this->AD_viewHinfo_surgeryPrice->Name = L"AD_viewHinfo_surgeryPrice";
+			   this->AD_viewHinfo_surgeryPrice->Size = System::Drawing::Size(196, 36);
+			   this->AD_viewHinfo_surgeryPrice->TabIndex = 6;
+			   this->AD_viewHinfo_surgeryPrice->Text = L"Surgery Price";
+			   // 
+			   // AD_viewHinfo_Rprice
+			   // 
+			   this->AD_viewHinfo_Rprice->AutoSize = true;
+			   this->AD_viewHinfo_Rprice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_Rprice->Location = System::Drawing::Point(25, 376);
+			   this->AD_viewHinfo_Rprice->Name = L"AD_viewHinfo_Rprice";
+			   this->AD_viewHinfo_Rprice->Size = System::Drawing::Size(227, 36);
+			   this->AD_viewHinfo_Rprice->TabIndex = 5;
+			   this->AD_viewHinfo_Rprice->Text = L"Check-UP Price";
+			   // 
+			   // AD_viewHinfo_bedsAva
+			   // 
+			   this->AD_viewHinfo_bedsAva->AutoSize = true;
+			   this->AD_viewHinfo_bedsAva->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_bedsAva->Location = System::Drawing::Point(25, 307);
+			   this->AD_viewHinfo_bedsAva->Name = L"AD_viewHinfo_bedsAva";
+			   this->AD_viewHinfo_bedsAva->Size = System::Drawing::Size(213, 36);
+			   this->AD_viewHinfo_bedsAva->TabIndex = 4;
+			   this->AD_viewHinfo_bedsAva->Text = L"Beds Avaliable";
+			   // 
+			   // AD_viewHinfo_Rate
+			   // 
+			   this->AD_viewHinfo_Rate->AutoSize = true;
+			   this->AD_viewHinfo_Rate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_Rate->Location = System::Drawing::Point(25, 238);
+			   this->AD_viewHinfo_Rate->Name = L"AD_viewHinfo_Rate";
+			   this->AD_viewHinfo_Rate->Size = System::Drawing::Size(193, 36);
+			   this->AD_viewHinfo_Rate->TabIndex = 3;
+			   this->AD_viewHinfo_Rate->Text = L"Hospital Rate";
+			   // 
+			   // AD_viewHinfo_Name
+			   // 
+			   this->AD_viewHinfo_Name->AutoSize = true;
+			   this->AD_viewHinfo_Name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHinfo_Name->Location = System::Drawing::Point(24, 169);
+			   this->AD_viewHinfo_Name->Name = L"AD_viewHinfo_Name";
+			   this->AD_viewHinfo_Name->Size = System::Drawing::Size(208, 36);
+			   this->AD_viewHinfo_Name->TabIndex = 2;
+			   this->AD_viewHinfo_Name->Text = L"Hospital Name";
+			   // 
+			   // AD_viewHinfoHeader
+			   // 
+			   this->AD_viewHinfoHeader->BackColor = System::Drawing::Color::DarkGray;
+			   this->AD_viewHinfoHeader->Controls->Add(this->AD_viewHbutton);
+			   this->AD_viewHinfoHeader->Controls->Add(this->AD_viewHList);
+			   this->AD_viewHinfoHeader->Location = System::Drawing::Point(0, 0);
+			   this->AD_viewHinfoHeader->Name = L"AD_viewHinfoHeader";
+			   this->AD_viewHinfoHeader->Size = System::Drawing::Size(757, 84);
+			   this->AD_viewHinfoHeader->TabIndex = 1;
+			   // 
+			   // AD_viewHbutton
+			   // 
+			   this->AD_viewHbutton->FlatAppearance->BorderSize = 0;
+			   this->AD_viewHbutton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_viewHbutton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_viewHbutton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_viewHbutton.Image")));
+			   this->AD_viewHbutton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
+			   this->AD_viewHbutton->Location = System::Drawing::Point(399, 23);
+			   this->AD_viewHbutton->Margin = System::Windows::Forms::Padding(3, 50, 3, 3);
+			   this->AD_viewHbutton->Name = L"AD_viewHbutton";
+			   this->AD_viewHbutton->Size = System::Drawing::Size(119, 36);
+			   this->AD_viewHbutton->TabIndex = 5;
+			   this->AD_viewHbutton->Text = L"View";
+			   this->AD_viewHbutton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->AD_viewHbutton->UseVisualStyleBackColor = true;
+			   this->AD_viewHbutton->Click += gcnew System::EventHandler(this, &mainPage::AD_viewHbutton_Click);
+			   // 
+			   // AD_viewHList
+			   // 
+			   this->AD_viewHList->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_viewHList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_viewHList->FormattingEnabled = true;
+			   this->AD_viewHList->Location = System::Drawing::Point(33, 21);
+			   this->AD_viewHList->Name = L"AD_viewHList";
+			   this->AD_viewHList->Size = System::Drawing::Size(247, 37);
+			   this->AD_viewHList->TabIndex = 0;
+			   this->AD_viewHList->Text = L"Hospital list";
+			   // 
+			   // AD_editAinfo
+			   // 
+			   this->AD_editAinfo->Controls->Add(this->AD_edit_wiating);
+			   this->AD_editAinfo->Controls->Add(this->AD_editpass);
+			   this->AD_editAinfo->Controls->Add(this->AD_editRemain);
+			   this->AD_editAinfo->Controls->Add(this->AD_GofCHEditAinfo);
+			   this->AD_editAinfo->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_editAinfo->Location = System::Drawing::Point(0, 0);
+			   this->AD_editAinfo->Name = L"AD_editAinfo";
+			   this->AD_editAinfo->Size = System::Drawing::Size(757, 654);
+			   this->AD_editAinfo->TabIndex = 6;
+			   // 
+			   // AD_edit_wiating
+			   // 
+			   this->AD_edit_wiating->Controls->Add(this->label10);
+			   this->AD_edit_wiating->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_edit_wiating->Location = System::Drawing::Point(195, 0);
+			   this->AD_edit_wiating->Name = L"AD_edit_wiating";
+			   this->AD_edit_wiating->Size = System::Drawing::Size(562, 654);
+			   this->AD_edit_wiating->TabIndex = 15;
+			   // 
+			   // label10
+			   // 
+			   this->label10->AutoSize = true;
+			   this->label10->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->label10->Location = System::Drawing::Point(248, 279);
+			   this->label10->Name = L"label10";
+			   this->label10->Size = System::Drawing::Size(136, 24);
+			   this->label10->TabIndex = 0;
+			   this->label10->Text = L"waiting select";
+			   // 
+			   // AD_editpass
+			   // 
+			   this->AD_editpass->Controls->Add(this->AD_askconfPass_TB);
+			   this->AD_editpass->Controls->Add(this->AD_askconfPass_lab);
+			   this->AD_editpass->Controls->Add(this->AD_askNewPass_TB);
+			   this->AD_editpass->Controls->Add(this->AD_askNewPass_lab);
+			   this->AD_editpass->Controls->Add(this->AD_askOldPass_TB);
+			   this->AD_editpass->Controls->Add(this->AD_askOldPass_lab);
+			   this->AD_editpass->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_editpass->Location = System::Drawing::Point(195, 0);
+			   this->AD_editpass->Name = L"AD_editpass";
+			   this->AD_editpass->Size = System::Drawing::Size(562, 654);
+			   this->AD_editpass->TabIndex = 13;
+			   // 
+			   // AD_askconfPass_TB
+			   // 
+			   this->AD_askconfPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_askconfPass_TB->Location = System::Drawing::Point(57, 334);
+			   this->AD_askconfPass_TB->Name = L"AD_askconfPass_TB";
+			   this->AD_askconfPass_TB->Size = System::Drawing::Size(236, 32);
+			   this->AD_askconfPass_TB->TabIndex = 6;
+			   // 
+			   // AD_askconfPass_lab
+			   // 
+			   this->AD_askconfPass_lab->AutoSize = true;
+			   this->AD_askconfPass_lab->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_askconfPass_lab->Location = System::Drawing::Point(56, 294);
+			   this->AD_askconfPass_lab->Name = L"AD_askconfPass_lab";
+			   this->AD_askconfPass_lab->Size = System::Drawing::Size(229, 24);
+			   this->AD_askconfPass_lab->TabIndex = 5;
+			   this->AD_askconfPass_lab->Text = L"Confirm new password";
+			   // 
+			   // AD_askNewPass_TB
+			   // 
+			   this->AD_askNewPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_askNewPass_TB->Location = System::Drawing::Point(57, 240);
+			   this->AD_askNewPass_TB->Name = L"AD_askNewPass_TB";
+			   this->AD_askNewPass_TB->Size = System::Drawing::Size(236, 32);
+			   this->AD_askNewPass_TB->TabIndex = 4;
+			   // 
+			   // AD_askNewPass_lab
+			   // 
+			   this->AD_askNewPass_lab->AutoSize = true;
+			   this->AD_askNewPass_lab->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_askNewPass_lab->Location = System::Drawing::Point(56, 200);
+			   this->AD_askNewPass_lab->Name = L"AD_askNewPass_lab";
+			   this->AD_askNewPass_lab->Size = System::Drawing::Size(206, 24);
+			   this->AD_askNewPass_lab->TabIndex = 3;
+			   this->AD_askNewPass_lab->Text = L"Enter new password ";
+			   // 
+			   // AD_askOldPass_TB
+			   // 
+			   this->AD_askOldPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_askOldPass_TB->Location = System::Drawing::Point(57, 142);
+			   this->AD_askOldPass_TB->Name = L"AD_askOldPass_TB";
+			   this->AD_askOldPass_TB->Size = System::Drawing::Size(236, 32);
+			   this->AD_askOldPass_TB->TabIndex = 2;
+			   // 
+			   // AD_askOldPass_lab
+			   // 
+			   this->AD_askOldPass_lab->AutoSize = true;
+			   this->AD_askOldPass_lab->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_askOldPass_lab->Location = System::Drawing::Point(56, 102);
+			   this->AD_askOldPass_lab->Name = L"AD_askOldPass_lab";
+			   this->AD_askOldPass_lab->Size = System::Drawing::Size(191, 24);
+			   this->AD_askOldPass_lab->TabIndex = 1;
+			   this->AD_askOldPass_lab->Text = L"Enter old password";
+			   // 
+			   // AD_editRemain
+			   // 
+			   this->AD_editRemain->Controls->Add(this->AD_editRemain_state);
+			   this->AD_editRemain->Controls->Add(this->AD_editRemain_TB);
+			   this->AD_editRemain->Controls->Add(this->AD_editRemain_lab);
+			   this->AD_editRemain->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->AD_editRemain->Location = System::Drawing::Point(195, 0);
+			   this->AD_editRemain->Name = L"AD_editRemain";
+			   this->AD_editRemain->Size = System::Drawing::Size(562, 654);
+			   this->AD_editRemain->TabIndex = 14;
+			   // 
+			   // AD_editRemain_state
+			   // 
+			   this->AD_editRemain_state->AutoSize = true;
+			   this->AD_editRemain_state->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 9.969231F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_editRemain_state->ForeColor = System::Drawing::Color::Red;
+			   this->AD_editRemain_state->Location = System::Drawing::Point(53, 200);
+			   this->AD_editRemain_state->Name = L"AD_editRemain_state";
+			   this->AD_editRemain_state->Size = System::Drawing::Size(53, 19);
+			   this->AD_editRemain_state->TabIndex = 2;
+			   this->AD_editRemain_state->Text = L"label2";
+			   // 
+			   // AD_editRemain_TB
+			   // 
+			   this->AD_editRemain_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_editRemain_TB->Location = System::Drawing::Point(49, 133);
+			   this->AD_editRemain_TB->Name = L"AD_editRemain_TB";
+			   this->AD_editRemain_TB->Size = System::Drawing::Size(236, 32);
+			   this->AD_editRemain_TB->TabIndex = 1;
+			   // 
+			   // AD_editRemain_lab
+			   // 
+			   this->AD_editRemain_lab->AutoSize = true;
+			   this->AD_editRemain_lab->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 12.18462F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_editRemain_lab->Location = System::Drawing::Point(45, 87);
+			   this->AD_editRemain_lab->Name = L"AD_editRemain_lab";
+			   this->AD_editRemain_lab->Size = System::Drawing::Size(66, 24);
+			   this->AD_editRemain_lab->TabIndex = 0;
+			   this->AD_editRemain_lab->Text = L"label2";
+			   // 
+			   // AD_GofCHEditAinfo
+			   // 
+			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editPhNum);
+			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editpass_button);
+			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editusername);
+			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editAge);
+			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editName);
+			   this->AD_GofCHEditAinfo->Dock = System::Windows::Forms::DockStyle::Left;
+			   this->AD_GofCHEditAinfo->Location = System::Drawing::Point(0, 0);
+			   this->AD_GofCHEditAinfo->Name = L"AD_GofCHEditAinfo";
+			   this->AD_GofCHEditAinfo->Size = System::Drawing::Size(195, 654);
+			   this->AD_GofCHEditAinfo->TabIndex = 12;
+			   // 
+			   // AD_editPhNum
+			   // 
+			   this->AD_editPhNum->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->AD_editPhNum->FlatAppearance->BorderSize = 0;
+			   this->AD_editPhNum->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_editPhNum->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_editPhNum->Location = System::Drawing::Point(0, 488);
+			   this->AD_editPhNum->Name = L"AD_editPhNum";
+			   this->AD_editPhNum->Size = System::Drawing::Size(195, 122);
+			   this->AD_editPhNum->TabIndex = 6;
+			   this->AD_editPhNum->Text = L"Edit Phone Number";
+			   this->AD_editPhNum->UseVisualStyleBackColor = true;
+			   this->AD_editPhNum->Click += gcnew System::EventHandler(this, &mainPage::AD_editPhNum_Click);
+			   // 
+			   // AD_editpass_button
+			   // 
+			   this->AD_editpass_button->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->AD_editpass_button->FlatAppearance->BorderSize = 0;
+			   this->AD_editpass_button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_editpass_button->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->AD_editpass_button->Location = System::Drawing::Point(0, 366);
+			   this->AD_editpass_button->Name = L"AD_editpass_button";
+			   this->AD_editpass_button->Size = System::Drawing::Size(195, 122);
+			   this->AD_editpass_button->TabIndex = 5;
+			   this->AD_editpass_button->Text = L"Change password";
+			   this->AD_editpass_button->UseVisualStyleBackColor = true;
+			   this->AD_editpass_button->Click += gcnew System::EventHandler(this, &mainPage::AD_editpass_button_Click);
+			   // 
+			   // AD_editusername
+			   // 
+			   this->AD_editusername->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->AD_editusername->FlatAppearance->BorderSize = 0;
+			   this->AD_editusername->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_editusername->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_editusername->Location = System::Drawing::Point(0, 244);
+			   this->AD_editusername->Name = L"AD_editusername";
+			   this->AD_editusername->Size = System::Drawing::Size(195, 122);
+			   this->AD_editusername->TabIndex = 4;
+			   this->AD_editusername->Text = L"Edit username";
+			   this->AD_editusername->UseVisualStyleBackColor = true;
+			   this->AD_editusername->Click += gcnew System::EventHandler(this, &mainPage::AD_editusername_Click);
+			   // 
+			   // AD_editAge
+			   // 
+			   this->AD_editAge->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->AD_editAge->FlatAppearance->BorderSize = 0;
+			   this->AD_editAge->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_editAge->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_editAge->Location = System::Drawing::Point(0, 122);
+			   this->AD_editAge->Name = L"AD_editAge";
+			   this->AD_editAge->Size = System::Drawing::Size(195, 122);
+			   this->AD_editAge->TabIndex = 3;
+			   this->AD_editAge->Text = L"Edit Age";
+			   this->AD_editAge->UseVisualStyleBackColor = true;
+			   this->AD_editAge->Click += gcnew System::EventHandler(this, &mainPage::AD_editAge_Click);
+			   // 
+			   // AD_editName
+			   // 
+			   this->AD_editName->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->AD_editName->FlatAppearance->BorderSize = 0;
+			   this->AD_editName->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_editName->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->AD_editName->Location = System::Drawing::Point(0, 0);
+			   this->AD_editName->Name = L"AD_editName";
+			   this->AD_editName->Size = System::Drawing::Size(195, 122);
+			   this->AD_editName->TabIndex = 2;
+			   this->AD_editName->Text = L"Edit Name";
+			   this->AD_editName->UseVisualStyleBackColor = true;
+			   this->AD_editName->Click += gcnew System::EventHandler(this, &mainPage::AD_editName_Click);
+			   // 
 			   // AD_viewAinfo
 			   // 
 			   this->AD_viewAinfo->Controls->Add(this->AD_AEmail);
@@ -1972,326 +2352,6 @@ private: System::Windows::Forms::Label^ label8;
 			   this->AD_AID->Size = System::Drawing::Size(204, 55);
 			   this->AD_AID->TabIndex = 0;
 			   this->AD_AID->Text = L"admin ID";
-			   // 
-			   // AD_edit_Hlist
-			   // 
-			   this->AD_edit_Hlist->Controls->Add(this->AD_addHlayout);
-			   this->AD_edit_Hlist->Controls->Add(this->AD_waitingP);
-			   this->AD_edit_Hlist->Controls->Add(this->AD_deleteHlayout);
-			   this->AD_edit_Hlist->Controls->Add(this->AD_header_editH);
-			   this->AD_edit_Hlist->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_edit_Hlist->Location = System::Drawing::Point(0, 0);
-			   this->AD_edit_Hlist->Name = L"AD_edit_Hlist";
-			   this->AD_edit_Hlist->Size = System::Drawing::Size(757, 654);
-			   this->AD_edit_Hlist->TabIndex = 2;
-			   // 
-			   // AD_addHlayout
-			   // 
-			   this->AD_addHlayout->BackColor = System::Drawing::SystemColors::ControlLight;
-			   this->AD_addHlayout->Controls->Add(this->AD_HPRBsorder_lab);
-			   this->AD_addHlayout->Controls->Add(this->AD_HPRBsorder_TB);
-			   this->AD_addHlayout->Controls->Add(this->AD_HIDorder_lab);
-			   this->AD_addHlayout->Controls->Add(this->AD_HIDorder_TB);
-			   this->AD_addHlayout->Controls->Add(this->AD_HRateorder_lab);
-			   this->AD_addHlayout->Controls->Add(this->AD_HRateorder_TB);
-			   this->AD_addHlayout->Controls->Add(this->AD_HRPorder_lab);
-			   this->AD_addHlayout->Controls->Add(this->AD_HRPorder_TB);
-			   this->AD_addHlayout->Controls->Add(this->AD_HBPorder_lab);
-			   this->AD_addHlayout->Controls->Add(this->AD_HBPorder_TB);
-			   this->AD_addHlayout->Controls->Add(this->AD_addH);
-			   this->AD_addHlayout->Controls->Add(this->AD_HNorder_lab);
-			   this->AD_addHlayout->Controls->Add(this->AD_HNorder_TB);
-			   this->AD_addHlayout->Controls->Add(this->AD_Hstate);
-			   this->AD_addHlayout->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_addHlayout->Location = System::Drawing::Point(0, 80);
-			   this->AD_addHlayout->Name = L"AD_addHlayout";
-			   this->AD_addHlayout->Size = System::Drawing::Size(757, 574);
-			   this->AD_addHlayout->TabIndex = 14;
-			   // 
-			   // AD_HPRBsorder_lab
-			   // 
-			   this->AD_HPRBsorder_lab->AutoSize = true;
-			   this->AD_HPRBsorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HPRBsorder_lab->Location = System::Drawing::Point(373, 227);
-			   this->AD_HPRBsorder_lab->Name = L"AD_HPRBsorder_lab";
-			   this->AD_HPRBsorder_lab->Size = System::Drawing::Size(182, 29);
-			   this->AD_HPRBsorder_lab->TabIndex = 20;
-			   this->AD_HPRBsorder_lab->Text = L"Beds Avaliable";
-			   // 
-			   // AD_HPRBsorder_TB
-			   // 
-			   this->AD_HPRBsorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			   this->AD_HPRBsorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HPRBsorder_TB->Location = System::Drawing::Point(378, 275);
-			   this->AD_HPRBsorder_TB->Name = L"AD_HPRBsorder_TB";
-			   this->AD_HPRBsorder_TB->Size = System::Drawing::Size(238, 29);
-			   this->AD_HPRBsorder_TB->TabIndex = 21;
-			   // 
-			   // AD_HIDorder_lab
-			   // 
-			   this->AD_HIDorder_lab->AutoSize = true;
-			   this->AD_HIDorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HIDorder_lab->Location = System::Drawing::Point(373, 34);
-			   this->AD_HIDorder_lab->Name = L"AD_HIDorder_lab";
-			   this->AD_HIDorder_lab->Size = System::Drawing::Size(136, 29);
-			   this->AD_HIDorder_lab->TabIndex = 18;
-			   this->AD_HIDorder_lab->Text = L"Hospital ID";
-			   // 
-			   // AD_HIDorder_TB
-			   // 
-			   this->AD_HIDorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			   this->AD_HIDorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HIDorder_TB->Location = System::Drawing::Point(378, 82);
-			   this->AD_HIDorder_TB->Name = L"AD_HIDorder_TB";
-			   this->AD_HIDorder_TB->Size = System::Drawing::Size(238, 29);
-			   this->AD_HIDorder_TB->TabIndex = 19;
-			   // 
-			   // AD_HRateorder_lab
-			   // 
-			   this->AD_HRateorder_lab->AutoSize = true;
-			   this->AD_HRateorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HRateorder_lab->Location = System::Drawing::Point(372, 130);
-			   this->AD_HRateorder_lab->Name = L"AD_HRateorder_lab";
-			   this->AD_HRateorder_lab->Size = System::Drawing::Size(66, 29);
-			   this->AD_HRateorder_lab->TabIndex = 16;
-			   this->AD_HRateorder_lab->Text = L"Rate";
-			   // 
-			   // AD_HRateorder_TB
-			   // 
-			   this->AD_HRateorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			   this->AD_HRateorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HRateorder_TB->Location = System::Drawing::Point(377, 178);
-			   this->AD_HRateorder_TB->Name = L"AD_HRateorder_TB";
-			   this->AD_HRateorder_TB->Size = System::Drawing::Size(238, 29);
-			   this->AD_HRateorder_TB->TabIndex = 17;
-			   // 
-			   // AD_HRPorder_lab
-			   // 
-			   this->AD_HRPorder_lab->AutoSize = true;
-			   this->AD_HRPorder_lab->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_HRPorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HRPorder_lab->Location = System::Drawing::Point(25, 221);
-			   this->AD_HRPorder_lab->Name = L"AD_HRPorder_lab";
-			   this->AD_HRPorder_lab->Size = System::Drawing::Size(213, 29);
-			   this->AD_HRPorder_lab->TabIndex = 14;
-			   this->AD_HRPorder_lab->Text = L"Reservation Price";
-			   // 
-			   // AD_HRPorder_TB
-			   // 
-			   this->AD_HRPorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			   this->AD_HRPorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HRPorder_TB->Location = System::Drawing::Point(30, 268);
-			   this->AD_HRPorder_TB->Name = L"AD_HRPorder_TB";
-			   this->AD_HRPorder_TB->Size = System::Drawing::Size(238, 29);
-			   this->AD_HRPorder_TB->TabIndex = 15;
-			   // 
-			   // AD_HBPorder_lab
-			   // 
-			   this->AD_HBPorder_lab->AutoSize = true;
-			   this->AD_HBPorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HBPorder_lab->Location = System::Drawing::Point(25, 127);
-			   this->AD_HBPorder_lab->Name = L"AD_HBPorder_lab";
-			   this->AD_HBPorder_lab->Size = System::Drawing::Size(136, 29);
-			   this->AD_HBPorder_lab->TabIndex = 12;
-			   this->AD_HBPorder_lab->Text = L"Beds Price";
-			   // 
-			   // AD_HBPorder_TB
-			   // 
-			   this->AD_HBPorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			   this->AD_HBPorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HBPorder_TB->Location = System::Drawing::Point(30, 174);
-			   this->AD_HBPorder_TB->Name = L"AD_HBPorder_TB";
-			   this->AD_HBPorder_TB->Size = System::Drawing::Size(238, 29);
-			   this->AD_HBPorder_TB->TabIndex = 13;
-			   // 
-			   // AD_addH
-			   // 
-			   this->AD_addH->FlatAppearance->BorderSize = 0;
-			   this->AD_addH->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_addH->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.93846F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->AD_addH->Location = System::Drawing::Point(166, 413);
-			   this->AD_addH->Name = L"AD_addH";
-			   this->AD_addH->Size = System::Drawing::Size(222, 72);
-			   this->AD_addH->TabIndex = 11;
-			   this->AD_addH->Text = L"Add";
-			   this->AD_addH->UseVisualStyleBackColor = true;
-			   // 
-			   // AD_HNorder_lab
-			   // 
-			   this->AD_HNorder_lab->AutoSize = true;
-			   this->AD_HNorder_lab->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HNorder_lab->Location = System::Drawing::Point(25, 33);
-			   this->AD_HNorder_lab->Name = L"AD_HNorder_lab";
-			   this->AD_HNorder_lab->Size = System::Drawing::Size(180, 29);
-			   this->AD_HNorder_lab->TabIndex = 7;
-			   this->AD_HNorder_lab->Text = L"Hospital Name";
-			   // 
-			   // AD_HNorder_TB
-			   // 
-			   this->AD_HNorder_TB->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			   this->AD_HNorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HNorder_TB->Location = System::Drawing::Point(30, 80);
-			   this->AD_HNorder_TB->Name = L"AD_HNorder_TB";
-			   this->AD_HNorder_TB->Size = System::Drawing::Size(238, 29);
-			   this->AD_HNorder_TB->TabIndex = 8;
-			   // 
-			   // AD_Hstate
-			   // 
-			   this->AD_Hstate->AutoSize = true;
-			   this->AD_Hstate->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 9.969231F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->AD_Hstate->ForeColor = System::Drawing::Color::Red;
-			   this->AD_Hstate->Location = System::Drawing::Point(37, 330);
-			   this->AD_Hstate->Name = L"AD_Hstate";
-			   this->AD_Hstate->Size = System::Drawing::Size(53, 19);
-			   this->AD_Hstate->TabIndex = 10;
-			   this->AD_Hstate->Text = L"label2";
-			   // 
-			   // AD_waitingP
-			   // 
-			   this->AD_waitingP->BackColor = System::Drawing::SystemColors::ControlLight;
-			   this->AD_waitingP->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			   this->AD_waitingP->Controls->Add(this->pictureBox1);
-			   this->AD_waitingP->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_waitingP->Location = System::Drawing::Point(0, 80);
-			   this->AD_waitingP->Name = L"AD_waitingP";
-			   this->AD_waitingP->Size = System::Drawing::Size(757, 574);
-			   this->AD_waitingP->TabIndex = 17;
-			   // 
-			   // pictureBox1
-			   // 
-			   this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			   this->pictureBox1->Location = System::Drawing::Point(0, 0);
-			   this->pictureBox1->Name = L"pictureBox1";
-			   this->pictureBox1->Size = System::Drawing::Size(757, 574);
-			   this->pictureBox1->TabIndex = 0;
-			   this->pictureBox1->TabStop = false;
-			   // 
-			   // AD_deleteHlayout
-			   // 
-			   this->AD_deleteHlayout->BackColor = System::Drawing::SystemColors::ControlLight;
-			   this->AD_deleteHlayout->Controls->Add(this->AD_messegeState);
-			   this->AD_deleteHlayout->Controls->Add(this->AD_HdeleteCOM);
-			   this->AD_deleteHlayout->Controls->Add(this->AD_selectHD);
-			   this->AD_deleteHlayout->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_deleteHlayout->Location = System::Drawing::Point(0, 80);
-			   this->AD_deleteHlayout->Name = L"AD_deleteHlayout";
-			   this->AD_deleteHlayout->Size = System::Drawing::Size(757, 574);
-			   this->AD_deleteHlayout->TabIndex = 16;
-			   // 
-			   // AD_messegeState
-			   // 
-			   this->AD_messegeState->AutoSize = true;
-			   this->AD_messegeState->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_messegeState->Location = System::Drawing::Point(54, 111);
-			   this->AD_messegeState->Name = L"AD_messegeState";
-			   this->AD_messegeState->Size = System::Drawing::Size(81, 29);
-			   this->AD_messegeState->TabIndex = 10;
-			   this->AD_messegeState->Text = L"label4";
-			   // 
-			   // AD_HdeleteCOM
-			   // 
-			   this->AD_HdeleteCOM->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_HdeleteCOM->FormattingEnabled = true;
-			   this->AD_HdeleteCOM->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"empty" });
-			   this->AD_HdeleteCOM->Location = System::Drawing::Point(47, 43);
-			   this->AD_HdeleteCOM->Name = L"AD_HdeleteCOM";
-			   this->AD_HdeleteCOM->Size = System::Drawing::Size(251, 37);
-			   this->AD_HdeleteCOM->TabIndex = 6;
-			   this->AD_HdeleteCOM->Text = L"Hospital List";
-			   // 
-			   // AD_selectHD
-			   // 
-			   this->AD_selectHD->FlatAppearance->BorderSize = 0;
-			   this->AD_selectHD->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_selectHD->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.861538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->AD_selectHD->Location = System::Drawing::Point(348, 48);
-			   this->AD_selectHD->Name = L"AD_selectHD";
-			   this->AD_selectHD->Size = System::Drawing::Size(125, 33);
-			   this->AD_selectHD->TabIndex = 9;
-			   this->AD_selectHD->Text = L"Select";
-			   this->AD_selectHD->UseVisualStyleBackColor = true;
-			   // 
-			   // AD_header_editH
-			   // 
-			   this->AD_header_editH->Controls->Add(this->AD_deleteH);
-			   this->AD_header_editH->Controls->Add(this->AD_addH_but);
-			   this->AD_header_editH->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->AD_header_editH->Location = System::Drawing::Point(0, 0);
-			   this->AD_header_editH->Name = L"AD_header_editH";
-			   this->AD_header_editH->Size = System::Drawing::Size(757, 80);
-			   this->AD_header_editH->TabIndex = 15;
-			   // 
-			   // AD_deleteH
-			   // 
-			   this->AD_deleteH->FlatAppearance->BorderSize = 0;
-			   this->AD_deleteH->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_deleteH->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->AD_deleteH->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_deleteH.Image")));
-			   this->AD_deleteH->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_deleteH->Location = System::Drawing::Point(432, 10);
-			   this->AD_deleteH->Name = L"AD_deleteH";
-			   this->AD_deleteH->Size = System::Drawing::Size(120, 60);
-			   this->AD_deleteH->TabIndex = 13;
-			   this->AD_deleteH->Text = L"Delete";
-			   this->AD_deleteH->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			   this->AD_deleteH->UseVisualStyleBackColor = true;
-			   this->AD_deleteH->Click += gcnew System::EventHandler(this, &mainPage::AD_deleteH_Click);
-			   // 
-			   // AD_addH_but
-			   // 
-			   this->AD_addH_but->FlatAppearance->BorderSize = 0;
-			   this->AD_addH_but->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->AD_addH_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->AD_addH_but->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_addH_but.Image")));
-			   this->AD_addH_but->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_addH_but->Location = System::Drawing::Point(183, 10);
-			   this->AD_addH_but->Name = L"AD_addH_but";
-			   this->AD_addH_but->Size = System::Drawing::Size(105, 60);
-			   this->AD_addH_but->TabIndex = 12;
-			   this->AD_addH_but->Text = L"Add";
-			   this->AD_addH_but->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			   this->AD_addH_but->UseVisualStyleBackColor = true;
-			   this->AD_addH_but->Click += gcnew System::EventHandler(this, &mainPage::AD_addH_but_Click);
-			   // 
-			   // AD_startWindow
-			   // 
-			   this->AD_startWindow->Controls->Add(this->label1);
-			   this->AD_startWindow->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->AD_startWindow->Location = System::Drawing::Point(0, 0);
-			   this->AD_startWindow->Name = L"AD_startWindow";
-			   this->AD_startWindow->Size = System::Drawing::Size(757, 654);
-			   this->AD_startWindow->TabIndex = 4;
-			   // 
-			   // label1
-			   // 
-			   this->label1->AutoSize = true;
-			   this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 23.81538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->label1->Location = System::Drawing::Point(279, 191);
-			   this->label1->Name = L"label1";
-			   this->label1->Size = System::Drawing::Size(138, 51);
-			   this->label1->TabIndex = 0;
-			   this->label1->Text = L"label1";
 			   // 
 			   // side_AD_bar_pn
 			   // 
@@ -2492,10 +2552,12 @@ private: System::Windows::Forms::Label^ label8;
 			   // 
 			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_HCLlist);
 			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_HSplist);
+			   this->PA_viewHinfo->Controls->Add(this->PA_text2);
+			   this->PA_viewHinfo->Controls->Add(this->PA_text1);
 			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_Bedprice);
 			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_surgeryprice);
 			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_Rprice);
-			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_Beds_AvaiNum);
+			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_bedsAva);
 			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_rate);
 			   this->PA_viewHinfo->Controls->Add(this->PA_Hinfo_Name);
 			   this->PA_viewHinfo->Controls->Add(this->PA_viewHinfoHeader);
@@ -2511,22 +2573,48 @@ private: System::Windows::Forms::Label^ label8;
 			   this->PA_Hinfo_HCLlist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_Hinfo_HCLlist->FormattingEnabled = true;
-			   this->PA_Hinfo_HCLlist->Location = System::Drawing::Point(441, 333);
+			   this->PA_Hinfo_HCLlist->ItemHeight = 26;
+			   this->PA_Hinfo_HCLlist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Specialties List" });
+			   this->PA_Hinfo_HCLlist->Location = System::Drawing::Point(447, 399);
 			   this->PA_Hinfo_HCLlist->Name = L"PA_Hinfo_HCLlist";
-			   this->PA_Hinfo_HCLlist->Size = System::Drawing::Size(252, 34);
-			   this->PA_Hinfo_HCLlist->TabIndex = 9;
-			   this->PA_Hinfo_HCLlist->Text = L"Hospital Clinics";
+			   this->PA_Hinfo_HCLlist->Size = System::Drawing::Size(267, 108);
+			   this->PA_Hinfo_HCLlist->TabIndex = 18;
 			   // 
 			   // PA_Hinfo_HSplist
 			   // 
 			   this->PA_Hinfo_HSplist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_Hinfo_HSplist->FormattingEnabled = true;
-			   this->PA_Hinfo_HSplist->Location = System::Drawing::Point(441, 197);
+			   this->PA_Hinfo_HSplist->ItemHeight = 26;
+			   this->PA_Hinfo_HSplist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Clinic List" });
+			   this->PA_Hinfo_HSplist->Location = System::Drawing::Point(447, 193);
 			   this->PA_Hinfo_HSplist->Name = L"PA_Hinfo_HSplist";
-			   this->PA_Hinfo_HSplist->Size = System::Drawing::Size(252, 34);
-			   this->PA_Hinfo_HSplist->TabIndex = 8;
-			   this->PA_Hinfo_HSplist->Text = L"Hospital Specialties";
+			   this->PA_Hinfo_HSplist->Size = System::Drawing::Size(267, 108);
+			   this->PA_Hinfo_HSplist->TabIndex = 17;
+			   // 
+			   // PA_text2
+			   // 
+			   this->PA_text2->AutoSize = true;
+			   this->PA_text2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->PA_text2->Location = System::Drawing::Point(442, 371);
+			   this->PA_text2->Name = L"PA_text2";
+			   this->PA_text2->Size = System::Drawing::Size(142, 25);
+			   this->PA_text2->TabIndex = 16;
+			   this->PA_text2->Text = L"Specialties List";
+			   this->PA_text2->Visible = false;
+			   // 
+			   // PA_text1
+			   // 
+			   this->PA_text1->AutoSize = true;
+			   this->PA_text1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->PA_text1->Location = System::Drawing::Point(442, 162);
+			   this->PA_text1->Name = L"PA_text1";
+			   this->PA_text1->Size = System::Drawing::Size(95, 25);
+			   this->PA_text1->TabIndex = 15;
+			   this->PA_text1->Text = L"Clinic List";
+			   this->PA_text1->Visible = false;
 			   // 
 			   // PA_Hinfo_Bedprice
 			   // 
@@ -2561,16 +2649,16 @@ private: System::Windows::Forms::Label^ label8;
 			   this->PA_Hinfo_Rprice->TabIndex = 5;
 			   this->PA_Hinfo_Rprice->Text = L"Check-UP price";
 			   // 
-			   // PA_Hinfo_Beds_AvaiNum
+			   // PA_Hinfo_bedsAva
 			   // 
-			   this->PA_Hinfo_Beds_AvaiNum->AutoSize = true;
-			   this->PA_Hinfo_Beds_AvaiNum->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+			   this->PA_Hinfo_bedsAva->AutoSize = true;
+			   this->PA_Hinfo_bedsAva->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_Hinfo_Beds_AvaiNum->Location = System::Drawing::Point(25, 307);
-			   this->PA_Hinfo_Beds_AvaiNum->Name = L"PA_Hinfo_Beds_AvaiNum";
-			   this->PA_Hinfo_Beds_AvaiNum->Size = System::Drawing::Size(213, 36);
-			   this->PA_Hinfo_Beds_AvaiNum->TabIndex = 4;
-			   this->PA_Hinfo_Beds_AvaiNum->Text = L"Beds Avaliable";
+			   this->PA_Hinfo_bedsAva->Location = System::Drawing::Point(25, 307);
+			   this->PA_Hinfo_bedsAva->Name = L"PA_Hinfo_bedsAva";
+			   this->PA_Hinfo_bedsAva->Size = System::Drawing::Size(213, 36);
+			   this->PA_Hinfo_bedsAva->TabIndex = 4;
+			   this->PA_Hinfo_bedsAva->Text = L"Beds Avaliable";
 			   // 
 			   // PA_Hinfo_rate
 			   // 
@@ -2620,6 +2708,7 @@ private: System::Windows::Forms::Label^ label8;
 			   this->PA_viewHButton->Text = L"View";
 			   this->PA_viewHButton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			   this->PA_viewHButton->UseVisualStyleBackColor = true;
+			   this->PA_viewHButton->Click += gcnew System::EventHandler(this, &mainPage::PA_viewHButton_Click);
 			   // 
 			   // PA_viewHList
 			   // 
@@ -4032,9 +4121,9 @@ private: System::Windows::Forms::Label^ label8;
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			   this->ClientSize = System::Drawing::Size(1030, 654);
+			   this->Controls->Add(this->PA_conpage);
 			   this->Controls->Add(this->AD_conpage);
 			   this->Controls->Add(this->StartUP_page);
-			   this->Controls->Add(this->PA_conpage);
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			   this->Name = L"mainPage";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -4047,6 +4136,26 @@ private: System::Windows::Forms::Label^ label8;
 			   this->regis_pn->PerformLayout();
 			   this->AD_conpage->ResumeLayout(false);
 			   this->AD_pages->ResumeLayout(false);
+			   this->AD_edit_Hlist->ResumeLayout(false);
+			   this->AD_waitingP->ResumeLayout(false);
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			   this->AD_addHlayout->ResumeLayout(false);
+			   this->AD_addHlayout->PerformLayout();
+			   this->AD_deleteHlayout->ResumeLayout(false);
+			   this->AD_deleteHlayout->PerformLayout();
+			   this->AD_header_editH->ResumeLayout(false);
+			   this->AD_modify_Hinfo->ResumeLayout(false);
+			   this->AD_Modifyinput->ResumeLayout(false);
+			   this->AD_Modifyinput->PerformLayout();
+			   this->AD_modifyHSC_layout->ResumeLayout(false);
+			   this->AD_modifyHSC_layout->PerformLayout();
+			   this->AD_groupchoice->ResumeLayout(false);
+			   this->AD_headerModify->ResumeLayout(false);
+			   this->AD_startWindow->ResumeLayout(false);
+			   this->AD_startWindow->PerformLayout();
+			   this->AD_view_Pinfo->ResumeLayout(false);
+			   this->AD_view_Pinfo->PerformLayout();
+			   this->AD_viewPlist_header->ResumeLayout(false);
 			   this->AD_view_Hinfo->ResumeLayout(false);
 			   this->AD_view_Hinfo->PerformLayout();
 			   this->AD_viewHinfoHeader->ResumeLayout(false);
@@ -4058,28 +4167,8 @@ private: System::Windows::Forms::Label^ label8;
 			   this->AD_editRemain->ResumeLayout(false);
 			   this->AD_editRemain->PerformLayout();
 			   this->AD_GofCHEditAinfo->ResumeLayout(false);
-			   this->AD_view_Pinfo->ResumeLayout(false);
-			   this->AD_view_Pinfo->PerformLayout();
-			   this->AD_viewPlist_header->ResumeLayout(false);
-			   this->AD_modify_Hinfo->ResumeLayout(false);
-			   this->AD_Modifyinput->ResumeLayout(false);
-			   this->AD_Modifyinput->PerformLayout();
-			   this->AD_modifyHSC_layout->ResumeLayout(false);
-			   this->AD_modifyHSC_layout->PerformLayout();
-			   this->AD_groupchoice->ResumeLayout(false);
-			   this->AD_headerModify->ResumeLayout(false);
 			   this->AD_viewAinfo->ResumeLayout(false);
 			   this->AD_viewAinfo->PerformLayout();
-			   this->AD_edit_Hlist->ResumeLayout(false);
-			   this->AD_addHlayout->ResumeLayout(false);
-			   this->AD_addHlayout->PerformLayout();
-			   this->AD_waitingP->ResumeLayout(false);
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			   this->AD_deleteHlayout->ResumeLayout(false);
-			   this->AD_deleteHlayout->PerformLayout();
-			   this->AD_header_editH->ResumeLayout(false);
-			   this->AD_startWindow->ResumeLayout(false);
-			   this->AD_startWindow->PerformLayout();
 			   this->side_AD_bar_pn->ResumeLayout(false);
 			   this->AD_info_pn->ResumeLayout(false);
 			   this->AD_info_pn->PerformLayout();
@@ -4132,14 +4221,10 @@ private: System::Windows::Forms::Label^ label8;
 	 private: System::Void mainPage_Load(System::Object^ sender, System::EventArgs^ e) {
 		  StartUP_page->BringToFront();
 		  login_pn->BringToFront();
-		  String^ hospitalName;
-		  for (int i = 0; i < hospitalCount; i++) {
-			   hospitalName = gcnew String(hospital[i].HospitalName.c_str());
-			   AD_viewHList->Items->Add(hospitalName);
-
-		  }
+		  
+		  
 	 }
-	 private: System::Void SignIUP_but_Click(System::Object^ sender, System::EventArgs^ e) {
+	 private: System::Void SignIIN_but_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		  String^ name_user;
 		  msclr::interop::marshal_context context;
@@ -4181,6 +4266,9 @@ private: System::Windows::Forms::Label^ label8;
 	 private: System::Void AD_logout_but_Click(System::Object^ sender, System::EventArgs^ e) {
 		  StartUP_page->BringToFront();
 		  login_pn->BringToFront();
+		  Hindex = -1;
+		  Lindex = -1;
+		  Rindex = -1;
 	 }
 	 private: System::Void regis_backTologin_Click(System::Object^ sender, System::EventArgs^ e) {
 		  login_pn->BringToFront();
@@ -4188,6 +4276,9 @@ private: System::Windows::Forms::Label^ label8;
 	 private: System::Void PA_logout_but_Click(System::Object^ sender, System::EventArgs^ e) {
 		  StartUP_page->BringToFront();
 		  login_pn->BringToFront();
+		  Hindex = -1;
+		  Lindex = -1;
+		  Rindex = -1;
 	 }
 	 private: System::Void AD_addORdel_hos_but_Click(System::Object^ sender, System::EventArgs^ e) {
 		 
@@ -4199,9 +4290,25 @@ private: System::Windows::Forms::Label^ label8;
 	 }
 	 private: System::Void AD_dispaly_hos_but_Click(System::Object^ sender, System::EventArgs^ e) {
 		  AD_view_Hinfo->BringToFront();
+		  AD_viewHList->Items->Clear();
+		  String^ hospitalName;
+		  for (int i = 0; i < hospitalCount; i++) {
+			   hospitalName = gcnew String(hospital[i].HospitalName.c_str());
+			   AD_viewHList->Items->Add(hospitalName);
+
+		  }
 	 }
 	 private: System::Void AD_dispatient_hos_but_Click(System::Object^ sender, System::EventArgs^ e) {
 		  AD_view_Pinfo->BringToFront();
+		  AD_viewPlist->Items->Clear();
+		  String^ patientName;
+		  for (int i = 0; i < userCount; i++) {
+			  if(user[i].userType=="Patient") {
+					patientName = gcnew String(user[i].username.c_str());
+					AD_viewPlist->Items->Add(patientName);
+			   }
+		  }
+		 
 	 }
      private: System::Void view_AInfo_Click(System::Object^ sender, System::EventArgs^ e) {
          AD_viewAinfo->BringToFront();
@@ -4213,6 +4320,13 @@ private: System::Windows::Forms::Label^ label8;
 	 }
 	 private: System::Void PA_view_hosInfo_Click(System::Object^ sender, System::EventArgs^ e) {
 		  PA_viewHinfo->BringToFront();
+		  PA_viewHList->Items->Clear();
+		  String^ hospitalName;
+		  for (int i = 0; i < hospitalCount; i++) {
+			   hospitalName = gcnew String(hospital[i].HospitalName.c_str());
+			   PA_viewHList->Items->Add(hospitalName);
+
+		  }
 	 }
 	 private: System::Void PA_ViewReserveList_Click(System::Object^ sender, System::EventArgs^ e) {
 		  PA_reservlist->BringToFront();
@@ -4433,12 +4547,34 @@ private: System::Void PA_editpass_but_Click(System::Object^ sender, System::Even
 	 PA_editpass->BringToFront();
 }
 private: System::Void AD_viewHbutton_Click(System::Object^ sender, System::EventArgs^ e) {
-	 // msclr::interop::marshal_context context;
+	 
 	 string indexname = context.marshal_as<string>(AD_viewHList->Text);
 	 if (AD_viewHList->Text != "Hospital list")
 	 {
+	AD_text1->Visible = true;
+	 AD_text2->Visible = true;
 		  searchHindex(indexname);
 		  displayHinfo();
+	 }
+}
+
+
+private: System::Void PA_viewHButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	 string indexname = context.marshal_as<string>(PA_viewHList->Text);
+	 if (PA_viewHList->Text != "Hospital list")
+	 {
+	 PA_text1->Visible = true;
+	 PA_text2->Visible = true;
+		  searchHindex(indexname);
+		  displayHinfo();
+	 }
+}
+private: System::Void AD_viewPButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	 if (AD_viewPlist->Text != "Patient list") {
+		  string patientindex = context.marshal_as<string>(AD_viewPlist->Text);
+		  searchPindex(patientindex);
+		  displayPinfo();
 	 }
 }
 };

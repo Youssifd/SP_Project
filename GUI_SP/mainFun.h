@@ -46,6 +46,7 @@ public:
 										user[i].reservation[j].ReservationPrice = hos[z].ReservationPrice;
 								   // else
 										//  hos[z].PatientReservationRooms -= 1;
+								   user[i].totalpaid += user[i].reservation[j].Totalprice;
 							  }
 							  UserInfo.ignore();
 							  getline(UserInfo, user[i].reservation[j].PName);
