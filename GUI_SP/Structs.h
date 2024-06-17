@@ -7,7 +7,7 @@ using namespace std;
 #define NumberOfHospital 10
 #define NumberOfReservation 20
 #define NumberOfUsers 20
-#define NumberOfSpecialties 20
+#define NumberOfSpecialties 25
 #define NumberOfClinics 25
 #define daysInWeek  7
 

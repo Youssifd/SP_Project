@@ -33,6 +33,7 @@ namespace GUISP {
 		  void displayPinfo();
 		  void AddHospital(Hospitals hos[]);
 		  void modifyHospital();
+		  void modifyHSC();
 
 	 protected:
 	
@@ -349,13 +350,15 @@ private: System::Windows::Forms::Panel^ AD_DELHSC_lay;
 
 
 private: System::Windows::Forms::Label^ AD_stateHSC2;
+private: System::Windows::Forms::Label^ AD_AskHSC;
 
-private: System::Windows::Forms::Label^ label11;
+
 private: System::Windows::Forms::Button^ CloseTab1;
 private: System::Windows::Forms::Button^ CloseTab2;
-private: System::Windows::Forms::TextBox^ AD_TBforAddHSC;
+
 private: System::Windows::Forms::CheckBox^ checkBox2;
 private: System::Windows::Forms::Label^ AD_warning1;
+private: System::Windows::Forms::TextBox^ AD_TBforAddHSC;
 
 
 
@@ -417,7 +420,7 @@ private: System::Windows::Forms::Label^ AD_warning1;
 			   this->AD_DELHSC_lay = (gcnew System::Windows::Forms::Panel());
 			   this->checkBox2 = (gcnew System::Windows::Forms::CheckBox());
 			   this->CloseTab1 = (gcnew System::Windows::Forms::Button());
-			   this->label11 = (gcnew System::Windows::Forms::Label());
+			   this->AD_AskHSC = (gcnew System::Windows::Forms::Label());
 			   this->AD_selectHSC = (gcnew System::Windows::Forms::Button());
 			   this->AD_HSClist = (gcnew System::Windows::Forms::ComboBox());
 			   this->AD_stateHSC1 = (gcnew System::Windows::Forms::Label());
@@ -1196,7 +1199,7 @@ private: System::Windows::Forms::Label^ AD_warning1;
 			   // 
 			   this->AD_DELHSC_lay->Controls->Add(this->checkBox2);
 			   this->AD_DELHSC_lay->Controls->Add(this->CloseTab1);
-			   this->AD_DELHSC_lay->Controls->Add(this->label11);
+			   this->AD_DELHSC_lay->Controls->Add(this->AD_AskHSC);
 			   this->AD_DELHSC_lay->Controls->Add(this->AD_selectHSC);
 			   this->AD_DELHSC_lay->Controls->Add(this->AD_HSClist);
 			   this->AD_DELHSC_lay->Controls->Add(this->AD_stateHSC1);
@@ -1233,16 +1236,16 @@ private: System::Windows::Forms::Label^ AD_warning1;
 			   this->CloseTab1->UseVisualStyleBackColor = true;
 			   this->CloseTab1->Click += gcnew System::EventHandler(this, &mainPage::CloseTab1_Click);
 			   // 
-			   // label11
+			   // AD_AskHSC
 			   // 
-			   this->label11->AutoSize = true;
-			   this->label11->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->AD_AskHSC->AutoSize = true;
+			   this->AD_AskHSC->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->label11->Location = System::Drawing::Point(13, 40);
-			   this->label11->Name = L"label11";
-			   this->label11->Size = System::Drawing::Size(202, 26);
-			   this->label11->TabIndex = 5;
-			   this->label11->Text = L"Choose From list";
+			   this->AD_AskHSC->Location = System::Drawing::Point(13, 40);
+			   this->AD_AskHSC->Name = L"AD_AskHSC";
+			   this->AD_AskHSC->Size = System::Drawing::Size(202, 26);
+			   this->AD_AskHSC->TabIndex = 5;
+			   this->AD_AskHSC->Text = L"Choose From list";
 			   // 
 			   // AD_selectHSC
 			   // 
@@ -1256,6 +1259,7 @@ private: System::Windows::Forms::Label^ AD_warning1;
 			   this->AD_selectHSC->TabIndex = 3;
 			   this->AD_selectHSC->Text = L"Delete";
 			   this->AD_selectHSC->UseVisualStyleBackColor = true;
+			   this->AD_selectHSC->Click += gcnew System::EventHandler(this, &mainPage::AD_selectHSC_Click);
 			   // 
 			   // AD_HSClist
 			   // 
@@ -1293,9 +1297,10 @@ private: System::Windows::Forms::Label^ AD_warning1;
 			   // 
 			   // AD_TBforAddHSC
 			   // 
-			   this->AD_TBforAddHSC->Location = System::Drawing::Point(39, 70);
+			   this->AD_TBforAddHSC->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			   this->AD_TBforAddHSC->Location = System::Drawing::Point(40, 82);
 			   this->AD_TBforAddHSC->Name = L"AD_TBforAddHSC";
-			   this->AD_TBforAddHSC->Size = System::Drawing::Size(222, 36);
+			   this->AD_TBforAddHSC->Size = System::Drawing::Size(241, 29);
 			   this->AD_TBforAddHSC->TabIndex = 8;
 			   // 
 			   // CloseTab2
@@ -1337,15 +1342,17 @@ private: System::Windows::Forms::Label^ AD_warning1;
 			   this->AD_confirmAdd->TabIndex = 5;
 			   this->AD_confirmAdd->Text = L"Add";
 			   this->AD_confirmAdd->UseVisualStyleBackColor = true;
+			   this->AD_confirmAdd->Click += gcnew System::EventHandler(this, &mainPage::AD_confirmAdd_Click);
+			   this->AD_confirmAdd->Leave += gcnew System::EventHandler(this, &mainPage::AD_confirmAdd_Leave);
 			   // 
 			   // AD_HSCorder
 			   // 
 			   this->AD_HSCorder->AutoSize = true;
 			   this->AD_HSCorder->Location = System::Drawing::Point(34, 24);
 			   this->AD_HSCorder->Name = L"AD_HSCorder";
-			   this->AD_HSCorder->Size = System::Drawing::Size(74, 26);
+			   this->AD_HSCorder->Size = System::Drawing::Size(131, 26);
 			   this->AD_HSCorder->TabIndex = 1;
-			   this->AD_HSCorder->Text = L"label2";
+			   this->AD_HSCorder->Text = L"Enter Name";
 			   // 
 			   // AD_closeModify
 			   // 
@@ -1539,6 +1546,7 @@ private: System::Windows::Forms::Label^ AD_warning1;
 			   this->AD_Hlist_combox->Size = System::Drawing::Size(282, 33);
 			   this->AD_Hlist_combox->TabIndex = 0;
 			   this->AD_Hlist_combox->Text = L"Hospital list ";
+			   this->AD_Hlist_combox->SelectedIndexChanged += gcnew System::EventHandler(this, &mainPage::AD_Hlist_combox_SelectedIndexChanged);
 			   // 
 			   // AD_HCselect
 			   // 
@@ -4682,10 +4690,13 @@ private: System::Void AD_HSselected_Click(System::Object^ sender, System::EventA
 	AD_nameOfinput->Text = "Hospital Specialties";
 	AD_HSClist->Text = "Specialties List";
 	AD_ModifyHSClist->Text = "Specialties List";
+	AD_HSCorder->Text = "Enter Specialty Name";
+	AD_AskHSC->Text="Choose Specialty";
 	AD_ModifyHSClist->Visible = true;
 	AD_modifyHSC_layout->Visible = false;
 	AD_deleteHSC->Visible = true;
-	AD_addHSC->Visible = true;
+	AD_addHSC->Visible = true; 
+	
 	
 }
 private: System::Void AD_HCselected_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4693,10 +4704,13 @@ private: System::Void AD_HCselected_Click(System::Object^ sender, System::EventA
 	AD_nameOfinput->Text = "Hospital Clinics";
 	AD_ModifyHSClist->Text = "Clinics List";
 	AD_HSClist->Text = "Clinics List";
+	AD_HSCorder->Text = "Enter Clinics Name";
+	AD_AskHSC->Text = "Choose Clinic";
 	AD_ModifyHSClist->Visible = true;
 	AD_modifyHSC_layout->Visible = false;
 	AD_deleteHSC->Visible = true;
 	AD_addHSC->Visible = true;
+	
 	
 }
 private: System::Void AD_closeModify_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4711,10 +4725,27 @@ private: System::Void AD_deleteHSC_Click(System::Object^ sender, System::EventAr
 	 AD_modifyHSC_layout->Visible = true;
 	 AD_DELHSC_lay->BringToFront();
 	 AD_HSCorder->Visible = false;
-	 //AD_stateHSC->Visible = false;
-	// AD_stateHSC->Text = "";
 	 AD_HSClist->Visible = true;
 	 AD_selectHSC->Visible = true;
+	 if (AD_Hlist_combox->Text != "Hospital list ") {
+		  searchHindex(msclr::interop::marshal_as<string>(AD_Hlist_combox->Text));
+		  if (AD_AskHSC->Text == "Choose Clinic") {
+			   AD_HSClist->Items->Clear();
+			   for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
+					AD_HSClist->Items->Add(gcnew String(hospital[Hindex].HospitalClinics[i].c_str()));
+			   }
+
+		  }
+		  if (AD_AskHSC->Text == "Choose Specialty") {
+			   AD_HSClist->Items->Clear();
+			   for (int i = 0; i < hospital[Hindex].specialtiesCount; i++)
+			   {
+					AD_HSClist->Items->Add(gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str()));
+			   }
+
+		  }
+
+	 }
 }
 private: System::Void AD_addHSC_Click(System::Object^ sender, System::EventArgs^ e) {
 	 AD_modifyHSC_layout->Visible = true;
@@ -4916,6 +4947,61 @@ private: System::Void AD_confirmedit_Click(System::Object^ sender, System::Event
 	 if (AD_Hlist_combox->Text != "Hospital list ") {
 		  searchHindex(msclr::interop::marshal_as<string>(AD_Hlist_combox->Text));
 		  modifyHospital();
+	 }
+
+}
+private: System::Void AD_confirmAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+	 if (AD_Hlist_combox->Text != "Hospital list ")
+	 modifyHSC();
+}
+private: System::Void AD_confirmAdd_Leave(System::Object^ sender, System::EventArgs^ e) {
+	 AD_TBforAddHSC->Text = "";
+	 AD_stateHSC2->Text =  "";
+}
+private: System::Void AD_selectHSC_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	 if (AD_AskHSC->Text == "Choose Specialty") {
+			   searchSPindex(msclr::interop::marshal_as<string>(AD_HSClist->Text));
+		  String^ foundSp = gcnew String(hospital[Hindex].HospitalSpecialties[SPindex].c_str());
+
+		  if (AD_HSClist->Text != "Specialties List" && AD_HSClist->Text == foundSp){
+		  if (SPindex != hospital[Hindex].specialtiesCount - 1)
+			   swap(hospital[Hindex].HospitalSpecialties[hospital[Hindex].specialtiesCount - 1], hospital[Hindex].HospitalSpecialties[SPindex]);
+		  hospital[Hindex].specialtiesCount--;
+				  AD_stateHSC1->Text="Specialty Deleted";
+	 }
+			 else {
+				  AD_stateHSC1->Text="this Specialty is not exist";
+			 }
+		  }
+		else if(AD_AskHSC->Text == "Choose Clinic")  {
+					searchCLindex(msclr::interop::marshal_as<string>(AD_HSClist->Text));
+		  String^ foundCl = gcnew String(hospital[Hindex].HospitalClinics[CLindex].c_str());
+			
+			   if (AD_HSClist->Text != "Clincis List" && AD_HSClist->Text == foundCl) {
+					if (CLindex!=hospital[Hindex].clinicsCount -1)
+					swap(hospital[Hindex].HospitalClinics[hospital[Hindex].clinicsCount - 1], hospital[Hindex].HospitalClinics[CLindex]);
+					hospital[Hindex].clinicsCount--;
+				  AD_stateHSC1->Text="Clinic Deleted";
+			   }
+		else {
+			 AD_stateHSC1->Text = "this Clinic is not exist";
+		}
+		  }
+
+	 
+}
+private: System::Void AD_Hlist_combox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	 AD_ModifyHSClist->Items->Clear();
+	 searchHindex(msclr::interop::marshal_as<string>(AD_Hlist_combox->Text));
+	 for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
+		  AD_ModifyHSClist->Items->Add(gcnew String(hospital[Hindex].HospitalClinics[i].c_str()));
+	 }
+	 searchHindex(msclr::interop::marshal_as<string>(AD_Hlist_combox->Text));
+	 AD_ModifyHSClist->Items->Clear();
+	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++)
+	 {
+		  AD_ModifyHSClist->Items->Add(gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str()));
 	 }
 
 }

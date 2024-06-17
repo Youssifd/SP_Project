@@ -221,9 +221,40 @@ void GUISP::mainPage::modifyHospital() {
 		  hospital[Hindex].ReservationPrice = Htemp.ReservationPrice;
 		 
 	 }
+	 
 	 AD_warning1->Text = "edit sucss";
 }
-
+void GUISP::mainPage::modifyHSC() {
+	 string newclorsp;
+	  
+	 searchHindex(msclr::interop::marshal_as<string>(AD_Hlist_combox->Text));
+			newclorsp = msclr::interop::marshal_as < string>(AD_TBforAddHSC->Text);
+	 if (AD_HSCorder->Text == "Enter Specialty Name") {
+	
+	   for (int i = 0; i < hospital[Hindex].specialtiesCount;i++) {
+			if(newclorsp== hospital[Hindex].HospitalSpecialties[i]){
+				 AD_stateHSC2->Text = "this Specialty exist!";
+				 return;
+			}
+	   }
+			AD_stateHSC2->Text = "this Specialty exist!";
+	   AD_stateHSC2->Text = "Specialty Added";
+	   hospital[Hindex].HospitalSpecialties[hospital[Hindex].specialtiesCount ] = newclorsp;
+	   hospital[Hindex].specialtiesCount++;
+	 }
+	 else if (AD_HSCorder->Text == "Enter Clincs Name") {
+	   for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
+			if (newclorsp == hospital[Hindex].HospitalClinics[i]) {
+				 AD_stateHSC2->Text = "this Clinic exist!";
+				 return;
+			}
+	   }
+	   hospital[Hindex].HospitalClinics[hospital[Hindex].clinicsCount ] = newclorsp;
+	   AD_stateHSC2->Text = "Clinic Added";
+	   hospital[Hindex].clinicsCount++;
+	 }
+	 
+}
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {
 		  if (hospital[i].HospitalName == Ser) {
