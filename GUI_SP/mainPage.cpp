@@ -255,6 +255,27 @@ void GUISP::mainPage::modifyHSC() {
 	 }
 	 
 }
+void GUISP::mainPage::DisplayRInfo() {
+	 PA_viewR_PName->Text = "Patient Name: " + gcnew String(user[Lindex].reservation[Rindex].PName.c_str());
+	 PA_viewR_PAge->Text = "Patient Age: " + gcnew INT(user[Lindex].reservation[Rindex].PAge);
+	 PA_viewR_phoneN->Text = "Phone Number: " + gcnew String(user[Lindex].reservation[Rindex].PhoneNumber.c_str());
+	 PA_viewR_RoomID->Text = "Reservation ID: " + gcnew String(user[Lindex].reservation[Rindex].PatientReservationRoom.c_str());
+	 PA_viewR_Day->Text = "Reservation Day: " + gcnew String(user[Lindex].reservation[Rindex].ReservationDay.c_str());
+	 PA_viewR_bedPrice->Text= "Bed Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].BedPrice);
+	 PA_viewR_SurgeryPrice->Text = "Surgery Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].surgeryprice);
+	 PA_viewR_HReserved->Text = "Hospital Reserved: " + gcnew String(user[Lindex].reservation[Rindex].hospital.HospitalName.c_str());
+	 if (user[Lindex].reservation[Rindex].ReservationType == "Check-up") {
+	 PA_viewR_HSpCl->Text = "Clinic: " + gcnew String(user[Lindex].reservation[Rindex].HospitalClinic.c_str());
+	 PA_viewR_ChandTPrice->Text = "Check-UP Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].ReservationPrice);
+
+	 }
+	 else {
+	 PA_viewR_HSpCl->Text = "Specialty: " + gcnew String(user[Lindex].reservation[Rindex].HospitalSpecialty.c_str());
+	 PA_viewR_ChandTPrice->Text="Total Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].Totalprice);
+	 }
+	
+}
+
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {
 		  if (hospital[i].HospitalName == Ser) {
@@ -290,7 +311,15 @@ void GUISP::mainPage::searchCLindex(string Ser) {
 	 }
 
 }
-void GUISP::mainPage::searchSPindex(string Ser) {
+void GUISP::mainPage::searchDindex(string Ser) {
+	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
+		  if (hospital[i].HospitalSpecialties[i] == Ser) {
+			   SPindex = i;
+			   break;
+		  }
+	 }
+
+}void GUISP::mainPage::searchSPindex(string Ser) {
 	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
 		  if (hospital[i].HospitalSpecialties[i] == Ser) {
 			   SPindex = i;

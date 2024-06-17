@@ -57,4 +57,4 @@ struct Users {
 	 Reservations* reservation = new Reservations[NumberOfReservation];
 };
 int  reservationID = 101, labReservation = 501, userCount = 0, hospitalCount = 0,userID=1001;
-int Lindex = -1, Pindex = -1, Hindex = -1, Rindex = -1,SPindex=-1,CLindex=-1;
+int Lindex = -1, Pindex = -1, Hindex = -1, Rindex = -1,SPindex=-1,CLindex=-1,Dindex=-1;
