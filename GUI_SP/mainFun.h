@@ -89,7 +89,7 @@ public:
 					if (user[i].reserCount < NumberOfReservation && user[i].reserCount>0) {
 						 for (int j = 0; j < user[i].reserCount; j++) {
 
-							  ExportUserInfo << user[i].reservation[j].ReservtionID << " " << user[i].reservation[j].PAge << " " << user[i].reservation[j].hospital.HospitalID << " " << user[i].reservation[j].numberOfDays << " " << user[i].reservation[j].BedPrice << " " << user[i].reservation[j].surgeryprice << " " << user[i].reservation[j].Totalprice << " " << user[i].reservation[j].ReservationType << " " << user[i].reservation[j].ReservationDay << " " << user[i].reservation[j].HospitalSpecialty << " " << user[i].reservation[j].HospitalClinic << " " << user[i].reservation[j].PatientReservationRoom << " " << user[i].reservation[j].PhoneNumber << " " << user[i].reservation[j].PName;
+							  ExportUserInfo << user[i].reservation[j].ReservtionID << " " << user[i].reservation[j].PAge << " " << user[i].reservation[j].hospital.HospitalID<< " " << user[i].reservation[j].numberOfDays << " " << user[i].reservation[j].BedPrice << " " << user[i].reservation[j].surgeryprice << " " << user[i].reservation[j].Totalprice << " " << user[i].reservation[j].ReservationType << " " << user[i].reservation[j].ReservationDay << " " << user[i].reservation[j].HospitalSpecialty << " " << user[i].reservation[j].HospitalClinic << " " << user[i].reservation[j].PatientReservationRoom << " " << user[i].reservation[j].PhoneNumber << " " << user[i].reservation[j].PName;
 							  if (j != user[i].reserCount - 1 || i != userCount - 1)
 								   ExportUserInfo << endl;
 						 }
@@ -506,7 +506,7 @@ public:
 			   //  cin.ignore();
 		  }
 	 }
-	 void makeReservation(Users user[], Hospitals hospital[], Reservations& Rtemp) {
+	 void makeReservation(Users user[], Hospitals hospital[], Reservations Rtemp) {
 		  bool exist=false;
 		  if (user[Lindex].reserCount < NumberOfReservation) {
 			   if (Rtemp.ReservationType == "Surgery") {
@@ -544,6 +544,15 @@ public:
 		  user[Lindex].reservation[user[Lindex].reserCount] = Rtemp;
 		  user[Lindex].reserCount++;
 		  reservationID++;
+		  /*Rtemp.numberOfDays = 0;
+		  Rtemp.HospitalSpecialty = "NOT-RESERVED";
+		  Rtemp.HospitalClinic = "NOT-RESERVED";
+		  Rtemp.PatientReservationRoom = "NONE";
+		  Rtemp.BedPrice = 0;
+		  Rtemp.ReservationDay = "";
+		  Rtemp.ReservationPrice = 0;
+		  Rtemp.surgeryprice = 0;
+		  Rtemp.Totalprice = 0;*/
 	 }
 	
 	 void showreservation(Users patient[], Hospitals hospital[], int PIndex) {
@@ -639,8 +648,6 @@ public:
 			   patient[PIndex].reserCount--;//update
 			 
 	 }
-			  
-			
 	 bool validPhoneNumber(string phoneNumber) {
 		  if (phoneNumber.size() != 11 || phoneNumber[0] != '0' || phoneNumber[1] != '1') {
 			   return false;

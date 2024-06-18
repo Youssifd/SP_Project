@@ -11,8 +11,8 @@ void main()
 	 Application::SetCompatibleTextRenderingDefault(false);
 	 GUISP::mainPage form;
 	 Application::Run(% form);
-	 /*f.SaveData(user);
-	 f.SaveData(hospital);*/
+	/* f.SaveData(hospital);
+	 f.SaveData(user);*/
 }
 void GUISP::mainPage::personalinfo() {
 	 String^ ID = gcnew String(to_string(user[Lindex].id).c_str());
@@ -281,6 +281,7 @@ void GUISP::mainPage::DisplayRInfo() {
 	
 }
 void GUISP::mainPage::makeReservation() {
+	 Reservations Rtemp; 
 	 //label7->Text = "Cl: " + gcnew String(Rtemp.HospitalClinic.c_str());
 	 Rtemp.PName = context.marshal_as<string>(PA_PNord_TB->Text);
 	 Rtemp.PAge = stoi(context.marshal_as<string>(PA_PAord_TB->Text));
@@ -288,7 +289,8 @@ void GUISP::mainPage::makeReservation() {
 	 Rtemp.hospital.HospitalName = context.marshal_as<string>(PA_selectHforR_COM->Text);
 	 Rtemp.ReservationDay = context.marshal_as<string>(PA_DayenterH_COM->Text);
 	 searchHindex(Rtemp.hospital.HospitalName);
-	 
+	 Rtemp.hospital = hospital[Hindex];
+	 label7->Text = "name: " + gcnew String(user[Lindex].reservation[user[Lindex].reserCount].hospital.HospitalName.c_str());
 	 if (PA_RtypeCheck_RB2->Checked == true) {
 		  Rtemp.ReservationType = "Check-up";
 		  Rtemp.HospitalClinic= context.marshal_as<string>(PA_RSClist_COM->Text);
@@ -309,8 +311,8 @@ void GUISP::mainPage::makeReservation() {
 		  return;
 	 }
 	 f.makeReservation(user, hospital, Rtemp);
-
-	 PA_warningM->Text = "Reserved.\nReservation ID:" + gcnew String(to_string(Rtemp.ReservtionID).c_str());
+	// user[Lindex].reservation[user[Lindex].reserCount-1].hospital = hospital[Hindex];
+	 PA_warningM->Text = "Reserved.\nReservation ID:" + gcnew String(to_string(user[Lindex].reservation[user[Lindex].reserCount-1].ReservtionID).c_str());
 	 PA_PNord_TB->Text = "";
 	 PA_PAord_TB->Text = "";
 	 PA_PphNord_TB->Text = "";
@@ -320,6 +322,7 @@ void GUISP::mainPage::makeReservation() {
 	 PA_askwhoreserv_RB2->Checked = true;
 }
 void GUISP::mainPage::modifyReservation() {
+	 Reservations Rtemp;
 	 if (PA_modifyRord_lab->Text == "New Full Name") {
 		  Rtemp.PName = context.marshal_as<string>(PA_modifyRord_TB->Text);
 		  if (Rtemp.PName == user[Lindex].reservation[Rindex].PName)
@@ -330,10 +333,6 @@ void GUISP::mainPage::modifyReservation() {
 	 }
 	 else if (PA_modifyRord_lab->Text == "New Age") {
 		  Rtemp.PAge = stoi(context.marshal_as<string>(PA_modifyRord_TB->Text));
-		  if (Rtemp.PAge < 18) {
-			   PA_modifyRstate_lab->Text = "Invalid Age";
-			   return;
-		  }
 		  if (Rtemp.PAge == user[Lindex].reservation[Rindex].PAge) {
 			   PA_modifyRstate_lab->Text = "No changes made";
 			   return;
@@ -393,6 +392,31 @@ void GUISP::mainPage::modifyReservation() {
 
 						 }
 					}
+			   }
+			   else {
+			   user[Lindex].reservation[Rindex].ReservationPrice = hospital[Hindex].ReservationPrice;
+			   }
+			   if (user[Lindex].reservation[Rindex].ReservationType == "Surgery") {
+					int roomnumber = 50 + rand() % 500;
+					for (int i = 7; i < userCount; i++) {
+						 for (int j = 0; j < user[i].reserCount; j++) {
+							  if (user[i].reservation[j].hospital.HospitalID == Rtemp.hospital.HospitalID) {
+								   if (user[i].reservation[j].PatientReservationRoom == to_string(roomnumber)) {
+										exist = true;
+										roomnumber = 50 + rand() % 500;
+
+										break;
+								   }
+
+
+							  }
+						 }
+						 if (exist == true) {
+							  i = 7;
+							  exist = false;
+						 }
+					}
+					user[Lindex].reservation[Rindex].PatientReservationRoom = to_string(roomnumber);
 			   }
 			   user[Lindex].reservation[Rindex].hospital = hospital[Hindex];
 
@@ -457,6 +481,8 @@ void GUISP::mainPage::modifyReservation() {
 			   PA_OrderOflist->Text = "Order text";
 		  }
 	 }
+
+	PA_modifyRstate_lab->Text = "edit done";
 	PA_StateOflist->Text = "edit done";
 	 PA_modifyRord_TB->Text == "";
 }
@@ -564,6 +590,8 @@ void GUISP::mainPage::EditPersonalInfo() {
 	 AD_editRemain_state->Text = "Edit done";
 	 AD_editRemain_TB->Text = "";
 }
+
+
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {
 		  if (hospital[i].HospitalName == Ser) {
