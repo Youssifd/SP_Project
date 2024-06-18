@@ -92,13 +92,13 @@ void GUISP::mainPage::displayPinfo() {
 	  
 }
 void GUISP::mainPage::AddHospital(Hospitals hos[]) {
-	 Htemp.HospitalName = msclr::interop::marshal_as<string>(AD_HNorder_TB->Text);
-	 Htemp.BedsPrice =stof (msclr::interop::marshal_as<string>(AD_HBPorder_TB->Text));
-	 Htemp.surgeryprice = stof( msclr::interop::marshal_as<string>(AD_HSPorder_TB->Text));
-	 Htemp.ReservationPrice = stof(msclr::interop::marshal_as<string>(AD_HRPorder_TB->Text));
-	 Htemp.PatientReservationRooms = stoi(msclr::interop::marshal_as<string>(AD_HPRBsorder_TB->Text));
-	 Htemp.HospitalRate = stof(msclr::interop::marshal_as<string>(AD_HRateorder_TB->Text));
-	 Htemp.HospitalID = stoi(msclr::interop::marshal_as < string>(AD_HIDorder_TB->Text));
+	 Htemp.HospitalName = context.marshal_as<string>(AD_HNorder_TB->Text);
+	 Htemp.BedsPrice =stof (context.marshal_as<string>(AD_HBPorder_TB->Text));
+	 Htemp.surgeryprice = stof( context.marshal_as<string>(AD_HSPorder_TB->Text));
+	 Htemp.ReservationPrice = stof(context.marshal_as<string>(AD_HRPorder_TB->Text));
+	 Htemp.PatientReservationRooms = stoi(context.marshal_as<string>(AD_HPRBsorder_TB->Text));
+	 Htemp.HospitalRate = stof(context.marshal_as<string>(AD_HRateorder_TB->Text));
+	 Htemp.HospitalID = stoi(context.marshal_as < string>(AD_HIDorder_TB->Text));
 
 	 for (int i = 0; i < hospitalCount; i++)
 	 {
@@ -155,7 +155,7 @@ void GUISP::mainPage::AddHospital(Hospitals hos[]) {
 void GUISP::mainPage::modifyHospital() {
 
 	 if (AD_nameOfinput->Text == "Hospital ID") {
-		  Htemp.HospitalID = stoi(msclr::interop::marshal_as < string>(AD_TBinput->Text));
+		  Htemp.HospitalID = stoi(context.marshal_as < string>(AD_TBinput->Text));
 		  if ((Htemp.HospitalID > 1000000) && (Htemp.HospitalID < 10000000)) {
 			   for (int i = 0; i < hospitalCount - 1; i++) {
 					if (hospital[i].HospitalID == Htemp.HospitalID) {
@@ -173,7 +173,7 @@ void GUISP::mainPage::modifyHospital() {
 		  hospital[Hindex].HospitalID=Htemp.HospitalID;
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Name") {
-		  Htemp.HospitalName = msclr::interop::marshal_as<string>(AD_TBinput->Text);
+		  Htemp.HospitalName = context.marshal_as<string>(AD_TBinput->Text);
 		  for (int i = 0; i < hospitalCount; i++)
 		  {
 			   if (Htemp.HospitalName == hospital[i].HospitalName)
@@ -186,7 +186,7 @@ void GUISP::mainPage::modifyHospital() {
 		
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Rate") {
-		  Htemp.HospitalRate = stof(msclr::interop::marshal_as<string>(AD_TBinput->Text));
+		  Htemp.HospitalRate = stof(context.marshal_as<string>(AD_TBinput->Text));
 		  if ((Htemp.HospitalRate > 5) || (Htemp.HospitalRate < 0)) {
 
 			   AD_warning1->Text = "Wrong rate.\nPlease Enetr another(5-0) ";
@@ -195,31 +195,31 @@ void GUISP::mainPage::modifyHospital() {
 		  hospital[Hindex].HospitalRate = Htemp.HospitalRate;
 	 }
 	 else if (AD_nameOfinput->Text == "Number of Avaliable rooms") {
-		  Htemp.PatientReservationRooms = stoi(msclr::interop::marshal_as<string>(AD_TBinput->Text));
+		  Htemp.PatientReservationRooms = stoi(context.marshal_as<string>(AD_TBinput->Text));
 		  hospital[Hindex].PatientReservationRooms = Htemp.PatientReservationRooms;
 		  
 	 }
 	 else if (AD_nameOfinput->Text == "Bed Price") {
-		  Htemp.BedsPrice = stof(msclr::interop::marshal_as<string>(AD_TBinput->Text));
+		  Htemp.BedsPrice = stof(context.marshal_as<string>(AD_TBinput->Text));
 		  hospital[Hindex].BedsPrice = Htemp.BedsPrice;
 		 
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Specialties") {
-		  string Hspindex= msclr::interop::marshal_as<string>(AD_ModifyHSClist->Text);
-		  string Sptemp = msclr::interop::marshal_as<string>(AD_TBinput->Text);
+		  string Hspindex= context.marshal_as<string>(AD_ModifyHSClist->Text);
+		  string Sptemp = context.marshal_as<string>(AD_TBinput->Text);
 		  searchSPindex(Hspindex);
 		  hospital[Hindex].HospitalSpecialties[SPindex] = Sptemp;
 
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Clinics") {
-		  string Hclindex= msclr::interop::marshal_as<string>(AD_ModifyHSClist->Text);
-		  string cltemp = msclr::interop::marshal_as<string>(AD_TBinput->Text);
+		  string Hclindex= context.marshal_as<string>(AD_ModifyHSClist->Text);
+		  string cltemp = context.marshal_as<string>(AD_TBinput->Text);
 		  searchCLindex(Hclindex);
 		  hospital[Hindex].HospitalClinics[SPindex] = cltemp;
 
 	 }
 	 else if (AD_nameOfinput->Text == "Reservation Price") {
-		  Htemp.ReservationPrice = stof(msclr::interop::marshal_as<string>(AD_TBinput->Text));
+		  Htemp.ReservationPrice = stof(context.marshal_as<string>(AD_TBinput->Text));
 		  hospital[Hindex].ReservationPrice = Htemp.ReservationPrice;
 		 
 	 }
@@ -229,8 +229,8 @@ void GUISP::mainPage::modifyHospital() {
 void GUISP::mainPage::modifyHSC() {
 	 string newclorsp;
 	  
-	 searchHindex(msclr::interop::marshal_as<string>(AD_Hlist_combox->Text));
-			newclorsp = msclr::interop::marshal_as < string>(AD_TBforAddHSC->Text);
+	 searchHindex(context.marshal_as<string>(AD_Hlist_combox->Text));
+			newclorsp = context.marshal_as < string>(AD_TBforAddHSC->Text);
 	 if (AD_HSCorder->Text == "Enter Specialty Name") {
 	
 	   for (int i = 0; i < hospital[Hindex].specialtiesCount;i++) {
@@ -321,7 +321,7 @@ void GUISP::mainPage::makeReservation() {
 }
 void GUISP::mainPage::modifyReservation() {
 	 if (PA_modifyRord_lab->Text == "New Full Name") {
-		  Rtemp.PName = msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text);
+		  Rtemp.PName = context.marshal_as<string>(PA_modifyRord_TB->Text);
 		  if (Rtemp.PName == user[Lindex].reservation[Rindex].PName)
 			   PA_modifyRstate_lab->Text = "No changes made";
 		  PA_modifyRstate_lab->Text = "Edit done";
@@ -329,8 +329,8 @@ void GUISP::mainPage::modifyReservation() {
 		  // FName_PA_lab->Text = gcnew String(Rtemp.PName.c_str());
 	 }
 	 else if (PA_modifyRord_lab->Text == "New Age") {
-		  Rtemp.PAge = stoi(msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text));
-		  if (Rtemp.PAge <= 0) {
+		  Rtemp.PAge = stoi(context.marshal_as<string>(PA_modifyRord_TB->Text));
+		  if (Rtemp.PAge < 18) {
 			   PA_modifyRstate_lab->Text = "Invalid Age";
 			   return;
 		  }
@@ -342,7 +342,7 @@ void GUISP::mainPage::modifyReservation() {
 
 	 }
 	 else if (PA_modifyRord_lab->Text == "New Phone Number") {
-		  Rtemp.PhoneNumber = msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text);
+		  Rtemp.PhoneNumber = context.marshal_as<string>(PA_modifyRord_TB->Text);
 		  if (f.validPhoneNumber(temp.phonenumber) == false) {
 			   PA_modifyRstate_lab->Text = "Invalid Phone Number";
 			   return;
@@ -359,7 +359,7 @@ void GUISP::mainPage::modifyReservation() {
 
 	 }
 	 else if (PA_modifyRord_lab->Text == "New Number of days") {
-		  Rtemp.numberOfDays= stoi(msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text));
+		  Rtemp.numberOfDays= stoi(context.marshal_as<string>(PA_modifyRord_TB->Text));
 			   if (Rtemp.numberOfDays == user[Lindex].reservation[Rindex].numberOfDays) {
 					PA_modifyRstate_lab->Text = "No changes made";
 					return;
@@ -378,7 +378,7 @@ void GUISP::mainPage::modifyReservation() {
 		  }
 	 else {
 		  if (PA_OrderOflist->Text == "Select new hospital") {
-			   string Hsearch = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+			   string Hsearch = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
 			   searchHindex(Hsearch);
 			   if (hospital[Hindex].HospitalID == user[Lindex].reservation[Rindex].hospital.HospitalID) {
 					PA_StateOflist->Text = "No changes made";
@@ -399,7 +399,7 @@ void GUISP::mainPage::modifyReservation() {
 			   PA_StateOflist->Text = "edit done";
 		  }
 		  else if (PA_OrderOflist->Text == "Select new Days") {
-			   string seaDay = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+			   string seaDay = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
 			   searchDindex(seaDay);
 			   if (user[Lindex].reservation[Rindex].ReservationDay == ReservationDays[Dindex]) {
 					PA_modifyRstate_lab->Text = "No changes made";
@@ -409,9 +409,9 @@ void GUISP::mainPage::modifyReservation() {
 			   user[Lindex].reservation[Rindex].ReservationDay = ReservationDays[Dindex];
 		  }
 		  else if (PA_OrderOflist->Text == "Select new Specialty") {
-			   Rtemp.HospitalSpecialty = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+			   Rtemp.HospitalSpecialty = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
 			 //  searchSPindex(Rtemp.HospitalSpecialty);
-			  Rtemp.numberOfDays= stoi(msclr::interop::marshal_as<string>(PA_Rnumbofdays->Text));
+			  Rtemp.numberOfDays= stoi(context.marshal_as<string>(PA_Rnumbofdays->Text));
 			   user[Lindex].reservation[Rindex].HospitalSpecialty = Rtemp.HospitalSpecialty;
 			   user[Lindex].reservation[Rindex].surgeryprice = user[Lindex].reservation[Rindex].hospital.surgeryprice;
 			   user[Lindex].reservation[Rindex].BedPrice= Rtemp.numberOfDays * user[Lindex].reservation[Rindex].hospital.BedsPrice;
@@ -443,7 +443,7 @@ void GUISP::mainPage::modifyReservation() {
 			   PA_StateOflist->Text = "edit done";
 		  }
 		  else if (PA_OrderOflist->Text == "Select new Clinic") {
-			   Rtemp.HospitalClinic = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+			   Rtemp.HospitalClinic = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
 			   searchCLindex(Rtemp.HospitalClinic);
 			  
 			   user[Lindex].reservation[Rindex].HospitalClinic = Rtemp.HospitalClinic;
@@ -460,7 +460,110 @@ void GUISP::mainPage::modifyReservation() {
 	PA_StateOflist->Text = "edit done";
 	 PA_modifyRord_TB->Text == "";
 }
+void GUISP::mainPage::EditPersonalInfo() {
+	 Users Ptemp;
+	 if (user[Lindex].userType == "Patient") {
+		  if (PA_editRemain_lab->Text == "New Full Name") {
+			   Ptemp.name = context.marshal_as<string>(PA_editRemain_TB->Text);
+			   if (Ptemp.name == user[Lindex].name) {
+					PA_editRemain_state->Text = "No changes made";
+					return;
+			   }
+			   user[Lindex].name = Ptemp.name;
+			   FName_PA_lab->Text = gcnew String(user[Lindex].name.c_str());
 
+		  }
+		  else if (PA_editRemain_lab->Text == "New Age") {
+			   Ptemp.age = stoi(context.marshal_as<string>(PA_editRemain_TB->Text));
+			   if (Ptemp.age == user[Lindex].age) {
+					PA_editRemain_state->Text = "No changes made";
+					return;
+			   }
+			   if (Ptemp.age <= 0) {
+					PA_editRemain_state->Text = "Invalid Age";
+					return;
+			   }
+			   user[Lindex].age = Ptemp.age;
+		  }
+		  else if (PA_editRemain_lab->Text == "New Username") {
+			   Ptemp.username = context.marshal_as<string>(PA_editRemain_TB->Text);
+			   for (int i = 0; i < userCount; i++) {
+					if (Ptemp.username == user[i].username) {
+						 PA_editRemain_state->Text = "Username already exists";
+						 return;
+					}
+			   }
+			   user[Lindex].username = Ptemp.username;
+			   user[Lindex].email = user[Lindex].username + "@Huser.com";
+		  }
+		  else if (PA_editRemain_lab->Text == "New Phone Number") {
+			   Ptemp.phonenumber = context.marshal_as<string>(PA_editRemain_TB->Text);
+			   if (f.validPhoneNumber(Ptemp.phonenumber) == false) {
+					PA_editRemain_state->Text = "Invalid Phone Number";
+					return;
+			   }
+			   if (Ptemp.phonenumber == user[Lindex].phonenumber) {
+					PA_editRemain_state->Text = "No changes made";
+					return;
+			   }
+			   user[Lindex].phonenumber = Ptemp.phonenumber;
+		  }
+	 }
+	 else {
+		  if (AD_editRemain_lab->Text == "New Full Name") {
+			   Ptemp.name = context.marshal_as<string>(AD_editRemain_TB->Text);
+			   if (Ptemp.name == user[Lindex].name) {
+					AD_editRemain_state->Text = "No changes made";
+					return;
+			   }
+			   user[Lindex].name = Ptemp.name;
+			   FName_AD_lab->Text =  gcnew String(user[Lindex].name.c_str());
+		  }
+		  else if (AD_editRemain_lab->Text == "New Age") {
+			   Ptemp.age = stoi(context.marshal_as<string>(AD_editRemain_TB->Text));
+			   if (Ptemp.age == user[Lindex].age) {
+					AD_editRemain_state->Text = "No changes made";
+					return;
+			   }
+			   if (Ptemp.age <= 0) {
+					AD_editRemain_state->Text = "Invalid Age";
+					return;
+			   }
+			   user[Lindex].age = Ptemp.age;
+			   AD_viewPinfo_Age->Text = "Age: " + gcnew INT(user[Lindex].age);
+		  }
+		  else if (AD_editRemain_lab->Text == "New Username") {
+			   Ptemp.username = context.marshal_as<string>(AD_editRemain_TB->Text);
+			   for (int i = 0; i < userCount; i++) {
+					if (Ptemp.username == user[i].username) {
+						 AD_editRemain_state->Text = "Username already exists";
+						 return;
+					}
+			   }
+			   user[Lindex].username = Ptemp.username;
+			   user[Lindex].email = user[Lindex].username + "@Hadmin.com";
+			  // AD_viewPinfo_Email->Text = "Email: " + gcnew String(user[Lindex].email.c_str());
+		  }
+		  else if (AD_editRemain_lab->Text == "New Phone Number") {
+			   Ptemp.phonenumber = context.marshal_as<string>(AD_editRemain_TB->Text);
+			   if (f.validPhoneNumber(Ptemp.phonenumber) == false) {
+					AD_editRemain_state->Text = "Invalid Phone Number";
+					return;
+			   }
+			   if (Ptemp.phonenumber == user[Lindex].phonenumber) {
+					AD_editRemain_state->Text = "No changes made";
+					return;
+			   }
+			   user[Lindex].phonenumber= Ptemp.phonenumber;
+
+		  }
+
+	 }
+	 PA_editRemain_state->Text = "Edit done";
+	 PA_editRemain_TB->Text = "";
+	 AD_editRemain_state->Text = "Edit done";
+	 AD_editRemain_TB->Text = "";
+}
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {
 		  if (hospital[i].HospitalName == Ser) {
