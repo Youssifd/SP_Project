@@ -313,6 +313,93 @@ void GUISP::mainPage::makeReservation() {
 	// PA_warningM->Text = "Booked Reservation ID: "+ gcnew String(to_string(user[Lindex].reservation[user[Lindex].reserCount-1].ReservtionID).c_str());
 	 PA_warningM->Text = "Booked Reservation ID: "+ gcnew String(to_string(Rtemp.ReservtionID).c_str());
 }
+void GUISP::mainPage::modifyReservation() {
+if(PA_modifyRord_lab->Text=="New Full Name"){
+	Rtemp.PName = msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text); 
+	if(Rtemp.PName ==user[Lindex].reservation[Rindex].PName)
+		  PA_modifyRstate_lab->Text = "No changes made";
+	 PA_modifyRstate_lab->Text = "Edit done";
+	 user[Lindex].reservation[Rindex].PName = Rtemp.PName;
+	// FName_PA_lab->Text = gcnew String(Rtemp.PName.c_str());
+}
+else if(PA_modifyRord_lab->Text=="New Age"){
+	 Rtemp.PAge = stoi(msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text));
+	 if(Rtemp.PAge<=0){
+		  PA_modifyRstate_lab->Text = "Invalid Age";
+		  return;
+	 } 
+	 if(Rtemp.PAge==user[Lindex].reservation[Rindex].PAge) {
+		  PA_modifyRstate_lab->Text = "No changes made";
+		  return;
+	 }
+	 user[Lindex].reservation[Rindex].PAge = Rtemp.PAge;
+
+}
+else if (PA_modifyRord_lab->Text == "New Phone Number") {
+	Rtemp.PhoneNumber = msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text);
+	 if (f.validPhoneNumber(temp.phonenumber) == false) {
+		  PA_modifyRstate_lab->Text = "Invalid Phone Number";
+		  return;
+	 }
+	 if (Rtemp.PhoneNumber == user[Lindex].reservation[Rindex].PhoneNumber) {
+		  PA_modifyRstate_lab->Text = "No changes made";
+		  return;
+	 }
+
+	
+
+	 user[Lindex].reservation[Rindex].PhoneNumber = Rtemp.PhoneNumber;
+
+
+}
+else if(PA_modifyRord_lab->Text=="New Number of days"){
+	 if (Rtemp.numberOfDays == user[Lindex].reservation[Rindex].numberOfDays) {
+		  PA_modifyRstate_lab->Text = "No changes made";
+		  return;
+	 }
+	 if (Rtemp.numberOfDays < 0) {
+		  PA_modifyRstate_lab->Text = "Invalid Number";
+		  return;
+	 }
+	  user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays;
+
+}
+else if(PA_modifyRord_lab->Text=="Select new hospital"){
+	 string Hsearch = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+	 searchHindex(Hsearch);
+	 if (hospital[Hindex].HospitalID == user[Lindex].reservation[Rindex].hospital.HospitalID) {
+		  PA_modifyRstate_lab->Text = "No changes made";
+		  return;
+	 }
+	if(user[Lindex].reservation[Rindex].ReservationType=="Surgery") {
+		  for (int i = 0; i < hospitalCount; i++) {
+			   if (user[Lindex].reservation[Rindex].hospital.HospitalID == hospital[i].HospitalID) {
+					hospital[i].PatientReservationRooms++;
+					hospital[Hindex].PatientReservationRooms--;
+					break;
+
+			   }
+		  }
+	 }
+	 user[Lindex].reservation[Rindex].hospital = hospital[Hindex];
+
+
+}
+else if(PA_modifyRord_lab->Text=="Select new item"){
+
+
+}
+else if(PA_modifyRord_lab->Text=="Select new Days"){
+	 string seaDay= msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+	 searchDindex(seaDay);
+	 if(user[Lindex].reservation[Rindex].ReservationDay==ReservationDays[Dindex]){
+		  PA_modifyRstate_lab->Text = "No changes made";
+		  return;
+	 }
+
+	 user[Lindex].reservation[Rindex].ReservationDay = ReservationDays[Dindex];
+}
+}
 
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {
