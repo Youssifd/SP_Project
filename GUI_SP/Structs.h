@@ -37,7 +37,7 @@ struct Reservations {
 	 string HospitalClinic = "NOT-RESERVATED";
 	 string PatientReservationRoom = "NONE";//asking TA
 	 string PhoneNumber = "";
-	 float ReservationPrice;//for check-up
+	 float ReservationPrice=0;//for check-up
 	 float BedPrice = 0; //for surgery
 	 float surgeryprice = 0;
 	 float Totalprice = 0;

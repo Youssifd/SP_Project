@@ -35,4 +35,12 @@
       <Filter>Header Files</Filter>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Hospitalinfo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="UserInfo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

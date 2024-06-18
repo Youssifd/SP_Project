@@ -5,6 +5,7 @@
 mainFun f;
 Users user[NumberOfUsers], temp;
 Hospitals hospital[NumberOfHospital],Htemp;
+Reservations Rtemp;
 bool exist = true;
 namespace GUISP {
 
@@ -36,6 +37,7 @@ namespace GUISP {
 		  void modifyHospital();
 		  void modifyHSC();
 		  void DisplayRInfo();
+		  void makeReservation();
 
 	 protected:
 	
@@ -3099,6 +3101,8 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->button1->TabIndex = 11;
 			   this->button1->Text = L"Add";
 			   this->button1->UseVisualStyleBackColor = true;
+			   this->button1->Click += gcnew System::EventHandler(this, &mainPage::button1_Click);
+			   this->button1->Leave += gcnew System::EventHandler(this, &mainPage::button1_Leave);
 			   // 
 			   // PA_PNord_lab
 			   // 
@@ -4848,6 +4852,7 @@ private: System::Void PA_addRlayout_Click(System::Object^ sender, System::EventA
 	 PA_addRlayout->BringToFront();
 	 PA_DayenterH_COM->Items->Clear();
 	 PA_selectHforR_COM->Items->Clear();
+	 PA_warningM->Text = "";
 	 String^ day,^ Hospital,^addSP;
 	 for (int i = 0; i < daysInWeek;i++) {
 		  day=gcnew String(ReservationDays[i].c_str());
@@ -5149,6 +5154,21 @@ private: System::Void PA_selectHforR_COM_TextChanged(System::Object^ sender, Sys
 			   PA_RSClist_COM->Items->Add(addSP);
 		  }
 	 }
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	 if (PA_RSClist_COM->Text != "select Specialty" && PA_selectHforR_COM->Text != "None" && PA_DayenterH_COM->Text != "None") {
+		  makeReservation();
+		  PA_RSClist_COM->Text = "select Specialty";
+		  PA_DayenterH_COM->Text = "None";
+		  PA_selectHforR_COM->Text = "None";
+		  PA_PphNord_TB->Text = "";
+		  PA_PNord_TB->Text = "";
+		  PA_PAord_TB->Text = "";
+	 }
+}
+private: System::Void button1_Leave(System::Object^ sender, System::EventArgs^ e) {
+	 PA_warningM->Text = "";
+
 }
 };
 }

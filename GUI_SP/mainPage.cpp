@@ -11,6 +11,8 @@ void main()
 	 Application::SetCompatibleTextRenderingDefault(false);
 	 GUISP::mainPage form;
 	 Application::Run(% form);
+	 /*f.SaveData(user);
+	 f.SaveData(hospital);*/
 }
 void GUISP::mainPage::personalinfo() {
 	 String^ ID = gcnew String(to_string(user[Lindex].id).c_str());
@@ -259,7 +261,7 @@ void GUISP::mainPage::DisplayRInfo() {
 	 PA_viewR_PName->Text = "Patient Name: " + gcnew String(user[Lindex].reservation[Rindex].PName.c_str());
 	 PA_viewR_PAge->Text = "Patient Age: " + gcnew INT(user[Lindex].reservation[Rindex].PAge);
 	 PA_viewR_phoneN->Text = "Phone Number: " + gcnew String(user[Lindex].reservation[Rindex].PhoneNumber.c_str());
-	 PA_viewR_RoomID->Text = "Reservation ID: " + gcnew String(user[Lindex].reservation[Rindex].PatientReservationRoom.c_str());
+	 PA_viewR_RoomID->Text = "Room ID: " + gcnew String(user[Lindex].reservation[Rindex].PatientReservationRoom.c_str());
 	 PA_viewR_Day->Text = "Reservation Day: " + gcnew String(user[Lindex].reservation[Rindex].ReservationDay.c_str());
 	 PA_viewR_bedPrice->Text= "Bed Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].BedPrice);
 	 PA_viewR_SurgeryPrice->Text = "Surgery Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].surgeryprice);
@@ -274,6 +276,42 @@ void GUISP::mainPage::DisplayRInfo() {
 	 PA_viewR_ChandTPrice->Text="Total Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].Totalprice);
 	 }
 	
+}
+void GUISP::mainPage::makeReservation() {
+	
+	 string dayIndex= msclr::interop::marshal_as<string>(PA_DayenterH_COM->Text);
+	 string HIndex= msclr::interop::marshal_as<string>(PA_selectHforR_COM->Text);
+	 searchDindex(dayIndex);
+	 searchHindex(HIndex);
+	 Rtemp.PAge = stoi(msclr::interop::marshal_as<string>(PA_PAord_TB->Text));
+	 if (Rtemp.PAge <= 0) {
+		  PA_warningM->Text = "Invalid Age";
+		  return;
+	 }
+	 Rtemp.PName= msclr::interop::marshal_as<string>(PA_PNord_TB->Text);
+	 Rtemp.PhoneNumber = msclr::interop::marshal_as<string>(PA_PphNord_TB->Text);
+	 if(f.validPhoneNumber(Rtemp.PhoneNumber)==false){
+		  PA_warningM->Text = "Invalid Phone Number";
+		  return;
+	 }
+	 if (PA_RtypeCheck_RB2->Checked == true) {
+		  Rtemp.ReservationType = "Check-up";
+		  Rtemp.HospitalClinic= msclr::interop::marshal_as<string>(PA_RSClist_COM->Text);
+	 }
+	 else {
+		  Rtemp.ReservationType = "Surgery";
+		  Rtemp.HospitalSpecialty = msclr::interop::marshal_as<string>(PA_RSClist_COM->Text);
+		  Rtemp.numberOfDays = stoi(msclr::interop::marshal_as<string>(PA_PNumOfDays_TB->Text));
+		  if (Rtemp.numberOfDays < 0) {
+			   PA_warningM->Text = "Invalid Number";
+			   return;
+		  }
+	 }
+	 Rtemp.ReservationDay = ReservationDays[Dindex];
+	 Rtemp.hospital = hospital[Hindex];
+	 f.makeReservation(user,hospital, Rtemp);
+	// PA_warningM->Text = "Booked Reservation ID: "+ gcnew String(to_string(user[Lindex].reservation[user[Lindex].reserCount-1].ReservtionID).c_str());
+	 PA_warningM->Text = "Booked Reservation ID: "+ gcnew String(to_string(Rtemp.ReservtionID).c_str());
 }
 
 void GUISP::mainPage::searchHindex(string Ser) {
@@ -312,14 +350,15 @@ void GUISP::mainPage::searchCLindex(string Ser) {
 
 }
 void GUISP::mainPage::searchDindex(string Ser) {
-	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
-		  if (hospital[i].HospitalSpecialties[i] == Ser) {
-			   SPindex = i;
+	 for (int i = 0; i < daysInWeek; i++) {
+		  if (ReservationDays[i] == Ser) {
+			   Dindex = i;
 			   break;
 		  }
 	 }
 
-}void GUISP::mainPage::searchSPindex(string Ser) {
+}
+void GUISP::mainPage::searchSPindex(string Ser) {
 	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
 		  if (hospital[i].HospitalSpecialties[i] == Ser) {
 			   SPindex = i;
