@@ -261,14 +261,17 @@ void GUISP::mainPage::DisplayRInfo() {
 	 PA_viewR_PName->Text = "Patient Name: " + gcnew String(user[Lindex].reservation[Rindex].PName.c_str());
 	 PA_viewR_PAge->Text = "Patient Age: " + gcnew INT(user[Lindex].reservation[Rindex].PAge);
 	 PA_viewR_phoneN->Text = "Phone Number: " + gcnew String(user[Lindex].reservation[Rindex].PhoneNumber.c_str());
-	 PA_viewR_RoomID->Text = "Room ID: " + gcnew String(user[Lindex].reservation[Rindex].PatientReservationRoom.c_str());
 	 PA_viewR_Day->Text = "Reservation Day: " + gcnew String(user[Lindex].reservation[Rindex].ReservationDay.c_str());
+	 PA_viewR_HReserved->Text = "Hospital Reserved: " + gcnew String(user[Lindex].reservation[Rindex].hospital.HospitalName.c_str());
 	 PA_viewR_bedPrice->Text= "Bed Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].BedPrice);
 	 PA_viewR_SurgeryPrice->Text = "Surgery Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].surgeryprice);
-	 PA_viewR_HReserved->Text = "Hospital Reserved: " + gcnew String(user[Lindex].reservation[Rindex].hospital.HospitalName.c_str());
+	 PA_viewR_RoomID->Text = "Room ID: " + gcnew String(user[Lindex].reservation[Rindex].PatientReservationRoom.c_str());
 	 if (user[Lindex].reservation[Rindex].ReservationType == "Check-up") {
 	 PA_viewR_HSpCl->Text = "Clinic: " + gcnew String(user[Lindex].reservation[Rindex].HospitalClinic.c_str());
 	 PA_viewR_ChandTPrice->Text = "Check-UP Price: " + gcnew FLOAT(user[Lindex].reservation[Rindex].ReservationPrice);
+	 /*PA_viewR_bedPrice->Text = "Bed Price: 0";
+	 PA_viewR_SurgeryPrice->Text = "Surgery Price: 0";
+	 PA_viewR_RoomID->Text = "Room ID: NONE ";*/
 
 	 }
 	 else {
@@ -278,127 +281,184 @@ void GUISP::mainPage::DisplayRInfo() {
 	
 }
 void GUISP::mainPage::makeReservation() {
-	
-	 string dayIndex= msclr::interop::marshal_as<string>(PA_DayenterH_COM->Text);
-	 string HIndex= msclr::interop::marshal_as<string>(PA_selectHforR_COM->Text);
-	 searchDindex(dayIndex);
-	 searchHindex(HIndex);
-	 Rtemp.PAge = stoi(msclr::interop::marshal_as<string>(PA_PAord_TB->Text));
-	 if (Rtemp.PAge <= 0) {
-		  PA_warningM->Text = "Invalid Age";
-		  return;
+	 //label7->Text = "Cl: " + gcnew String(Rtemp.HospitalClinic.c_str());
+	 Rtemp.PName = context.marshal_as<string>(PA_PNord_TB->Text);
+	 Rtemp.PAge = stoi(context.marshal_as<string>(PA_PAord_TB->Text));
+	 Rtemp.PhoneNumber = context.marshal_as<string>(PA_PphNord_TB->Text);
+	 Rtemp.hospital.HospitalName = context.marshal_as<string>(PA_selectHforR_COM->Text);
+	 Rtemp.ReservationDay = context.marshal_as<string>(PA_DayenterH_COM->Text);
+	 searchHindex(Rtemp.hospital.HospitalName);
+	 
+	 if (PA_RtypeCheck_RB2->Checked == true) {
+		  Rtemp.ReservationType = "Check-up";
+		  Rtemp.HospitalClinic= context.marshal_as<string>(PA_RSClist_COM->Text);
+		 
 	 }
-	 Rtemp.PName= msclr::interop::marshal_as<string>(PA_PNord_TB->Text);
-	 Rtemp.PhoneNumber = msclr::interop::marshal_as<string>(PA_PphNord_TB->Text);
+	 else {
+		  Rtemp.ReservationType = "Surgery";
+		  Rtemp.HospitalSpecialty= context.marshal_as<string>(PA_RSClist_COM->Text);
+		  Rtemp.numberOfDays = stoi(context.marshal_as<string>(PA_PNumOfDays_TB->Text));
+
+	 }
 	 if(f.validPhoneNumber(Rtemp.PhoneNumber)==false){
 		  PA_warningM->Text = "Invalid Phone Number";
 		  return;
 	 }
-	 if (PA_RtypeCheck_RB2->Checked == true) {
-		  Rtemp.ReservationType = "Check-up";
-		  Rtemp.HospitalClinic= msclr::interop::marshal_as<string>(PA_RSClist_COM->Text);
+	 if(Rtemp.PAge<=0){
+		  PA_warningM->Text = "Invalid Age";
+		  return;
 	 }
-	 else {
-		  Rtemp.ReservationType = "Surgery";
-		  Rtemp.HospitalSpecialty = msclr::interop::marshal_as<string>(PA_RSClist_COM->Text);
-		  Rtemp.numberOfDays = stoi(msclr::interop::marshal_as<string>(PA_PNumOfDays_TB->Text));
-		  if (Rtemp.numberOfDays < 0) {
-			   PA_warningM->Text = "Invalid Number";
-			   return;
-		  }
-	 }
-	 Rtemp.ReservationDay = ReservationDays[Dindex];
-	 Rtemp.hospital = hospital[Hindex];
-	 f.makeReservation(user,hospital, Rtemp);
-	// PA_warningM->Text = "Booked Reservation ID: "+ gcnew String(to_string(user[Lindex].reservation[user[Lindex].reserCount-1].ReservtionID).c_str());
-	 PA_warningM->Text = "Booked Reservation ID: "+ gcnew String(to_string(Rtemp.ReservtionID).c_str());
+	 f.makeReservation(user, hospital, Rtemp);
+
+	 PA_warningM->Text = "Reserved.\nReservation ID:" + gcnew String(to_string(Rtemp.ReservtionID).c_str());
+	 PA_PNord_TB->Text = "";
+	 PA_PAord_TB->Text = "";
+	 PA_PphNord_TB->Text = "";
+	 PA_selectHforR_COM->Text = "None";
+	 PA_DayenterH_COM->Text = "None";
+	 PA_RSClist_COM->Text = "None"; 
+	 PA_askwhoreserv_RB2->Checked = true;
 }
 void GUISP::mainPage::modifyReservation() {
-if(PA_modifyRord_lab->Text=="New Full Name"){
-	Rtemp.PName = msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text); 
-	if(Rtemp.PName ==user[Lindex].reservation[Rindex].PName)
-		  PA_modifyRstate_lab->Text = "No changes made";
-	 PA_modifyRstate_lab->Text = "Edit done";
-	 user[Lindex].reservation[Rindex].PName = Rtemp.PName;
-	// FName_PA_lab->Text = gcnew String(Rtemp.PName.c_str());
-}
-else if(PA_modifyRord_lab->Text=="New Age"){
-	 Rtemp.PAge = stoi(msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text));
-	 if(Rtemp.PAge<=0){
-		  PA_modifyRstate_lab->Text = "Invalid Age";
-		  return;
-	 } 
-	 if(Rtemp.PAge==user[Lindex].reservation[Rindex].PAge) {
-		  PA_modifyRstate_lab->Text = "No changes made";
-		  return;
+	 if (PA_modifyRord_lab->Text == "New Full Name") {
+		  Rtemp.PName = msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text);
+		  if (Rtemp.PName == user[Lindex].reservation[Rindex].PName)
+			   PA_modifyRstate_lab->Text = "No changes made";
+		  PA_modifyRstate_lab->Text = "Edit done";
+		  user[Lindex].reservation[Rindex].PName = Rtemp.PName;
+		  // FName_PA_lab->Text = gcnew String(Rtemp.PName.c_str());
 	 }
-	 user[Lindex].reservation[Rindex].PAge = Rtemp.PAge;
+	 else if (PA_modifyRord_lab->Text == "New Age") {
+		  Rtemp.PAge = stoi(msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text));
+		  if (Rtemp.PAge <= 0) {
+			   PA_modifyRstate_lab->Text = "Invalid Age";
+			   return;
+		  }
+		  if (Rtemp.PAge == user[Lindex].reservation[Rindex].PAge) {
+			   PA_modifyRstate_lab->Text = "No changes made";
+			   return;
+		  }
+		  user[Lindex].reservation[Rindex].PAge = Rtemp.PAge;
 
-}
-else if (PA_modifyRord_lab->Text == "New Phone Number") {
-	Rtemp.PhoneNumber = msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text);
-	 if (f.validPhoneNumber(temp.phonenumber) == false) {
-		  PA_modifyRstate_lab->Text = "Invalid Phone Number";
-		  return;
 	 }
-	 if (Rtemp.PhoneNumber == user[Lindex].reservation[Rindex].PhoneNumber) {
-		  PA_modifyRstate_lab->Text = "No changes made";
-		  return;
+	 else if (PA_modifyRord_lab->Text == "New Phone Number") {
+		  Rtemp.PhoneNumber = msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text);
+		  if (f.validPhoneNumber(temp.phonenumber) == false) {
+			   PA_modifyRstate_lab->Text = "Invalid Phone Number";
+			   return;
+		  }
+		  if (Rtemp.PhoneNumber == user[Lindex].reservation[Rindex].PhoneNumber) {
+			   PA_modifyRstate_lab->Text = "No changes made";
+			   return;
+		  }
+
+
+
+		  user[Lindex].reservation[Rindex].PhoneNumber = Rtemp.PhoneNumber;
+
+
 	 }
-
-	
-
-	 user[Lindex].reservation[Rindex].PhoneNumber = Rtemp.PhoneNumber;
-
-
-}
-else if(PA_modifyRord_lab->Text=="New Number of days"){
-	 if (Rtemp.numberOfDays == user[Lindex].reservation[Rindex].numberOfDays) {
-		  PA_modifyRstate_lab->Text = "No changes made";
-		  return;
-	 }
-	 if (Rtemp.numberOfDays < 0) {
-		  PA_modifyRstate_lab->Text = "Invalid Number";
-		  return;
-	 }
-	  user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays;
-
-}
-else if(PA_modifyRord_lab->Text=="Select new hospital"){
-	 string Hsearch = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
-	 searchHindex(Hsearch);
-	 if (hospital[Hindex].HospitalID == user[Lindex].reservation[Rindex].hospital.HospitalID) {
-		  PA_modifyRstate_lab->Text = "No changes made";
-		  return;
-	 }
-	if(user[Lindex].reservation[Rindex].ReservationType=="Surgery") {
-		  for (int i = 0; i < hospitalCount; i++) {
-			   if (user[Lindex].reservation[Rindex].hospital.HospitalID == hospital[i].HospitalID) {
-					hospital[i].PatientReservationRooms++;
-					hospital[Hindex].PatientReservationRooms--;
-					break;
-
+	 else if (PA_modifyRord_lab->Text == "New Number of days") {
+		  Rtemp.numberOfDays= stoi(msclr::interop::marshal_as<string>(PA_modifyRord_TB->Text));
+			   if (Rtemp.numberOfDays == user[Lindex].reservation[Rindex].numberOfDays) {
+					PA_modifyRstate_lab->Text = "No changes made";
+					return;
 			   }
+			   if (Rtemp.numberOfDays < 0) {
+					PA_modifyRstate_lab->Text = "Invalid Number";
+					return;
+			   }
+			   user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays; 
+			   user[Lindex].reservation[Rindex].surgeryprice = user[Lindex].reservation[Rindex].hospital.surgeryprice;
+			   user[Lindex].reservation[Rindex].BedPrice = Rtemp.numberOfDays * user[Lindex].reservation[Rindex].hospital.BedsPrice;
+			   user[Lindex].reservation[Rindex].Totalprice = user[Lindex].reservation[Rindex].BedPrice + user[Lindex].reservation[Rindex].surgeryprice;
+			   user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays;
+			   int roomnumber = 0;
+
+		  }
+	 else {
+		  if (PA_OrderOflist->Text == "Select new hospital") {
+			   string Hsearch = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+			   searchHindex(Hsearch);
+			   if (hospital[Hindex].HospitalID == user[Lindex].reservation[Rindex].hospital.HospitalID) {
+					PA_StateOflist->Text = "No changes made";
+					return;
+			   }
+			   if (user[Lindex].reservation[Rindex].ReservationType == "Surgery") {
+					for (int i = 0; i < hospitalCount; i++) {
+						 if (user[Lindex].reservation[Rindex].hospital.HospitalID == hospital[i].HospitalID) {
+							  hospital[i].PatientReservationRooms++;
+							  hospital[Hindex].PatientReservationRooms--;
+							  break;
+
+						 }
+					}
+			   }
+			   user[Lindex].reservation[Rindex].hospital = hospital[Hindex];
+
+			   PA_StateOflist->Text = "edit done";
+		  }
+		  else if (PA_OrderOflist->Text == "Select new Days") {
+			   string seaDay = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+			   searchDindex(seaDay);
+			   if (user[Lindex].reservation[Rindex].ReservationDay == ReservationDays[Dindex]) {
+					PA_modifyRstate_lab->Text = "No changes made";
+					return;
+			   }
+
+			   user[Lindex].reservation[Rindex].ReservationDay = ReservationDays[Dindex];
+		  }
+		  else if (PA_OrderOflist->Text == "Select new Specialty") {
+			   Rtemp.HospitalSpecialty = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+			 //  searchSPindex(Rtemp.HospitalSpecialty);
+			  Rtemp.numberOfDays= stoi(msclr::interop::marshal_as<string>(PA_Rnumbofdays->Text));
+			   user[Lindex].reservation[Rindex].HospitalSpecialty = Rtemp.HospitalSpecialty;
+			   user[Lindex].reservation[Rindex].surgeryprice = user[Lindex].reservation[Rindex].hospital.surgeryprice;
+			   user[Lindex].reservation[Rindex].BedPrice= Rtemp.numberOfDays * user[Lindex].reservation[Rindex].hospital.BedsPrice;
+			   user[Lindex].reservation[Rindex].Totalprice= user[Lindex].reservation[Rindex].BedPrice+ user[Lindex].reservation[Rindex].surgeryprice;
+			   user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays;
+			   int roomnumber = 0;
+
+			   roomnumber = 50 + rand() % 500;
+			   for (int i = 5; i < userCount; i++) {
+					for (int j = 0; j < user[i].reserCount; j++) {
+						 if (user[i].reservation[j].hospital.HospitalID == Rtemp.hospital.HospitalID) {
+							  if (user[i].reservation[j].PatientReservationRoom == to_string(roomnumber)) {
+								   exist = true;
+								   roomnumber = 50 + rand() % 500;
+
+								   break;
+							  }
+
+
+						 }
+					}
+					if (exist == true) {
+						 i = 5;
+						 exist = false;
+					}
+			   }
+			   user[Lindex].reservation[Rindex].PatientReservationRoom = to_string(roomnumber);
+
+			   PA_StateOflist->Text = "edit done";
+		  }
+		  else if (PA_OrderOflist->Text == "Select new Clinic") {
+			   Rtemp.HospitalClinic = msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
+			   searchCLindex(Rtemp.HospitalClinic);
+			  
+			   user[Lindex].reservation[Rindex].HospitalClinic = Rtemp.HospitalClinic;
+			   user[Lindex].reservation[Rindex].ReservationPrice = user[Lindex].reservation[Rindex].hospital.ReservationPrice;
+			   user[Lindex].reservation[Rindex].surgeryprice = 0;
+			   user[Lindex].reservation[Rindex].BedPrice = 0;
+			   user[Lindex].reservation[Rindex].Totalprice = user[Lindex].reservation[Rindex].ReservationPrice;
+			   user[Lindex].reservation[Rindex].PatientReservationRoom ="NONE";
+			   PA_StateOflist->Text = "edit done";
+			   PA_modifyRord_lab->Text = "Order text";
+			   PA_OrderOflist->Text = "Order text";
 		  }
 	 }
-	 user[Lindex].reservation[Rindex].hospital = hospital[Hindex];
-
-
-}
-else if(PA_modifyRord_lab->Text=="Select new item"){
-
-
-}
-else if(PA_modifyRord_lab->Text=="Select new Days"){
-	 string seaDay= msclr::interop::marshal_as<string>(PA_listOfHRtypeRdays->Text);
-	 searchDindex(seaDay);
-	 if(user[Lindex].reservation[Rindex].ReservationDay==ReservationDays[Dindex]){
-		  PA_modifyRstate_lab->Text = "No changes made";
-		  return;
-	 }
-
-	 user[Lindex].reservation[Rindex].ReservationDay = ReservationDays[Dindex];
-}
+	PA_StateOflist->Text = "edit done";
+	 PA_modifyRord_TB->Text == "";
 }
 
 void GUISP::mainPage::searchHindex(string Ser) {

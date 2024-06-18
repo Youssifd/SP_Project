@@ -510,50 +510,40 @@ public:
 		  bool exist=false;
 		  if (user[Lindex].reserCount < NumberOfReservation) {
 			   if (Rtemp.ReservationType == "Surgery") {
-					int roomnumber=0;
-					while (true) {
-						 roomnumber = 50 + rand() % 500;
-						 for (int i = 5; i < userCount; i++) {
-							  for (int j = 0; j < user[Lindex].reserCount; j++) {
-								   if (user[i].reservation[j].hospital.HospitalName == Rtemp.hospital.HospitalName) {
-										if (user[i].reservation[j].PatientReservationRoom == to_string(roomnumber)) {
-											 exist = true;
-											 break;
-										}
+					int roomnumber =  50 + rand() % 500;
+					
+					for (int i = 5; i < userCount; i++) {
+						 for (int j = 0; j < user[i].reserCount; j++) {
+							  if (user[i].reservation[j].hospital.HospitalID == Rtemp.hospital.HospitalID) {
+								   if (user[i].reservation[j].PatientReservationRoom == to_string(roomnumber)) {
+										exist = true;
+										roomnumber = 50 + rand() % 500;
 
-										if (exist) {
-											 break;
-										}
+										break;
 								   }
+
+
 							  }
-							  if (exist) {
-								   break;
-							  }
-						 
 						 }
-						 if (!exist) {
-							  break;
+						 if (exist == true) {
+							  i = 5;
+							  exist = false;
 						 }
 					}
 					Rtemp.PatientReservationRoom = to_string(roomnumber);
 					hospital[Hindex].PatientReservationRooms -= 1;
 					Rtemp.BedPrice = Rtemp.numberOfDays * (hospital[Hindex].BedsPrice);
-			   Rtemp.surgeryprice = hospital[Hindex].surgeryprice;
-			   Rtemp.Totalprice = Rtemp.surgeryprice + Rtemp.BedPrice;
+					Rtemp.surgeryprice = hospital[Hindex].surgeryprice;
+					Rtemp.Totalprice = Rtemp.surgeryprice + Rtemp.BedPrice;
 			   }
 			   else if (Rtemp.ReservationType == "Check-up") {
 			   Rtemp.ReservationPrice = hospital[Hindex].ReservationPrice;
 			   }
-			  
 			   Rtemp.ReservtionID = reservationID;
-
-		  }
-		 
+		  }		 
 		  user[Lindex].reservation[user[Lindex].reserCount] = Rtemp;
 		  user[Lindex].reserCount++;
 		  reservationID++;
-
-
 	 }
 	
 	 void showreservation(Users patient[], Hospitals hospital[], int PIndex) {
