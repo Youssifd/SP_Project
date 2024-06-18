@@ -372,6 +372,8 @@ private: System::Windows::Forms::Label^ PA_RtypeCheck;
 private: System::Windows::Forms::ComboBox^ PA_RSClist_COM;
 private: System::Windows::Forms::Label^ PA_PNumOfDays_lab;
 private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
+private: System::Windows::Forms::Label^ PA_text4;
+private: System::Windows::Forms::Label^ PA_text3;
 
 
 
@@ -570,6 +572,12 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->PA_conpage = (gcnew System::Windows::Forms::Panel());
 			   this->PA_pages = (gcnew System::Windows::Forms::Panel());
 			   this->PA_editReserv = (gcnew System::Windows::Forms::Panel());
+			   this->PA_delRlayout = (gcnew System::Windows::Forms::Panel());
+			   this->PA_text4 = (gcnew System::Windows::Forms::Label());
+			   this->PA_text3 = (gcnew System::Windows::Forms::Label());
+			   this->PA_delRlist_state = (gcnew System::Windows::Forms::Label());
+			   this->PA_delRlist_COM = (gcnew System::Windows::Forms::ComboBox());
+			   this->PA_delRlist_but = (gcnew System::Windows::Forms::Button());
 			   this->PA_addRlayout = (gcnew System::Windows::Forms::Panel());
 			   this->PA_PNumOfDays_lab = (gcnew System::Windows::Forms::Label());
 			   this->PA_PNumOfDays_TB = (gcnew System::Windows::Forms::TextBox());
@@ -597,28 +605,10 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->PA_warningM = (gcnew System::Windows::Forms::Label());
 			   this->PA_waitingeditRlist = (gcnew System::Windows::Forms::Panel());
 			   this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			   this->PA_delRlayout = (gcnew System::Windows::Forms::Panel());
-			   this->PA_delRlist_state = (gcnew System::Windows::Forms::Label());
-			   this->PA_delRlist_COM = (gcnew System::Windows::Forms::ComboBox());
-			   this->PA_delRlist_but = (gcnew System::Windows::Forms::Button());
 			   this->PA_header_editRlist = (gcnew System::Windows::Forms::Panel());
 			   this->PA_delRlist = (gcnew System::Windows::Forms::Button());
 			   this->PA_addRlist = (gcnew System::Windows::Forms::Button());
 			   this->label13 = (gcnew System::Windows::Forms::Label());
-			   this->PA_reservlist = (gcnew System::Windows::Forms::Panel());
-			   this->PA_viewR_PAge = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_HSpCl = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_bedPrice = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_SurgeryPrice = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_ChandTPrice = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_phoneN = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_Day = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_HReserved = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_PName = (gcnew System::Windows::Forms::Label());
-			   this->PA_viewR_RoomID = (gcnew System::Windows::Forms::Label());
-			   this->PA_reservlist_header = (gcnew System::Windows::Forms::Panel());
-			   this->PA_viewRButton = (gcnew System::Windows::Forms::Button());
-			   this->PA_viewRlist = (gcnew System::Windows::Forms::ComboBox());
 			   this->PA_viewHinfo = (gcnew System::Windows::Forms::Panel());
 			   this->PA_Hinfo_HCLlist = (gcnew System::Windows::Forms::ListBox());
 			   this->PA_Hinfo_HSplist = (gcnew System::Windows::Forms::ListBox());
@@ -634,6 +624,20 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->PA_viewHButton = (gcnew System::Windows::Forms::Button());
 			   this->PA_viewHList = (gcnew System::Windows::Forms::ComboBox());
 			   this->PA_Hinfo_ID = (gcnew System::Windows::Forms::Label());
+			   this->PA_reservlist = (gcnew System::Windows::Forms::Panel());
+			   this->PA_viewR_PAge = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_HSpCl = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_bedPrice = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_SurgeryPrice = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_ChandTPrice = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_phoneN = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_Day = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_HReserved = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_PName = (gcnew System::Windows::Forms::Label());
+			   this->PA_viewR_RoomID = (gcnew System::Windows::Forms::Label());
+			   this->PA_reservlist_header = (gcnew System::Windows::Forms::Panel());
+			   this->PA_viewRButton = (gcnew System::Windows::Forms::Button());
+			   this->PA_viewRlist = (gcnew System::Windows::Forms::ComboBox());
 			   this->PA_editPinfo = (gcnew System::Windows::Forms::Panel());
 			   this->PA_edit_waiting = (gcnew System::Windows::Forms::Panel());
 			   this->label8 = (gcnew System::Windows::Forms::Label());
@@ -731,17 +735,17 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->PA_conpage->SuspendLayout();
 			   this->PA_pages->SuspendLayout();
 			   this->PA_editReserv->SuspendLayout();
+			   this->PA_delRlayout->SuspendLayout();
 			   this->PA_addRlayout->SuspendLayout();
 			   this->PA_Check1->SuspendLayout();
 			   this->PA_Check2->SuspendLayout();
 			   this->PA_waitingeditRlist->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
-			   this->PA_delRlayout->SuspendLayout();
 			   this->PA_header_editRlist->SuspendLayout();
-			   this->PA_reservlist->SuspendLayout();
-			   this->PA_reservlist_header->SuspendLayout();
 			   this->PA_viewHinfo->SuspendLayout();
 			   this->PA_viewHinfoHeader->SuspendLayout();
+			   this->PA_reservlist->SuspendLayout();
+			   this->PA_reservlist_header->SuspendLayout();
 			   this->PA_editPinfo->SuspendLayout();
 			   this->PA_edit_waiting->SuspendLayout();
 			   this->PA_editpass->SuspendLayout();
@@ -2815,8 +2819,8 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   // PA_pages
 			   // 
 			   this->PA_pages->Controls->Add(this->PA_editReserv);
-			   this->PA_pages->Controls->Add(this->PA_reservlist);
 			   this->PA_pages->Controls->Add(this->PA_viewHinfo);
+			   this->PA_pages->Controls->Add(this->PA_reservlist);
 			   this->PA_pages->Controls->Add(this->PA_editPinfo);
 			   this->PA_pages->Controls->Add(this->PA_ModifyReserv);
 			   this->PA_pages->Controls->Add(this->PA_viewPinfo);
@@ -2829,9 +2833,9 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   // 
 			   // PA_editReserv
 			   // 
+			   this->PA_editReserv->Controls->Add(this->PA_delRlayout);
 			   this->PA_editReserv->Controls->Add(this->PA_addRlayout);
 			   this->PA_editReserv->Controls->Add(this->PA_waitingeditRlist);
-			   this->PA_editReserv->Controls->Add(this->PA_delRlayout);
 			   this->PA_editReserv->Controls->Add(this->PA_header_editRlist);
 			   this->PA_editReserv->Controls->Add(this->label13);
 			   this->PA_editReserv->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -2839,6 +2843,82 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->PA_editReserv->Name = L"PA_editReserv";
 			   this->PA_editReserv->Size = System::Drawing::Size(766, 654);
 			   this->PA_editReserv->TabIndex = 2;
+			   // 
+			   // PA_delRlayout
+			   // 
+			   this->PA_delRlayout->BackColor = System::Drawing::SystemColors::ControlLight;
+			   this->PA_delRlayout->Controls->Add(this->PA_text4);
+			   this->PA_delRlayout->Controls->Add(this->PA_text3);
+			   this->PA_delRlayout->Controls->Add(this->PA_delRlist_state);
+			   this->PA_delRlayout->Controls->Add(this->PA_delRlist_COM);
+			   this->PA_delRlayout->Controls->Add(this->PA_delRlist_but);
+			   this->PA_delRlayout->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->PA_delRlayout->Location = System::Drawing::Point(0, 80);
+			   this->PA_delRlayout->Name = L"PA_delRlayout";
+			   this->PA_delRlayout->Size = System::Drawing::Size(766, 574);
+			   this->PA_delRlayout->TabIndex = 16;
+			   // 
+			   // PA_text4
+			   // 
+			   this->PA_text4->AutoSize = true;
+			   this->PA_text4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->PA_text4->Location = System::Drawing::Point(37, 107);
+			   this->PA_text4->Name = L"PA_text4";
+			   this->PA_text4->Size = System::Drawing::Size(180, 29);
+			   this->PA_text4->TabIndex = 12;
+			   this->PA_text4->Text = L"Hospital Name";
+			   // 
+			   // PA_text3
+			   // 
+			   this->PA_text3->AutoSize = true;
+			   this->PA_text3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->PA_text3->Location = System::Drawing::Point(37, 53);
+			   this->PA_text3->Name = L"PA_text3";
+			   this->PA_text3->Size = System::Drawing::Size(167, 29);
+			   this->PA_text3->TabIndex = 11;
+			   this->PA_text3->Text = L"Patient Name";
+			   // 
+			   // PA_delRlist_state
+			   // 
+			   this->PA_delRlist_state->AutoSize = true;
+			   this->PA_delRlist_state->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_delRlist_state->ForeColor = System::Drawing::Color::IndianRed;
+			   this->PA_delRlist_state->Location = System::Drawing::Point(37, 245);
+			   this->PA_delRlist_state->Name = L"PA_delRlist_state";
+			   this->PA_delRlist_state->Size = System::Drawing::Size(64, 25);
+			   this->PA_delRlist_state->TabIndex = 10;
+			   this->PA_delRlist_state->Text = L"label4";
+			   // 
+			   // PA_delRlist_COM
+			   // 
+			   this->PA_delRlist_COM->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_delRlist_COM->FormattingEnabled = true;
+			   this->PA_delRlist_COM->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"empty" });
+			   this->PA_delRlist_COM->Location = System::Drawing::Point(39, 188);
+			   this->PA_delRlist_COM->Name = L"PA_delRlist_COM";
+			   this->PA_delRlist_COM->Size = System::Drawing::Size(251, 37);
+			   this->PA_delRlist_COM->TabIndex = 6;
+			   this->PA_delRlist_COM->Text = L"Reservation List";
+			   this->PA_delRlist_COM->SelectedIndexChanged += gcnew System::EventHandler(this, &mainPage::PA_delRlist_COM_SelectedIndexChanged);
+			   // 
+			   // PA_delRlist_but
+			   // 
+			   this->PA_delRlist_but->FlatAppearance->BorderSize = 0;
+			   this->PA_delRlist_but->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->PA_delRlist_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.861538F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_delRlist_but->Location = System::Drawing::Point(358, 188);
+			   this->PA_delRlist_but->Name = L"PA_delRlist_but";
+			   this->PA_delRlist_but->Size = System::Drawing::Size(107, 41);
+			   this->PA_delRlist_but->TabIndex = 9;
+			   this->PA_delRlist_but->Text = L"Delete";
+			   this->PA_delRlist_but->UseVisualStyleBackColor = true;
+			   this->PA_delRlist_but->Click += gcnew System::EventHandler(this, &mainPage::PA_delRlist_but_Click);
+			   this->PA_delRlist_but->Leave += gcnew System::EventHandler(this, &mainPage::PA_delRlist_but_Leave);
 			   // 
 			   // PA_addRlayout
 			   // 
@@ -3158,54 +3238,6 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->pictureBox2->TabIndex = 0;
 			   this->pictureBox2->TabStop = false;
 			   // 
-			   // PA_delRlayout
-			   // 
-			   this->PA_delRlayout->BackColor = System::Drawing::SystemColors::ControlLight;
-			   this->PA_delRlayout->Controls->Add(this->PA_delRlist_state);
-			   this->PA_delRlayout->Controls->Add(this->PA_delRlist_COM);
-			   this->PA_delRlayout->Controls->Add(this->PA_delRlist_but);
-			   this->PA_delRlayout->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->PA_delRlayout->Location = System::Drawing::Point(0, 80);
-			   this->PA_delRlayout->Name = L"PA_delRlayout";
-			   this->PA_delRlayout->Size = System::Drawing::Size(766, 574);
-			   this->PA_delRlayout->TabIndex = 16;
-			   // 
-			   // PA_delRlist_state
-			   // 
-			   this->PA_delRlist_state->AutoSize = true;
-			   this->PA_delRlist_state->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_delRlist_state->Location = System::Drawing::Point(54, 111);
-			   this->PA_delRlist_state->Name = L"PA_delRlist_state";
-			   this->PA_delRlist_state->Size = System::Drawing::Size(81, 29);
-			   this->PA_delRlist_state->TabIndex = 10;
-			   this->PA_delRlist_state->Text = L"label4";
-			   // 
-			   // PA_delRlist_COM
-			   // 
-			   this->PA_delRlist_COM->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_delRlist_COM->FormattingEnabled = true;
-			   this->PA_delRlist_COM->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"empty" });
-			   this->PA_delRlist_COM->Location = System::Drawing::Point(47, 43);
-			   this->PA_delRlist_COM->Name = L"PA_delRlist_COM";
-			   this->PA_delRlist_COM->Size = System::Drawing::Size(251, 37);
-			   this->PA_delRlist_COM->TabIndex = 6;
-			   this->PA_delRlist_COM->Text = L"Reservation List";
-			   // 
-			   // PA_delRlist_but
-			   // 
-			   this->PA_delRlist_but->FlatAppearance->BorderSize = 0;
-			   this->PA_delRlist_but->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->PA_delRlist_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.861538F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_delRlist_but->Location = System::Drawing::Point(348, 48);
-			   this->PA_delRlist_but->Name = L"PA_delRlist_but";
-			   this->PA_delRlist_but->Size = System::Drawing::Size(125, 33);
-			   this->PA_delRlist_but->TabIndex = 9;
-			   this->PA_delRlist_but->Text = L"Select";
-			   this->PA_delRlist_but->UseVisualStyleBackColor = true;
-			   // 
 			   // PA_header_editRlist
 			   // 
 			   this->PA_header_editRlist->Controls->Add(this->PA_delRlist);
@@ -3260,175 +3292,6 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->label13->Size = System::Drawing::Size(424, 51);
 			   this->label13->TabIndex = 1;
 			   this->label13->Text = L"edit reservation page";
-			   // 
-			   // PA_reservlist
-			   // 
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_PAge);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_HSpCl);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_bedPrice);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_SurgeryPrice);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_ChandTPrice);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_phoneN);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_Day);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_HReserved);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_PName);
-			   this->PA_reservlist->Controls->Add(this->PA_viewR_RoomID);
-			   this->PA_reservlist->Controls->Add(this->PA_reservlist_header);
-			   this->PA_reservlist->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->PA_reservlist->Location = System::Drawing::Point(0, 0);
-			   this->PA_reservlist->Name = L"PA_reservlist";
-			   this->PA_reservlist->Size = System::Drawing::Size(766, 654);
-			   this->PA_reservlist->TabIndex = 4;
-			   // 
-			   // PA_viewR_PAge
-			   // 
-			   this->PA_viewR_PAge->AutoSize = true;
-			   this->PA_viewR_PAge->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_PAge->Location = System::Drawing::Point(410, 234);
-			   this->PA_viewR_PAge->Name = L"PA_viewR_PAge";
-			   this->PA_viewR_PAge->Size = System::Drawing::Size(169, 36);
-			   this->PA_viewR_PAge->TabIndex = 9;
-			   this->PA_viewR_PAge->Text = L"Patient Age";
-			   // 
-			   // PA_viewR_HSpCl
-			   // 
-			   this->PA_viewR_HSpCl->AutoSize = true;
-			   this->PA_viewR_HSpCl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_HSpCl->Location = System::Drawing::Point(27, 360);
-			   this->PA_viewR_HSpCl->Name = L"PA_viewR_HSpCl";
-			   this->PA_viewR_HSpCl->Size = System::Drawing::Size(279, 36);
-			   this->PA_viewR_HSpCl->TabIndex = 8;
-			   this->PA_viewR_HSpCl->Text = L"HSpecialty Or Clinic";
-			   // 
-			   // PA_viewR_bedPrice
-			   // 
-			   this->PA_viewR_bedPrice->AutoSize = true;
-			   this->PA_viewR_bedPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_bedPrice->Location = System::Drawing::Point(410, 488);
-			   this->PA_viewR_bedPrice->Name = L"PA_viewR_bedPrice";
-			   this->PA_viewR_bedPrice->Size = System::Drawing::Size(159, 36);
-			   this->PA_viewR_bedPrice->TabIndex = 7;
-			   this->PA_viewR_bedPrice->Text = L"Beds Price";
-			   // 
-			   // PA_viewR_SurgeryPrice
-			   // 
-			   this->PA_viewR_SurgeryPrice->AutoSize = true;
-			   this->PA_viewR_SurgeryPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_SurgeryPrice->Location = System::Drawing::Point(27, 490);
-			   this->PA_viewR_SurgeryPrice->Name = L"PA_viewR_SurgeryPrice";
-			   this->PA_viewR_SurgeryPrice->Size = System::Drawing::Size(196, 36);
-			   this->PA_viewR_SurgeryPrice->TabIndex = 6;
-			   this->PA_viewR_SurgeryPrice->Text = L"Surgery Price";
-			   // 
-			   // PA_viewR_ChandTPrice
-			   // 
-			   this->PA_viewR_ChandTPrice->AutoSize = true;
-			   this->PA_viewR_ChandTPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_ChandTPrice->Location = System::Drawing::Point(24, 425);
-			   this->PA_viewR_ChandTPrice->Name = L"PA_viewR_ChandTPrice";
-			   this->PA_viewR_ChandTPrice->Size = System::Drawing::Size(288, 36);
-			   this->PA_viewR_ChandTPrice->TabIndex = 5;
-			   this->PA_viewR_ChandTPrice->Text = L"Check-UP/total price";
-			   // 
-			   // PA_viewR_phoneN
-			   // 
-			   this->PA_viewR_phoneN->AutoSize = true;
-			   this->PA_viewR_phoneN->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_phoneN->Location = System::Drawing::Point(25, 295);
-			   this->PA_viewR_phoneN->Name = L"PA_viewR_phoneN";
-			   this->PA_viewR_phoneN->Size = System::Drawing::Size(215, 36);
-			   this->PA_viewR_phoneN->TabIndex = 4;
-			   this->PA_viewR_phoneN->Text = L"Phone Number";
-			   // 
-			   // PA_viewR_Day
-			   // 
-			   this->PA_viewR_Day->AutoSize = true;
-			   this->PA_viewR_Day->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_Day->Location = System::Drawing::Point(25, 230);
-			   this->PA_viewR_Day->Name = L"PA_viewR_Day";
-			   this->PA_viewR_Day->Size = System::Drawing::Size(234, 36);
-			   this->PA_viewR_Day->TabIndex = 3;
-			   this->PA_viewR_Day->Text = L"Reservation Day";
-			   // 
-			   // PA_viewR_HReserved
-			   // 
-			   this->PA_viewR_HReserved->AutoSize = true;
-			   this->PA_viewR_HReserved->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_HReserved->Location = System::Drawing::Point(24, 165);
-			   this->PA_viewR_HReserved->Name = L"PA_viewR_HReserved";
-			   this->PA_viewR_HReserved->Size = System::Drawing::Size(208, 36);
-			   this->PA_viewR_HReserved->TabIndex = 2;
-			   this->PA_viewR_HReserved->Text = L"Hospital Name";
-			   // 
-			   // PA_viewR_PName
-			   // 
-			   this->PA_viewR_PName->AutoSize = true;
-			   this->PA_viewR_PName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_PName->Location = System::Drawing::Point(24, 100);
-			   this->PA_viewR_PName->Name = L"PA_viewR_PName";
-			   this->PA_viewR_PName->Size = System::Drawing::Size(200, 36);
-			   this->PA_viewR_PName->TabIndex = 0;
-			   this->PA_viewR_PName->Text = L"Patient Name ";
-			   // 
-			   // PA_viewR_RoomID
-			   // 
-			   this->PA_viewR_RoomID->AutoSize = true;
-			   this->PA_viewR_RoomID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewR_RoomID->Location = System::Drawing::Point(410, 431);
-			   this->PA_viewR_RoomID->Name = L"PA_viewR_RoomID";
-			   this->PA_viewR_RoomID->Size = System::Drawing::Size(131, 36);
-			   this->PA_viewR_RoomID->TabIndex = 0;
-			   this->PA_viewR_RoomID->Text = L"Room ID";
-			   // 
-			   // PA_reservlist_header
-			   // 
-			   this->PA_reservlist_header->Controls->Add(this->PA_viewRButton);
-			   this->PA_reservlist_header->Controls->Add(this->PA_viewRlist);
-			   this->PA_reservlist_header->Dock = System::Windows::Forms::DockStyle::Top;
-			   this->PA_reservlist_header->Location = System::Drawing::Point(0, 0);
-			   this->PA_reservlist_header->Name = L"PA_reservlist_header";
-			   this->PA_reservlist_header->Size = System::Drawing::Size(766, 84);
-			   this->PA_reservlist_header->TabIndex = 1;
-			   // 
-			   // PA_viewRButton
-			   // 
-			   this->PA_viewRButton->FlatAppearance->BorderSize = 0;
-			   this->PA_viewRButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->PA_viewRButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-			   this->PA_viewRButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_viewRButton.Image")));
-			   this->PA_viewRButton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->PA_viewRButton->Location = System::Drawing::Point(399, 23);
-			   this->PA_viewRButton->Margin = System::Windows::Forms::Padding(3, 50, 3, 3);
-			   this->PA_viewRButton->Name = L"PA_viewRButton";
-			   this->PA_viewRButton->Size = System::Drawing::Size(119, 36);
-			   this->PA_viewRButton->TabIndex = 5;
-			   this->PA_viewRButton->Text = L"View";
-			   this->PA_viewRButton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			   this->PA_viewRButton->UseVisualStyleBackColor = true;
-			   this->PA_viewRButton->Click += gcnew System::EventHandler(this, &mainPage::PA_viewRButton_Click);
-			   // 
-			   // PA_viewRlist
-			   // 
-			   this->PA_viewRlist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->PA_viewRlist->FormattingEnabled = true;
-			   this->PA_viewRlist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
-			   this->PA_viewRlist->Location = System::Drawing::Point(33, 21);
-			   this->PA_viewRlist->Name = L"PA_viewRlist";
-			   this->PA_viewRlist->Size = System::Drawing::Size(247, 37);
-			   this->PA_viewRlist->TabIndex = 0;
-			   this->PA_viewRlist->Text = L"Reservations list";
 			   // 
 			   // PA_viewHinfo
 			   // 
@@ -3614,6 +3477,176 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->PA_Hinfo_ID->Size = System::Drawing::Size(160, 36);
 			   this->PA_Hinfo_ID->TabIndex = 0;
 			   this->PA_Hinfo_ID->Text = L"Hospital ID";
+			   // 
+			   // PA_reservlist
+			   // 
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_PAge);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_HSpCl);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_bedPrice);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_SurgeryPrice);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_ChandTPrice);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_phoneN);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_Day);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_HReserved);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_PName);
+			   this->PA_reservlist->Controls->Add(this->PA_viewR_RoomID);
+			   this->PA_reservlist->Controls->Add(this->PA_reservlist_header);
+			   this->PA_reservlist->Dock = System::Windows::Forms::DockStyle::Fill;
+			   this->PA_reservlist->Location = System::Drawing::Point(0, 0);
+			   this->PA_reservlist->Name = L"PA_reservlist";
+			   this->PA_reservlist->Size = System::Drawing::Size(766, 654);
+			   this->PA_reservlist->TabIndex = 4;
+			   this->PA_reservlist->Leave += gcnew System::EventHandler(this, &mainPage::PA_reservlist_Leave);
+			   // 
+			   // PA_viewR_PAge
+			   // 
+			   this->PA_viewR_PAge->AutoSize = true;
+			   this->PA_viewR_PAge->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_PAge->Location = System::Drawing::Point(410, 234);
+			   this->PA_viewR_PAge->Name = L"PA_viewR_PAge";
+			   this->PA_viewR_PAge->Size = System::Drawing::Size(169, 36);
+			   this->PA_viewR_PAge->TabIndex = 9;
+			   this->PA_viewR_PAge->Text = L"Patient Age";
+			   // 
+			   // PA_viewR_HSpCl
+			   // 
+			   this->PA_viewR_HSpCl->AutoSize = true;
+			   this->PA_viewR_HSpCl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_HSpCl->Location = System::Drawing::Point(27, 360);
+			   this->PA_viewR_HSpCl->Name = L"PA_viewR_HSpCl";
+			   this->PA_viewR_HSpCl->Size = System::Drawing::Size(279, 36);
+			   this->PA_viewR_HSpCl->TabIndex = 8;
+			   this->PA_viewR_HSpCl->Text = L"HSpecialty Or Clinic";
+			   // 
+			   // PA_viewR_bedPrice
+			   // 
+			   this->PA_viewR_bedPrice->AutoSize = true;
+			   this->PA_viewR_bedPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_bedPrice->Location = System::Drawing::Point(410, 488);
+			   this->PA_viewR_bedPrice->Name = L"PA_viewR_bedPrice";
+			   this->PA_viewR_bedPrice->Size = System::Drawing::Size(159, 36);
+			   this->PA_viewR_bedPrice->TabIndex = 7;
+			   this->PA_viewR_bedPrice->Text = L"Beds Price";
+			   // 
+			   // PA_viewR_SurgeryPrice
+			   // 
+			   this->PA_viewR_SurgeryPrice->AutoSize = true;
+			   this->PA_viewR_SurgeryPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_SurgeryPrice->Location = System::Drawing::Point(27, 490);
+			   this->PA_viewR_SurgeryPrice->Name = L"PA_viewR_SurgeryPrice";
+			   this->PA_viewR_SurgeryPrice->Size = System::Drawing::Size(196, 36);
+			   this->PA_viewR_SurgeryPrice->TabIndex = 6;
+			   this->PA_viewR_SurgeryPrice->Text = L"Surgery Price";
+			   // 
+			   // PA_viewR_ChandTPrice
+			   // 
+			   this->PA_viewR_ChandTPrice->AutoSize = true;
+			   this->PA_viewR_ChandTPrice->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_ChandTPrice->Location = System::Drawing::Point(24, 425);
+			   this->PA_viewR_ChandTPrice->Name = L"PA_viewR_ChandTPrice";
+			   this->PA_viewR_ChandTPrice->Size = System::Drawing::Size(288, 36);
+			   this->PA_viewR_ChandTPrice->TabIndex = 5;
+			   this->PA_viewR_ChandTPrice->Text = L"Check-UP/total price";
+			   // 
+			   // PA_viewR_phoneN
+			   // 
+			   this->PA_viewR_phoneN->AutoSize = true;
+			   this->PA_viewR_phoneN->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_phoneN->Location = System::Drawing::Point(25, 295);
+			   this->PA_viewR_phoneN->Name = L"PA_viewR_phoneN";
+			   this->PA_viewR_phoneN->Size = System::Drawing::Size(215, 36);
+			   this->PA_viewR_phoneN->TabIndex = 4;
+			   this->PA_viewR_phoneN->Text = L"Phone Number";
+			   // 
+			   // PA_viewR_Day
+			   // 
+			   this->PA_viewR_Day->AutoSize = true;
+			   this->PA_viewR_Day->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_Day->Location = System::Drawing::Point(25, 230);
+			   this->PA_viewR_Day->Name = L"PA_viewR_Day";
+			   this->PA_viewR_Day->Size = System::Drawing::Size(234, 36);
+			   this->PA_viewR_Day->TabIndex = 3;
+			   this->PA_viewR_Day->Text = L"Reservation Day";
+			   // 
+			   // PA_viewR_HReserved
+			   // 
+			   this->PA_viewR_HReserved->AutoSize = true;
+			   this->PA_viewR_HReserved->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_HReserved->Location = System::Drawing::Point(24, 165);
+			   this->PA_viewR_HReserved->Name = L"PA_viewR_HReserved";
+			   this->PA_viewR_HReserved->Size = System::Drawing::Size(208, 36);
+			   this->PA_viewR_HReserved->TabIndex = 2;
+			   this->PA_viewR_HReserved->Text = L"Hospital Name";
+			   // 
+			   // PA_viewR_PName
+			   // 
+			   this->PA_viewR_PName->AutoSize = true;
+			   this->PA_viewR_PName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_PName->Location = System::Drawing::Point(24, 100);
+			   this->PA_viewR_PName->Name = L"PA_viewR_PName";
+			   this->PA_viewR_PName->Size = System::Drawing::Size(200, 36);
+			   this->PA_viewR_PName->TabIndex = 0;
+			   this->PA_viewR_PName->Text = L"Patient Name ";
+			   // 
+			   // PA_viewR_RoomID
+			   // 
+			   this->PA_viewR_RoomID->AutoSize = true;
+			   this->PA_viewR_RoomID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.06154F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewR_RoomID->Location = System::Drawing::Point(410, 431);
+			   this->PA_viewR_RoomID->Name = L"PA_viewR_RoomID";
+			   this->PA_viewR_RoomID->Size = System::Drawing::Size(131, 36);
+			   this->PA_viewR_RoomID->TabIndex = 0;
+			   this->PA_viewR_RoomID->Text = L"Room ID";
+			   // 
+			   // PA_reservlist_header
+			   // 
+			   this->PA_reservlist_header->Controls->Add(this->PA_viewRButton);
+			   this->PA_reservlist_header->Controls->Add(this->PA_viewRlist);
+			   this->PA_reservlist_header->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->PA_reservlist_header->Location = System::Drawing::Point(0, 0);
+			   this->PA_reservlist_header->Name = L"PA_reservlist_header";
+			   this->PA_reservlist_header->Size = System::Drawing::Size(766, 84);
+			   this->PA_reservlist_header->TabIndex = 1;
+			   // 
+			   // PA_viewRButton
+			   // 
+			   this->PA_viewRButton->FlatAppearance->BorderSize = 0;
+			   this->PA_viewRButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->PA_viewRButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->PA_viewRButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_viewRButton.Image")));
+			   this->PA_viewRButton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
+			   this->PA_viewRButton->Location = System::Drawing::Point(399, 23);
+			   this->PA_viewRButton->Margin = System::Windows::Forms::Padding(3, 50, 3, 3);
+			   this->PA_viewRButton->Name = L"PA_viewRButton";
+			   this->PA_viewRButton->Size = System::Drawing::Size(119, 36);
+			   this->PA_viewRButton->TabIndex = 5;
+			   this->PA_viewRButton->Text = L"View";
+			   this->PA_viewRButton->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->PA_viewRButton->UseVisualStyleBackColor = true;
+			   this->PA_viewRButton->Click += gcnew System::EventHandler(this, &mainPage::PA_viewRButton_Click);
+			   // 
+			   // PA_viewRlist
+			   // 
+			   this->PA_viewRlist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->PA_viewRlist->FormattingEnabled = true;
+			   this->PA_viewRlist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
+			   this->PA_viewRlist->Location = System::Drawing::Point(33, 21);
+			   this->PA_viewRlist->Name = L"PA_viewRlist";
+			   this->PA_viewRlist->Size = System::Drawing::Size(247, 37);
+			   this->PA_viewRlist->TabIndex = 0;
+			   this->PA_viewRlist->Text = L"Reservations list";
 			   // 
 			   // PA_editPinfo
 			   // 
@@ -4482,6 +4515,8 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->PA_pages->ResumeLayout(false);
 			   this->PA_editReserv->ResumeLayout(false);
 			   this->PA_editReserv->PerformLayout();
+			   this->PA_delRlayout->ResumeLayout(false);
+			   this->PA_delRlayout->PerformLayout();
 			   this->PA_addRlayout->ResumeLayout(false);
 			   this->PA_addRlayout->PerformLayout();
 			   this->PA_Check1->ResumeLayout(false);
@@ -4490,15 +4525,13 @@ private: System::Windows::Forms::TextBox^ PA_PNumOfDays_TB;
 			   this->PA_Check2->PerformLayout();
 			   this->PA_waitingeditRlist->ResumeLayout(false);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
-			   this->PA_delRlayout->ResumeLayout(false);
-			   this->PA_delRlayout->PerformLayout();
 			   this->PA_header_editRlist->ResumeLayout(false);
-			   this->PA_reservlist->ResumeLayout(false);
-			   this->PA_reservlist->PerformLayout();
-			   this->PA_reservlist_header->ResumeLayout(false);
 			   this->PA_viewHinfo->ResumeLayout(false);
 			   this->PA_viewHinfo->PerformLayout();
 			   this->PA_viewHinfoHeader->ResumeLayout(false);
+			   this->PA_reservlist->ResumeLayout(false);
+			   this->PA_reservlist->PerformLayout();
+			   this->PA_reservlist_header->ResumeLayout(false);
 			   this->PA_editPinfo->ResumeLayout(false);
 			   this->PA_edit_waiting->ResumeLayout(false);
 			   this->PA_edit_waiting->PerformLayout();
@@ -4878,7 +4911,15 @@ private: System::Void PA_addRlayout_Click(System::Object^ sender, System::EventA
 	 }
 }
 private: System::Void PA_delRlist_Click(System::Object^ sender, System::EventArgs^ e) {
-	 PA_delRlayout->BringToFront();
+	 PA_delRlayout->BringToFront(); 
+	 PA_delRlist_COM->Items->Clear();
+	 String^ RID;
+	 for (int i = 0; i < user[Lindex].reserCount; i++) {
+		  RID = "";
+		  RID += gcnew INT(user[Lindex].reservation[i].ReservtionID);
+		  PA_delRlist_COM->Items->Add(RID);
+	 }
+	 PA_delRlist_state->Text = "";
 }
 private: System::Void PA_RtypeCheck_RB1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	 if (PA_RtypeCheck_RB1->Checked == true) {
@@ -5169,6 +5210,56 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button1_Leave(System::Object^ sender, System::EventArgs^ e) {
 	 PA_warningM->Text = "";
 
+}
+private: System::Void PA_delRlist_but_Leave(System::Object^ sender, System::EventArgs^ e) {
+	 	 PA_delRlist_state->Text = "";
+		 PA_delRlist_COM->Text = "Reservation list";
+		 PA_text3->Text = "Patient Name";
+		 PA_text4->Text = "Hospital Name";
+}
+private: System::Void PA_delRlist_but_Click(System::Object^ sender, System::EventArgs^ e) {
+	 if (PA_delRlist_COM->Text != "Reservation list") {
+		  searchRindex(stoi(context.marshal_as<string>(PA_delRlist_COM->Text)));
+		  if (Rindex != -1) {
+			  f.cancelreservation(user,hospital,Lindex);
+			   PA_delRlist_state->Text = "Reservation Deleted";
+			   PA_delRlist_COM->Items->Clear();
+			   String^ RID;
+			   for (int i = 0; i < user[Lindex].reserCount; i++) {
+					RID = "";
+					RID += gcnew INT(user[Lindex].reservation[i].ReservtionID);
+					PA_delRlist_COM->Items->Add(RID);
+			   }
+			   PA_delRlist_COM->Text = "Reservation list";
+			   PA_text3->Text = "Patient Name";
+			   PA_text4->Text = "Hospital Name";
+		  }
+		  else {
+			   PA_delRlist_state->Text = "Reservation not found";
+		  }
+	 }
+	 else {
+		  PA_delRlist_state->Text = "Please choose from the box";
+	 }
+}
+private: System::Void PA_reservlist_Leave(System::Object^ sender, System::EventArgs^ e) {
+	 PA_viewRlist->Text = "Reservation list";
+	 PA_viewR_PName->Text = "Patient Name";
+	 PA_viewR_PAge->Text = "Patient Age";
+	 PA_viewR_bedPrice->Text = "Bed Price";
+	 PA_viewR_HReserved->Text = "Hospital Name";
+	 PA_viewR_RoomID->Text = "Room ID";
+	 PA_viewR_phoneN->Text = "Phone Number";
+	 PA_viewR_Day->Text = "Reservation Day";
+	 PA_viewR_SurgeryPrice->Text = "Surgery Price";
+	 PA_viewR_HSpCl->Text = "HSpecialty Or Clinic";
+	 PA_viewR_ChandTPrice->Text = "Check-UP/total price";
+}
+private: System::Void PA_delRlist_COM_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	 int IDIndex = stoi(context.marshal_as<string>(PA_delRlist_COM->Text));
+	 searchRindex(IDIndex);
+	 PA_text3->Text= "Patient Name: " + gcnew String(user[Lindex].reservation[Rindex].PName.c_str());
+	 PA_text4->Text= "Hospital Name: " + gcnew String(user[Lindex].reservation[Rindex].hospital.HospitalName.c_str());
 }
 };
 }

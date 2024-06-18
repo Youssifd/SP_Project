@@ -66,9 +66,9 @@ void GUISP::mainPage::displayHinfo() {
 		  PA_Hinfo_Name->Text = "Name: " + gcnew String(hospital[Hindex].HospitalName.c_str());
 		  PA_Hinfo_rate->Text = "Rate: " + gcnew FLOAT(hospital[Hindex].HospitalRate);
 		  PA_Hinfo_bedsAva->Text = "Beds Available: " + gcnew INT(hospital[Hindex].PatientReservationRooms);
-		  AD_viewHinfo_Rprice->Text = "Reservation Price: " + gcnew INT(hospital[Hindex].ReservationPrice);
-		  AD_viewHinfo_surgeryPrice->Text = "Surgery Price: " + gcnew INT(hospital[Hindex].surgeryprice);
-		  AD_viewHinfo_BedsPrice->Text = "Beds Price: " + gcnew INT(hospital[Hindex].BedsPrice);
+		  PA_Hinfo_Rprice->Text = "Reservation Price: " + gcnew INT(hospital[Hindex].ReservationPrice);
+		  PA_Hinfo_surgeryprice->Text = "Surgery Price: " + gcnew INT(hospital[Hindex].surgeryprice);
+		  PA_Hinfo_Bedprice->Text = "Beds Price: " + gcnew INT(hospital[Hindex].BedsPrice);
 		  for (int i = 0; i < hospital[Hindex].specialtiesCount; i++)
 		  {
 			   PA_Hinfo_HSplist->Items->Add(gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str()));

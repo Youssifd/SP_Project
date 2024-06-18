@@ -616,48 +616,41 @@ public:
 			   }
 		  } while (!correctid);
 	 }
-	 void cancelreservation(Users patient[], Hospitals hospital[], int PIndex) {
-		  int search;
-		  bool correctid = false;
-		  do {
-			   correctid = false;
-			   cout << "Enter your Resevaion ID: ";
-			   cin >> search;
-			   for (int i = 0; i < patient[PIndex].reserCount; i++) {
-					if (patient[PIndex].reservation[i].ReservtionID == search) {
-						 correctid = true;
-						 for (int j = 0; j < hospitalCount; j++) {
-							  if (patient[PIndex].reservation[i].ReservationType == "Surgery" && patient[PIndex].reservation[i].hospital.HospitalName == hospital[j].HospitalName) {
-								   hospital[j].PatientReservationRooms += 1;
-								   break;
-							  }
-						 }
-						 patient[PIndex].reservation[i].PName = " ";
-						 patient[PIndex].reservation[i].PAge = 0;
-						 patient[PIndex].reservation[i].ReservtionID = 0;
-						 patient[PIndex].reservation[i].hospital.HospitalName = " ";
-						 patient[PIndex].reservation[i].ReservationType = " ";
-						 patient[PIndex].reservation[i].HospitalSpecialty = "NOT RESERVED";
-						 patient[PIndex].reservation[i].HospitalClinic = "NOT RESERVED";
-						 patient[PIndex].reservation[i].PatientReservationRoom = " ";
-						 patient[PIndex].reservation[i].BedPrice = 0;
-						 patient[PIndex].reservation[i].ReservationDay = " ";
-						 patient[PIndex].reservation[i].ReservationPrice = 0;
-						 patient[PIndex].reservation[i].surgeryprice = 0;
-						 patient[PIndex].reservation[i].Totalprice = 0;
-						 cout << "\nCancelled successfully" << endl;
-						 if (i != patient[PIndex].reserCount - 1)
-							  swap(patient[PIndex].reservation[i], patient[PIndex].reservation[patient[PIndex].reserCount - 1]);
-						 patient[PIndex].reserCount--;//update
+	 void cancelreservation(Users patient[],Hospitals hospital[], int PIndex) {
+
+
+		  cout << "Enter your Resevaion ID: ";
+
+		  
+
+			   for (int j = 0; j < hospitalCount; j++) {
+					if (patient[PIndex].reservation[Rindex].ReservationType == "Surgery" && patient[PIndex].reservation[Rindex].hospital.HospitalName == hospital[j].HospitalName) {
+						 hospital[j].PatientReservationRooms += 1;
 						 break;
 					}
 			   }
-			   if (!correctid) {
-					cout << "\nInvalid Resevation ID\n";
-					return;
-			   }
-		  } while (!correctid);
+			   patient[PIndex].reservation[Rindex].PName = " ";
+			   patient[PIndex].reservation[Rindex].PAge = 0;
+			   patient[PIndex].reservation[Rindex].ReservtionID = 0;
+			   patient[PIndex].reservation[Rindex].hospital.HospitalName = " ";
+			   patient[PIndex].reservation[Rindex].ReservationType = " ";
+			   patient[PIndex].reservation[Rindex].HospitalSpecialty = "NOT RESERVED";
+			   patient[PIndex].reservation[Rindex].HospitalClinic = "NOT RESERVED";
+			   patient[PIndex].reservation[Rindex].PatientReservationRoom = " ";
+			   patient[PIndex].reservation[Rindex].BedPrice = 0;
+			   patient[PIndex].reservation[Rindex].ReservationDay = " ";
+			   patient[PIndex].reservation[Rindex].ReservationPrice = 0;
+			   patient[PIndex].reservation[Rindex].surgeryprice = 0;
+			   patient[PIndex].reservation[Rindex].Totalprice = 0;
+			  
+			   if (Rindex != patient[PIndex].reserCount - 1)
+					swap(patient[PIndex].reservation[Rindex], patient[PIndex].reservation[patient[PIndex].reserCount - 1]);
+			   Rindex = -1;
+			   patient[PIndex].reserCount--;//update
+			 
 	 }
+			  
+			
 	 bool validPhoneNumber(string phoneNumber) {
 		  if (phoneNumber.size() != 11 || phoneNumber[0] != '0' || phoneNumber[1] != '1') {
 			   return false;
