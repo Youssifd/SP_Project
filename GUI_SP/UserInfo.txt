@@ -12,7 +12,6 @@
 103 19 1945104 10 4000 9850 13850 Surgery Sunday Otorhinolaryngology NOT-RESERVATED 141 011 malak ahmed
 105 19 1984102 10 12000 9000 21000 Surgery Sunday X-Ray NOT-RESERVATED 167 011 new name
 1010 baselfathy 19 baselfathy@Huser.com Male 01145879651 1234 0basel fathy
-1011 you 20 you@Huser.com Male 01113187090 1 3youssif el
-106 20 1945104 0 0 0 0 Check-up Sunday NOT-RESERVATED Psychiatry NONE 01113187090 youssif el
-107 20 1945104 0 0 0 0 Check-up Monday NOT-RESERVATED Urology NONE 01113187090 youssif el
-108 20 1999105 6 7200 7450 14650 Surgery Sunday Neurosurgery NOT-RESERVATED 91 01113187090 youssif el
+1011 you 20 you@Huser.com Male 01113187090 1 2Youssif El-Sayed
+108 5 1999105 0 0 0 300 Check-up Sunday NOT-RESERVATED NaturalTherapy NONE 01131708090 new make
+109 20 1827103 15 9000 8740 17740 Surgery Monday Neurosurgery NOT-RESERVATED 517 01113187090 youssif el

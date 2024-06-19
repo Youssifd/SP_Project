@@ -538,9 +538,12 @@ public:
 			   }
 			   else if (Rtemp.ReservationType == "Check-up") {
 			   Rtemp.ReservationPrice = hospital[Hindex].ReservationPrice;
+			   Rtemp.Totalprice = hospital[Hindex].ReservationPrice;
 			   }
 			   Rtemp.ReservtionID = reservationID;
-		  }		 
+		  }	
+		  
+		  user[Lindex].totalpaid += Rtemp.Totalprice;
 		  user[Lindex].reservation[user[Lindex].reserCount] = Rtemp;
 		  user[Lindex].reserCount++;
 		  reservationID++;
@@ -628,6 +631,8 @@ public:
 						 break;
 					}
 			   }
+
+			   patient[PIndex].totalpaid -= patient[PIndex].reservation[Rindex].Totalprice;
 			   patient[PIndex].reservation[Rindex].PName = " ";
 			   patient[PIndex].reservation[Rindex].PAge = 0;
 			   patient[PIndex].reservation[Rindex].ReservtionID = 0;
