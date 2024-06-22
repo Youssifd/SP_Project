@@ -129,6 +129,7 @@
     <ClInclude Include="mainPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Structs.h" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +138,12 @@
   <ItemGroup>
     <Text Include="Hospitalinfo.txt" />
     <Text Include="UserInfo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\pngegg.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="picIcon.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

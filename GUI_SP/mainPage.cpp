@@ -78,7 +78,6 @@ void GUISP::mainPage::displayHinfo() {
 			   PA_Hinfo_HCLlist->Items->Add(gcnew String(hospital[Hindex].HospitalClinics[i].c_str()));
 		  }
 	 }
-	 Exist->Visible = false;
 }
 void GUISP::mainPage::displayPinfo() {
 		  AD_viewPinfo_Name->Text = "Name: " + gcnew String(user[Pindex].name.c_str());
@@ -397,6 +396,7 @@ void GUISP::mainPage::modifyReservation() {
 			   user[Lindex].reservation[Rindex].ReservationPrice = hospital[Hindex].ReservationPrice;
 			   }
 			   if (user[Lindex].reservation[Rindex].ReservationType == "Surgery") {
+					bool exist = false;
 					int roomnumber = 50 + rand() % 500;
 					for (int i = 7; i < userCount; i++) {
 						 for (int j = 0; j < user[i].reserCount; j++) {
@@ -442,7 +442,7 @@ void GUISP::mainPage::modifyReservation() {
 			   user[Lindex].reservation[Rindex].Totalprice= user[Lindex].reservation[Rindex].BedPrice+ user[Lindex].reservation[Rindex].surgeryprice;
 			   user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays;
 			   int roomnumber = 0;
-
+			   bool exist = false;
 			   roomnumber = 50 + rand() % 500;
 			   for (int i = 5; i < userCount; i++) {
 					for (int j = 0; j < user[i].reserCount; j++) {
@@ -505,7 +505,7 @@ void GUISP::mainPage::EditPersonalInfo() {
 					PA_editRemain_state->Text = "No changes made";
 					return;
 			   }
-			   if (Ptemp.age <= 0) {
+			   if (Ptemp.age <= 18) {
 					PA_editRemain_state->Text = "Invalid Age";
 					return;
 			   }
@@ -551,7 +551,7 @@ void GUISP::mainPage::EditPersonalInfo() {
 					AD_editRemain_state->Text = "No changes made";
 					return;
 			   }
-			   if (Ptemp.age <= 0) {
+			   if (Ptemp.age <= 18) {
 					AD_editRemain_state->Text = "Invalid Age";
 					return;
 			   }
