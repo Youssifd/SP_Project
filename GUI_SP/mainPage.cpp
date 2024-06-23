@@ -311,7 +311,7 @@ void GUISP::mainPage::makeReservation() {
 	 }
 	 f.makeReservation(user, hospital, Rtemp);
 	// user[Lindex].reservation[user[Lindex].reserCount-1].hospital = hospital[Hindex];
-	 PA_warningM->Text = "Reserved.\nReservation ID:" + gcnew String(to_string(user[Lindex].reservation[user[Lindex].reserCount-1].ReservtionID).c_str());
+	 MessageBox::Show("Reserved.\nReservation ID:" + gcnew String(to_string(user[Lindex].reservation[user[Lindex].reserCount - 1].ReservtionID).c_str()), "Reservation", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	 PA_PNord_TB->Text = "";
 	 PA_PAord_TB->Text = "";
 	 PA_PphNord_TB->Text = "";
