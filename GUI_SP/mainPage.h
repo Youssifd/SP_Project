@@ -38,7 +38,7 @@ namespace GUISP {
 		  void makeReservation();
 		  void modifyReservation();
 		  void EditPersonalInfo();
-		//  void Registration();
+		  void Registration();
 
 	 protected:
 	
@@ -372,6 +372,7 @@ private: System::Windows::Forms::Panel^ panel2;
 private: System::Windows::Forms::Panel^ panel3;
 private: System::Windows::Forms::Button^ regis_backTologin;
 private: System::Windows::Forms::Label^ label2;
+private: System::Windows::Forms::Label^ regis_state;
 
 
 
@@ -706,6 +707,7 @@ private: System::Windows::Forms::Label^ label2;
 			   this->FName_PA_lab = (gcnew System::Windows::Forms::Label());
 			   this->PA_pic = (gcnew System::Windows::Forms::PictureBox());
 			   this->PA_logout_but = (gcnew System::Windows::Forms::Button());
+			   this->regis_state = (gcnew System::Windows::Forms::Label());
 			   this->StartUP_page->SuspendLayout();
 			   this->regis_pn->SuspendLayout();
 			   this->panel3->SuspendLayout();
@@ -842,6 +844,7 @@ private: System::Windows::Forms::Label^ label2;
 			   // 
 			   // regis_pn
 			   // 
+			   this->regis_pn->Controls->Add(this->regis_state);
 			   this->regis_pn->Controls->Add(this->panel3);
 			   this->regis_pn->Controls->Add(this->regis_ShowPass_but);
 			   this->regis_pn->Controls->Add(this->regis_ConPass_TBox);
@@ -987,7 +990,7 @@ private: System::Windows::Forms::Label^ label2;
 			   this->registration_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->registration_but->ForeColor = System::Drawing::Color::White;
-			   this->registration_but->Location = System::Drawing::Point(199, 575);
+			   this->registration_but->Location = System::Drawing::Point(200, 567);
 			   this->registration_but->Name = L"registration_but";
 			   this->registration_but->Size = System::Drawing::Size(195, 52);
 			   this->registration_but->TabIndex = 9;
@@ -4795,6 +4798,18 @@ private: System::Windows::Forms::Label^ label2;
 			   this->PA_logout_but->Text = L"Log out";
 			   this->PA_logout_but->UseVisualStyleBackColor = true;
 			   this->PA_logout_but->Click += gcnew System::EventHandler(this, &mainPage::PA_logout_but_Click);
+			   // 
+			   // regis_state
+			   // 
+			   this->regis_state->AutoSize = true;
+			   this->regis_state->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.861538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+			   this->regis_state->ForeColor = System::Drawing::Color::Brown;
+			   this->regis_state->Location = System::Drawing::Point(33, 495);
+			   this->regis_state->Name = L"regis_state";
+			   this->regis_state->Size = System::Drawing::Size(13, 20);
+			   this->regis_state->TabIndex = 20;
+			   this->regis_state->Text = L".";
 			   // 
 			   // mainPage
 			   // 

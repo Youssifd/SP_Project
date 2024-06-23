@@ -591,6 +591,19 @@ void GUISP::mainPage::EditPersonalInfo() {
 	 AD_editRemain_TB->Text = "";
 }
 
+void GUISP::mainPage::Registration()
+{
+	 Users temp;
+	 temp.name = context.marshal_as<string>(regis_name_textbox->Text);
+	 temp.username = context.marshal_as<string>(regis_username_textbox->Text);
+
+	 for (int i = 0; i < userCount; i++) {
+		  if (user[i].username == temp.username) {
+			   regis_state->Text = "This user already exist";
+		  }
+	 }
+}
+
 
 void GUISP::mainPage::searchHindex(string Ser) {
 	 for (int i = 0; i < hospitalCount; i++) {
