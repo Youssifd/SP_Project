@@ -6,7 +6,7 @@ class mainFun
 {
 public:
 	 void DefinitonOfVariable(Hospitals hospital[]) {
-		  ifstream HospitalInfo("Hospitalinfo.txt", ios::app);
+		  ifstream HospitalInfo("Data/Hospitalinfo.txt", ios::app);
 		  //HospitalInfo >> hospitalCount;
 		  for (int i = 0; !HospitalInfo.eof(); i++) {
 			   getline(HospitalInfo, hospital[i].HospitalName);
@@ -22,7 +22,7 @@ public:
 		  HospitalInfo.close();
 	 }
 	 void DefinitonOfVariable(Users user[], Hospitals hos[]) {
-		  ifstream UserInfo("UserInfo.txt", ios::app);
+		  ifstream UserInfo("Data/UserInfo.txt", ios::app);
 
 		  for (int i = 0; !UserInfo.eof(); i++) {
 			   UserInfo >> user[i].id >> user[i].username >> user[i].age >> user[i].email >> user[i].gender >> user[i].phonenumber >> user[i].password >> user[i].reserCount;
@@ -60,7 +60,7 @@ public:
 		  UserInfo.close();
 	 }
 	 void SaveData(Hospitals hospital[]) {
-		  ofstream ExportHospitalInfo("Hospitalinfo.txt");
+		  ofstream ExportHospitalInfo("Data/Hospitalinfo.txt");
 		  //ExportHospitalInfo << hospitalCount;
 		  for (int i = 0; i < hospitalCount; i++) {
 			   ExportHospitalInfo << hospital[i].HospitalName << endl;
@@ -80,7 +80,7 @@ public:
 
 	 }
 	 void SaveData(Users user[]) {
-		  ofstream ExportUserInfo("UserInfo.txt");
+		  ofstream ExportUserInfo("Data/UserInfo.txt");
 		  for (int i = 0; i < userCount; i++) {
 			   ExportUserInfo << user[i].id << " " << user[i].username << " " << user[i].age << " " << user[i].email << " " << user[i].gender << " " << user[i].phonenumber << " " << user[i].password << " " << user[i].reserCount << user[i].name;
 			   if (i != userCount - 1 || user[i].reserCount != 0)
@@ -97,12 +97,6 @@ public:
 			   }
 		  }
 		  ExportUserInfo.close();
-	 }
-	 void LogOut(bool& checkLog, int& PIndex) {
-		  checkLog = true;
-		  PIndex = -1;
-		  cout << "Log out.....\n";
-
 	 }
 	 void PrintHospitalData(Hospitals hospital[]) {
 		  for (int i = 0; i < hospitalCount; i++) {
@@ -261,47 +255,6 @@ public:
 	 void registerpatient(Users patient[], Users temp)
 	 {
 
-		  bool usernameExists;
-
-		  usernameExists = false;
-
-
-
-		  for (int i = 0; i < userCount; i++)
-		  {
-			   if (patient[i].username == temp.username)
-			   {
-
-					usernameExists = true;
-					break;
-			   }
-		  }
-		  /* bool phoneNumExist = true;
-		   do {
-				int counter = 5;
-
-				for (int i = 0; i < userCount; i++) {
-
-					 if (temp.phonenumber == patient[i].phonenumber) {
-						  cout << "This Phone number is exist try again\n";
-						  phoneNumExist = true;
-						  break;
-					 }
-					 else {
-						  phoneNumExist = false;
-					 }
-
-				}
-		   } while (phoneNumExist);
-		   may be make it in GUI
-		   */
-
-
-		   /*if (choiceGender == 1)
-				newpatient.gender = "Male";
-		   else
-				newpatient.gender = "Female";
-				may be important */
 		  temp.email = temp.username + "@Huser.com";
 
 		  temp.id = userID;

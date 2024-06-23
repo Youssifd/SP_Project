@@ -488,6 +488,7 @@ void GUISP::mainPage::modifyReservation() {
 }
 void GUISP::mainPage::EditPersonalInfo() {
 	 Users Ptemp;
+	 string Stemp;
 	 if (user[Lindex].userType == "Patient") {
 		  if (PA_editRemain_lab->Text == "New Full Name") {
 			   Ptemp.name = context.marshal_as<string>(PA_editRemain_TB->Text);
@@ -519,6 +520,13 @@ void GUISP::mainPage::EditPersonalInfo() {
 						 return;
 					}
 			   }
+			   Stemp = "";
+			   for (int i = 0; i < temp.username.size(); i++) {
+					if (temp.username[i] != ' ') {
+						 Stemp += temp.username[i];
+					}
+			   }
+			   temp.username = Stemp;
 			   user[Lindex].username = Ptemp.username;
 			   user[Lindex].email = user[Lindex].username + "@Huser.com";
 		  }
@@ -566,6 +574,13 @@ void GUISP::mainPage::EditPersonalInfo() {
 						 return;
 					}
 			   }
+			    Stemp = "";
+			   for (int i = 0; i < temp.username.size(); i++) {
+					if (temp.username[i] != ' ') {
+						 Stemp += temp.username[i];
+					}
+			   }
+			   temp.username = Stemp;
 			   user[Lindex].username = Ptemp.username;
 			   user[Lindex].email = user[Lindex].username + "@Hadmin.com";
 			  // AD_viewPinfo_Email->Text = "Email: " + gcnew String(user[Lindex].email.c_str());
@@ -590,18 +605,59 @@ void GUISP::mainPage::EditPersonalInfo() {
 	 AD_editRemain_state->Text = "Edit done";
 	 AD_editRemain_TB->Text = "";
 }
-
 void GUISP::mainPage::Registration()
 {
 	 Users temp;
+	 string conpass;
 	 temp.name = context.marshal_as<string>(regis_name_textbox->Text);
 	 temp.username = context.marshal_as<string>(regis_username_textbox->Text);
-
+	 temp.phonenumber = context.marshal_as<string>(regis_phonenumber_textbox->Text);
+	 temp.age= stoi(context.marshal_as<string>(regis_age_textbox->Text));
+	 temp.password = context.marshal_as<string>(regis_Pass_TBox->Text);
+	 temp.gender= context.marshal_as<string>(regis_selectgender->Text);
+	 conpass = context.marshal_as<string>(regis_ConPass_TBox->Text);
 	 for (int i = 0; i < userCount; i++) {
 		  if (user[i].username == temp.username) {
 			   regis_state->Text = "This user already exist";
 		  }
 	 }
+	// temp.username.erase(std::remove_if(temp.username.begin(), temp.username.end());
+	 string Stemp="";
+	 for(int i=0;i<temp.username.size();i++){
+		  if(temp.username[i]!=' '){
+			 Stemp += temp.username[i];
+		  }
+	 }
+			   temp.username = Stemp;
+
+	 if(!f.validPhoneNumber(temp.phonenumber)){
+		  regis_state->Text = "Invalid Phone Number";
+		  return;
+	 }
+	 if(temp.age<18){
+		  regis_state->Text = "Invalid Age\nmust be greater than or equal 18";
+		  return;
+	 }
+	 if(temp.password!=conpass){
+		  regis_state->Text = "Password not match";
+		  return;
+	 }
+	// f.registerpatient(user, temp);
+	 temp.email = temp.username + "@Huser.com";
+	 temp.id = userID;
+	 userID++;
+	 user[userCount] = temp;
+	 userCount++;
+	 MessageBox::Show("Registration Done");
+	 regis_name_textbox->Text = "";
+	 regis_age_textbox->Text = "";
+	 regis_phonenumber_textbox->Text = "";
+	 regis_username_textbox->Text = "";
+	 regis_Pass_TBox->Text = "";
+	 regis_ConPass_TBox->Text = "";
+	 regis_selectgender->Text = "Select Gender";
+	 regis_readPolicies->Checked = false;
+
 }
 
 
