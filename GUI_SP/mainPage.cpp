@@ -91,6 +91,34 @@ void GUISP::mainPage::displayPinfo() {
 	  
 }
 void GUISP::mainPage::AddHospital(Hospitals hos[]) {
+	 if (AD_HNorder_TB->Text == "") {
+		  AD_Herror->Text="Please Enter Hospital Name";
+		  return;
+	 }
+	 if (AD_HIDorder_TB->Text ==""){
+		  AD_Herror->Text = "Please Enter Hospital ID";
+		  return;
+	 }
+	 if (AD_HBPorder_TB->Text ==""){
+		  AD_Herror->Text = "Please Enter Bed Price";
+		  return;
+	 }
+	 if (AD_HRateorder_TB->Text ==""){
+		  AD_Herror->Text = "Please Enter Rate";
+		  return;
+	 }
+	 if (AD_HRPorder_TB->Text ==""){
+		  AD_Herror->Text = "Please Enter Reservation Price";
+		  return;
+	 }
+	 if (AD_HPRBsorder_TB->Text ==""){
+		  AD_Herror->Text = "Please Enter Number of Avaliable rooms";
+		  return;
+	 }
+	 if (AD_HSPorder_TB->Text ==""){
+		  AD_Herror->Text = "Please Enter Surgery Price";
+		  return;
+	 }
 	 Htemp.HospitalName = context.marshal_as<string>(AD_HNorder_TB->Text);
 	 Htemp.BedsPrice =stof (context.marshal_as<string>(AD_HBPorder_TB->Text));
 	 Htemp.surgeryprice = stof( context.marshal_as<string>(AD_HSPorder_TB->Text));
@@ -142,7 +170,7 @@ void GUISP::mainPage::AddHospital(Hospitals hos[]) {
 		  hos[hospitalCount].HospitalClinics[z] = hos[0].HospitalClinics[z];
 
 	 hospitalCount++; 
-	 AD_addcom->Text="Hospital Added Successfully";
+	 MessageBox::Show("Hospital Added Successfully");
 	 AD_HIDorder_TB->Text = "";
 	 AD_HRateorder_TB->Text = "";
 	 AD_HPRBsorder_TB->Text = "";
@@ -695,7 +723,7 @@ void GUISP::mainPage::searchPindex(string Ser) {
 }
 void GUISP::mainPage::searchCLindex(string Ser) {
 	 for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
-		  if (hospital[i].HospitalClinics[i] == Ser) {
+		  if (hospital[Hindex].HospitalClinics[i] == Ser) {
 			   CLindex = i;
 			   break;
 		  }
@@ -713,7 +741,7 @@ void GUISP::mainPage::searchDindex(string Ser) {
 }
 void GUISP::mainPage::searchSPindex(string Ser) {
 	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
-		  if (hospital[i].HospitalSpecialties[i] == Ser) {
+		  if (hospital[Hindex].HospitalSpecialties[i] == Ser) {
 			   SPindex = i;
 			   break;
 		  }
