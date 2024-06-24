@@ -289,7 +289,7 @@ void GUISP::mainPage::makeReservation() {
 	 Rtemp.ReservationDay = context.marshal_as<string>(PA_DayenterH_COM->Text);
 	 searchHindex(Rtemp.hospital.HospitalName);
 	 Rtemp.hospital = hospital[Hindex];
-	 label7->Text = "name: " + gcnew String(user[Lindex].reservation[user[Lindex].reserCount].hospital.HospitalName.c_str());
+
 	 if (PA_RtypeCheck_RB2->Checked == true) {
 		  Rtemp.ReservationType = "Check-up";
 		  Rtemp.HospitalClinic= context.marshal_as<string>(PA_RSClist_COM->Text);
@@ -315,9 +315,9 @@ void GUISP::mainPage::makeReservation() {
 	 PA_PNord_TB->Text = "";
 	 PA_PAord_TB->Text = "";
 	 PA_PphNord_TB->Text = "";
-	 PA_selectHforR_COM->Text = "None";
-	 PA_DayenterH_COM->Text = "None";
-	 PA_RSClist_COM->Text = "None"; 
+	 PA_selectHforR_COM->SelectedIndex=-1;
+	 PA_DayenterH_COM->SelectedIndex = -1;
+	 PA_RSClist_COM->SelectedIndex = -1;
 	 PA_askwhoreserv_RB2->Checked = true;
 }
 void GUISP::mainPage::modifyReservation() {
