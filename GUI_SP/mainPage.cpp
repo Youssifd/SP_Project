@@ -22,7 +22,7 @@ void GUISP::mainPage::personalinfo() {
 	 String^ email = gcnew String(user[Lindex].email.c_str());
 	 String^ NumOfreserv = gcnew String(to_string(user[Lindex].reserCount).c_str());
 	 String^ totalpaid = gcnew String(to_string(user[Lindex].totalpaid).c_str());
-	 if (temp.userType == "Admin") {
+	 if (user[Lindex].userType == "Admin") {
 	 AD_AID->Text = "ID: " + ID;
 	 AD_Aage->Text = "Age: " + Age;
 	 AD_AphoneN->Text = "Phone Number: " + phonenumber;
@@ -299,6 +299,11 @@ void GUISP::mainPage::makeReservation() {
 		  Rtemp.ReservationType = "Surgery";
 		  Rtemp.HospitalSpecialty= context.marshal_as<string>(PA_RSClist_COM->Text);
 		  Rtemp.numberOfDays = stoi(context.marshal_as<string>(PA_PNumOfDays_TB->Text));
+		  if (Rtemp.numberOfDays <= 0) {
+			   MessageBox::Show("Days Number must be greater than 0");
+			   return;
+
+		  }
 
 	 }
 	 if(f.validPhoneNumber(Rtemp.PhoneNumber)==false){
@@ -342,7 +347,7 @@ void GUISP::mainPage::modifyReservation() {
 	 }
 	 else if (PA_modifyRord_lab->Text == "New Phone Number") {
 		  Rtemp.PhoneNumber = context.marshal_as<string>(PA_modifyRord_TB->Text);
-		  if (f.validPhoneNumber(temp.phonenumber) == false) {
+		  if (f.validPhoneNumber(Rtemp.PhoneNumber) == false) {
 			   PA_modifyRstate_lab->Text = "Invalid Phone Number";
 			   return;
 		  }
@@ -522,12 +527,12 @@ void GUISP::mainPage::EditPersonalInfo() {
 					}
 			   }
 			   Stemp = "";
-			   for (int i = 0; i < temp.username.size(); i++) {
-					if (temp.username[i] != ' ') {
-						 Stemp += temp.username[i];
+			   for (int i = 0; i < Ptemp.username.size(); i++) {
+					if (Ptemp.username[i] != ' ') {
+						 Stemp += Ptemp.username[i];
 					}
 			   }
-			   temp.username = Stemp;
+			   Ptemp.username = Stemp;
 			   user[Lindex].username = Ptemp.username;
 			   user[Lindex].email = user[Lindex].username + "@Huser.com";
 		  }
@@ -576,12 +581,12 @@ void GUISP::mainPage::EditPersonalInfo() {
 					}
 			   }
 			    Stemp = "";
-			   for (int i = 0; i < temp.username.size(); i++) {
-					if (temp.username[i] != ' ') {
-						 Stemp += temp.username[i];
+			   for (int i = 0; i < Ptemp.username.size(); i++) {
+					if (Ptemp.username[i] != ' ') {
+						 Stemp += Ptemp.username[i];
 					}
 			   }
-			   temp.username = Stemp;
+			   Ptemp.username = Stemp;
 			   user[Lindex].username = Ptemp.username;
 			   user[Lindex].email = user[Lindex].username + "@Hadmin.com";
 			  // AD_viewPinfo_Email->Text = "Email: " + gcnew String(user[Lindex].email.c_str());
