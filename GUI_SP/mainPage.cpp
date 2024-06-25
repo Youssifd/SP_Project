@@ -308,6 +308,26 @@ void GUISP::mainPage::DisplayRInfo() {
 	
 }
 void GUISP::mainPage::makeReservation() {
+	 if(PA_PNord_TB->Text == ""){
+		  PA_warningM->Text = "Please Enter Name";
+		  return;
+	 }
+	 if(PA_PAord_TB->Text == ""){
+		  PA_warningM->Text = "Please Enter Age";
+		  return;
+	 }
+	 if(PA_PphNord_TB->Text == ""){
+		  PA_warningM->Text = "Please Enter Phone Number";
+		  return;
+	 }
+	 if(PA_RtypeCheck_RB1->Checked == true){
+		  if(PA_PNumOfDays_TB->Text == ""){
+			   PA_warningM->Text = "Please Enter Number of Days";
+			   return;
+		  }
+		 
+	 }
+	
 	 Reservations Rtemp; 
 	 //label7->Text = "Cl: " + gcnew String(Rtemp.HospitalClinic.c_str());
 	 Rtemp.PName = context.marshal_as<string>(PA_PNord_TB->Text);
@@ -641,8 +661,37 @@ void GUISP::mainPage::EditPersonalInfo() {
 }
 void GUISP::mainPage::Registration()
 {
+	 if (regis_name_textbox->Text == "") {
+		  MessageBox::Show("Please Enter Name");
+		  return;
+	 }
+	 if (regis_username_textbox->Text == "") {
+		  MessageBox::Show("Please Enter Username");
+		  return;
+	 }
+	 if(regis_age_textbox->Text == ""){
+		  MessageBox::Show("Please Enter Age");
+		  return;
+	 }
+	 if(regis_phonenumber_textbox->Text == ""){
+		  MessageBox::Show("Please Enter Phone Number");
+		  return;
+	 }
+	 if(regis_Pass_TBox->Text == ""){
+		  MessageBox::Show("Please Enter Password");
+		  return;
+	 }	  
+	 if(regis_ConPass_TBox->Text == ""){
+		  MessageBox::Show("Please Enter Confirm Password");
+		  return;
+	 }
+	 if (regis_selectgender->SelectedIndex == -1) {
+		  MessageBox::Show("Please Select Gender");
+		  return;
+	 }
 	 Users temp;
 	 string conpass;
+	 
 	 temp.name = context.marshal_as<string>(regis_name_textbox->Text);
 	 temp.username = context.marshal_as<string>(regis_username_textbox->Text);
 	 temp.phonenumber = context.marshal_as<string>(regis_phonenumber_textbox->Text);
@@ -656,14 +705,6 @@ void GUISP::mainPage::Registration()
 		  }
 	 }
 	// temp.username.erase(std::remove_if(temp.username.begin(), temp.username.end());
-	 string Stemp="";
-	 for(int i=0;i<temp.username.size();i++){
-		  if(temp.username[i]!=' '){
-			 Stemp += temp.username[i];
-		  }
-	 }
-			   temp.username = Stemp;
-
 	 if(!f.validPhoneNumber(temp.phonenumber)){
 		  regis_state->Text = "Invalid Phone Number";
 		  return;
@@ -689,7 +730,7 @@ void GUISP::mainPage::Registration()
 	 regis_username_textbox->Text = "";
 	 regis_Pass_TBox->Text = "";
 	 regis_ConPass_TBox->Text = "";
-	 regis_selectgender->Text = "Select Gender";
+	 regis_selectgender->SelectedIndex = -1;
 	 regis_readPolicies->Checked = false;
 
 }

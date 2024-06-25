@@ -137,14 +137,14 @@
     <EmbeddedResource Include="mainPage.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Hospitalinfo.txt" />
-    <Text Include="UserInfo.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="assets\pngegg.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="picIcon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\Hospitalinfo.txt" />
+    <Text Include="Data\UserInfo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

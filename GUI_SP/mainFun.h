@@ -42,12 +42,15 @@ public:
 								   if (user[i].reservation[j].hospital.HospitalID == hos[z].HospitalID)
 										user[i].reservation[j].hospital = hos[z];
 
-								   if (user[i].reservation[j].ReservationType != "Surgery")
+								   if (user[i].reservation[j].ReservationType != "Surgery") {
 										user[i].reservation[j].ReservationPrice = hos[z].ReservationPrice;
-								   // else
-										//  hos[z].PatientReservationRooms -= 1;
-								   user[i].totalpaid += user[i].reservation[j].Totalprice;
+										user[i].reservation[j].Totalprice = hos[z].ReservationPrice;
+
+								   }
+								   
 							  }
+								   user[i].totalpaid += user[i].reservation[j].Totalprice;
+								 
 							  UserInfo.ignore();
 							  getline(UserInfo, user[i].reservation[j].PName);
 							  reservationID = user[i].reservation[j].ReservtionID;
