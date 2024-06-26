@@ -420,12 +420,14 @@ void GUISP::mainPage::modifyReservation() {
 					PA_modifyRstate_lab->Text = "Invalid Number";
 					return;
 			   }
+			   user[Lindex].totalpaid -= user[Lindex].reservation[Rindex].Totalprice;
 			   user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays; 
-			   user[Lindex].reservation[Rindex].surgeryprice = user[Lindex].reservation[Rindex].hospital.surgeryprice;
+			 //  user[Lindex].reservation[Rindex].surgeryprice = user[Lindex].reservation[Rindex].hospital.surgeryprice;
 			   user[Lindex].reservation[Rindex].BedPrice = Rtemp.numberOfDays * user[Lindex].reservation[Rindex].hospital.BedsPrice;
 			   user[Lindex].reservation[Rindex].Totalprice = user[Lindex].reservation[Rindex].BedPrice + user[Lindex].reservation[Rindex].surgeryprice;
 			   user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays;
-			   int roomnumber = 0;
+			   user[Lindex].totalpaid += user[Lindex].reservation[Rindex].Totalprice;
+			 //  int roomnumber = 0;
 
 		  }
 	 else {
@@ -477,6 +479,10 @@ void GUISP::mainPage::modifyReservation() {
 			   PA_StateOflist->Text = "edit done";
 		  }
 		  else if (PA_OrderOflist->Text == "Select new Days") {
+			   if (PA_listOfHRtypeRdays->SelectedIndex == -1) {
+					MessageBox::Show("PLease select a day");
+					return;
+			   }
 			   string seaDay = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
 			   searchDindex(seaDay);
 			   if (user[Lindex].reservation[Rindex].ReservationDay == ReservationDays[Dindex]) {
@@ -487,6 +493,10 @@ void GUISP::mainPage::modifyReservation() {
 			   user[Lindex].reservation[Rindex].ReservationDay = ReservationDays[Dindex];
 		  }
 		  else if (PA_OrderOflist->Text == "Select new Specialty") {
+			   if (PA_listOfHRtypeRdays->SelectedIndex == -1) {
+					MessageBox::Show("PLease select a Specialty");
+					return;
+			   }
 			   Rtemp.HospitalSpecialty = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
 			 //  searchSPindex(Rtemp.HospitalSpecialty);
 			  Rtemp.numberOfDays= stoi(context.marshal_as<string>(PA_Rnumbofdays->Text));
@@ -521,6 +531,10 @@ void GUISP::mainPage::modifyReservation() {
 			   PA_StateOflist->Text = "edit done";
 		  }
 		  else if (PA_OrderOflist->Text == "Select new Clinic") {
+			   if (PA_listOfHRtypeRdays->SelectedIndex == -1) {
+					MessageBox::Show("PLease select a Clinic");
+					return;
+			   }
 			   Rtemp.HospitalClinic = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
 			   searchCLindex(Rtemp.HospitalClinic);
 			  
@@ -538,7 +552,9 @@ void GUISP::mainPage::modifyReservation() {
 
 	PA_modifyRstate_lab->Text = "edit done";
 	PA_StateOflist->Text = "edit done";
-	 PA_modifyRord_TB->Text == "";
+	 PA_modifyRord_TB->Text = "";
+	// PA_Rlistmodify_com->SelectedIndex = -1;
+	 
 }
 void GUISP::mainPage::EditPersonalInfo() {
 	 Users Ptemp;
@@ -702,6 +718,7 @@ void GUISP::mainPage::Registration()
 	 for (int i = 0; i < userCount; i++) {
 		  if (user[i].username == temp.username) {
 			   regis_state->Text = "This user already exist";
+			   return;
 		  }
 	 }
 	// temp.username.erase(std::remove_if(temp.username.begin(), temp.username.end());
