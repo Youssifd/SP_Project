@@ -11,8 +11,23 @@ void main()
 	 Application::SetCompatibleTextRenderingDefault(false);
 	 GUISP::mainPage form;
 	 Application::Run(% form);
-	/* f.SaveData(hospital);
-	 f.SaveData(user);*/
+	 f.SaveData(hospital);
+	 f.SaveData(user);
+
+	 for (int i = 0; i < userCount; i++) {
+		  if (user[i].userType == "Patient") {
+			   delete[] user[i].reservation;
+			   user[i].reservation = NULL;
+		  }
+
+	 }
+	 for (int i = 0; i < userCount; i++) {
+		  if (user[i].userType == "Patient") {
+			   delete[] user[i].LabR;
+			   user[i].LabR = NULL;
+		  }
+
+	 }
 }
 void GUISP::mainPage::personalinfo() {
 	 String^ ID = gcnew String(to_string(user[Lindex].id).c_str());
@@ -380,9 +395,9 @@ void GUISP::mainPage::modifyReservation() {
 		  Rtemp.PName = context.marshal_as<string>(PA_modifyRord_TB->Text);
 		  if (Rtemp.PName == user[Lindex].reservation[Rindex].PName)
 			   PA_modifyRstate_lab->Text = "No changes made";
-		  PA_modifyRstate_lab->Text = "Edit done";
+		//  PA_modifyRstate_lab->Text = "Edit done";
 		  user[Lindex].reservation[Rindex].PName = Rtemp.PName;
-		  // FName_PA_lab->Text = gcnew String(Rtemp.PName.c_str());
+		 
 	 }
 	 else if (PA_modifyRord_lab->Text == "New Age") {
 		  Rtemp.PAge = stoi(context.marshal_as<string>(PA_modifyRord_TB->Text));
@@ -430,135 +445,17 @@ void GUISP::mainPage::modifyReservation() {
 			 //  int roomnumber = 0;
 
 		  }
-	 else {
-		  if (PA_OrderOflist->Text == "Select new hospital") {
-			   string Hsearch = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
-			   searchHindex(Hsearch);
-			   if (hospital[Hindex].HospitalID == user[Lindex].reservation[Rindex].hospital.HospitalID) {
-					PA_StateOflist->Text = "No changes made";
-					return;
-			   }
-			   if (user[Lindex].reservation[Rindex].ReservationType == "Surgery") {
-					for (int i = 0; i < hospitalCount; i++) {
-						 if (user[Lindex].reservation[Rindex].hospital.HospitalID == hospital[i].HospitalID) {
-							  hospital[i].PatientReservationRooms++;
-							  hospital[Hindex].PatientReservationRooms--;
-							  break;
+	 
 
-						 }
-					}
-			   }
-			   else {
-			   user[Lindex].reservation[Rindex].ReservationPrice = hospital[Hindex].ReservationPrice;
-			   }
-			   if (user[Lindex].reservation[Rindex].ReservationType == "Surgery") {
-					bool exist = false;
-					int roomnumber = 50 + rand() % 500;
-					for (int i = 7; i < userCount; i++) {
-						 for (int j = 0; j < user[i].reserCount; j++) {
-							  if (user[i].reservation[j].hospital.HospitalID == Rtemp.hospital.HospitalID) {
-								   if (user[i].reservation[j].PatientReservationRoom == to_string(roomnumber)) {
-										exist = true;
-										roomnumber = 50 + rand() % 500;
-
-										break;
-								   }
-
-
-							  }
-						 }
-						 if (exist == true) {
-							  i = 7;
-							  exist = false;
-						 }
-					}
-					user[Lindex].reservation[Rindex].PatientReservationRoom = to_string(roomnumber);
-			   }
-			   user[Lindex].reservation[Rindex].hospital = hospital[Hindex];
-
-			   PA_StateOflist->Text = "edit done";
-		  }
-		  else if (PA_OrderOflist->Text == "Select new Days") {
-			   if (PA_listOfHRtypeRdays->SelectedIndex == -1) {
-					MessageBox::Show("PLease select a day");
-					return;
-			   }
-			   string seaDay = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
-			   searchDindex(seaDay);
-			   if (user[Lindex].reservation[Rindex].ReservationDay == ReservationDays[Dindex]) {
-					PA_modifyRstate_lab->Text = "No changes made";
-					return;
-			   }
-
-			   user[Lindex].reservation[Rindex].ReservationDay = ReservationDays[Dindex];
-		  }
-		  else if (PA_OrderOflist->Text == "Select new Specialty") {
-			   if (PA_listOfHRtypeRdays->SelectedIndex == -1) {
-					MessageBox::Show("PLease select a Specialty");
-					return;
-			   }
-			   Rtemp.HospitalSpecialty = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
-			 //  searchSPindex(Rtemp.HospitalSpecialty);
-			  Rtemp.numberOfDays= stoi(context.marshal_as<string>(PA_Rnumbofdays->Text));
-			   user[Lindex].reservation[Rindex].HospitalSpecialty = Rtemp.HospitalSpecialty;
-			   user[Lindex].reservation[Rindex].surgeryprice = user[Lindex].reservation[Rindex].hospital.surgeryprice;
-			   user[Lindex].reservation[Rindex].BedPrice= Rtemp.numberOfDays * user[Lindex].reservation[Rindex].hospital.BedsPrice;
-			   user[Lindex].reservation[Rindex].Totalprice= user[Lindex].reservation[Rindex].BedPrice+ user[Lindex].reservation[Rindex].surgeryprice;
-			   user[Lindex].reservation[Rindex].numberOfDays = Rtemp.numberOfDays;
-			   int roomnumber = 0;
-			   bool exist = false;
-			   roomnumber = 50 + rand() % 500;
-			   for (int i = 5; i < userCount; i++) {
-					for (int j = 0; j < user[i].reserCount; j++) {
-						 if (user[i].reservation[j].hospital.HospitalID == Rtemp.hospital.HospitalID) {
-							  if (user[i].reservation[j].PatientReservationRoom == to_string(roomnumber)) {
-								   exist = true;
-								   roomnumber = 50 + rand() % 500;
-
-								   break;
-							  }
-
-
-						 }
-					}
-					if (exist == true) {
-						 i = 5;
-						 exist = false;
-					}
-			   }
-			   user[Lindex].reservation[Rindex].PatientReservationRoom = to_string(roomnumber);
-
-			   PA_StateOflist->Text = "edit done";
-		  }
-		  else if (PA_OrderOflist->Text == "Select new Clinic") {
-			   if (PA_listOfHRtypeRdays->SelectedIndex == -1) {
-					MessageBox::Show("PLease select a Clinic");
-					return;
-			   }
-			   Rtemp.HospitalClinic = context.marshal_as<string>(PA_listOfHRtypeRdays->Text);
-			   searchCLindex(Rtemp.HospitalClinic);
-			  
-			   user[Lindex].reservation[Rindex].HospitalClinic = Rtemp.HospitalClinic;
-			   user[Lindex].reservation[Rindex].ReservationPrice = user[Lindex].reservation[Rindex].hospital.ReservationPrice;
-			   user[Lindex].reservation[Rindex].surgeryprice = 0;
-			   user[Lindex].reservation[Rindex].BedPrice = 0;
-			   user[Lindex].reservation[Rindex].Totalprice = user[Lindex].reservation[Rindex].ReservationPrice;
-			   user[Lindex].reservation[Rindex].PatientReservationRoom ="NONE";
-			   PA_StateOflist->Text = "edit done";
-			   PA_modifyRord_lab->Text = "Order text";
-			   PA_OrderOflist->Text = "Order text";
-		  }
-	 }
-
-	PA_modifyRstate_lab->Text = "edit done";
-	PA_StateOflist->Text = "edit done";
+	//PA_modifyRstate_lab->Text = "edit done";
+	//PA_StateOflist->Text = "edit done";
+	 MessageBox::Show("Edit done");
 	 PA_modifyRord_TB->Text = "";
 	// PA_Rlistmodify_com->SelectedIndex = -1;
 	 
 }
 void GUISP::mainPage::EditPersonalInfo() {
 	 Users Ptemp;
-	 string Stemp;
 	 if (user[Lindex].userType == "Patient") {
 		  if (PA_editRemain_lab->Text == "New Full Name") {
 			   Ptemp.name = context.marshal_as<string>(PA_editRemain_TB->Text);
@@ -590,13 +487,7 @@ void GUISP::mainPage::EditPersonalInfo() {
 						 return;
 					}
 			   }
-			   Stemp = "";
-			   for (int i = 0; i < Ptemp.username.size(); i++) {
-					if (Ptemp.username[i] != ' ') {
-						 Stemp += Ptemp.username[i];
-					}
-			   }
-			   Ptemp.username = Stemp;
+			  
 			   user[Lindex].username = Ptemp.username;
 			   user[Lindex].email = user[Lindex].username + "@Huser.com";
 		  }
@@ -620,6 +511,11 @@ void GUISP::mainPage::EditPersonalInfo() {
 					AD_editRemain_state->Text = "No changes made";
 					return;
 			   }
+			   for (int i = 0; i < user[Lindex].reserCount; i++) {
+					if (user[Lindex].name == user[Lindex].reservation[i].PName) {
+						 user[Lindex].reservation[i].PName = Ptemp.name;
+					}
+			   }
 			   user[Lindex].name = Ptemp.name;
 			   FName_AD_lab->Text =  gcnew String(user[Lindex].name.c_str());
 		  }
@@ -633,6 +529,11 @@ void GUISP::mainPage::EditPersonalInfo() {
 					AD_editRemain_state->Text = "Invalid Age";
 					return;
 			   }
+			   for (int i = 0; i < user[Lindex].reserCount; i++) {
+					if (user[Lindex].name == user[Lindex].reservation[i].PName) {
+						 user[Lindex].reservation[i].PAge = Ptemp.age;
+					}
+			   }
 			   user[Lindex].age = Ptemp.age;
 			   AD_viewPinfo_Age->Text = "Age: " + gcnew INT(user[Lindex].age);
 		  }
@@ -644,13 +545,6 @@ void GUISP::mainPage::EditPersonalInfo() {
 						 return;
 					}
 			   }
-			    Stemp = "";
-			   for (int i = 0; i < Ptemp.username.size(); i++) {
-					if (Ptemp.username[i] != ' ') {
-						 Stemp += Ptemp.username[i];
-					}
-			   }
-			   Ptemp.username = Stemp;
 			   user[Lindex].username = Ptemp.username;
 			   user[Lindex].email = user[Lindex].username + "@Hadmin.com";
 			  // AD_viewPinfo_Email->Text = "Email: " + gcnew String(user[Lindex].email.c_str());
@@ -801,6 +695,15 @@ void GUISP::mainPage::searchSPindex(string Ser) {
 	 for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
 		  if (hospital[Hindex].HospitalSpecialties[i] == Ser) {
 			   SPindex = i;
+			   break;
+		  }
+	 }
+
+}
+void GUISP::mainPage::searchLABRindex(string Ser) {
+	 for (int i = 0; i < user[Lindex].LabRCount; i++) {
+		  if (user[Lindex].LabR->id==Ser) {
+			   LabRindex = i;
 			   break;
 		  }
 	 }

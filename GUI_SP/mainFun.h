@@ -37,17 +37,24 @@ public:
 					if (user[i].reserCount < NumberOfReservation && user[i].reserCount>0) {
 						 for (int j = 0; j < user[i].reserCount; j++) {
 
-							  UserInfo >> user[i].reservation[j].ReservtionID >> user[i].reservation[j].PAge >> user[i].reservation[j].hospital.HospitalID >> user[i].reservation[j].numberOfDays >> user[i].reservation[j].BedPrice >> user[i].reservation[j].surgeryprice >> user[i].reservation[j].Totalprice >> user[i].reservation[j].ReservationType >> user[i].reservation[j].ReservationDay >> user[i].reservation[j].HospitalSpecialty >> user[i].reservation[j].HospitalClinic >> user[i].reservation[j].PatientReservationRoom >> user[i].reservation[j].PhoneNumber;
+							  UserInfo >> user[i].reservation[j].ReservtionID >> user[i].reservation[j].PAge >> user[i].reservation[j].hospital.HospitalID >> user[i].reservation[j].numberOfDays  >> user[i].reservation[j].ReservationType >> user[i].reservation[j].ReservationDay >> user[i].reservation[j].HospitalSpecialty >> user[i].reservation[j].HospitalClinic >> user[i].reservation[j].PatientReservationRoom >> user[i].reservation[j].PhoneNumber;
 							  for (int z = 0; z < hospitalCount; z++) {
 								   if (user[i].reservation[j].hospital.HospitalID == hos[z].HospitalID)
+								   {
 										user[i].reservation[j].hospital = hos[z];
 
-								   if (user[i].reservation[j].ReservationType != "Surgery") {
-										user[i].reservation[j].ReservationPrice = hos[z].ReservationPrice;
-										user[i].reservation[j].Totalprice = hos[z].ReservationPrice;
+										if (user[i].reservation[j].ReservationType != "Surgery") {
+											 user[i].reservation[j].ReservationPrice = hos[z].ReservationPrice;
+											 user[i].reservation[j].Totalprice = hos[z].ReservationPrice;
+
+										}
+										else {
+											 user[i].reservation[j].BedPrice = user[i].reservation[j].numberOfDays * hos[z].BedsPrice;
+											 user[i].reservation[j].surgeryprice = hos[z].surgeryprice;
+											 user[i].reservation[j].Totalprice = user[i].reservation[j].surgeryprice + user[i].reservation[j].BedPrice;
+										}
 
 								   }
-								   
 							  }
 								   user[i].totalpaid += user[i].reservation[j].Totalprice;
 								 
@@ -92,7 +99,7 @@ public:
 					if (user[i].reserCount < NumberOfReservation && user[i].reserCount>0) {
 						 for (int j = 0; j < user[i].reserCount; j++) {
 
-							  ExportUserInfo << user[i].reservation[j].ReservtionID << " " << user[i].reservation[j].PAge << " " << user[i].reservation[j].hospital.HospitalID<< " " << user[i].reservation[j].numberOfDays << " " << user[i].reservation[j].BedPrice << " " << user[i].reservation[j].surgeryprice << " " << user[i].reservation[j].Totalprice << " " << user[i].reservation[j].ReservationType << " " << user[i].reservation[j].ReservationDay << " " << user[i].reservation[j].HospitalSpecialty << " " << user[i].reservation[j].HospitalClinic << " " << user[i].reservation[j].PatientReservationRoom << " " << user[i].reservation[j].PhoneNumber << " " << user[i].reservation[j].PName;
+							  ExportUserInfo << user[i].reservation[j].ReservtionID << " " << user[i].reservation[j].PAge << " " << user[i].reservation[j].hospital.HospitalID<< " " << user[i].reservation[j].numberOfDays <<  " " << user[i].reservation[j].ReservationType << " " << user[i].reservation[j].ReservationDay << " " << user[i].reservation[j].HospitalSpecialty << " " << user[i].reservation[j].HospitalClinic << " " << user[i].reservation[j].PatientReservationRoom << " " << user[i].reservation[j].PhoneNumber << " " << user[i].reservation[j].PName;
 							  if (j != user[i].reserCount - 1 || i != userCount - 1)
 								   ExportUserInfo << endl;
 						 }
