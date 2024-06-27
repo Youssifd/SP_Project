@@ -266,7 +266,9 @@ void GUISP::mainPage::modifyHospital() {
 		 
 	 }
 	 
-	 AD_warning1->Text = "edit sucss";
+	 //AD_warning1->Text = "edit sucss";
+	 MessageBox::Show("edit sucss");
+	 AD_TBinput->Text = "";
 }
 void GUISP::mainPage::modifyHSC() {
 	 string newclorsp;
@@ -606,6 +608,14 @@ void GUISP::mainPage::Registration()
 	 temp.username = context.marshal_as<string>(regis_username_textbox->Text);
 	 temp.phonenumber = context.marshal_as<string>(regis_phonenumber_textbox->Text);
 	 temp.age= stoi(context.marshal_as<string>(regis_age_textbox->Text));
+	 if (context.marshal_as<string>(regis_Pass_TBox->Text).size() <=7) {
+		  regis_state->Text = "Password must be more than 7 characters";
+		  return;
+	 }
+	 else if (context.marshal_as<string>(regis_Pass_TBox->Text).size() >= 20) {
+		  regis_state->Text = "Password must be less than 16 characters";
+		  return;
+	 }
 	 temp.password = context.marshal_as<string>(regis_Pass_TBox->Text);
 	 temp.gender= context.marshal_as<string>(regis_selectgender->Text);
 	 conpass = context.marshal_as<string>(regis_ConPass_TBox->Text);
