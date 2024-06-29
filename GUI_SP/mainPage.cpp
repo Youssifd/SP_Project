@@ -141,7 +141,12 @@ void GUISP::mainPage::AddHospital(Hospitals hos[]) {
 	 Htemp.PatientReservationRooms = stoi(context.marshal_as<string>(AD_HPRBsorder_TB->Text));
 	 Htemp.HospitalRate = stof(context.marshal_as<string>(AD_HRateorder_TB->Text));
 	 Htemp.HospitalID = stoi(context.marshal_as < string>(AD_HIDorder_TB->Text));
-
+	 while (Htemp.HospitalName[Htemp.HospitalName.size() - 1] == ' ') {
+		  Htemp.HospitalName.erase(Htemp.HospitalName.size() - 1);
+	 }
+	 while (Htemp.HospitalName[0] == ' ') {
+		  Htemp.HospitalName.erase(0, 1);
+	 }
 	 for (int i = 0; i < hospitalCount; i++)
 	 {
 		  if (Htemp.HospitalName == hos[i].HospitalName)
@@ -224,6 +229,12 @@ void GUISP::mainPage::modifyHospital() {
 					return;
 			   }
 		  }
+		  while (Htemp.HospitalName[Htemp.HospitalName.size() - 1] == ' ') {
+			   Htemp.HospitalName.erase(Htemp.HospitalName.size() - 1);
+		  }
+		  while (Htemp.HospitalName[0] == ' ') {
+			   Htemp.HospitalName.erase(0, 1);
+		  }
 		  hospital[Hindex].HospitalName = Htemp.HospitalName;
 		
 	 }
@@ -284,7 +295,13 @@ void GUISP::mainPage::modifyHSC() {
 			}
 	   }
 			AD_stateHSC2->Text = "this Specialty exist!";
-	   AD_stateHSC2->Text = "Specialty Added";
+	   AD_stateHSC2->Text = "Specialty Added"; 
+	   while (newclorsp[newclorsp.size() - 1] == ' ') {
+			newclorsp.erase(newclorsp.size() - 1);
+	   }
+	   while (newclorsp[0] == ' ') {
+			newclorsp.erase(0, 1);
+	   }
 	   hospital[Hindex].HospitalSpecialties[hospital[Hindex].specialtiesCount ] = newclorsp;
 	   hospital[Hindex].specialtiesCount++;
 	 }
@@ -294,6 +311,12 @@ void GUISP::mainPage::modifyHSC() {
 				 AD_stateHSC2->Text = "this Clinic exist!";
 				 return;
 			}
+	   }
+	   while (newclorsp[newclorsp.size() - 1] == ' ') {
+			newclorsp.erase(newclorsp.size() - 1);
+	   }
+	   while (newclorsp[0] == ' ') {
+			newclorsp.erase(0, 1);
 	   }
 	   hospital[Hindex].HospitalClinics[hospital[Hindex].clinicsCount ] = newclorsp;
 	   AD_stateHSC2->Text = "Clinic Added";
@@ -397,6 +420,13 @@ void GUISP::mainPage::modifyReservation() {
 		  Rtemp.PName = context.marshal_as<string>(PA_modifyRord_TB->Text);
 		  if (Rtemp.PName == user[Lindex].reservation[Rindex].PName)
 			   PA_modifyRstate_lab->Text = "No changes made";
+
+		  while (Rtemp.PName[Rtemp.PName.size() - 1] == ' ') {
+			   Rtemp.PName.erase(Rtemp.PName.size() - 1);
+		  }
+		  while (Rtemp.PName[0] == ' ') {
+			   Rtemp.PName.erase(0, 1);
+		  }
 		//  PA_modifyRstate_lab->Text = "Edit done";
 		  user[Lindex].reservation[Rindex].PName = Rtemp.PName;
 		 
@@ -465,6 +495,9 @@ void GUISP::mainPage::EditPersonalInfo() {
 					PA_editRemain_state->Text = "No changes made";
 					return;
 			   }
+			   while (Ptemp.name[Ptemp.name.size() - 1] == ' ') {
+					Ptemp.name.erase(Ptemp.name.size() - 1);
+			   }
 			   user[Lindex].name = Ptemp.name;
 			   FName_PA_lab->Text = gcnew String(user[Lindex].name.c_str());
 
@@ -517,6 +550,12 @@ void GUISP::mainPage::EditPersonalInfo() {
 					if (user[Lindex].name == user[Lindex].reservation[i].PName) {
 						 user[Lindex].reservation[i].PName = Ptemp.name;
 					}
+			   }
+			   while (Ptemp.name[Ptemp.name.size() - 1] == ' ') {
+					Ptemp.name.erase(Ptemp.name.size() - 1);
+			   }
+			   while (Ptemp.name[0] == ' ') {
+					Ptemp.name.erase(0, 1);
 			   }
 			   user[Lindex].name = Ptemp.name;
 			   FName_AD_lab->Text =  gcnew String(user[Lindex].name.c_str());
@@ -624,6 +663,12 @@ void GUISP::mainPage::Registration()
 			   regis_state->Text = "This user already exist";
 			   return;
 		  }
+	 }
+	 while (temp.name[temp.name.size() - 1] == ' ') {
+		  		  temp.name.erase(temp.name.size() - 1);
+	 }
+	 while (temp.name[0] == ' ') {
+		  temp.name.erase(0, 1);		 
 	 }
 	// temp.username.erase(std::remove_if(temp.username.begin(), temp.username.end());
 	 if(!f.validPhoneNumber(temp.phonenumber)){
