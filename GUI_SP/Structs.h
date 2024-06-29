@@ -60,7 +60,7 @@ struct Users {
 	 int age;
 	 int reserCount = 0;
 	 int LabRCount = 0;
-	 int totalpaid = 0;
+	 float totalpaid = 0;
 	 string userType = "Patient";
 	 string name;
 	 string email;

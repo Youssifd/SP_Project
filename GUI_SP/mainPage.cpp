@@ -62,9 +62,9 @@ void GUISP::mainPage::displayHinfo() {
 		  AD_viewHinfo_Name->Text = "Name: " + gcnew String(hospital[Hindex].HospitalName.c_str());
 		  AD_viewHinfo_Rate->Text = "Rate: " + gcnew FLOAT(hospital[Hindex].HospitalRate);
 		  AD_viewHinfo_bedsAva->Text = "Beds Available: " + gcnew INT(hospital[Hindex].PatientReservationRooms);
-		  AD_viewHinfo_Rprice->Text = "Reservation Price: " + gcnew INT(hospital[Hindex].ReservationPrice);
-		  AD_viewHinfo_surgeryPrice->Text = "Surgery Price: " + gcnew INT(hospital[Hindex].surgeryprice);
-		  AD_viewHinfo_BedsPrice->Text = "Beds Price: " + gcnew INT(hospital[Hindex].BedsPrice);
+		  AD_viewHinfo_Rprice->Text = "Reservation Price: " + gcnew FLOAT(hospital[Hindex].ReservationPrice);
+		  AD_viewHinfo_surgeryPrice->Text = "Surgery Price: " + gcnew FLOAT(hospital[Hindex].surgeryprice);
+		  AD_viewHinfo_BedsPrice->Text = "Beds Price: " + gcnew FLOAT(hospital[Hindex].BedsPrice);
 		  for (int i = 0; i < hospital[Hindex].specialtiesCount; i++)
 		  {
 			   AD_viewHinfo_HSplist->Items->Add(gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str()));
@@ -81,9 +81,9 @@ void GUISP::mainPage::displayHinfo() {
 		  PA_Hinfo_Name->Text = "Name: " + gcnew String(hospital[Hindex].HospitalName.c_str());
 		  PA_Hinfo_rate->Text = "Rate: " + gcnew FLOAT(hospital[Hindex].HospitalRate);
 		  PA_Hinfo_bedsAva->Text = "Beds Available: " + gcnew INT(hospital[Hindex].PatientReservationRooms);
-		  PA_Hinfo_Rprice->Text = "Reservation Price: " + gcnew INT(hospital[Hindex].ReservationPrice);
-		  PA_Hinfo_surgeryprice->Text = "Surgery Price: " + gcnew INT(hospital[Hindex].surgeryprice);
-		  PA_Hinfo_Bedprice->Text = "Beds Price: " + gcnew INT(hospital[Hindex].BedsPrice);
+		  PA_Hinfo_Rprice->Text = "Reservation Price: " + gcnew FLOAT(hospital[Hindex].ReservationPrice);
+		  PA_Hinfo_surgeryprice->Text = "Surgery Price: " + gcnew FLOAT(hospital[Hindex].surgeryprice);
+		  PA_Hinfo_Bedprice->Text = "Beds Price: " + gcnew FLOAT(hospital[Hindex].BedsPrice);
 		  for (int i = 0; i < hospital[Hindex].specialtiesCount; i++)
 		  {
 			   PA_Hinfo_HSplist->Items->Add(gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str()));
@@ -102,7 +102,7 @@ void GUISP::mainPage::displayPinfo() {
 		  AD_viewPinfo_Gender->Text = "Gender: " + gcnew String(user[Pindex].gender.c_str());
 		  AD_viewPinfo_Email->Text = "Email: " + gcnew String(user[Pindex].email.c_str());
 		  AD_viewPinfo_NumOfR->Text = "Patient bookings: " + gcnew INT(user[Pindex].reserCount);
-		  AD_viewPinfo_Totalpaid->Text = "Total paid: " + gcnew INT(user[Pindex].totalpaid);	 
+		  AD_viewPinfo_Totalpaid->Text = "Total paid: " + gcnew FLOAT(user[Pindex].totalpaid);	 
 	  
 }
 void GUISP::mainPage::AddHospital(Hospitals hos[]) {
@@ -216,8 +216,8 @@ void GUISP::mainPage::modifyHospital() {
 			   AD_warning1->Text = "must be 7 digit!";
 			   return;
 		  }
-		
-		  hospital[Hindex].HospitalID=Htemp.HospitalID;
+
+		  hospital[Hindex].HospitalID = Htemp.HospitalID;
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Name") {
 		  Htemp.HospitalName = context.marshal_as<string>(AD_TBinput->Text);
@@ -236,7 +236,7 @@ void GUISP::mainPage::modifyHospital() {
 			   Htemp.HospitalName.erase(0, 1);
 		  }
 		  hospital[Hindex].HospitalName = Htemp.HospitalName;
-		
+
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Rate") {
 		  Htemp.HospitalRate = stof(context.marshal_as<string>(AD_TBinput->Text));
@@ -250,40 +250,58 @@ void GUISP::mainPage::modifyHospital() {
 	 else if (AD_nameOfinput->Text == "Number of Avaliable rooms") {
 		  Htemp.PatientReservationRooms = stoi(context.marshal_as<string>(AD_TBinput->Text));
 		  hospital[Hindex].PatientReservationRooms = Htemp.PatientReservationRooms;
-		  
+
 	 }
 	 else if (AD_nameOfinput->Text == "Bed Price") {
 		  Htemp.BedsPrice = stof(context.marshal_as<string>(AD_TBinput->Text));
 		  hospital[Hindex].BedsPrice = Htemp.BedsPrice;
-		 
+
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Specialties") {
-		  string Hspindex= context.marshal_as<string>(AD_ModifyHSClist->Text);
+		  string Hspindex = context.marshal_as<string>(AD_ModifyHSClist->Text);
 		  string Sptemp = context.marshal_as<string>(AD_TBinput->Text);
+		  String^ temp;
 		  searchSPindex(Hspindex);
 		  hospital[Hindex].HospitalSpecialties[SPindex] = Sptemp;
-
+		  AD_ModifyHSClist->Items->Clear();
+		  for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
+			   temp = gcnew String(hospital[Hindex].HospitalSpecialties[i].c_str());
+			   AD_ModifyHSClist->Items->Add(temp);
+		  }
+		  AD_ModifyHSClist->SelectedIndex = -1;
+		  SPindex = -1;
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Clinics") {
-		  string Hclindex= context.marshal_as<string>(AD_ModifyHSClist->Text);
+		  string Hclindex = context.marshal_as<string>(AD_ModifyHSClist->Text);
 		  string cltemp = context.marshal_as<string>(AD_TBinput->Text);
+		  String^ temp;
 		  searchCLindex(Hclindex);
-		  hospital[Hindex].HospitalClinics[SPindex] = cltemp;
+		  hospital[Hindex].HospitalClinics[CLindex] = cltemp;
+		  AD_ModifyHSClist->Items->Clear();
+		  for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
+			   temp = gcnew String(hospital[Hindex].HospitalClinics[i].c_str());
+			   AD_ModifyHSClist->Items->Add(temp);
+		  }
 
+		  AD_ModifyHSClist->SelectedIndex = -1;
+		  CLindex = -1;
 	 }
 	 else if (AD_nameOfinput->Text == "Reservation Price") {
 		  Htemp.ReservationPrice = stof(context.marshal_as<string>(AD_TBinput->Text));
 		  hospital[Hindex].ReservationPrice = Htemp.ReservationPrice;
-		 
+
 	 }
-	 
+
 	 //AD_warning1->Text = "edit sucss";
 	 MessageBox::Show("edit sucss");
 	 AD_TBinput->Text = "";
 }
 void GUISP::mainPage::modifyHSC() {
 	 string newclorsp;
-	  
+	 if (AD_TBforAddHSC->Text == "") {
+		  MessageBox::Show("Please fill the field");
+		  return;
+	}
 	 searchHindex(context.marshal_as<string>(AD_Hlist_combox->Text));
 			newclorsp = context.marshal_as < string>(AD_TBforAddHSC->Text);
 	 if (AD_HSCorder->Text == "Enter Specialty Name") {
@@ -294,32 +312,23 @@ void GUISP::mainPage::modifyHSC() {
 				 return;
 			}
 	   }
-			AD_stateHSC2->Text = "this Specialty exist!";
+			
 	   AD_stateHSC2->Text = "Specialty Added"; 
-	   while (newclorsp[newclorsp.size() - 1] == ' ') {
-			newclorsp.erase(newclorsp.size() - 1);
-	   }
-	   while (newclorsp[0] == ' ') {
-			newclorsp.erase(0, 1);
-	   }
+	   AD_TBforAddHSC->Text = "";
+	   
 	   hospital[Hindex].HospitalSpecialties[hospital[Hindex].specialtiesCount ] = newclorsp;
 	   hospital[Hindex].specialtiesCount++;
 	 }
-	 else if (AD_HSCorder->Text == "Enter Clincs Name") {
+	 else if (AD_HSCorder->Text == "Enter Clinics Name") {
 	   for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
 			if (newclorsp == hospital[Hindex].HospitalClinics[i]) {
 				 AD_stateHSC2->Text = "this Clinic exist!";
 				 return;
 			}
 	   }
-	   while (newclorsp[newclorsp.size() - 1] == ' ') {
-			newclorsp.erase(newclorsp.size() - 1);
-	   }
-	   while (newclorsp[0] == ' ') {
-			newclorsp.erase(0, 1);
-	   }
 	   hospital[Hindex].HospitalClinics[hospital[Hindex].clinicsCount ] = newclorsp;
 	   AD_stateHSC2->Text = "Clinic Added";
+	   AD_TBforAddHSC->Text = "";
 	   hospital[Hindex].clinicsCount++;
 	 }
 	 
