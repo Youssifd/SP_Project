@@ -1,8 +1,3 @@
-Ain Shams
-1984102 689 250 1200 9000 3.8 11 19
-Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
-Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
-
 Al-Qasr Al-Aini
 1827103 494 80 600 8740 4 11 19
 Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
@@ -13,17 +8,17 @@ Dar Al-Fouad
 Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
 
+Sayed Galal
+1945104 594 100 400 9850 3.6 11 19
+Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
+Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
+
 El-Demerdash
 1931101 648 80 600 5690 3.5 11 19
 Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
 
-NEWhName
-1231231 123 123 123 123 1.5 11 19
-Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
-Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
-
-Sayed Galal
-1945104 594 100 400 9850 3.6 11 19
+Ain Shams Specialized
+1984102 689 250 1200 9000 3.8 11 19
 Dentist InternalMedicine Neurosurgery Ophthalmology Otorhinolaryngology Pediatrics Oncology Emergency Anesthesiology X-Ray ObesitySurgeries 
 Otorhinolaryngology Ophthalmia Dentist Nephrology Cardiology Pulmonology Neurology BloodVessels Phoniatrics ObstetricsAndGynecology Dermatology Orthopedics Endocrinology Urology Psychiatry NaturalTherapy Nutrition CosmeticMedicine InternalMedicine 
