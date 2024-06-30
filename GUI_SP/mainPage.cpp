@@ -11,6 +11,8 @@ void main()
 	 Application::SetCompatibleTextRenderingDefault(false);
 	 GUISP::mainPage form;
 	 Application::Run(% form);
+	 f.SaveData(hospital);
+	 f.SaveData(user);
 
 	 for (int i = 0; i < userCount; i++) {
 		  if (user[i].userType == "Patient") {
@@ -165,7 +167,7 @@ void GUISP::mainPage::AddHospital(Hospitals hos[]) {
 		  }
 	 }
 	 else {
-		  AD_Herror->Text = "Invalid ID! Try again:";
+		  AD_Herror->Text = "Invalid ID!\nmust be 7 digit";
 		  return;
 
 	 }
@@ -214,7 +216,10 @@ void GUISP::mainPage::modifyHospital() {
 			   AD_warning1->Text = "must be 7 digit!";
 			   return;
 		  }
-
+		  if (hospital[Hindex].HospitalID == Htemp.HospitalID) {
+			   AD_warning1->Text = "No changes made";
+			   return;
+		  }
 		  hospital[Hindex].HospitalID = Htemp.HospitalID;
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Name") {
@@ -233,8 +238,18 @@ void GUISP::mainPage::modifyHospital() {
 		  while (Htemp.HospitalName[0] == ' ') {
 			   Htemp.HospitalName.erase(0, 1);
 		  }
+		  if (hospital[Hindex].HospitalName == Htemp.HospitalName) {
+			   AD_warning1->Text = "No changes made";
+			   return;
+		  }
 		  hospital[Hindex].HospitalName = Htemp.HospitalName;
-
+		  String^ add = "";
+		  AD_Hlist_combox->Items->Clear();
+		  for(int i=0;i<hospitalCount;i++){
+			   add = gcnew String(hospital[i].HospitalName.c_str());
+			   AD_Hlist_combox->Items->Add(add);
+		  }
+		  AD_Hlist_combox->SelectedIndex = -1;
 	 }
 	 else if (AD_nameOfinput->Text == "Hospital Rate") {
 		  Htemp.HospitalRate = stof(context.marshal_as<string>(AD_TBinput->Text));
@@ -243,15 +258,27 @@ void GUISP::mainPage::modifyHospital() {
 			   AD_warning1->Text = "Wrong rate.\nPlease Enetr another(5-0) ";
 			   return;
 		  }
+		  if (hospital[Hindex].HospitalRate == Htemp.HospitalRate) {
+			   AD_warning1->Text = "No changes made";
+			   return;
+		  }
 		  hospital[Hindex].HospitalRate = Htemp.HospitalRate;
 	 }
 	 else if (AD_nameOfinput->Text == "Number of Avaliable rooms") {
 		  Htemp.PatientReservationRooms = stoi(context.marshal_as<string>(AD_TBinput->Text));
+		  if(hospital[Hindex].PatientReservationRooms == Htemp.PatientReservationRooms){
+			   AD_warning1->Text = "No changes made";
+			   return;
+		  }
 		  hospital[Hindex].PatientReservationRooms = Htemp.PatientReservationRooms;
 
 	 }
 	 else if (AD_nameOfinput->Text == "Bed Price") {
 		  Htemp.BedsPrice = stof(context.marshal_as<string>(AD_TBinput->Text));
+		  if (hospital[Hindex].BedsPrice == Htemp.BedsPrice) {
+			   AD_warning1->Text = "No changes made";
+			   return;
+		  }
 		  hospital[Hindex].BedsPrice = Htemp.BedsPrice;
 
 	 }
@@ -260,6 +287,16 @@ void GUISP::mainPage::modifyHospital() {
 		  string Sptemp = context.marshal_as<string>(AD_TBinput->Text);
 		  String^ temp;
 		  searchSPindex(Hspindex);
+		  for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
+			   if (hospital[Hindex].HospitalSpecialties[i] == Sptemp) {
+					AD_warning1->Text = "this Specialty exist!";
+					return;
+			   }
+		  }
+		  if (hospital[Hindex].HospitalSpecialties[SPindex] == Sptemp) {
+			   AD_warning1->Text = "No changes made";
+			   return;
+		  }
 		  hospital[Hindex].HospitalSpecialties[SPindex] = Sptemp;
 		  AD_ModifyHSClist->Items->Clear();
 		  for (int i = 0; i < hospital[Hindex].specialtiesCount; i++) {
@@ -274,6 +311,16 @@ void GUISP::mainPage::modifyHospital() {
 		  string cltemp = context.marshal_as<string>(AD_TBinput->Text);
 		  String^ temp;
 		  searchCLindex(Hclindex);
+		  for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
+			   if (hospital[Hindex].HospitalClinics[i] == cltemp) {
+					AD_warning1->Text = "this Clinic exist!";
+					return;
+			   }
+		  }
+		  if (hospital[Hindex].HospitalClinics[CLindex] == cltemp) {
+			   AD_warning1->Text = "No changes made";
+			   return;
+		  }
 		  hospital[Hindex].HospitalClinics[CLindex] = cltemp;
 		  AD_ModifyHSClist->Items->Clear();
 		  for (int i = 0; i < hospital[Hindex].clinicsCount; i++) {
@@ -286,6 +333,10 @@ void GUISP::mainPage::modifyHospital() {
 	 }
 	 else if (AD_nameOfinput->Text == "Reservation Price") {
 		  Htemp.ReservationPrice = stof(context.marshal_as<string>(AD_TBinput->Text));
+		  if (hospital[Hindex].ReservationPrice == Htemp.ReservationPrice) {
+			   AD_warning1->Text = "No changes made";
+			   return;
+		  }
 		  hospital[Hindex].ReservationPrice = Htemp.ReservationPrice;
 
 	 }
