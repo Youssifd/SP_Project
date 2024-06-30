@@ -11,8 +11,6 @@ void main()
 	 Application::SetCompatibleTextRenderingDefault(false);
 	 GUISP::mainPage form;
 	 Application::Run(% form);
-	 f.SaveData(hospital);
-	 f.SaveData(user);
 
 	 for (int i = 0; i < userCount; i++) {
 		  if (user[i].userType == "Patient") {
@@ -649,6 +647,10 @@ void GUISP::mainPage::Registration()
 		  MessageBox::Show("Please Select Gender");
 		  return;
 	 }
+	 if(!radioButton3->Checked&&!radioButton4->Checked){
+		  MessageBox::Show("Please choose account type");
+		  return;
+	 }
 	 Users temp;
 	 string conpass;
 	 
@@ -693,12 +695,19 @@ void GUISP::mainPage::Registration()
 		  return;
 	 }
 	// f.registerpatient(user, temp);
+	 if(radioButton3->Checked){
+		  temp.userType = "Admin";
+	 temp.email = temp.username + "@Hadmin.com";
+	 }
+	 else if(radioButton4->Checked){
 	 temp.email = temp.username + "@Huser.com";
+		  
+	 }
 	 temp.id = userID;
 	 userID++;
 	 user[userCount] = temp;
 	 userCount++;
-	 MessageBox::Show("Registration Done");
+	 MessageBox::Show("Registration Done\nYour ID: "+temp.id);
 	 regis_name_textbox->Text = "";
 	 regis_age_textbox->Text = "";
 	 regis_phonenumber_textbox->Text = "";
