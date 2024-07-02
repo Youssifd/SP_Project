@@ -7449,6 +7449,10 @@ private: System::Void AD_addHSC_Click(System::Object^ sender, System::EventArgs^
 	 AD_confirmAdd->Visible = true;
 }
 private: System::Void AD_addH_but_Click(System::Object^ sender, System::EventArgs^ e) {
+	 if (hospitalCount == NumberOfHospital) {
+		  MessageBox::Show("You have reached the maximum number of hospitals");
+		  return;
+	 }
 	 AD_addHlayout->BringToFront();
 }
 private: System::Void AD_deleteH_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -7760,6 +7764,11 @@ private: System::Void AD_selectHD_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void AD_addH_Click(System::Object^ sender, System::EventArgs^ e) {
 	 AddHospital(hospital);
+	 if (hospitalCount == NumberOfHospital) {
+		  MessageBox::Show("You have reached the maximum number of hospitals");
+		  AD_waitingP->BringToFront();
+
+	 }
 	
 }
 private: System::Void AD_addH_Leave(System::Object^ sender, System::EventArgs^ e) {
@@ -7961,6 +7970,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		  if (user[Lindex].reserCount == NumberOfReservation) {
 			   PA_waitingeditRlist->BringToFront();
 			   MessageBox::Show("You have reached the maximum number of reservations");
+			  
 		  }
 		
 	 }
