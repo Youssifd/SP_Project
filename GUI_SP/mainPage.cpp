@@ -698,10 +698,7 @@ void GUISP::mainPage::Registration()
 		  MessageBox::Show("Please Select Gender");
 		  return;
 	 }
-	 if(!radioButton3->Checked&&!radioButton4->Checked){
-		  MessageBox::Show("Please choose account type");
-		  return;
-	 }
+	
 	 Users temp;
 	 string conpass;
 	 
@@ -746,14 +743,10 @@ void GUISP::mainPage::Registration()
 		  return;
 	 }
 	// f.registerpatient(user, temp);
-	 if(radioButton3->Checked){
-		  temp.userType = "Admin";
-	 temp.email = temp.username + "@Hadmin.com";
-	 }
-	 else if(radioButton4->Checked){
+	
+	
 	 temp.email = temp.username + "@Huser.com";
-		  
-	 }
+	
 	 temp.id = userID;
 	 userID++;
 	 user[userCount] = temp;
@@ -768,6 +761,41 @@ void GUISP::mainPage::Registration()
 	 regis_selectgender->SelectedIndex = -1;
 	 regis_readPolicies->Checked = false;
 
+}
+void GUISP::mainPage::viewAllHospitals()
+{
+
+	 if (user[Lindex].userType == "Admin"){
+		  AD_AllhospitalData->Controls->Clear();
+	 }
+	 else {
+	 PA_AllhospitalData->Controls->Clear();
+	 }
+	for(int i=0;i<hospitalCount;i++){
+		 ListOfHopsital^ Hpanel = gcnew ListOfHopsital();
+		 Hpanel->PA_viewallhospitalName->Text="Hospital Name: "+gcnew String(hospital[i].HospitalName.c_str());
+		 Hpanel->PA_viewallhospitalID->Text = "Hospital ID: " + gcnew INT(hospital[i].HospitalID);
+		 Hpanel->PA_viewallhospitalRate->Text = "Hospital Rate: " + gcnew FLOAT(hospital[i].HospitalRate);
+		 Hpanel->PA_viewallBedsPrice->Text = "Beds Price: " + gcnew FLOAT(hospital[i].BedsPrice);
+		 Hpanel->PA_viewallSurgeryPrice->Text = "Surgery Price: " + gcnew FLOAT(hospital[i].surgeryprice);
+		 Hpanel->PA_viewallReservationPrice->Text = "Reservation Price: " + gcnew FLOAT(hospital[i].ReservationPrice);
+		 Hpanel->PA_viewallBedsAva->Text = "Number of Avaliable rooms: " + gcnew INT(hospital[i].PatientReservationRooms);
+		Hpanel-> PA_SPlist->Items->Clear();
+		 for(int j=0;j<hospital[i].specialtiesCount;j++){
+			  Hpanel->PA_SPlist->Items->Add(gcnew String(hospital[i].HospitalSpecialties[j].c_str()));
+		 }
+		 Hpanel->PA_CLlist->Items->Clear();
+		 for (int j = 0; j < hospital[i].clinicsCount; j++) {
+			  Hpanel->PA_CLlist->Items->Add(gcnew String(hospital[i].HospitalClinics[j].c_str()));
+		 }
+		 if (user[Lindex].userType == "Admin") {
+		 AD_AllhospitalData->Controls->Add(Hpanel);
+		 }
+		 else {
+		 PA_AllhospitalData->Controls->Add(Hpanel);
+		 }
+		
+	}
 }
 
 

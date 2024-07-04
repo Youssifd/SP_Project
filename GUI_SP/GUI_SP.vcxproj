@@ -124,17 +124,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainPage.cpp" />
+    <ClCompile Include="MyUserControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainFun.h" />
     <ClInclude Include="mainPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ListOfHopsital.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Structs.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="mainPage.resx" />
+    <EmbeddedResource Include="ListOfHopsital.resx">
+      <DependentUpon>ListOfHopsital.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\pngegg.ico" />
