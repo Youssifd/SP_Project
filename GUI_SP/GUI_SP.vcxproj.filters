@@ -21,6 +21,9 @@
     <ClCompile Include="MyUserControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Addpage.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainPage.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ListOfHopsital.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Addpage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

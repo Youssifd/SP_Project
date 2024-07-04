@@ -1,9 +1,10 @@
 #pragma once
 #include <msclr/marshal_cppstd.h>
+#include <Windows.h>
 #include"Structs.h"
 #include"mainFun.h"
 #include"ListOfHopsital.h"
-//#include"AddNewAdmin.h"
+#include"AddPage.h"
 mainFun f;
 Users user[NumberOfUsers];
 Hospitals hospital[NumberOfHospital],Htemp;
@@ -23,7 +24,9 @@ namespace GUISP {
 		  mainPage(void)
 		  {
 			   InitializeComponent();
+			  
 		  }
+		property bool DialogResultCustom;
 		  void personalinfo();
 		  void searchHindex(string Ser);
 		  void searchRindex(int Ser);
@@ -1087,10 +1090,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->userBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->userBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->userBox->Location = System::Drawing::Point(342, 317);
-			   this->userBox->Margin = System::Windows::Forms::Padding(2);
+			   this->userBox->Location = System::Drawing::Point(283, 302);
+			   this->userBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->userBox->Name = L"userBox";
-			   this->userBox->Size = System::Drawing::Size(305, 28);
+			   this->userBox->Size = System::Drawing::Size(250, 28);
 			   this->userBox->TabIndex = 3;
 			   this->userBox->Enter += gcnew System::EventHandler(this, &mainPage::userBox_Enter);
 			   this->userBox->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &mainPage::userBox_KeyPress);
@@ -1101,10 +1104,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->passBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->passBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->passBox->Location = System::Drawing::Point(342, 364);
-			   this->passBox->Margin = System::Windows::Forms::Padding(2);
+			   this->passBox->Location = System::Drawing::Point(283, 342);
+			   this->passBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->passBox->Name = L"passBox";
-			   this->passBox->Size = System::Drawing::Size(301, 28);
+			   this->passBox->Size = System::Drawing::Size(250, 28);
 			   this->passBox->TabIndex = 4;
 			   this->passBox->Enter += gcnew System::EventHandler(this, &mainPage::passBox_Enter);
 			   this->passBox->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &mainPage::passBox_KeyPress);
@@ -1116,20 +1119,20 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->StartUP_page->Controls->Add(this->Requset1);
 			   this->StartUP_page->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->StartUP_page->Location = System::Drawing::Point(0, 0);
-			   this->StartUP_page->Margin = System::Windows::Forms::Padding(2);
+			   this->StartUP_page->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->StartUP_page->Name = L"StartUP_page";
-			   this->StartUP_page->Size = System::Drawing::Size(1338, 724);
+			   this->StartUP_page->Size = System::Drawing::Size(1152, 683);
 			   this->StartUP_page->TabIndex = 6;
 			   // 
 			   // SIgnUP_IN
 			   // 
-			   this->SIgnUP_IN->Controls->Add(this->regis_pn);
 			   this->SIgnUP_IN->Controls->Add(this->login_pn);
+			   this->SIgnUP_IN->Controls->Add(this->regis_pn);
 			   this->SIgnUP_IN->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->SIgnUP_IN->Location = System::Drawing::Point(0, 0);
-			   this->SIgnUP_IN->Margin = System::Windows::Forms::Padding(2);
+			   this->SIgnUP_IN->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->SIgnUP_IN->Name = L"SIgnUP_IN";
-			   this->SIgnUP_IN->Size = System::Drawing::Size(1046, 724);
+			   this->SIgnUP_IN->Size = System::Drawing::Size(860, 683);
 			   this->SIgnUP_IN->TabIndex = 23;
 			   // 
 			   // regis_pn
@@ -1156,9 +1159,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_pn->Controls->Add(this->regis_name_lab);
 			   this->regis_pn->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->regis_pn->Location = System::Drawing::Point(0, 0);
-			   this->regis_pn->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_pn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_pn->Name = L"regis_pn";
-			   this->regis_pn->Size = System::Drawing::Size(1046, 724);
+			   this->regis_pn->Size = System::Drawing::Size(860, 683);
 			   this->regis_pn->TabIndex = 7;
 			   // 
 			   // Sgender
@@ -1183,7 +1186,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_selectgender->FormattingEnabled = true;
 			   this->regis_selectgender->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Male", L"Female" });
 			   this->regis_selectgender->Location = System::Drawing::Point(303, 446);
-			   this->regis_selectgender->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_selectgender->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_selectgender->Name = L"regis_selectgender";
 			   this->regis_selectgender->Size = System::Drawing::Size(368, 41);
 			   this->regis_selectgender->TabIndex = 22;
@@ -1196,7 +1199,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->regis_readPolicies->ForeColor = System::Drawing::Color::White;
 			   this->regis_readPolicies->Location = System::Drawing::Point(19, 578);
-			   this->regis_readPolicies->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_readPolicies->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_readPolicies->Name = L"regis_readPolicies";
 			   this->regis_readPolicies->Size = System::Drawing::Size(233, 24);
 			   this->regis_readPolicies->TabIndex = 21;
@@ -1226,7 +1229,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_ShowPass_but->FlatAppearance->BorderSize = 2;
 			   this->regis_ShowPass_but->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->regis_ShowPass_but->Location = System::Drawing::Point(706, 336);
-			   this->regis_ShowPass_but->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_ShowPass_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_ShowPass_but->Name = L"regis_ShowPass_but";
 			   this->regis_ShowPass_but->Size = System::Drawing::Size(22, 23);
 			   this->regis_ShowPass_but->TabIndex = 16;
@@ -1240,7 +1243,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_ConPass_TBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->regis_ConPass_TBox->Location = System::Drawing::Point(304, 382);
-			   this->regis_ConPass_TBox->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_ConPass_TBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_ConPass_TBox->Name = L"regis_ConPass_TBox";
 			   this->regis_ConPass_TBox->Size = System::Drawing::Size(366, 33);
 			   this->regis_ConPass_TBox->TabIndex = 15;
@@ -1267,7 +1270,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_Pass_TBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->regis_Pass_TBox->Location = System::Drawing::Point(302, 318);
-			   this->regis_Pass_TBox->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_Pass_TBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_Pass_TBox->Name = L"regis_Pass_TBox";
 			   this->regis_Pass_TBox->Size = System::Drawing::Size(367, 33);
 			   this->regis_Pass_TBox->TabIndex = 13;
@@ -1294,7 +1297,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_phonenumber_textbox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->regis_phonenumber_textbox->Location = System::Drawing::Point(302, 254);
-			   this->regis_phonenumber_textbox->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_phonenumber_textbox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_phonenumber_textbox->Name = L"regis_phonenumber_textbox";
 			   this->regis_phonenumber_textbox->Size = System::Drawing::Size(367, 33);
 			   this->regis_phonenumber_textbox->TabIndex = 11;
@@ -1324,7 +1327,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->registration_but->ForeColor = System::Drawing::Color::White;
 			   this->registration_but->Location = System::Drawing::Point(416, 567);
-			   this->registration_but->Margin = System::Windows::Forms::Padding(2);
+			   this->registration_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->registration_but->Name = L"registration_but";
 			   this->registration_but->Size = System::Drawing::Size(146, 42);
 			   this->registration_but->TabIndex = 9;
@@ -1340,7 +1343,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_age_textbox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->regis_age_textbox->Location = System::Drawing::Point(304, 190);
-			   this->regis_age_textbox->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_age_textbox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_age_textbox->Name = L"regis_age_textbox";
 			   this->regis_age_textbox->Size = System::Drawing::Size(367, 33);
 			   this->regis_age_textbox->TabIndex = 7;
@@ -1353,7 +1356,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_username_textbox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->regis_username_textbox->Location = System::Drawing::Point(304, 126);
-			   this->regis_username_textbox->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_username_textbox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_username_textbox->Name = L"regis_username_textbox";
 			   this->regis_username_textbox->Size = System::Drawing::Size(367, 33);
 			   this->regis_username_textbox->TabIndex = 5;
@@ -1366,7 +1369,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->regis_name_textbox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->regis_name_textbox->Location = System::Drawing::Point(304, 62);
-			   this->regis_name_textbox->Margin = System::Windows::Forms::Padding(2);
+			   this->regis_name_textbox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->regis_name_textbox->Name = L"regis_name_textbox";
 			   this->regis_name_textbox->Size = System::Drawing::Size(368, 33);
 			   this->regis_name_textbox->TabIndex = 4;
@@ -1430,9 +1433,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->login_pn->Controls->Add(this->userBox);
 			   this->login_pn->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->login_pn->Location = System::Drawing::Point(0, 0);
-			   this->login_pn->Margin = System::Windows::Forms::Padding(2);
+			   this->login_pn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->login_pn->Name = L"login_pn";
-			   this->login_pn->Size = System::Drawing::Size(1046, 724);
+			   this->login_pn->Size = System::Drawing::Size(860, 683);
 			   this->login_pn->TabIndex = 23;
 			   // 
 			   // pictureBox4
@@ -1440,9 +1443,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->pictureBox4->BackColor = System::Drawing::Color::Transparent;
 			   this->pictureBox4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.BackgroundImage")));
 			   this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			   this->pictureBox4->Location = System::Drawing::Point(299, 318);
+			   this->pictureBox4->Location = System::Drawing::Point(246, 301);
 			   this->pictureBox4->Name = L"pictureBox4";
-			   this->pictureBox4->Size = System::Drawing::Size(28, 33);
+			   this->pictureBox4->Size = System::Drawing::Size(24, 26);
 			   this->pictureBox4->TabIndex = 25;
 			   this->pictureBox4->TabStop = false;
 			   // 
@@ -1451,9 +1454,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->pictureBox3->BackColor = System::Drawing::Color::Transparent;
 			   this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
 			   this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			   this->pictureBox3->Location = System::Drawing::Point(299, 363);
+			   this->pictureBox3->Location = System::Drawing::Point(245, 341);
 			   this->pictureBox3->Name = L"pictureBox3";
-			   this->pictureBox3->Size = System::Drawing::Size(28, 33);
+			   this->pictureBox3->Size = System::Drawing::Size(25, 27);
 			   this->pictureBox3->TabIndex = 24;
 			   this->pictureBox3->TabStop = false;
 			   // 
@@ -1467,10 +1470,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->SignIUP_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->SignIUP_but->ForeColor = System::Drawing::SystemColors::Control;
-			   this->SignIUP_but->Location = System::Drawing::Point(342, 458);
-			   this->SignIUP_but->Margin = System::Windows::Forms::Padding(2);
+			   this->SignIUP_but->Location = System::Drawing::Point(282, 434);
+			   this->SignIUP_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->SignIUP_but->Name = L"SignIUP_but";
-			   this->SignIUP_but->Size = System::Drawing::Size(305, 37);
+			   this->SignIUP_but->Size = System::Drawing::Size(252, 32);
 			   this->SignIUP_but->TabIndex = 23;
 			   this->SignIUP_but->Text = L"Log in";
 			   this->SignIUP_but->UseVisualStyleBackColor = false;
@@ -1484,7 +1487,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->warning_massage->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.753846F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->warning_massage->ForeColor = System::Drawing::Color::DarkRed;
-			   this->warning_massage->Location = System::Drawing::Point(345, 409);
+			   this->warning_massage->Location = System::Drawing::Point(269, 390);
 			   this->warning_massage->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->warning_massage->Name = L"warning_massage";
 			   this->warning_massage->Size = System::Drawing::Size(10, 13);
@@ -1502,7 +1505,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->ProjectInfo->LinkColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 					static_cast<System::Int32>(static_cast<System::Byte>(224)));
-			   this->ProjectInfo->Location = System::Drawing::Point(11, 689);
+			   this->ProjectInfo->Location = System::Drawing::Point(11, 648);
 			   this->ProjectInfo->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->ProjectInfo->Name = L"ProjectInfo";
 			   this->ProjectInfo->Size = System::Drawing::Size(97, 25);
@@ -1518,7 +1521,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->label7->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			   this->label7->Location = System::Drawing::Point(358, 169);
+			   this->label7->Location = System::Drawing::Point(261, 150);
 			   this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->label7->Name = L"label7";
 			   this->label7->Size = System::Drawing::Size(103, 29);
@@ -1531,8 +1534,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->requsetid->BackColor = System::Drawing::Color::Transparent;
 			   this->requsetid->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->requsetid->Location = System::Drawing::Point(542, 222);
-			   this->requsetid->Margin = System::Windows::Forms::Padding(2);
+			   this->requsetid->Location = System::Drawing::Point(445, 203);
+			   this->requsetid->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->requsetid->Name = L"requsetid";
 			   this->requsetid->Size = System::Drawing::Size(111, 33);
 			   this->requsetid->TabIndex = 20;
@@ -1547,8 +1550,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->requsetpass->Checked = true;
 			   this->requsetpass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->requsetpass->Location = System::Drawing::Point(348, 222);
-			   this->requsetpass->Margin = System::Windows::Forms::Padding(2);
+			   this->requsetpass->Location = System::Drawing::Point(251, 203);
+			   this->requsetpass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->requsetpass->Name = L"requsetpass";
 			   this->requsetpass->Size = System::Drawing::Size(138, 33);
 			   this->requsetpass->TabIndex = 19;
@@ -1563,8 +1566,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->login_ShowPass_but->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			   this->login_ShowPass_but->FlatAppearance->BorderSize = 0;
 			   this->login_ShowPass_but->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->login_ShowPass_but->Location = System::Drawing::Point(661, 364);
-			   this->login_ShowPass_but->Margin = System::Windows::Forms::Padding(2);
+			   this->login_ShowPass_but->Location = System::Drawing::Point(546, 344);
+			   this->login_ShowPass_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->login_ShowPass_but->Name = L"login_ShowPass_but";
 			   this->login_ShowPass_but->Size = System::Drawing::Size(27, 26);
 			   this->login_ShowPass_but->TabIndex = 17;
@@ -1578,10 +1581,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->Requset1->Controls->Add(this->request_regis_but);
 			   this->Requset1->Controls->Add(this->RequsetToRegis);
 			   this->Requset1->Dock = System::Windows::Forms::DockStyle::Right;
-			   this->Requset1->Location = System::Drawing::Point(1046, 0);
-			   this->Requset1->Margin = System::Windows::Forms::Padding(2);
+			   this->Requset1->Location = System::Drawing::Point(860, 0);
+			   this->Requset1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->Requset1->Name = L"Requset1";
-			   this->Requset1->Size = System::Drawing::Size(292, 724);
+			   this->Requset1->Size = System::Drawing::Size(292, 683);
 			   this->Requset1->TabIndex = 18;
 			   // 
 			   // request_regis_but
@@ -1594,7 +1597,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->request_regis_but->ForeColor = System::Drawing::SystemColors::Control;
 			   this->request_regis_but->Location = System::Drawing::Point(43, 292);
-			   this->request_regis_but->Margin = System::Windows::Forms::Padding(2);
+			   this->request_regis_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->request_regis_but->Name = L"request_regis_but";
 			   this->request_regis_but->Size = System::Drawing::Size(160, 36);
 			   this->request_regis_but->TabIndex = 8;
@@ -1640,9 +1643,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->Info->Controls->Add(this->member1);
 			   this->Info->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->Info->Location = System::Drawing::Point(0, 0);
-			   this->Info->Margin = System::Windows::Forms::Padding(2);
+			   this->Info->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->Info->Name = L"Info";
-			   this->Info->Size = System::Drawing::Size(1338, 724);
+			   this->Info->Size = System::Drawing::Size(1152, 683);
 			   this->Info->TabIndex = 23;
 			   // 
 			   // label10
@@ -1651,13 +1654,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->label10->AutoSize = true;
 			   this->label10->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->label10->ForeColor = System::Drawing::Color::White;
-			   this->label10->Location = System::Drawing::Point(215, 31);
+			   this->label10->Location = System::Drawing::Point(186, 50);
 			   this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->label10->Name = L"label10";
-			   this->label10->Size = System::Drawing::Size(131, 36);
+			   this->label10->Size = System::Drawing::Size(104, 29);
 			   this->label10->TabIndex = 25;
 			   this->label10->Text = L"GEN_45";
 			   // 
@@ -1671,7 +1674,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->backtolog->LinkColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 					static_cast<System::Int32>(static_cast<System::Byte>(224)));
-			   this->backtolog->Location = System::Drawing::Point(438, 0);
+			   this->backtolog->Location = System::Drawing::Point(337, 0);
 			   this->backtolog->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->backtolog->Name = L"backtolog";
 			   this->backtolog->Size = System::Drawing::Size(134, 25);
@@ -1687,9 +1690,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
 			   this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->pictureBox5->Dock = System::Windows::Forms::DockStyle::Right;
-			   this->pictureBox5->Location = System::Drawing::Point(572, 0);
+			   this->pictureBox5->Location = System::Drawing::Point(471, 0);
 			   this->pictureBox5->Name = L"pictureBox5";
-			   this->pictureBox5->Size = System::Drawing::Size(766, 724);
+			   this->pictureBox5->Size = System::Drawing::Size(681, 683);
 			   this->pictureBox5->TabIndex = 24;
 			   this->pictureBox5->TabStop = false;
 			   // 
@@ -1699,13 +1702,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->label19->AutoSize = true;
 			   this->label19->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->label19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->label19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->label19->ForeColor = System::Drawing::Color::White;
-			   this->label19->Location = System::Drawing::Point(172, 83);
+			   this->label19->Location = System::Drawing::Point(143, 102);
 			   this->label19->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->label19->Name = L"label19";
-			   this->label19->Size = System::Drawing::Size(216, 36);
+			   this->label19->Size = System::Drawing::Size(184, 29);
 			   this->label19->TabIndex = 14;
 			   this->label19->Text = L"Team members";
 			   // 
@@ -1715,13 +1718,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->IDMember7->AutoSize = true;
 			   this->IDMember7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->IDMember7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->IDMember7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->IDMember7->ForeColor = System::Drawing::Color::White;
-			   this->IDMember7->Location = System::Drawing::Point(333, 518);
+			   this->IDMember7->Location = System::Drawing::Point(249, 527);
 			   this->IDMember7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->IDMember7->Name = L"IDMember7";
-			   this->IDMember7->Size = System::Drawing::Size(222, 36);
+			   this->IDMember7->Size = System::Drawing::Size(172, 29);
 			   this->IDMember7->TabIndex = 13;
 			   this->IDMember7->Text = L"ID:2023170152";
 			   // 
@@ -1731,13 +1734,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->member7->AutoSize = true;
 			   this->member7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->member7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->member7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->member7->ForeColor = System::Drawing::Color::White;
-			   this->member7->Location = System::Drawing::Point(19, 518);
+			   this->member7->Location = System::Drawing::Point(43, 527);
 			   this->member7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->member7->Name = L"member7";
-			   this->member7->Size = System::Drawing::Size(183, 36);
+			   this->member7->Size = System::Drawing::Size(150, 29);
 			   this->member7->TabIndex = 12;
 			   this->member7->Text = L"Toka Ahmed";
 			   // 
@@ -1747,13 +1750,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->IDMember6->AutoSize = true;
 			   this->IDMember6->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->IDMember6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->IDMember6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->IDMember6->ForeColor = System::Drawing::Color::White;
-			   this->IDMember6->Location = System::Drawing::Point(333, 457);
+			   this->IDMember6->Location = System::Drawing::Point(249, 466);
 			   this->IDMember6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->IDMember6->Name = L"IDMember6";
-			   this->IDMember6->Size = System::Drawing::Size(222, 36);
+			   this->IDMember6->Size = System::Drawing::Size(172, 29);
 			   this->IDMember6->TabIndex = 11;
 			   this->IDMember6->Text = L"ID:2023170186";
 			   // 
@@ -1763,13 +1766,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->member6->AutoSize = true;
 			   this->member6->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->member6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->member6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->member6->ForeColor = System::Drawing::Color::White;
-			   this->member6->Location = System::Drawing::Point(19, 457);
+			   this->member6->Location = System::Drawing::Point(43, 466);
 			   this->member6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->member6->Name = L"member6";
-			   this->member6->Size = System::Drawing::Size(210, 36);
+			   this->member6->Size = System::Drawing::Size(172, 29);
 			   this->member6->TabIndex = 10;
 			   this->member6->Text = L"Habiba Khaled";
 			   // 
@@ -1779,13 +1782,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->IDMember5->AutoSize = true;
 			   this->IDMember5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->IDMember5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->IDMember5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->IDMember5->ForeColor = System::Drawing::Color::White;
-			   this->IDMember5->Location = System::Drawing::Point(333, 397);
+			   this->IDMember5->Location = System::Drawing::Point(249, 406);
 			   this->IDMember5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->IDMember5->Name = L"IDMember5";
-			   this->IDMember5->Size = System::Drawing::Size(222, 36);
+			   this->IDMember5->Size = System::Drawing::Size(172, 29);
 			   this->IDMember5->TabIndex = 9;
 			   this->IDMember5->Text = L"ID:2023170570";
 			   // 
@@ -1795,13 +1798,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->member5->AutoSize = true;
 			   this->member5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->member5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->member5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->member5->ForeColor = System::Drawing::Color::White;
-			   this->member5->Location = System::Drawing::Point(19, 397);
+			   this->member5->Location = System::Drawing::Point(43, 406);
 			   this->member5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->member5->Name = L"member5";
-			   this->member5->Size = System::Drawing::Size(215, 36);
+			   this->member5->Size = System::Drawing::Size(172, 29);
 			   this->member5->TabIndex = 8;
 			   this->member5->Text = L"Marwan Sobhy";
 			   // 
@@ -1811,13 +1814,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->IDMember3->AutoSize = true;
 			   this->IDMember3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->IDMember3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->IDMember3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->IDMember3->ForeColor = System::Drawing::Color::White;
-			   this->IDMember3->Location = System::Drawing::Point(333, 277);
+			   this->IDMember3->Location = System::Drawing::Point(249, 286);
 			   this->IDMember3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->IDMember3->Name = L"IDMember3";
-			   this->IDMember3->Size = System::Drawing::Size(222, 36);
+			   this->IDMember3->Size = System::Drawing::Size(172, 29);
 			   this->IDMember3->TabIndex = 7;
 			   this->IDMember3->Text = L"ID:2023170585";
 			   // 
@@ -1827,13 +1830,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->member3->AutoSize = true;
 			   this->member3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->member3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->member3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->member3->ForeColor = System::Drawing::Color::White;
-			   this->member3->Location = System::Drawing::Point(19, 277);
+			   this->member3->Location = System::Drawing::Point(43, 286);
 			   this->member3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->member3->Name = L"member3";
-			   this->member3->Size = System::Drawing::Size(188, 36);
+			   this->member3->Size = System::Drawing::Size(154, 29);
 			   this->member3->TabIndex = 6;
 			   this->member3->Text = L"Mariam Said ";
 			   // 
@@ -1843,13 +1846,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->IDMember4->AutoSize = true;
 			   this->IDMember4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->IDMember4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->IDMember4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->IDMember4->ForeColor = System::Drawing::Color::White;
-			   this->IDMember4->Location = System::Drawing::Point(333, 337);
+			   this->IDMember4->Location = System::Drawing::Point(249, 346);
 			   this->IDMember4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->IDMember4->Name = L"IDMember4";
-			   this->IDMember4->Size = System::Drawing::Size(222, 36);
+			   this->IDMember4->Size = System::Drawing::Size(172, 29);
 			   this->IDMember4->TabIndex = 5;
 			   this->IDMember4->Text = L"ID:2023170184";
 			   // 
@@ -1859,13 +1862,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->member4->AutoSize = true;
 			   this->member4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->member4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->member4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->member4->ForeColor = System::Drawing::Color::White;
-			   this->member4->Location = System::Drawing::Point(19, 337);
+			   this->member4->Location = System::Drawing::Point(43, 346);
 			   this->member4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->member4->Name = L"member4";
-			   this->member4->Size = System::Drawing::Size(191, 36);
+			   this->member4->Size = System::Drawing::Size(157, 29);
 			   this->member4->TabIndex = 4;
 			   this->member4->Text = L"Habiba Basel";
 			   // 
@@ -1875,13 +1878,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->IDMember2->AutoSize = true;
 			   this->IDMember2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->IDMember2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->IDMember2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->IDMember2->ForeColor = System::Drawing::Color::White;
-			   this->IDMember2->Location = System::Drawing::Point(333, 217);
+			   this->IDMember2->Location = System::Drawing::Point(249, 226);
 			   this->IDMember2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->IDMember2->Name = L"IDMember2";
-			   this->IDMember2->Size = System::Drawing::Size(222, 36);
+			   this->IDMember2->Size = System::Drawing::Size(172, 29);
 			   this->IDMember2->TabIndex = 3;
 			   this->IDMember2->Text = L"ID:2023170271";
 			   // 
@@ -1891,13 +1894,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->member2->AutoSize = true;
 			   this->member2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->member2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->member2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->member2->ForeColor = System::Drawing::Color::White;
-			   this->member2->Location = System::Drawing::Point(19, 217);
+			   this->member2->Location = System::Drawing::Point(43, 226);
 			   this->member2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->member2->Name = L"member2";
-			   this->member2->Size = System::Drawing::Size(245, 36);
+			   this->member2->Size = System::Drawing::Size(202, 29);
 			   this->member2->TabIndex = 2;
 			   this->member2->Text = L"Samaa Mohamed";
 			   // 
@@ -1907,13 +1910,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->IDMember1->AutoSize = true;
 			   this->IDMember1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->IDMember1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->IDMember1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->IDMember1->ForeColor = System::Drawing::Color::White;
-			   this->IDMember1->Location = System::Drawing::Point(333, 157);
+			   this->IDMember1->Location = System::Drawing::Point(249, 166);
 			   this->IDMember1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->IDMember1->Name = L"IDMember1";
-			   this->IDMember1->Size = System::Drawing::Size(222, 36);
+			   this->IDMember1->Size = System::Drawing::Size(172, 29);
 			   this->IDMember1->TabIndex = 1;
 			   this->IDMember1->Text = L"ID:2023170714";
 			   // 
@@ -1923,13 +1926,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					| System::Windows::Forms::AnchorStyles::Left));
 			   this->member1->AutoSize = true;
 			   this->member1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->member1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 22.15385F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->member1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->member1->ForeColor = System::Drawing::Color::White;
-			   this->member1->Location = System::Drawing::Point(19, 157);
+			   this->member1->Location = System::Drawing::Point(43, 166);
 			   this->member1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->member1->Name = L"member1";
-			   this->member1->Size = System::Drawing::Size(251, 36);
+			   this->member1->Size = System::Drawing::Size(202, 29);
 			   this->member1->TabIndex = 0;
 			   this->member1->Text = L"Youssif El-Sayed ";
 			   // 
@@ -1939,26 +1942,26 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_conpage->Controls->Add(this->side_AD_bar_pn);
 			   this->AD_conpage->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_conpage->Location = System::Drawing::Point(0, 0);
-			   this->AD_conpage->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_conpage->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_conpage->Name = L"AD_conpage";
-			   this->AD_conpage->Size = System::Drawing::Size(1338, 724);
+			   this->AD_conpage->Size = System::Drawing::Size(1152, 683);
 			   this->AD_conpage->TabIndex = 8;
 			   // 
 			   // AD_pages
 			   // 
 			   this->AD_pages->Controls->Add(this->AD_view_Hinfo);
-			   this->AD_pages->Controls->Add(this->AD_editAinfo);
-			   this->AD_pages->Controls->Add(this->AD_edit_Hlist);
-			   this->AD_pages->Controls->Add(this->AD_modify_Hinfo);
-			   this->AD_pages->Controls->Add(this->AD_viewAinfo);
 			   this->AD_pages->Controls->Add(this->AD_SortingH);
+			   this->AD_pages->Controls->Add(this->AD_editAinfo);
+			   this->AD_pages->Controls->Add(this->AD_modify_Hinfo);
+			   this->AD_pages->Controls->Add(this->AD_edit_Hlist);
+			   this->AD_pages->Controls->Add(this->AD_viewAinfo);
 			   this->AD_pages->Controls->Add(this->AD_view_Pinfo);
 			   this->AD_pages->Controls->Add(this->AD_startWindow);
 			   this->AD_pages->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_pages->Location = System::Drawing::Point(257, 0);
-			   this->AD_pages->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_pages->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_pages->Name = L"AD_pages";
-			   this->AD_pages->Size = System::Drawing::Size(1081, 724);
+			   this->AD_pages->Size = System::Drawing::Size(895, 683);
 			   this->AD_pages->TabIndex = 1;
 			   // 
 			   // AD_view_Hinfo
@@ -1978,9 +1981,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_view_Hinfo->Controls->Add(this->AD_viewHinfoHeader);
 			   this->AD_view_Hinfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_view_Hinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_view_Hinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_view_Hinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_view_Hinfo->Name = L"AD_view_Hinfo";
-			   this->AD_view_Hinfo->Size = System::Drawing::Size(1081, 724);
+			   this->AD_view_Hinfo->Size = System::Drawing::Size(895, 683);
 			   this->AD_view_Hinfo->TabIndex = 0;
 			   this->AD_view_Hinfo->Leave += gcnew System::EventHandler(this, &mainPage::AD_view_Hinfo_Leave);
 			   // 
@@ -1990,7 +1993,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_AllhospitalData->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_AllhospitalData->Location = System::Drawing::Point(0, 86);
 			   this->AD_AllhospitalData->Name = L"AD_AllhospitalData";
-			   this->AD_AllhospitalData->Size = System::Drawing::Size(1081, 638);
+			   this->AD_AllhospitalData->Size = System::Drawing::Size(895, 597);
 			   this->AD_AllhospitalData->TabIndex = 14;
 			   this->AD_AllhospitalData->Visible = false;
 			   // 
@@ -2000,7 +2003,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_text2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_text2->ForeColor = System::Drawing::Color::White;
-			   this->AD_text2->Location = System::Drawing::Point(663, 368);
+			   this->AD_text2->Location = System::Drawing::Point(520, 368);
 			   this->AD_text2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->AD_text2->Name = L"AD_text2";
 			   this->AD_text2->Size = System::Drawing::Size(106, 18);
@@ -2014,7 +2017,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_text1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.18462F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_text1->ForeColor = System::Drawing::Color::White;
-			   this->AD_text1->Location = System::Drawing::Point(662, 133);
+			   this->AD_text1->Location = System::Drawing::Point(519, 133);
 			   this->AD_text1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->AD_text1->Name = L"AD_text1";
 			   this->AD_text1->Size = System::Drawing::Size(84, 20);
@@ -2029,10 +2032,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_viewHinfo_HSplist->FormattingEnabled = true;
 			   this->AD_viewHinfo_HSplist->ItemHeight = 20;
 			   this->AD_viewHinfo_HSplist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Specialties List" });
-			   this->AD_viewHinfo_HSplist->Location = System::Drawing::Point(663, 392);
-			   this->AD_viewHinfo_HSplist->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_viewHinfo_HSplist->Location = System::Drawing::Point(520, 392);
+			   this->AD_viewHinfo_HSplist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_viewHinfo_HSplist->Name = L"AD_viewHinfo_HSplist";
-			   this->AD_viewHinfo_HSplist->Size = System::Drawing::Size(319, 164);
+			   this->AD_viewHinfo_HSplist->Size = System::Drawing::Size(266, 144);
 			   this->AD_viewHinfo_HSplist->TabIndex = 11;
 			   // 
 			   // AD_viewHinfo_HCllist
@@ -2042,10 +2045,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_viewHinfo_HCllist->FormattingEnabled = true;
 			   this->AD_viewHinfo_HCllist->ItemHeight = 20;
 			   this->AD_viewHinfo_HCllist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Clinic List" });
-			   this->AD_viewHinfo_HCllist->Location = System::Drawing::Point(662, 157);
-			   this->AD_viewHinfo_HCllist->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_viewHinfo_HCllist->Location = System::Drawing::Point(519, 157);
+			   this->AD_viewHinfo_HCllist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_viewHinfo_HCllist->Name = L"AD_viewHinfo_HCllist";
-			   this->AD_viewHinfo_HCllist->Size = System::Drawing::Size(320, 144);
+			   this->AD_viewHinfo_HCllist->Size = System::Drawing::Size(267, 124);
 			   this->AD_viewHinfo_HCllist->TabIndex = 10;
 			   // 
 			   // AD_viewHinfo_ID
@@ -2148,9 +2151,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_viewHinfoHeader->Controls->Add(this->AD_viewHList);
 			   this->AD_viewHinfoHeader->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->AD_viewHinfoHeader->Location = System::Drawing::Point(0, 0);
-			   this->AD_viewHinfoHeader->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_viewHinfoHeader->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_viewHinfoHeader->Name = L"AD_viewHinfoHeader";
-			   this->AD_viewHinfoHeader->Size = System::Drawing::Size(1081, 86);
+			   this->AD_viewHinfoHeader->Size = System::Drawing::Size(895, 86);
 			   this->AD_viewHinfoHeader->TabIndex = 1;
 			   // 
 			   // AD_viewAllH
@@ -2161,7 +2164,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->AD_viewAllH->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_viewAllH.Image")));
 			   this->AD_viewAllH->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_viewAllH->Location = System::Drawing::Point(945, 20);
+			   this->AD_viewAllH->Location = System::Drawing::Point(738, 26);
 			   this->AD_viewAllH->Margin = System::Windows::Forms::Padding(2, 41, 2, 2);
 			   this->AD_viewAllH->Name = L"AD_viewAllH";
 			   this->AD_viewAllH->Size = System::Drawing::Size(125, 29);
@@ -2209,7 +2212,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->AD_viewHList->FormattingEnabled = true;
 			   this->AD_viewHList->Location = System::Drawing::Point(22, 43);
-			   this->AD_viewHList->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_viewHList->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_viewHList->Name = L"AD_viewHList";
 			   this->AD_viewHList->Size = System::Drawing::Size(186, 30);
 			   this->AD_viewHList->TabIndex = 0;
@@ -2222,9 +2225,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editAinfo->Controls->Add(this->AD_GofCHEditAinfo);
 			   this->AD_editAinfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_editAinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_editAinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editAinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editAinfo->Name = L"AD_editAinfo";
-			   this->AD_editAinfo->Size = System::Drawing::Size(1081, 724);
+			   this->AD_editAinfo->Size = System::Drawing::Size(895, 683);
 			   this->AD_editAinfo->TabIndex = 6;
 			   // 
 			   // AD_editRemain
@@ -2237,9 +2240,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editRemain->Controls->Add(this->AD_editRemain_lab);
 			   this->AD_editRemain->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_editRemain->Location = System::Drawing::Point(190, 0);
-			   this->AD_editRemain->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editRemain->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editRemain->Name = L"AD_editRemain";
-			   this->AD_editRemain->Size = System::Drawing::Size(891, 724);
+			   this->AD_editRemain->Size = System::Drawing::Size(705, 683);
 			   this->AD_editRemain->TabIndex = 14;
 			   // 
 			   // button3
@@ -2252,7 +2255,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->button3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button3.Image")));
 			   this->button3->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
 			   this->button3->Location = System::Drawing::Point(78, 246);
-			   this->button3->Margin = System::Windows::Forms::Padding(2);
+			   this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->button3->Name = L"button3";
 			   this->button3->Size = System::Drawing::Size(68, 34);
 			   this->button3->TabIndex = 13;
@@ -2282,7 +2285,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editRemain_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->AD_editRemain_TB->Location = System::Drawing::Point(66, 112);
-			   this->AD_editRemain_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editRemain_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editRemain_TB->Name = L"AD_editRemain_TB";
 			   this->AD_editRemain_TB->Size = System::Drawing::Size(272, 31);
 			   this->AD_editRemain_TB->TabIndex = 1;
@@ -2320,9 +2323,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editpass->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_editpass->Location = System::Drawing::Point(190, 0);
-			   this->AD_editpass->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editpass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editpass->Name = L"AD_editpass";
-			   this->AD_editpass->Size = System::Drawing::Size(891, 724);
+			   this->AD_editpass->Size = System::Drawing::Size(705, 683);
 			   this->AD_editpass->TabIndex = 13;
 			   // 
 			   // AD_ShowNewPass
@@ -2332,7 +2335,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_ShowNewPass->FlatAppearance->BorderSize = 0;
 			   this->AD_ShowNewPass->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->AD_ShowNewPass->Location = System::Drawing::Point(530, 263);
-			   this->AD_ShowNewPass->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_ShowNewPass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_ShowNewPass->Name = L"AD_ShowNewPass";
 			   this->AD_ShowNewPass->Size = System::Drawing::Size(31, 29);
 			   this->AD_ShowNewPass->TabIndex = 19;
@@ -2346,7 +2349,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_ShowOldPass->FlatAppearance->BorderSize = 0;
 			   this->AD_ShowOldPass->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->AD_ShowOldPass->Location = System::Drawing::Point(530, 116);
-			   this->AD_ShowOldPass->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_ShowOldPass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_ShowOldPass->Name = L"AD_ShowOldPass";
 			   this->AD_ShowOldPass->Size = System::Drawing::Size(31, 29);
 			   this->AD_ShowOldPass->TabIndex = 18;
@@ -2377,7 +2380,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_Changepass->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_Changepass.Image")));
 			   this->AD_Changepass->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
 			   this->AD_Changepass->Location = System::Drawing::Point(50, 456);
-			   this->AD_Changepass->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_Changepass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_Changepass->Name = L"AD_Changepass";
 			   this->AD_Changepass->Size = System::Drawing::Size(138, 48);
 			   this->AD_Changepass->TabIndex = 14;
@@ -2394,7 +2397,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_askconfPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->AD_askconfPass_TB->Location = System::Drawing::Point(49, 335);
-			   this->AD_askconfPass_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_askconfPass_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_askconfPass_TB->Name = L"AD_askconfPass_TB";
 			   this->AD_askconfPass_TB->Size = System::Drawing::Size(417, 24);
 			   this->AD_askconfPass_TB->TabIndex = 6;
@@ -2420,7 +2423,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_askNewPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->AD_askNewPass_TB->Location = System::Drawing::Point(49, 225);
-			   this->AD_askNewPass_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_askNewPass_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_askNewPass_TB->Name = L"AD_askNewPass_TB";
 			   this->AD_askNewPass_TB->Size = System::Drawing::Size(417, 24);
 			   this->AD_askNewPass_TB->TabIndex = 4;
@@ -2446,7 +2449,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_askOldPass_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->AD_askOldPass_TB->Location = System::Drawing::Point(49, 115);
-			   this->AD_askOldPass_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_askOldPass_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_askOldPass_TB->Name = L"AD_askOldPass_TB";
 			   this->AD_askOldPass_TB->Size = System::Drawing::Size(417, 24);
 			   this->AD_askOldPass_TB->TabIndex = 2;
@@ -2471,9 +2474,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_edit_wiating->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			   this->AD_edit_wiating->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_edit_wiating->Location = System::Drawing::Point(190, 0);
-			   this->AD_edit_wiating->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_edit_wiating->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_edit_wiating->Name = L"AD_edit_wiating";
-			   this->AD_edit_wiating->Size = System::Drawing::Size(891, 724);
+			   this->AD_edit_wiating->Size = System::Drawing::Size(705, 683);
 			   this->AD_edit_wiating->TabIndex = 15;
 			   // 
 			   // AD_GofCHEditAinfo
@@ -2486,9 +2489,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_GofCHEditAinfo->Controls->Add(this->AD_editName);
 			   this->AD_GofCHEditAinfo->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->AD_GofCHEditAinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_GofCHEditAinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_GofCHEditAinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_GofCHEditAinfo->Name = L"AD_GofCHEditAinfo";
-			   this->AD_GofCHEditAinfo->Size = System::Drawing::Size(190, 724);
+			   this->AD_GofCHEditAinfo->Size = System::Drawing::Size(190, 683);
 			   this->AD_GofCHEditAinfo->TabIndex = 12;
 			   // 
 			   // AD_editPhNum
@@ -2499,7 +2502,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editPhNum->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_editPhNum->Location = System::Drawing::Point(0, 396);
-			   this->AD_editPhNum->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editPhNum->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editPhNum->Name = L"AD_editPhNum";
 			   this->AD_editPhNum->Size = System::Drawing::Size(190, 99);
 			   this->AD_editPhNum->TabIndex = 6;
@@ -2515,7 +2518,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editpass_button->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_editpass_button->Location = System::Drawing::Point(0, 297);
-			   this->AD_editpass_button->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editpass_button->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editpass_button->Name = L"AD_editpass_button";
 			   this->AD_editpass_button->Size = System::Drawing::Size(190, 99);
 			   this->AD_editpass_button->TabIndex = 5;
@@ -2531,7 +2534,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editusername->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_editusername->Location = System::Drawing::Point(0, 198);
-			   this->AD_editusername->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editusername->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editusername->Name = L"AD_editusername";
 			   this->AD_editusername->Size = System::Drawing::Size(190, 99);
 			   this->AD_editusername->TabIndex = 4;
@@ -2548,7 +2551,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editAge->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_editAge->Location = System::Drawing::Point(0, 99);
-			   this->AD_editAge->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editAge->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editAge->Name = L"AD_editAge";
 			   this->AD_editAge->Size = System::Drawing::Size(190, 99);
 			   this->AD_editAge->TabIndex = 3;
@@ -2564,7 +2567,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_editName->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_editName->Location = System::Drawing::Point(0, 0);
-			   this->AD_editName->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_editName->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_editName->Name = L"AD_editName";
 			   this->AD_editName->Size = System::Drawing::Size(190, 99);
 			   this->AD_editName->TabIndex = 2;
@@ -2580,9 +2583,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_edit_Hlist->Controls->Add(this->AD_header_editH);
 			   this->AD_edit_Hlist->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_edit_Hlist->Location = System::Drawing::Point(0, 0);
-			   this->AD_edit_Hlist->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_edit_Hlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_edit_Hlist->Name = L"AD_edit_Hlist";
-			   this->AD_edit_Hlist->Size = System::Drawing::Size(1081, 724);
+			   this->AD_edit_Hlist->Size = System::Drawing::Size(895, 683);
 			   this->AD_edit_Hlist->TabIndex = 2;
 			   // 
 			   // AD_addHlayout
@@ -2610,9 +2613,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_addHlayout->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_addHlayout->Location = System::Drawing::Point(0, 65);
-			   this->AD_addHlayout->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_addHlayout->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_addHlayout->Name = L"AD_addHlayout";
-			   this->AD_addHlayout->Size = System::Drawing::Size(1081, 659);
+			   this->AD_addHlayout->Size = System::Drawing::Size(895, 618);
 			   this->AD_addHlayout->TabIndex = 14;
 			   // 
 			   // AD_HSPorder_lab
@@ -2636,7 +2639,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HSPorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HSPorder_TB->Location = System::Drawing::Point(92, 327);
-			   this->AD_HSPorder_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HSPorder_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HSPorder_TB->Name = L"AD_HSPorder_TB";
 			   this->AD_HSPorder_TB->Size = System::Drawing::Size(285, 28);
 			   this->AD_HSPorder_TB->TabIndex = 24;
@@ -2662,7 +2665,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HPRBsorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HPRBsorder_TB->Location = System::Drawing::Point(488, 251);
-			   this->AD_HPRBsorder_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HPRBsorder_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HPRBsorder_TB->Name = L"AD_HPRBsorder_TB";
 			   this->AD_HPRBsorder_TB->Size = System::Drawing::Size(285, 28);
 			   this->AD_HPRBsorder_TB->TabIndex = 21;
@@ -2688,7 +2691,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HIDorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HIDorder_TB->Location = System::Drawing::Point(488, 95);
-			   this->AD_HIDorder_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HIDorder_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HIDorder_TB->Name = L"AD_HIDorder_TB";
 			   this->AD_HIDorder_TB->Size = System::Drawing::Size(285, 28);
 			   this->AD_HIDorder_TB->TabIndex = 19;
@@ -2714,7 +2717,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HRateorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HRateorder_TB->Location = System::Drawing::Point(487, 173);
-			   this->AD_HRateorder_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HRateorder_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HRateorder_TB->Name = L"AD_HRateorder_TB";
 			   this->AD_HRateorder_TB->Size = System::Drawing::Size(285, 28);
 			   this->AD_HRateorder_TB->TabIndex = 17;
@@ -2741,7 +2744,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HRPorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HRPorder_TB->Location = System::Drawing::Point(92, 247);
-			   this->AD_HRPorder_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HRPorder_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HRPorder_TB->Name = L"AD_HRPorder_TB";
 			   this->AD_HRPorder_TB->Size = System::Drawing::Size(285, 28);
 			   this->AD_HRPorder_TB->TabIndex = 15;
@@ -2767,7 +2770,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HBPorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HBPorder_TB->Location = System::Drawing::Point(92, 167);
-			   this->AD_HBPorder_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HBPorder_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HBPorder_TB->Name = L"AD_HBPorder_TB";
 			   this->AD_HBPorder_TB->Size = System::Drawing::Size(285, 28);
 			   this->AD_HBPorder_TB->TabIndex = 13;
@@ -2782,7 +2785,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_addH->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_addH.Image")));
 			   this->AD_addH->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
 			   this->AD_addH->Location = System::Drawing::Point(460, 305);
-			   this->AD_addH->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_addH->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_addH->Name = L"AD_addH";
 			   this->AD_addH->Size = System::Drawing::Size(125, 52);
 			   this->AD_addH->TabIndex = 11;
@@ -2812,7 +2815,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HNorder_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HNorder_TB->Location = System::Drawing::Point(92, 88);
-			   this->AD_HNorder_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HNorder_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HNorder_TB->Name = L"AD_HNorder_TB";
 			   this->AD_HNorder_TB->Size = System::Drawing::Size(285, 28);
 			   this->AD_HNorder_TB->TabIndex = 8;
@@ -2838,9 +2841,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_waitingP->Controls->Add(this->pictureBox1);
 			   this->AD_waitingP->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_waitingP->Location = System::Drawing::Point(0, 65);
-			   this->AD_waitingP->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_waitingP->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_waitingP->Name = L"AD_waitingP";
-			   this->AD_waitingP->Size = System::Drawing::Size(1081, 659);
+			   this->AD_waitingP->Size = System::Drawing::Size(895, 618);
 			   this->AD_waitingP->TabIndex = 17;
 			   // 
 			   // pictureBox1
@@ -2848,9 +2851,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->pictureBox1->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			   this->pictureBox1->Location = System::Drawing::Point(0, 0);
-			   this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
+			   this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->pictureBox1->Name = L"pictureBox1";
-			   this->pictureBox1->Size = System::Drawing::Size(1081, 659);
+			   this->pictureBox1->Size = System::Drawing::Size(895, 618);
 			   this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureBox1->TabIndex = 0;
 			   this->pictureBox1->TabStop = false;
@@ -2869,9 +2872,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_deleteHlayout->Controls->Add(this->AD_selectHD);
 			   this->AD_deleteHlayout->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_deleteHlayout->Location = System::Drawing::Point(0, 65);
-			   this->AD_deleteHlayout->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_deleteHlayout->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_deleteHlayout->Name = L"AD_deleteHlayout";
-			   this->AD_deleteHlayout->Size = System::Drawing::Size(1081, 659);
+			   this->AD_deleteHlayout->Size = System::Drawing::Size(895, 618);
 			   this->AD_deleteHlayout->TabIndex = 16;
 			   // 
 			   // label15
@@ -2892,7 +2895,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->checkBox1->AutoSize = true;
 			   this->checkBox1->BackColor = System::Drawing::Color::Transparent;
 			   this->checkBox1->Location = System::Drawing::Point(42, 316);
-			   this->checkBox1->Margin = System::Windows::Forms::Padding(2);
+			   this->checkBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->checkBox1->Name = L"checkBox1";
 			   this->checkBox1->Size = System::Drawing::Size(91, 17);
 			   this->checkBox1->TabIndex = 13;
@@ -2948,7 +2951,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HListDEL->FormattingEnabled = true;
 			   this->AD_HListDEL->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"empty" });
 			   this->AD_HListDEL->Location = System::Drawing::Point(42, 222);
-			   this->AD_HListDEL->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HListDEL->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HListDEL->Name = L"AD_HListDEL";
 			   this->AD_HListDEL->Size = System::Drawing::Size(232, 30);
 			   this->AD_HListDEL->TabIndex = 6;
@@ -2962,7 +2965,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_selectHD->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_selectHD->Location = System::Drawing::Point(284, 315);
-			   this->AD_selectHD->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_selectHD->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_selectHD->Name = L"AD_selectHD";
 			   this->AD_selectHD->Size = System::Drawing::Size(94, 27);
 			   this->AD_selectHD->TabIndex = 9;
@@ -2977,9 +2980,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_header_editH->Controls->Add(this->AD_addH_but);
 			   this->AD_header_editH->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->AD_header_editH->Location = System::Drawing::Point(0, 0);
-			   this->AD_header_editH->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_header_editH->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_header_editH->Name = L"AD_header_editH";
-			   this->AD_header_editH->Size = System::Drawing::Size(1081, 65);
+			   this->AD_header_editH->Size = System::Drawing::Size(895, 65);
 			   this->AD_header_editH->TabIndex = 15;
 			   // 
 			   // AD_deleteH
@@ -2990,8 +2993,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->AD_deleteH->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_deleteH.Image")));
 			   this->AD_deleteH->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_deleteH->Location = System::Drawing::Point(562, 7);
-			   this->AD_deleteH->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_deleteH->Location = System::Drawing::Point(475, 8);
+			   this->AD_deleteH->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_deleteH->Name = L"AD_deleteH";
 			   this->AD_deleteH->Size = System::Drawing::Size(90, 49);
 			   this->AD_deleteH->TabIndex = 13;
@@ -3008,8 +3011,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->AD_addH_but->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_addH_but.Image")));
 			   this->AD_addH_but->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_addH_but->Location = System::Drawing::Point(375, 7);
-			   this->AD_addH_but->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_addH_but->Location = System::Drawing::Point(288, 8);
+			   this->AD_addH_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_addH_but->Name = L"AD_addH_but";
 			   this->AD_addH_but->Size = System::Drawing::Size(79, 49);
 			   this->AD_addH_but->TabIndex = 12;
@@ -3027,9 +3030,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_modify_Hinfo->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_modify_Hinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_modify_Hinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_modify_Hinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_modify_Hinfo->Name = L"AD_modify_Hinfo";
-			   this->AD_modify_Hinfo->Size = System::Drawing::Size(1081, 724);
+			   this->AD_modify_Hinfo->Size = System::Drawing::Size(895, 683);
 			   this->AD_modify_Hinfo->TabIndex = 3;
 			   // 
 			   // AD_Modifyinput
@@ -3046,9 +3049,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_Modifyinput->Controls->Add(this->AD_nameOfinput);
 			   this->AD_Modifyinput->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_Modifyinput->Location = System::Drawing::Point(208, 58);
-			   this->AD_Modifyinput->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_Modifyinput->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_Modifyinput->Name = L"AD_Modifyinput";
-			   this->AD_Modifyinput->Size = System::Drawing::Size(873, 666);
+			   this->AD_Modifyinput->Size = System::Drawing::Size(687, 625);
 			   this->AD_Modifyinput->TabIndex = 12;
 			   this->AD_Modifyinput->Visible = false;
 			   // 
@@ -3070,10 +3073,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_modifyHSC_layout->Controls->Add(this->AD_ADDHSC_lay);
 			   this->AD_modifyHSC_layout->Controls->Add(this->AD_DELHSC_lay);
 			   this->AD_modifyHSC_layout->Dock = System::Windows::Forms::DockStyle::Bottom;
-			   this->AD_modifyHSC_layout->Location = System::Drawing::Point(0, 372);
-			   this->AD_modifyHSC_layout->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_modifyHSC_layout->Location = System::Drawing::Point(0, 331);
+			   this->AD_modifyHSC_layout->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_modifyHSC_layout->Name = L"AD_modifyHSC_layout";
-			   this->AD_modifyHSC_layout->Size = System::Drawing::Size(873, 294);
+			   this->AD_modifyHSC_layout->Size = System::Drawing::Size(687, 294);
 			   this->AD_modifyHSC_layout->TabIndex = 3;
 			   // 
 			   // AD_ADDHSC_lay
@@ -3085,9 +3088,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_ADDHSC_lay->Controls->Add(this->AD_HSCorder);
 			   this->AD_ADDHSC_lay->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_ADDHSC_lay->Location = System::Drawing::Point(0, 0);
-			   this->AD_ADDHSC_lay->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_ADDHSC_lay->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_ADDHSC_lay->Name = L"AD_ADDHSC_lay";
-			   this->AD_ADDHSC_lay->Size = System::Drawing::Size(873, 294);
+			   this->AD_ADDHSC_lay->Size = System::Drawing::Size(687, 294);
 			   this->AD_ADDHSC_lay->TabIndex = 6;
 			   // 
 			   // AD_TBforAddHSC
@@ -3096,7 +3099,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_TBforAddHSC->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_TBforAddHSC->Location = System::Drawing::Point(30, 67);
-			   this->AD_TBforAddHSC->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_TBforAddHSC->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_TBforAddHSC->Name = L"AD_TBforAddHSC";
 			   this->AD_TBforAddHSC->Size = System::Drawing::Size(266, 28);
 			   this->AD_TBforAddHSC->TabIndex = 8;
@@ -3111,8 +3114,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->CloseTab2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->CloseTab2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.861538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->CloseTab2->Location = System::Drawing::Point(843, 10);
-			   this->CloseTab2->Margin = System::Windows::Forms::Padding(2);
+			   this->CloseTab2->Location = System::Drawing::Point(657, 10);
+			   this->CloseTab2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->CloseTab2->Name = L"CloseTab2";
 			   this->CloseTab2->Size = System::Drawing::Size(22, 21);
 			   this->CloseTab2->TabIndex = 7;
@@ -3139,7 +3142,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_confirmAdd->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_confirmAdd->Location = System::Drawing::Point(389, 67);
-			   this->AD_confirmAdd->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_confirmAdd->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_confirmAdd->Name = L"AD_confirmAdd";
 			   this->AD_confirmAdd->Size = System::Drawing::Size(84, 39);
 			   this->AD_confirmAdd->TabIndex = 5;
@@ -3171,9 +3174,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_DELHSC_lay->Controls->Add(this->AD_stateHSC1);
 			   this->AD_DELHSC_lay->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_DELHSC_lay->Location = System::Drawing::Point(0, 0);
-			   this->AD_DELHSC_lay->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_DELHSC_lay->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_DELHSC_lay->Name = L"AD_DELHSC_lay";
-			   this->AD_DELHSC_lay->Size = System::Drawing::Size(873, 294);
+			   this->AD_DELHSC_lay->Size = System::Drawing::Size(687, 294);
 			   this->AD_DELHSC_lay->TabIndex = 7;
 			   // 
 			   // checkBox2
@@ -3183,7 +3186,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->checkBox2->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			   this->checkBox2->Location = System::Drawing::Point(80, 144);
-			   this->checkBox2->Margin = System::Windows::Forms::Padding(2);
+			   this->checkBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->checkBox2->Name = L"checkBox2";
 			   this->checkBox2->Size = System::Drawing::Size(102, 15);
 			   this->checkBox2->TabIndex = 7;
@@ -3199,8 +3202,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->CloseTab1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->CloseTab1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.861538F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-			   this->CloseTab1->Location = System::Drawing::Point(843, 7);
-			   this->CloseTab1->Margin = System::Windows::Forms::Padding(2);
+			   this->CloseTab1->Location = System::Drawing::Point(657, 7);
+			   this->CloseTab1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->CloseTab1->Name = L"CloseTab1";
 			   this->CloseTab1->Size = System::Drawing::Size(22, 21);
 			   this->CloseTab1->TabIndex = 6;
@@ -3225,7 +3228,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_selectHSC->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_selectHSC->Location = System::Drawing::Point(458, 126);
-			   this->AD_selectHSC->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_selectHSC->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_selectHSC->Name = L"AD_selectHSC";
 			   this->AD_selectHSC->Size = System::Drawing::Size(128, 33);
 			   this->AD_selectHSC->TabIndex = 3;
@@ -3242,7 +3245,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HSClist->IntegralHeight = false;
 			   this->AD_HSClist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"empty" });
 			   this->AD_HSClist->Location = System::Drawing::Point(68, 67);
-			   this->AD_HSClist->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HSClist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HSClist->Name = L"AD_HSClist";
 			   this->AD_HSClist->Size = System::Drawing::Size(224, 27);
 			   this->AD_HSClist->TabIndex = 0;
@@ -3281,7 +3284,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_ModifyHSClist->IntegralHeight = false;
 			   this->AD_ModifyHSClist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"empty" });
 			   this->AD_ModifyHSClist->Location = System::Drawing::Point(389, 107);
-			   this->AD_ModifyHSClist->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_ModifyHSClist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_ModifyHSClist->MaxDropDownItems = 5;
 			   this->AD_ModifyHSClist->Name = L"AD_ModifyHSClist";
 			   this->AD_ModifyHSClist->Size = System::Drawing::Size(221, 27);
@@ -3297,7 +3300,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_confirmedit->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_confirmedit.Image")));
 			   this->AD_confirmedit->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
 			   this->AD_confirmedit->Location = System::Drawing::Point(19, 213);
-			   this->AD_confirmedit->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_confirmedit->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_confirmedit->Name = L"AD_confirmedit";
 			   this->AD_confirmedit->Size = System::Drawing::Size(89, 37);
 			   this->AD_confirmedit->TabIndex = 5;
@@ -3315,8 +3318,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->AD_deleteHSC->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_deleteHSC.Image")));
 			   this->AD_deleteHSC->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_deleteHSC->Location = System::Drawing::Point(544, 300);
-			   this->AD_deleteHSC->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_deleteHSC->Location = System::Drawing::Point(453, 273);
+			   this->AD_deleteHSC->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_deleteHSC->Name = L"AD_deleteHSC";
 			   this->AD_deleteHSC->Size = System::Drawing::Size(90, 49);
 			   this->AD_deleteHSC->TabIndex = 4;
@@ -3334,8 +3337,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->AD_addHSC->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_addHSC.Image")));
 			   this->AD_addHSC->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_addHSC->Location = System::Drawing::Point(304, 300);
-			   this->AD_addHSC->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_addHSC->Location = System::Drawing::Point(213, 273);
+			   this->AD_addHSC->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_addHSC->Name = L"AD_addHSC";
 			   this->AD_addHSC->Size = System::Drawing::Size(79, 49);
 			   this->AD_addHSC->TabIndex = 2;
@@ -3354,8 +3357,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_closeModify->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->AD_closeModify->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.861538F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->AD_closeModify->Location = System::Drawing::Point(843, 5);
-			   this->AD_closeModify->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_closeModify->Location = System::Drawing::Point(657, 5);
+			   this->AD_closeModify->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_closeModify->Name = L"AD_closeModify";
 			   this->AD_closeModify->Size = System::Drawing::Size(22, 21);
 			   this->AD_closeModify->TabIndex = 2;
@@ -3368,7 +3371,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_TBinput->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_TBinput->Location = System::Drawing::Point(13, 106);
-			   this->AD_TBinput->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_TBinput->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_TBinput->Name = L"AD_TBinput";
 			   this->AD_TBinput->Size = System::Drawing::Size(236, 28);
 			   this->AD_TBinput->TabIndex = 1;
@@ -3401,9 +3404,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_groupchoice->Controls->Add(this->AD_IDselected);
 			   this->AD_groupchoice->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->AD_groupchoice->Location = System::Drawing::Point(0, 58);
-			   this->AD_groupchoice->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_groupchoice->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_groupchoice->Name = L"AD_groupchoice";
-			   this->AD_groupchoice->Size = System::Drawing::Size(208, 666);
+			   this->AD_groupchoice->Size = System::Drawing::Size(208, 625);
 			   this->AD_groupchoice->TabIndex = 11;
 			   // 
 			   // AD_HCselected
@@ -3415,7 +3418,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HCselected->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HCselected->Location = System::Drawing::Point(0, 432);
-			   this->AD_HCselected->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HCselected->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HCselected->Name = L"AD_HCselected";
 			   this->AD_HCselected->Size = System::Drawing::Size(208, 53);
 			   this->AD_HCselected->TabIndex = 9;
@@ -3432,7 +3435,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HSselected->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HSselected->Location = System::Drawing::Point(0, 372);
-			   this->AD_HSselected->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HSselected->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HSselected->Name = L"AD_HSselected";
 			   this->AD_HSselected->Size = System::Drawing::Size(208, 60);
 			   this->AD_HSselected->TabIndex = 8;
@@ -3449,7 +3452,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HNselected->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HNselected->Location = System::Drawing::Point(0, 312);
-			   this->AD_HNselected->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HNselected->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HNselected->Name = L"AD_HNselected";
 			   this->AD_HNselected->Size = System::Drawing::Size(208, 60);
 			   this->AD_HNselected->TabIndex = 7;
@@ -3466,7 +3469,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_HRselected->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_HRselected->Location = System::Drawing::Point(0, 252);
-			   this->AD_HRselected->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_HRselected->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_HRselected->Name = L"AD_HRselected";
 			   this->AD_HRselected->Size = System::Drawing::Size(208, 60);
 			   this->AD_HRselected->TabIndex = 6;
@@ -3483,7 +3486,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_BPselected->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_BPselected->Location = System::Drawing::Point(0, 192);
-			   this->AD_BPselected->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_BPselected->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_BPselected->Name = L"AD_BPselected";
 			   this->AD_BPselected->Size = System::Drawing::Size(208, 60);
 			   this->AD_BPselected->TabIndex = 5;
@@ -3500,7 +3503,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_RPselected->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_RPselected->Location = System::Drawing::Point(0, 132);
-			   this->AD_RPselected->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_RPselected->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_RPselected->Name = L"AD_RPselected";
 			   this->AD_RPselected->Size = System::Drawing::Size(208, 60);
 			   this->AD_RPselected->TabIndex = 4;
@@ -3517,7 +3520,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_PRRselected->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_PRRselected->Location = System::Drawing::Point(0, 60);
-			   this->AD_PRRselected->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_PRRselected->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_PRRselected->Name = L"AD_PRRselected";
 			   this->AD_PRRselected->Size = System::Drawing::Size(208, 72);
 			   this->AD_PRRselected->TabIndex = 3;
@@ -3534,7 +3537,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_IDselected->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 15.75F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_IDselected->Location = System::Drawing::Point(0, 0);
-			   this->AD_IDselected->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_IDselected->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_IDselected->Name = L"AD_IDselected";
 			   this->AD_IDselected->Size = System::Drawing::Size(208, 60);
 			   this->AD_IDselected->TabIndex = 2;
@@ -3549,9 +3552,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_headerModify->Controls->Add(this->AD_Hlist_combox);
 			   this->AD_headerModify->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->AD_headerModify->Location = System::Drawing::Point(0, 0);
-			   this->AD_headerModify->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_headerModify->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_headerModify->Name = L"AD_headerModify";
-			   this->AD_headerModify->Size = System::Drawing::Size(1081, 58);
+			   this->AD_headerModify->Size = System::Drawing::Size(895, 58);
 			   this->AD_headerModify->TabIndex = 10;
 			   // 
 			   // label3
@@ -3574,7 +3577,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_Hlist_combox->FormattingEnabled = true;
 			   this->AD_Hlist_combox->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->AD_Hlist_combox->Location = System::Drawing::Point(222, 11);
-			   this->AD_Hlist_combox->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_Hlist_combox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_Hlist_combox->Name = L"AD_Hlist_combox";
 			   this->AD_Hlist_combox->Size = System::Drawing::Size(244, 28);
 			   this->AD_Hlist_combox->TabIndex = 0;
@@ -3589,9 +3592,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_viewAinfo->Controls->Add(this->AD_AID);
 			   this->AD_viewAinfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_viewAinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_viewAinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_viewAinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_viewAinfo->Name = L"AD_viewAinfo";
-			   this->AD_viewAinfo->Size = System::Drawing::Size(1081, 724);
+			   this->AD_viewAinfo->Size = System::Drawing::Size(895, 683);
 			   this->AD_viewAinfo->TabIndex = 5;
 			   // 
 			   // AD_AEmail
@@ -3665,9 +3668,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_SortingH->Controls->Add(this->AD_Optionsort1);
 			   this->AD_SortingH->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_SortingH->Location = System::Drawing::Point(0, 0);
-			   this->AD_SortingH->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_SortingH->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_SortingH->Name = L"AD_SortingH";
-			   this->AD_SortingH->Size = System::Drawing::Size(1081, 724);
+			   this->AD_SortingH->Size = System::Drawing::Size(895, 683);
 			   this->AD_SortingH->TabIndex = 9;
 			   this->AD_SortingH->Leave += gcnew System::EventHandler(this, &mainPage::AD_SortingH_Leave);
 			   // 
@@ -3696,9 +3699,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_SortingHlist->ItemHeight = 31;
 			   this->AD_SortingHlist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Hospital List" });
 			   this->AD_SortingHlist->Location = System::Drawing::Point(371, 186);
-			   this->AD_SortingHlist->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_SortingHlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_SortingHlist->Name = L"AD_SortingHlist";
-			   this->AD_SortingHlist->Size = System::Drawing::Size(521, 252);
+			   this->AD_SortingHlist->Size = System::Drawing::Size(335, 159);
 			   this->AD_SortingHlist->TabIndex = 5;
 			   // 
 			   // AD_Optionsort2
@@ -3707,7 +3710,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_Optionsort2->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_Optionsort2->Location = System::Drawing::Point(26, 139);
-			   this->AD_Optionsort2->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_Optionsort2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_Optionsort2->Name = L"AD_Optionsort2";
 			   this->AD_Optionsort2->Size = System::Drawing::Size(228, 37);
 			   this->AD_Optionsort2->TabIndex = 4;
@@ -3722,7 +3725,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_Optionsort3->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_Optionsort3->Location = System::Drawing::Point(27, 173);
-			   this->AD_Optionsort3->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_Optionsort3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_Optionsort3->Name = L"AD_Optionsort3";
 			   this->AD_Optionsort3->Size = System::Drawing::Size(95, 37);
 			   this->AD_Optionsort3->TabIndex = 3;
@@ -3737,7 +3740,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_Optionsort4->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_Optionsort4->Location = System::Drawing::Point(27, 207);
-			   this->AD_Optionsort4->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_Optionsort4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_Optionsort4->Name = L"AD_Optionsort4";
 			   this->AD_Optionsort4->Size = System::Drawing::Size(180, 37);
 			   this->AD_Optionsort4->TabIndex = 2;
@@ -3765,7 +3768,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_Optionsort1->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->AD_Optionsort1->Location = System::Drawing::Point(26, 105);
-			   this->AD_Optionsort1->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_Optionsort1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_Optionsort1->Name = L"AD_Optionsort1";
 			   this->AD_Optionsort1->Size = System::Drawing::Size(109, 37);
 			   this->AD_Optionsort1->TabIndex = 0;
@@ -3787,9 +3790,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_view_Pinfo->Controls->Add(this->AD_viewPinfo_Name);
 			   this->AD_view_Pinfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_view_Pinfo->Location = System::Drawing::Point(0, 0);
-			   this->AD_view_Pinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_view_Pinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_view_Pinfo->Name = L"AD_view_Pinfo";
-			   this->AD_view_Pinfo->Size = System::Drawing::Size(1081, 724);
+			   this->AD_view_Pinfo->Size = System::Drawing::Size(895, 683);
 			   this->AD_view_Pinfo->TabIndex = 1;
 			   this->AD_view_Pinfo->Leave += gcnew System::EventHandler(this, &mainPage::AD_view_Pinfo_Leave);
 			   // 
@@ -3892,9 +3895,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_viewPlist_header->Controls->Add(this->AD_viewPlist);
 			   this->AD_viewPlist_header->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->AD_viewPlist_header->Location = System::Drawing::Point(0, 0);
-			   this->AD_viewPlist_header->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_viewPlist_header->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_viewPlist_header->Name = L"AD_viewPlist_header";
-			   this->AD_viewPlist_header->Size = System::Drawing::Size(1081, 86);
+			   this->AD_viewPlist_header->Size = System::Drawing::Size(895, 86);
 			   this->AD_viewPlist_header->TabIndex = 2;
 			   // 
 			   // label17
@@ -3935,7 +3938,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->AD_viewPlist->FormattingEnabled = true;
 			   this->AD_viewPlist->Location = System::Drawing::Point(34, 40);
-			   this->AD_viewPlist->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_viewPlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_viewPlist->Name = L"AD_viewPlist";
 			   this->AD_viewPlist->Size = System::Drawing::Size(186, 30);
 			   this->AD_viewPlist->TabIndex = 1;
@@ -3959,9 +3962,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_startWindow->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->AD_startWindow->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->AD_startWindow->Location = System::Drawing::Point(0, 0);
-			   this->AD_startWindow->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_startWindow->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_startWindow->Name = L"AD_startWindow";
-			   this->AD_startWindow->Size = System::Drawing::Size(1081, 724);
+			   this->AD_startWindow->Size = System::Drawing::Size(895, 683);
 			   this->AD_startWindow->TabIndex = 4;
 			   // 
 			   // side_AD_bar_pn
@@ -3976,9 +3979,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->side_AD_bar_pn->Controls->Add(this->AD_info_pn);
 			   this->side_AD_bar_pn->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->side_AD_bar_pn->Location = System::Drawing::Point(0, 0);
-			   this->side_AD_bar_pn->Margin = System::Windows::Forms::Padding(2);
+			   this->side_AD_bar_pn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->side_AD_bar_pn->Name = L"side_AD_bar_pn";
-			   this->side_AD_bar_pn->Size = System::Drawing::Size(257, 724);
+			   this->side_AD_bar_pn->Size = System::Drawing::Size(257, 683);
 			   this->side_AD_bar_pn->TabIndex = 0;
 			   // 
 			   // AD_SortHospital
@@ -4007,8 +4010,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_logout_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->AD_logout_but->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->AD_logout_but->Location = System::Drawing::Point(0, 680);
-			   this->AD_logout_but->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_logout_but->Location = System::Drawing::Point(0, 639);
+			   this->AD_logout_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_logout_but->Name = L"AD_logout_but";
 			   this->AD_logout_but->Size = System::Drawing::Size(257, 44);
 			   this->AD_logout_but->TabIndex = 5;
@@ -4095,7 +4098,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AD_info_pn->Controls->Add(this->AD_pic);
 			   this->AD_info_pn->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->AD_info_pn->Location = System::Drawing::Point(0, 0);
-			   this->AD_info_pn->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_info_pn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_info_pn->Name = L"AD_info_pn";
 			   this->AD_info_pn->Size = System::Drawing::Size(257, 152);
 			   this->AD_info_pn->TabIndex = 0;
@@ -4108,7 +4111,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->AddNewAdminbut->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->AddNewAdminbut->ForeColor = System::Drawing::SystemColors::Control;
 			   this->AddNewAdminbut->Location = System::Drawing::Point(234, 37);
-			   this->AddNewAdminbut->Margin = System::Windows::Forms::Padding(2);
+			   this->AddNewAdminbut->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AddNewAdminbut->Name = L"AddNewAdminbut";
 			   this->AddNewAdminbut->Size = System::Drawing::Size(18, 21);
 			   this->AddNewAdminbut->TabIndex = 7;
@@ -4122,7 +4125,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->edit_AInfo->FlatAppearance->BorderSize = 0;
 			   this->edit_AInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->edit_AInfo->Location = System::Drawing::Point(235, 8);
-			   this->edit_AInfo->Margin = System::Windows::Forms::Padding(2);
+			   this->edit_AInfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->edit_AInfo->Name = L"edit_AInfo";
 			   this->edit_AInfo->Size = System::Drawing::Size(18, 21);
 			   this->edit_AInfo->TabIndex = 6;
@@ -4137,7 +4140,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->view_AInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->view_AInfo->ForeColor = System::Drawing::SystemColors::Control;
 			   this->view_AInfo->Location = System::Drawing::Point(211, 8);
-			   this->view_AInfo->Margin = System::Windows::Forms::Padding(2);
+			   this->view_AInfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->view_AInfo->Name = L"view_AInfo";
 			   this->view_AInfo->Size = System::Drawing::Size(18, 21);
 			   this->view_AInfo->TabIndex = 5;
@@ -4174,7 +4177,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   // 
 			   this->AD_pic->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_pic.Image")));
 			   this->AD_pic->Location = System::Drawing::Point(52, 11);
-			   this->AD_pic->Margin = System::Windows::Forms::Padding(2);
+			   this->AD_pic->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->AD_pic->Name = L"AD_pic";
 			   this->AD_pic->Size = System::Drawing::Size(142, 93);
 			   this->AD_pic->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -4187,17 +4190,17 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_conpage->Controls->Add(this->side_PA_bar_pn);
 			   this->PA_conpage->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_conpage->Location = System::Drawing::Point(0, 0);
-			   this->PA_conpage->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_conpage->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_conpage->Name = L"PA_conpage";
-			   this->PA_conpage->Size = System::Drawing::Size(1338, 724);
+			   this->PA_conpage->Size = System::Drawing::Size(1152, 683);
 			   this->PA_conpage->TabIndex = 9;
 			   // 
 			   // PA_pages
 			   // 
 			   this->PA_pages->Controls->Add(this->PA_viewHinfo);
 			   this->PA_pages->Controls->Add(this->PA_ModifyReserv);
-			   this->PA_pages->Controls->Add(this->PA_editPinfo);
 			   this->PA_pages->Controls->Add(this->PA_editReserv);
+			   this->PA_pages->Controls->Add(this->PA_editPinfo);
 			   this->PA_pages->Controls->Add(this->PA_SortingH);
 			   this->PA_pages->Controls->Add(this->PA_viewPinfo);
 			   this->PA_pages->Controls->Add(this->PA_reservlist);
@@ -4206,9 +4209,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_pages->Controls->Add(this->PA_startwindow);
 			   this->PA_pages->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_pages->Location = System::Drawing::Point(255, 0);
-			   this->PA_pages->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_pages->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_pages->Name = L"PA_pages";
-			   this->PA_pages->Size = System::Drawing::Size(1083, 724);
+			   this->PA_pages->Size = System::Drawing::Size(897, 683);
 			   this->PA_pages->TabIndex = 3;
 			   // 
 			   // PA_viewHinfo
@@ -4228,9 +4231,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_viewHinfo->Controls->Add(this->PA_viewHinfoHeader);
 			   this->PA_viewHinfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_viewHinfo->Location = System::Drawing::Point(0, 0);
-			   this->PA_viewHinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_viewHinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_viewHinfo->Name = L"PA_viewHinfo";
-			   this->PA_viewHinfo->Size = System::Drawing::Size(1083, 724);
+			   this->PA_viewHinfo->Size = System::Drawing::Size(897, 683);
 			   this->PA_viewHinfo->TabIndex = 5;
 			   this->PA_viewHinfo->Leave += gcnew System::EventHandler(this, &mainPage::PA_viewHinfo_Leave);
 			   // 
@@ -4240,7 +4243,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_AllhospitalData->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_AllhospitalData->Location = System::Drawing::Point(0, 84);
 			   this->PA_AllhospitalData->Name = L"PA_AllhospitalData";
-			   this->PA_AllhospitalData->Size = System::Drawing::Size(1083, 640);
+			   this->PA_AllhospitalData->Size = System::Drawing::Size(897, 599);
 			   this->PA_AllhospitalData->TabIndex = 19;
 			   this->PA_AllhospitalData->Visible = false;
 			   // 
@@ -4251,10 +4254,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Hinfo_HSplist->FormattingEnabled = true;
 			   this->PA_Hinfo_HSplist->ItemHeight = 25;
 			   this->PA_Hinfo_HSplist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Specialties List" });
-			   this->PA_Hinfo_HSplist->Location = System::Drawing::Point(575, 377);
-			   this->PA_Hinfo_HSplist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Hinfo_HSplist->Location = System::Drawing::Point(529, 383);
+			   this->PA_Hinfo_HSplist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Hinfo_HSplist->Name = L"PA_Hinfo_HSplist";
-			   this->PA_Hinfo_HSplist->Size = System::Drawing::Size(315, 129);
+			   this->PA_Hinfo_HSplist->Size = System::Drawing::Size(315, 104);
 			   this->PA_Hinfo_HSplist->TabIndex = 18;
 			   // 
 			   // PA_Hinfo_HCLlist
@@ -4264,10 +4267,10 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Hinfo_HCLlist->FormattingEnabled = true;
 			   this->PA_Hinfo_HCLlist->ItemHeight = 25;
 			   this->PA_Hinfo_HCLlist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Clinic List" });
-			   this->PA_Hinfo_HCLlist->Location = System::Drawing::Point(575, 179);
-			   this->PA_Hinfo_HCLlist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Hinfo_HCLlist->Location = System::Drawing::Point(529, 185);
+			   this->PA_Hinfo_HCLlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Hinfo_HCLlist->Name = L"PA_Hinfo_HCLlist";
-			   this->PA_Hinfo_HCLlist->Size = System::Drawing::Size(315, 129);
+			   this->PA_Hinfo_HCLlist->Size = System::Drawing::Size(315, 104);
 			   this->PA_Hinfo_HCLlist->TabIndex = 17;
 			   // 
 			   // PA_text2
@@ -4276,7 +4279,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_text2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_text2->ForeColor = System::Drawing::Color::White;
-			   this->PA_text2->Location = System::Drawing::Point(572, 354);
+			   this->PA_text2->Location = System::Drawing::Point(526, 360);
 			   this->PA_text2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->PA_text2->Name = L"PA_text2";
 			   this->PA_text2->Size = System::Drawing::Size(106, 18);
@@ -4290,7 +4293,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_text1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.07692F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_text1->ForeColor = System::Drawing::Color::White;
-			   this->PA_text1->Location = System::Drawing::Point(572, 154);
+			   this->PA_text1->Location = System::Drawing::Point(526, 160);
 			   this->PA_text1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->PA_text1->Name = L"PA_text1";
 			   this->PA_text1->Size = System::Drawing::Size(71, 18);
@@ -4398,9 +4401,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_viewHinfoHeader->Controls->Add(this->PA_viewHList);
 			   this->PA_viewHinfoHeader->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->PA_viewHinfoHeader->Location = System::Drawing::Point(0, 0);
-			   this->PA_viewHinfoHeader->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_viewHinfoHeader->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_viewHinfoHeader->Name = L"PA_viewHinfoHeader";
-			   this->PA_viewHinfoHeader->Size = System::Drawing::Size(1083, 84);
+			   this->PA_viewHinfoHeader->Size = System::Drawing::Size(897, 84);
 			   this->PA_viewHinfoHeader->TabIndex = 1;
 			   // 
 			   // PA_viewAllHButton
@@ -4411,7 +4414,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_viewAllHButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_viewAllHButton.Image")));
 			   this->PA_viewAllHButton->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->PA_viewAllHButton->Location = System::Drawing::Point(947, 19);
+			   this->PA_viewAllHButton->Location = System::Drawing::Point(767, 26);
 			   this->PA_viewAllHButton->Margin = System::Windows::Forms::Padding(2, 41, 2, 2);
 			   this->PA_viewAllHButton->Name = L"PA_viewAllHButton";
 			   this->PA_viewAllHButton->Size = System::Drawing::Size(128, 29);
@@ -4460,7 +4463,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_viewHList->FormattingEnabled = true;
 			   this->PA_viewHList->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->PA_viewHList->Location = System::Drawing::Point(23, 40);
-			   this->PA_viewHList->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_viewHList->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_viewHList->Name = L"PA_viewHList";
 			   this->PA_viewHList->Size = System::Drawing::Size(186, 30);
 			   this->PA_viewHList->TabIndex = 0;
@@ -4473,16 +4476,16 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_ModifyReserv->Controls->Add(this->PA_headerM);
 			   this->PA_ModifyReserv->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_ModifyReserv->Location = System::Drawing::Point(0, 0);
-			   this->PA_ModifyReserv->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_ModifyReserv->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_ModifyReserv->Name = L"PA_ModifyReserv";
-			   this->PA_ModifyReserv->Size = System::Drawing::Size(1083, 724);
+			   this->PA_ModifyReserv->Size = System::Drawing::Size(897, 683);
 			   this->PA_ModifyReserv->TabIndex = 3;
 			   // 
 			   // PA_modifyHRTRDsLayout
 			   // 
+			   this->PA_modifyHRTRDsLayout->Controls->Add(this->panel1);
 			   this->PA_modifyHRTRDsLayout->Controls->Add(this->PA_Rnumbofdays);
 			   this->PA_modifyHRTRDsLayout->Controls->Add(this->PA_numofdays);
-			   this->PA_modifyHRTRDsLayout->Controls->Add(this->panel1);
 			   this->PA_modifyHRTRDsLayout->Controls->Add(this->PA_Rlistmodify_but);
 			   this->PA_modifyHRTRDsLayout->Controls->Add(this->PA_listOfHRtypeRdays);
 			   this->PA_modifyHRTRDsLayout->Controls->Add(this->PA_StateOflist);
@@ -4490,9 +4493,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_modifyHRTRDsLayout->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_modifyHRTRDsLayout->ForeColor = System::Drawing::Color::White;
 			   this->PA_modifyHRTRDsLayout->Location = System::Drawing::Point(245, 81);
-			   this->PA_modifyHRTRDsLayout->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_modifyHRTRDsLayout->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_modifyHRTRDsLayout->Name = L"PA_modifyHRTRDsLayout";
-			   this->PA_modifyHRTRDsLayout->Size = System::Drawing::Size(838, 643);
+			   this->PA_modifyHRTRDsLayout->Size = System::Drawing::Size(652, 602);
 			   this->PA_modifyHRTRDsLayout->TabIndex = 7;
 			   this->PA_modifyHRTRDsLayout->Tag = L"";
 			   this->PA_modifyHRTRDsLayout->Visible = false;
@@ -4502,7 +4505,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Rnumbofdays->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_Rnumbofdays->Location = System::Drawing::Point(52, 147);
-			   this->PA_Rnumbofdays->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Rnumbofdays->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Rnumbofdays->Name = L"PA_Rnumbofdays";
 			   this->PA_Rnumbofdays->Size = System::Drawing::Size(73, 22);
 			   this->PA_Rnumbofdays->TabIndex = 13;
@@ -4528,23 +4531,23 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->panel1->Controls->Add(this->radioButton2);
 			   this->panel1->Controls->Add(this->radioButton1);
 			   this->panel1->Controls->Add(this->label11);
-			   this->panel1->Location = System::Drawing::Point(494, 16);
-			   this->panel1->Margin = System::Windows::Forms::Padding(2);
+			   this->panel1->Location = System::Drawing::Point(432, 3);
+			   this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->panel1->Name = L"panel1";
-			   this->panel1->Size = System::Drawing::Size(291, 181);
+			   this->panel1->Size = System::Drawing::Size(218, 132);
 			   this->panel1->TabIndex = 11;
 			   this->panel1->Visible = false;
 			   // 
 			   // radioButton2
 			   // 
 			   this->radioButton2->AutoSize = true;
-			   this->radioButton2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->radioButton2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->radioButton2->ForeColor = System::Drawing::Color::White;
-			   this->radioButton2->Location = System::Drawing::Point(31, 95);
-			   this->radioButton2->Margin = System::Windows::Forms::Padding(2);
+			   this->radioButton2->Location = System::Drawing::Point(15, 86);
+			   this->radioButton2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->radioButton2->Name = L"radioButton2";
-			   this->radioButton2->Size = System::Drawing::Size(127, 29);
+			   this->radioButton2->Size = System::Drawing::Size(99, 24);
 			   this->radioButton2->TabIndex = 6;
 			   this->radioButton2->TabStop = true;
 			   this->radioButton2->Text = L"Check-UP";
@@ -4554,13 +4557,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   // radioButton1
 			   // 
 			   this->radioButton1->AutoSize = true;
-			   this->radioButton1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->radioButton1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->radioButton1->ForeColor = System::Drawing::Color::White;
-			   this->radioButton1->Location = System::Drawing::Point(31, 55);
-			   this->radioButton1->Margin = System::Windows::Forms::Padding(2);
+			   this->radioButton1->Location = System::Drawing::Point(15, 46);
+			   this->radioButton1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->radioButton1->Name = L"radioButton1";
-			   this->radioButton1->Size = System::Drawing::Size(105, 29);
+			   this->radioButton1->Size = System::Drawing::Size(82, 24);
 			   this->radioButton1->TabIndex = 5;
 			   this->radioButton1->TabStop = true;
 			   this->radioButton1->Text = L"Surgery";
@@ -4569,13 +4572,13 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   // label11
 			   // 
 			   this->label11->AutoSize = true;
-			   this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->label11->ForeColor = System::Drawing::Color::White;
 			   this->label11->Location = System::Drawing::Point(10, 3);
 			   this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->label11->Name = L"label11";
-			   this->label11->Size = System::Drawing::Size(244, 33);
+			   this->label11->Size = System::Drawing::Size(202, 29);
 			   this->label11->TabIndex = 4;
 			   this->label11->Text = L"Reservation Type";
 			   // 
@@ -4603,7 +4606,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_listOfHRtypeRdays->FormattingEnabled = true;
 			   this->PA_listOfHRtypeRdays->Location = System::Drawing::Point(25, 59);
-			   this->PA_listOfHRtypeRdays->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_listOfHRtypeRdays->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_listOfHRtypeRdays->Name = L"PA_listOfHRtypeRdays";
 			   this->PA_listOfHRtypeRdays->Size = System::Drawing::Size(329, 28);
 			   this->PA_listOfHRtypeRdays->TabIndex = 6;
@@ -4642,9 +4645,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editNAPhnumlayout->Controls->Add(this->PA_modifyRord_lab);
 			   this->PA_editNAPhnumlayout->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_editNAPhnumlayout->Location = System::Drawing::Point(245, 81);
-			   this->PA_editNAPhnumlayout->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editNAPhnumlayout->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editNAPhnumlayout->Name = L"PA_editNAPhnumlayout";
-			   this->PA_editNAPhnumlayout->Size = System::Drawing::Size(838, 643);
+			   this->PA_editNAPhnumlayout->Size = System::Drawing::Size(652, 602);
 			   this->PA_editNAPhnumlayout->TabIndex = 6;
 			   this->PA_editNAPhnumlayout->Tag = L"";
 			   this->PA_editNAPhnumlayout->Visible = false;
@@ -4684,7 +4687,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_modifyRord_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_modifyRord_TB->Location = System::Drawing::Point(28, 76);
-			   this->PA_modifyRord_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_modifyRord_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_modifyRord_TB->Name = L"PA_modifyRord_TB";
 			   this->PA_modifyRord_TB->Size = System::Drawing::Size(274, 35);
 			   this->PA_modifyRord_TB->TabIndex = 4;
@@ -4716,9 +4719,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_groupCmodify->Controls->Add(this->PA_MPName);
 			   this->PA_groupCmodify->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->PA_groupCmodify->Location = System::Drawing::Point(0, 81);
-			   this->PA_groupCmodify->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_groupCmodify->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_groupCmodify->Name = L"PA_groupCmodify";
-			   this->PA_groupCmodify->Size = System::Drawing::Size(245, 643);
+			   this->PA_groupCmodify->Size = System::Drawing::Size(245, 602);
 			   this->PA_groupCmodify->TabIndex = 2;
 			   // 
 			   // PA_MNumOfdays
@@ -4849,9 +4852,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_headerM->Controls->Add(this->PA_Rlistmodify_com);
 			   this->PA_headerM->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->PA_headerM->Location = System::Drawing::Point(0, 0);
-			   this->PA_headerM->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_headerM->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_headerM->Name = L"PA_headerM";
-			   this->PA_headerM->Size = System::Drawing::Size(1083, 81);
+			   this->PA_headerM->Size = System::Drawing::Size(897, 81);
 			   this->PA_headerM->TabIndex = 1;
 			   // 
 			   // label14
@@ -4891,7 +4894,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Rlistmodify_com->FormattingEnabled = true;
 			   this->PA_Rlistmodify_com->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->PA_Rlistmodify_com->Location = System::Drawing::Point(31, 34);
-			   this->PA_Rlistmodify_com->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Rlistmodify_com->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Rlistmodify_com->Name = L"PA_Rlistmodify_com";
 			   this->PA_Rlistmodify_com->Size = System::Drawing::Size(289, 33);
 			   this->PA_Rlistmodify_com->TabIndex = 0;
@@ -4906,9 +4909,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editPinfo->Controls->Add(this->PA_GofCHEditPinfo);
 			   this->PA_editPinfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_editPinfo->Location = System::Drawing::Point(0, 0);
-			   this->PA_editPinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editPinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editPinfo->Name = L"PA_editPinfo";
-			   this->PA_editPinfo->Size = System::Drawing::Size(1083, 724);
+			   this->PA_editPinfo->Size = System::Drawing::Size(897, 683);
 			   this->PA_editPinfo->TabIndex = 7;
 			   // 
 			   // PA_editpass
@@ -4930,9 +4933,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editpass->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_editpass->Location = System::Drawing::Point(178, 0);
-			   this->PA_editpass->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editpass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editpass->Name = L"PA_editpass";
-			   this->PA_editpass->Size = System::Drawing::Size(905, 724);
+			   this->PA_editpass->Size = System::Drawing::Size(719, 683);
 			   this->PA_editpass->TabIndex = 13;
 			   // 
 			   // PA_ShowNewPass
@@ -4943,7 +4946,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_ShowNewPass->FlatAppearance->BorderSize = 0;
 			   this->PA_ShowNewPass->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->PA_ShowNewPass->Location = System::Drawing::Point(443, 242);
-			   this->PA_ShowNewPass->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_ShowNewPass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_ShowNewPass->Name = L"PA_ShowNewPass";
 			   this->PA_ShowNewPass->Size = System::Drawing::Size(22, 23);
 			   this->PA_ShowNewPass->TabIndex = 21;
@@ -4958,7 +4961,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_ShowOldPass->FlatAppearance->BorderSize = 0;
 			   this->PA_ShowOldPass->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->PA_ShowOldPass->Location = System::Drawing::Point(443, 133);
-			   this->PA_ShowOldPass->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_ShowOldPass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_ShowOldPass->Name = L"PA_ShowOldPass";
 			   this->PA_ShowOldPass->Size = System::Drawing::Size(22, 23);
 			   this->PA_ShowOldPass->TabIndex = 20;
@@ -4988,7 +4991,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Changepass->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_Changepass.Image")));
 			   this->PA_Changepass->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
 			   this->PA_Changepass->Location = System::Drawing::Point(49, 434);
-			   this->PA_Changepass->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Changepass->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Changepass->Name = L"PA_Changepass";
 			   this->PA_Changepass->Size = System::Drawing::Size(139, 46);
 			   this->PA_Changepass->TabIndex = 15;
@@ -5004,7 +5007,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_askconfPass_TB->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_askconfPass_TB->Location = System::Drawing::Point(43, 271);
-			   this->PA_askconfPass_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_askconfPass_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_askconfPass_TB->Name = L"PA_askconfPass_TB";
 			   this->PA_askconfPass_TB->Size = System::Drawing::Size(342, 35);
 			   this->PA_askconfPass_TB->TabIndex = 6;
@@ -5029,7 +5032,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_askNewPass_TB->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_askNewPass_TB->Location = System::Drawing::Point(43, 195);
-			   this->PA_askNewPass_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_askNewPass_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_askNewPass_TB->Name = L"PA_askNewPass_TB";
 			   this->PA_askNewPass_TB->Size = System::Drawing::Size(342, 35);
 			   this->PA_askNewPass_TB->TabIndex = 4;
@@ -5054,7 +5057,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_askOldPass_TB->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_askOldPass_TB->Location = System::Drawing::Point(43, 115);
-			   this->PA_askOldPass_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_askOldPass_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_askOldPass_TB->Name = L"PA_askOldPass_TB";
 			   this->PA_askOldPass_TB->Size = System::Drawing::Size(342, 35);
 			   this->PA_askOldPass_TB->TabIndex = 2;
@@ -5083,9 +5086,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editRemain->Controls->Add(this->PA_editRemain_lab);
 			   this->PA_editRemain->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_editRemain->Location = System::Drawing::Point(178, 0);
-			   this->PA_editRemain->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editRemain->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editRemain->Name = L"PA_editRemain";
-			   this->PA_editRemain->Size = System::Drawing::Size(905, 724);
+			   this->PA_editRemain->Size = System::Drawing::Size(719, 683);
 			   this->PA_editRemain->TabIndex = 14;
 			   // 
 			   // button2
@@ -5098,7 +5101,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->button2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.Image")));
 			   this->button2->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
 			   this->button2->Location = System::Drawing::Point(414, 129);
-			   this->button2->Margin = System::Windows::Forms::Padding(2);
+			   this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->button2->Name = L"button2";
 			   this->button2->Size = System::Drawing::Size(86, 34);
 			   this->button2->TabIndex = 12;
@@ -5127,7 +5130,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editRemain_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_editRemain_TB->Location = System::Drawing::Point(38, 123);
-			   this->PA_editRemain_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editRemain_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editRemain_TB->Name = L"PA_editRemain_TB";
 			   this->PA_editRemain_TB->Size = System::Drawing::Size(238, 31);
 			   this->PA_editRemain_TB->TabIndex = 1;
@@ -5153,9 +5156,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_edit_waiting->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			   this->PA_edit_waiting->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_edit_waiting->Location = System::Drawing::Point(178, 0);
-			   this->PA_edit_waiting->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_edit_waiting->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_edit_waiting->Name = L"PA_edit_waiting";
-			   this->PA_edit_waiting->Size = System::Drawing::Size(905, 724);
+			   this->PA_edit_waiting->Size = System::Drawing::Size(719, 683);
 			   this->PA_edit_waiting->TabIndex = 16;
 			   // 
 			   // PA_GofCHEditPinfo
@@ -5168,9 +5171,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_GofCHEditPinfo->Controls->Add(this->PA_editName);
 			   this->PA_GofCHEditPinfo->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->PA_GofCHEditPinfo->Location = System::Drawing::Point(0, 0);
-			   this->PA_GofCHEditPinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_GofCHEditPinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_GofCHEditPinfo->Name = L"PA_GofCHEditPinfo";
-			   this->PA_GofCHEditPinfo->Size = System::Drawing::Size(178, 724);
+			   this->PA_GofCHEditPinfo->Size = System::Drawing::Size(178, 683);
 			   this->PA_GofCHEditPinfo->TabIndex = 12;
 			   // 
 			   // PA_editPhNum
@@ -5181,7 +5184,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editPhNum->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_editPhNum->Location = System::Drawing::Point(0, 396);
-			   this->PA_editPhNum->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editPhNum->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editPhNum->Name = L"PA_editPhNum";
 			   this->PA_editPhNum->Size = System::Drawing::Size(178, 99);
 			   this->PA_editPhNum->TabIndex = 6;
@@ -5197,7 +5200,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editpass_but->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_editpass_but->Location = System::Drawing::Point(0, 297);
-			   this->PA_editpass_but->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editpass_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editpass_but->Name = L"PA_editpass_but";
 			   this->PA_editpass_but->Size = System::Drawing::Size(178, 99);
 			   this->PA_editpass_but->TabIndex = 5;
@@ -5213,7 +5216,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editusername->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_editusername->Location = System::Drawing::Point(0, 198);
-			   this->PA_editusername->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editusername->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editusername->Name = L"PA_editusername";
 			   this->PA_editusername->Size = System::Drawing::Size(178, 99);
 			   this->PA_editusername->TabIndex = 4;
@@ -5229,7 +5232,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editAge->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_editAge->Location = System::Drawing::Point(0, 99);
-			   this->PA_editAge->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editAge->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editAge->Name = L"PA_editAge";
 			   this->PA_editAge->Size = System::Drawing::Size(178, 99);
 			   this->PA_editAge->TabIndex = 3;
@@ -5245,7 +5248,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editName->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 13.84615F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_editName->Location = System::Drawing::Point(0, 0);
-			   this->PA_editName->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editName->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editName->Name = L"PA_editName";
 			   this->PA_editName->Size = System::Drawing::Size(178, 99);
 			   this->PA_editName->TabIndex = 2;
@@ -5261,9 +5264,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_editReserv->Controls->Add(this->PA_header_editRlist);
 			   this->PA_editReserv->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_editReserv->Location = System::Drawing::Point(0, 0);
-			   this->PA_editReserv->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_editReserv->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_editReserv->Name = L"PA_editReserv";
-			   this->PA_editReserv->Size = System::Drawing::Size(1083, 724);
+			   this->PA_editReserv->Size = System::Drawing::Size(897, 683);
 			   this->PA_editReserv->TabIndex = 2;
 			   // 
 			   // PA_delRlayout
@@ -5278,9 +5281,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_delRlayout->Controls->Add(this->PA_delRlist_but);
 			   this->PA_delRlayout->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_delRlayout->Location = System::Drawing::Point(0, 65);
-			   this->PA_delRlayout->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_delRlayout->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_delRlayout->Name = L"PA_delRlayout";
-			   this->PA_delRlayout->Size = System::Drawing::Size(1083, 659);
+			   this->PA_delRlayout->Size = System::Drawing::Size(897, 618);
 			   this->PA_delRlayout->TabIndex = 16;
 			   // 
 			   // label2
@@ -5301,7 +5304,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->checkBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->checkBox3->Location = System::Drawing::Point(29, 209);
-			   this->checkBox3->Margin = System::Windows::Forms::Padding(2);
+			   this->checkBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->checkBox3->Name = L"checkBox3";
 			   this->checkBox3->Size = System::Drawing::Size(108, 20);
 			   this->checkBox3->TabIndex = 13;
@@ -5353,7 +5356,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_delRlist_COM->FormattingEnabled = true;
 			   this->PA_delRlist_COM->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"empty" });
 			   this->PA_delRlist_COM->Location = System::Drawing::Point(30, 163);
-			   this->PA_delRlist_COM->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_delRlist_COM->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_delRlist_COM->Name = L"PA_delRlist_COM";
 			   this->PA_delRlist_COM->Size = System::Drawing::Size(225, 33);
 			   this->PA_delRlist_COM->TabIndex = 6;
@@ -5366,7 +5369,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_delRlist_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_delRlist_but->Location = System::Drawing::Point(332, 164);
-			   this->PA_delRlist_but->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_delRlist_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_delRlist_but->Name = L"PA_delRlist_but";
 			   this->PA_delRlist_but->Size = System::Drawing::Size(80, 33);
 			   this->PA_delRlist_but->TabIndex = 9;
@@ -5398,9 +5401,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_addRlayout->Controls->Add(this->PA_warningM);
 			   this->PA_addRlayout->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_addRlayout->Location = System::Drawing::Point(0, 65);
-			   this->PA_addRlayout->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_addRlayout->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_addRlayout->Name = L"PA_addRlayout";
-			   this->PA_addRlayout->Size = System::Drawing::Size(1083, 659);
+			   this->PA_addRlayout->Size = System::Drawing::Size(897, 618);
 			   this->PA_addRlayout->TabIndex = 14;
 			   // 
 			   // PA_PNumOfDays_lab
@@ -5421,7 +5424,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_PNumOfDays_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_PNumOfDays_TB->Location = System::Drawing::Point(133, 393);
-			   this->PA_PNumOfDays_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_PNumOfDays_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_PNumOfDays_TB->Name = L"PA_PNumOfDays_TB";
 			   this->PA_PNumOfDays_TB->Size = System::Drawing::Size(87, 28);
 			   this->PA_PNumOfDays_TB->TabIndex = 37;
@@ -5433,7 +5436,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Check1->Controls->Add(this->PA_askwhoreserv_RB2);
 			   this->PA_Check1->Controls->Add(this->PA_askwhoreserv_RB1);
 			   this->PA_Check1->Location = System::Drawing::Point(133, 0);
-			   this->PA_Check1->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Check1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Check1->Name = L"PA_Check1";
 			   this->PA_Check1->Size = System::Drawing::Size(167, 63);
 			   this->PA_Check1->TabIndex = 35;
@@ -5455,7 +5458,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_askwhoreserv_RB2->AutoSize = true;
 			   this->PA_askwhoreserv_RB2->Checked = true;
 			   this->PA_askwhoreserv_RB2->Location = System::Drawing::Point(87, 37);
-			   this->PA_askwhoreserv_RB2->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_askwhoreserv_RB2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_askwhoreserv_RB2->Name = L"PA_askwhoreserv_RB2";
 			   this->PA_askwhoreserv_RB2->Size = System::Drawing::Size(51, 17);
 			   this->PA_askwhoreserv_RB2->TabIndex = 23;
@@ -5468,7 +5471,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   // 
 			   this->PA_askwhoreserv_RB1->AutoSize = true;
 			   this->PA_askwhoreserv_RB1->Location = System::Drawing::Point(9, 36);
-			   this->PA_askwhoreserv_RB1->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_askwhoreserv_RB1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_askwhoreserv_RB1->Name = L"PA_askwhoreserv_RB1";
 			   this->PA_askwhoreserv_RB1->Size = System::Drawing::Size(41, 17);
 			   this->PA_askwhoreserv_RB1->TabIndex = 22;
@@ -5482,7 +5485,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Check2->Controls->Add(this->PA_RtypeCheck);
 			   this->PA_Check2->Controls->Add(this->PA_RtypeCheck_RB1);
 			   this->PA_Check2->Location = System::Drawing::Point(398, 1);
-			   this->PA_Check2->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Check2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Check2->Name = L"PA_Check2";
 			   this->PA_Check2->Size = System::Drawing::Size(184, 55);
 			   this->PA_Check2->TabIndex = 34;
@@ -5491,7 +5494,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   // 
 			   this->PA_RtypeCheck_RB2->AutoSize = true;
 			   this->PA_RtypeCheck_RB2->Location = System::Drawing::Point(76, 32);
-			   this->PA_RtypeCheck_RB2->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_RtypeCheck_RB2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_RtypeCheck_RB2->Name = L"PA_RtypeCheck_RB2";
 			   this->PA_RtypeCheck_RB2->Size = System::Drawing::Size(74, 17);
 			   this->PA_RtypeCheck_RB2->TabIndex = 32;
@@ -5516,7 +5519,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_RtypeCheck_RB1->AutoSize = true;
 			   this->PA_RtypeCheck_RB1->Checked = true;
 			   this->PA_RtypeCheck_RB1->Location = System::Drawing::Point(10, 32);
-			   this->PA_RtypeCheck_RB1->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_RtypeCheck_RB1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_RtypeCheck_RB1->Name = L"PA_RtypeCheck_RB1";
 			   this->PA_RtypeCheck_RB1->Size = System::Drawing::Size(61, 17);
 			   this->PA_RtypeCheck_RB1->TabIndex = 31;
@@ -5533,7 +5536,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_DayenterH_COM->FormattingEnabled = true;
 			   this->PA_DayenterH_COM->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->PA_DayenterH_COM->Location = System::Drawing::Point(490, 311);
-			   this->PA_DayenterH_COM->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_DayenterH_COM->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_DayenterH_COM->MaxDropDownItems = 5;
 			   this->PA_DayenterH_COM->Name = L"PA_DayenterH_COM";
 			   this->PA_DayenterH_COM->Size = System::Drawing::Size(240, 37);
@@ -5550,7 +5553,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_RSClist_COM->ItemHeight = 29;
 			   this->PA_RSClist_COM->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->PA_RSClist_COM->Location = System::Drawing::Point(134, 298);
-			   this->PA_RSClist_COM->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_RSClist_COM->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_RSClist_COM->MaxDropDownItems = 5;
 			   this->PA_RSClist_COM->Name = L"PA_RSClist_COM";
 			   this->PA_RSClist_COM->Size = System::Drawing::Size(240, 37);
@@ -5563,7 +5566,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->PA_selectHforR_COM->FormattingEnabled = true;
 			   this->PA_selectHforR_COM->Location = System::Drawing::Point(490, 227);
-			   this->PA_selectHforR_COM->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_selectHforR_COM->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_selectHforR_COM->Name = L"PA_selectHforR_COM";
 			   this->PA_selectHforR_COM->Size = System::Drawing::Size(240, 37);
 			   this->PA_selectHforR_COM->TabIndex = 25;
@@ -5600,7 +5603,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_PAord_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_PAord_TB->Location = System::Drawing::Point(491, 154);
-			   this->PA_PAord_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_PAord_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_PAord_TB->Name = L"PA_PAord_TB";
 			   this->PA_PAord_TB->Size = System::Drawing::Size(238, 28);
 			   this->PA_PAord_TB->TabIndex = 19;
@@ -5648,7 +5651,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_PphNord_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_PphNord_TB->Location = System::Drawing::Point(135, 217);
-			   this->PA_PphNord_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_PphNord_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_PphNord_TB->Name = L"PA_PphNord_TB";
 			   this->PA_PphNord_TB->Size = System::Drawing::Size(238, 28);
 			   this->PA_PphNord_TB->TabIndex = 13;
@@ -5660,7 +5663,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.93846F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->button1->Location = System::Drawing::Point(518, 411);
-			   this->button1->Margin = System::Windows::Forms::Padding(2);
+			   this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->button1->Name = L"button1";
 			   this->button1->Size = System::Drawing::Size(79, 42);
 			   this->button1->TabIndex = 11;
@@ -5687,7 +5690,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_PNord_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_PNord_TB->Location = System::Drawing::Point(135, 135);
-			   this->PA_PNord_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_PNord_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_PNord_TB->Name = L"PA_PNord_TB";
 			   this->PA_PNord_TB->Size = System::Drawing::Size(238, 28);
 			   this->PA_PNord_TB->TabIndex = 8;
@@ -5712,9 +5715,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_waitingeditRlist->Controls->Add(this->pictureBox2);
 			   this->PA_waitingeditRlist->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_waitingeditRlist->Location = System::Drawing::Point(0, 65);
-			   this->PA_waitingeditRlist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_waitingeditRlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_waitingeditRlist->Name = L"PA_waitingeditRlist";
-			   this->PA_waitingeditRlist->Size = System::Drawing::Size(1083, 659);
+			   this->PA_waitingeditRlist->Size = System::Drawing::Size(897, 618);
 			   this->PA_waitingeditRlist->TabIndex = 17;
 			   // 
 			   // pictureBox2
@@ -5722,9 +5725,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->pictureBox2->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
 			   this->pictureBox2->Location = System::Drawing::Point(0, 0);
-			   this->pictureBox2->Margin = System::Windows::Forms::Padding(2);
+			   this->pictureBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->pictureBox2->Name = L"pictureBox2";
-			   this->pictureBox2->Size = System::Drawing::Size(1083, 659);
+			   this->pictureBox2->Size = System::Drawing::Size(897, 618);
 			   this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureBox2->TabIndex = 0;
 			   this->pictureBox2->TabStop = false;
@@ -5735,9 +5738,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_header_editRlist->Controls->Add(this->PA_addRlist);
 			   this->PA_header_editRlist->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->PA_header_editRlist->Location = System::Drawing::Point(0, 0);
-			   this->PA_header_editRlist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_header_editRlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_header_editRlist->Name = L"PA_header_editRlist";
-			   this->PA_header_editRlist->Size = System::Drawing::Size(1083, 65);
+			   this->PA_header_editRlist->Size = System::Drawing::Size(897, 65);
 			   this->PA_header_editRlist->TabIndex = 15;
 			   // 
 			   // PA_delRlist
@@ -5748,8 +5751,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->PA_delRlist->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_delRlist.Image")));
 			   this->PA_delRlist->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->PA_delRlist->Location = System::Drawing::Point(506, 5);
-			   this->PA_delRlist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_delRlist->Location = System::Drawing::Point(488, 8);
+			   this->PA_delRlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_delRlist->Name = L"PA_delRlist";
 			   this->PA_delRlist->Size = System::Drawing::Size(90, 49);
 			   this->PA_delRlist->TabIndex = 13;
@@ -5766,8 +5769,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 					static_cast<System::Byte>(0)));
 			   this->PA_addRlist->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_addRlist.Image")));
 			   this->PA_addRlist->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->PA_addRlist->Location = System::Drawing::Point(319, 5);
-			   this->PA_addRlist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_addRlist->Location = System::Drawing::Point(301, 8);
+			   this->PA_addRlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_addRlist->Name = L"PA_addRlist";
 			   this->PA_addRlist->Size = System::Drawing::Size(79, 49);
 			   this->PA_addRlist->TabIndex = 12;
@@ -5787,9 +5790,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_SortingH->Controls->Add(this->PA_Optionsort1);
 			   this->PA_SortingH->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_SortingH->Location = System::Drawing::Point(0, 0);
-			   this->PA_SortingH->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_SortingH->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_SortingH->Name = L"PA_SortingH";
-			   this->PA_SortingH->Size = System::Drawing::Size(1083, 724);
+			   this->PA_SortingH->Size = System::Drawing::Size(897, 683);
 			   this->PA_SortingH->TabIndex = 8;
 			   this->PA_SortingH->Leave += gcnew System::EventHandler(this, &mainPage::PA_SortingH_Leave);
 			   // 
@@ -5815,9 +5818,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_SortingHlist->ItemHeight = 29;
 			   this->PA_SortingHlist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Hospital List" });
 			   this->PA_SortingHlist->Location = System::Drawing::Point(353, 250);
-			   this->PA_SortingHlist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_SortingHlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_SortingHlist->Name = L"PA_SortingHlist";
-			   this->PA_SortingHlist->Size = System::Drawing::Size(484, 236);
+			   this->PA_SortingHlist->Size = System::Drawing::Size(484, 207);
 			   this->PA_SortingHlist->TabIndex = 5;
 			   // 
 			   // PA_Optionsort2
@@ -5826,7 +5829,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Optionsort2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_Optionsort2->Location = System::Drawing::Point(33, 201);
-			   this->PA_Optionsort2->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Optionsort2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Optionsort2->Name = L"PA_Optionsort2";
 			   this->PA_Optionsort2->Size = System::Drawing::Size(191, 33);
 			   this->PA_Optionsort2->TabIndex = 4;
@@ -5841,7 +5844,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Optionsort3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_Optionsort3->Location = System::Drawing::Point(34, 235);
-			   this->PA_Optionsort3->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Optionsort3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Optionsort3->Name = L"PA_Optionsort3";
 			   this->PA_Optionsort3->Size = System::Drawing::Size(81, 33);
 			   this->PA_Optionsort3->TabIndex = 3;
@@ -5856,7 +5859,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Optionsort4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_Optionsort4->Location = System::Drawing::Point(34, 269);
-			   this->PA_Optionsort4->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Optionsort4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Optionsort4->Name = L"PA_Optionsort4";
 			   this->PA_Optionsort4->Size = System::Drawing::Size(149, 33);
 			   this->PA_Optionsort4->TabIndex = 2;
@@ -5884,7 +5887,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Optionsort1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_Optionsort1->Location = System::Drawing::Point(33, 167);
-			   this->PA_Optionsort1->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Optionsort1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Optionsort1->Name = L"PA_Optionsort1";
 			   this->PA_Optionsort1->Size = System::Drawing::Size(96, 33);
 			   this->PA_Optionsort1->TabIndex = 0;
@@ -5904,9 +5907,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_viewPinfo->Controls->Add(this->PA_PID);
 			   this->PA_viewPinfo->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_viewPinfo->Location = System::Drawing::Point(0, 0);
-			   this->PA_viewPinfo->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_viewPinfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_viewPinfo->Name = L"PA_viewPinfo";
-			   this->PA_viewPinfo->Size = System::Drawing::Size(1083, 724);
+			   this->PA_viewPinfo->Size = System::Drawing::Size(897, 683);
 			   this->PA_viewPinfo->TabIndex = 1;
 			   // 
 			   // PA_PNreservation
@@ -6008,9 +6011,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_reservlist->Controls->Add(this->PA_reservlist_header);
 			   this->PA_reservlist->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_reservlist->Location = System::Drawing::Point(0, 0);
-			   this->PA_reservlist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_reservlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_reservlist->Name = L"PA_reservlist";
-			   this->PA_reservlist->Size = System::Drawing::Size(1083, 724);
+			   this->PA_reservlist->Size = System::Drawing::Size(897, 683);
 			   this->PA_reservlist->TabIndex = 4;
 			   this->PA_reservlist->Leave += gcnew System::EventHandler(this, &mainPage::PA_reservlist_Leave);
 			   // 
@@ -6152,9 +6155,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_reservlist_header->Controls->Add(this->PA_viewRlist);
 			   this->PA_reservlist_header->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->PA_reservlist_header->Location = System::Drawing::Point(0, 0);
-			   this->PA_reservlist_header->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_reservlist_header->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_reservlist_header->Name = L"PA_reservlist_header";
-			   this->PA_reservlist_header->Size = System::Drawing::Size(1083, 91);
+			   this->PA_reservlist_header->Size = System::Drawing::Size(897, 91);
 			   this->PA_reservlist_header->TabIndex = 1;
 			   // 
 			   // label12
@@ -6196,7 +6199,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_viewRlist->FormattingEnabled = true;
 			   this->PA_viewRlist->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->PA_viewRlist->Location = System::Drawing::Point(25, 43);
-			   this->PA_viewRlist->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_viewRlist->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_viewRlist->Name = L"PA_viewRlist";
 			   this->PA_viewRlist->Size = System::Drawing::Size(186, 30);
 			   this->PA_viewRlist->TabIndex = 0;
@@ -6212,9 +6215,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_viewLABR->Controls->Add(this->panel3);
 			   this->PA_viewLABR->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_viewLABR->Location = System::Drawing::Point(0, 0);
-			   this->PA_viewLABR->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_viewLABR->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_viewLABR->Name = L"PA_viewLABR";
-			   this->PA_viewLABR->Size = System::Drawing::Size(1083, 724);
+			   this->PA_viewLABR->Size = System::Drawing::Size(897, 683);
 			   this->PA_viewLABR->TabIndex = 10;
 			   this->PA_viewLABR->Leave += gcnew System::EventHandler(this, &mainPage::PA_viewLABR_Leave);
 			   // 
@@ -6304,9 +6307,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->panel3->Controls->Add(this->comboBox1);
 			   this->panel3->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->panel3->Location = System::Drawing::Point(0, 0);
-			   this->panel3->Margin = System::Windows::Forms::Padding(2);
+			   this->panel3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->panel3->Name = L"panel3";
-			   this->panel3->Size = System::Drawing::Size(1083, 91);
+			   this->panel3->Size = System::Drawing::Size(897, 91);
 			   this->panel3->TabIndex = 1;
 			   // 
 			   // label27
@@ -6348,7 +6351,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->comboBox1->FormattingEnabled = true;
 			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->comboBox1->Location = System::Drawing::Point(25, 43);
-			   this->comboBox1->Margin = System::Windows::Forms::Padding(2);
+			   this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->comboBox1->Name = L"comboBox1";
 			   this->comboBox1->Size = System::Drawing::Size(186, 30);
 			   this->comboBox1->TabIndex = 0;
@@ -6359,9 +6362,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Editlaboratory->Controls->Add(this->PA_headerLAb);
 			   this->PA_Editlaboratory->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_Editlaboratory->Location = System::Drawing::Point(0, 0);
-			   this->PA_Editlaboratory->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Editlaboratory->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Editlaboratory->Name = L"PA_Editlaboratory";
-			   this->PA_Editlaboratory->Size = System::Drawing::Size(1083, 724);
+			   this->PA_Editlaboratory->Size = System::Drawing::Size(897, 683);
 			   this->PA_Editlaboratory->TabIndex = 9;
 			   // 
 			   // PA_Addlabo_layout
@@ -6384,9 +6387,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_Addlabo_layout->Controls->Add(this->PA_LABPname_TB);
 			   this->PA_Addlabo_layout->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_Addlabo_layout->Location = System::Drawing::Point(0, 65);
-			   this->PA_Addlabo_layout->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_Addlabo_layout->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_Addlabo_layout->Name = L"PA_Addlabo_layout";
-			   this->PA_Addlabo_layout->Size = System::Drawing::Size(1083, 659);
+			   this->PA_Addlabo_layout->Size = System::Drawing::Size(897, 618);
 			   this->PA_Addlabo_layout->TabIndex = 14;
 			   // 
 			   // PA_chechwho
@@ -6395,7 +6398,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_chechwho->Controls->Add(this->PA_LABwho_RB2);
 			   this->PA_chechwho->Controls->Add(this->PA_LABwho_RB1);
 			   this->PA_chechwho->Location = System::Drawing::Point(0, -2);
-			   this->PA_chechwho->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_chechwho->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_chechwho->Name = L"PA_chechwho";
 			   this->PA_chechwho->Size = System::Drawing::Size(167, 63);
 			   this->PA_chechwho->TabIndex = 35;
@@ -6417,7 +6420,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LABwho_RB2->AutoSize = true;
 			   this->PA_LABwho_RB2->Checked = true;
 			   this->PA_LABwho_RB2->Location = System::Drawing::Point(87, 37);
-			   this->PA_LABwho_RB2->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABwho_RB2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABwho_RB2->Name = L"PA_LABwho_RB2";
 			   this->PA_LABwho_RB2->Size = System::Drawing::Size(51, 17);
 			   this->PA_LABwho_RB2->TabIndex = 23;
@@ -6429,7 +6432,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   // 
 			   this->PA_LABwho_RB1->AutoSize = true;
 			   this->PA_LABwho_RB1->Location = System::Drawing::Point(9, 36);
-			   this->PA_LABwho_RB1->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABwho_RB1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABwho_RB1->Name = L"PA_LABwho_RB1";
 			   this->PA_LABwho_RB1->Size = System::Drawing::Size(41, 17);
 			   this->PA_LABwho_RB1->TabIndex = 22;
@@ -6443,7 +6446,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_checkwhere->Controls->Add(this->label9);
 			   this->PA_checkwhere->Controls->Add(this->PA_LAB_RB1);
 			   this->PA_checkwhere->Location = System::Drawing::Point(268, 0);
-			   this->PA_checkwhere->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_checkwhere->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_checkwhere->Name = L"PA_checkwhere";
 			   this->PA_checkwhere->Size = System::Drawing::Size(184, 55);
 			   this->PA_checkwhere->TabIndex = 34;
@@ -6452,7 +6455,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   // 
 			   this->PA_LAB_RB2->AutoSize = true;
 			   this->PA_LAB_RB2->Location = System::Drawing::Point(76, 32);
-			   this->PA_LAB_RB2->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LAB_RB2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LAB_RB2->Name = L"PA_LAB_RB2";
 			   this->PA_LAB_RB2->Size = System::Drawing::Size(89, 17);
 			   this->PA_LAB_RB2->TabIndex = 32;
@@ -6477,7 +6480,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LAB_RB1->AutoSize = true;
 			   this->PA_LAB_RB1->Checked = true;
 			   this->PA_LAB_RB1->Location = System::Drawing::Point(10, 32);
-			   this->PA_LAB_RB1->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LAB_RB1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LAB_RB1->Name = L"PA_LAB_RB1";
 			   this->PA_LAB_RB1->Size = System::Drawing::Size(63, 17);
 			   this->PA_LAB_RB1->TabIndex = 31;
@@ -6493,7 +6496,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LABPHorLN_CB->FormattingEnabled = true;
 			   this->PA_LABPHorLN_CB->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->PA_LABPHorLN_CB->Location = System::Drawing::Point(285, 286);
-			   this->PA_LABPHorLN_CB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABPHorLN_CB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABPHorLN_CB->MaxDropDownItems = 5;
 			   this->PA_LABPHorLN_CB->Name = L"PA_LABPHorLN_CB";
 			   this->PA_LABPHorLN_CB->Size = System::Drawing::Size(180, 28);
@@ -6510,7 +6513,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LABPtestN_CB->ItemHeight = 20;
 			   this->PA_LABPtestN_CB->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Empty" });
 			   this->PA_LABPtestN_CB->Location = System::Drawing::Point(26, 283);
-			   this->PA_LABPtestN_CB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABPtestN_CB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABPtestN_CB->MaxDropDownItems = 5;
 			   this->PA_LABPtestN_CB->Name = L"PA_LABPtestN_CB";
 			   this->PA_LABPtestN_CB->Size = System::Drawing::Size(180, 28);
@@ -6524,7 +6527,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LABPgender_CB->FormattingEnabled = true;
 			   this->PA_LABPgender_CB->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Male", L"Female" });
 			   this->PA_LABPgender_CB->Location = System::Drawing::Point(285, 202);
-			   this->PA_LABPgender_CB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABPgender_CB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABPgender_CB->Name = L"PA_LABPgender_CB";
 			   this->PA_LABPgender_CB->Size = System::Drawing::Size(180, 28);
 			   this->PA_LABPgender_CB->TabIndex = 25;
@@ -6559,7 +6562,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LABPage_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_LABPage_TB->Location = System::Drawing::Point(286, 129);
-			   this->PA_LABPage_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABPage_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABPage_TB->Name = L"PA_LABPage_TB";
 			   this->PA_LABPage_TB->Size = System::Drawing::Size(178, 21);
 			   this->PA_LABPage_TB->TabIndex = 19;
@@ -6607,7 +6610,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LABPphN_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_LABPphN_TB->Location = System::Drawing::Point(27, 202);
-			   this->PA_LABPphN_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABPphN_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABPphN_TB->Name = L"PA_LABPphN_TB";
 			   this->PA_LABPphN_TB->Size = System::Drawing::Size(178, 21);
 			   this->PA_LABPphN_TB->TabIndex = 13;
@@ -6619,7 +6622,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LABadd->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.93846F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_LABadd->Location = System::Drawing::Point(26, 413);
-			   this->PA_LABadd->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABadd->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABadd->Name = L"PA_LABadd";
 			   this->PA_LABadd->Size = System::Drawing::Size(79, 42);
 			   this->PA_LABadd->TabIndex = 11;
@@ -6645,7 +6648,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_LABPname_TB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.84615F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->PA_LABPname_TB->Location = System::Drawing::Point(27, 120);
-			   this->PA_LABPname_TB->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_LABPname_TB->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_LABPname_TB->Name = L"PA_LABPname_TB";
 			   this->PA_LABPname_TB->Size = System::Drawing::Size(178, 21);
 			   this->PA_LABPname_TB->TabIndex = 8;
@@ -6655,9 +6658,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_headerLAb->Controls->Add(this->label1);
 			   this->PA_headerLAb->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->PA_headerLAb->Location = System::Drawing::Point(0, 0);
-			   this->PA_headerLAb->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_headerLAb->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_headerLAb->Name = L"PA_headerLAb";
-			   this->PA_headerLAb->Size = System::Drawing::Size(1083, 65);
+			   this->PA_headerLAb->Size = System::Drawing::Size(897, 65);
 			   this->PA_headerLAb->TabIndex = 15;
 			   // 
 			   // label1
@@ -6679,9 +6682,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_startwindow->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->PA_startwindow->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->PA_startwindow->Location = System::Drawing::Point(0, 0);
-			   this->PA_startwindow->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_startwindow->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_startwindow->Name = L"PA_startwindow";
-			   this->PA_startwindow->Size = System::Drawing::Size(1083, 724);
+			   this->PA_startwindow->Size = System::Drawing::Size(897, 683);
 			   this->PA_startwindow->TabIndex = 6;
 			   // 
 			   // side_PA_bar_pn
@@ -6698,9 +6701,9 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->side_PA_bar_pn->Controls->Add(this->PA_logout_but);
 			   this->side_PA_bar_pn->Dock = System::Windows::Forms::DockStyle::Left;
 			   this->side_PA_bar_pn->Location = System::Drawing::Point(0, 0);
-			   this->side_PA_bar_pn->Margin = System::Windows::Forms::Padding(2);
+			   this->side_PA_bar_pn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->side_PA_bar_pn->Name = L"side_PA_bar_pn";
-			   this->side_PA_bar_pn->Size = System::Drawing::Size(255, 724);
+			   this->side_PA_bar_pn->Size = System::Drawing::Size(255, 683);
 			   this->side_PA_bar_pn->TabIndex = 2;
 			   // 
 			   // button5
@@ -6833,7 +6836,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_info_pn->Controls->Add(this->PA_pic);
 			   this->PA_info_pn->Dock = System::Windows::Forms::DockStyle::Top;
 			   this->PA_info_pn->Location = System::Drawing::Point(0, 0);
-			   this->PA_info_pn->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_info_pn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_info_pn->Name = L"PA_info_pn";
 			   this->PA_info_pn->Size = System::Drawing::Size(255, 147);
 			   this->PA_info_pn->TabIndex = 0;
@@ -6846,7 +6849,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->edit_PInfo->FlatAppearance->BorderSize = 0;
 			   this->edit_PInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->edit_PInfo->Location = System::Drawing::Point(234, 5);
-			   this->edit_PInfo->Margin = System::Windows::Forms::Padding(2);
+			   this->edit_PInfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->edit_PInfo->Name = L"edit_PInfo";
 			   this->edit_PInfo->Size = System::Drawing::Size(18, 21);
 			   this->edit_PInfo->TabIndex = 4;
@@ -6861,7 +6864,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->view_PInfo->FlatAppearance->BorderSize = 0;
 			   this->view_PInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->view_PInfo->Location = System::Drawing::Point(213, 5);
-			   this->view_PInfo->Margin = System::Windows::Forms::Padding(2);
+			   this->view_PInfo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->view_PInfo->Name = L"view_PInfo";
 			   this->view_PInfo->Size = System::Drawing::Size(18, 21);
 			   this->view_PInfo->TabIndex = 3;
@@ -6898,7 +6901,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   // 
 			   this->PA_pic->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_pic.Image")));
 			   this->PA_pic->Location = System::Drawing::Point(63, 3);
-			   this->PA_pic->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_pic->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_pic->Name = L"PA_pic";
 			   this->PA_pic->Size = System::Drawing::Size(114, 93);
 			   this->PA_pic->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -6913,8 +6916,8 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->PA_logout_but->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 			   this->PA_logout_but->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			   this->PA_logout_but->Location = System::Drawing::Point(0, 664);
-			   this->PA_logout_but->Margin = System::Windows::Forms::Padding(2);
+			   this->PA_logout_but->Location = System::Drawing::Point(0, 623);
+			   this->PA_logout_but->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->PA_logout_but->Name = L"PA_logout_but";
 			   this->PA_logout_but->Size = System::Drawing::Size(255, 60);
 			   this->PA_logout_but->TabIndex = 1;
@@ -6930,7 +6933,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(83)),
 					static_cast<System::Int32>(static_cast<System::Byte>(118)));
 			   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			   this->ClientSize = System::Drawing::Size(1338, 724);
+			   this->ClientSize = System::Drawing::Size(1152, 683);
 			   this->Controls->Add(this->AD_conpage);
 			   this->Controls->Add(this->PA_conpage);
 			   this->Controls->Add(this->StartUP_page);
@@ -6938,7 +6941,7 @@ private: System::Windows::Forms::Button^ AddNewAdminbut;
 			   this->DoubleBuffered = true;
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			   this->Margin = System::Windows::Forms::Padding(2);
+			   this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->MaximizeBox = false;
 			   this->Name = L"mainPage";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -9309,66 +9312,77 @@ private: System::Void AD_viewAllH_Click(System::Object^ sender, System::EventArg
 	 }
 }
 private: System::Void AddNewAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
-	/* AddNewAdmin^ add = gcnew AddNewAdmin();
+    Addpage^ add = gcnew Addpage();
+    add->ShowDialog();
+    System::Windows::Forms::DialogResult num; // Fix: Define DialogResult variable
 
-	 add->ShowDialog(); Users ty;
+    Users ty;
+	if (add->name->Text == "Close")
+		 return;
+    ty.name = context.marshal_as<string>(add->name->Text);
+    ty.username = context.marshal_as<string>(add->username->Text);
+    ty.password = context.marshal_as<string>(add->pass->Text);
+    ty.age = stoi(context.marshal_as<string>(add->age->Text));
+    ty.phonenumber = context.marshal_as<string>(add->phoneN->Text);
+    ty.gender = context.marshal_as<string>(add->gender->Text);
+    for (int i = 0; i < userCount; i++) {
+        if (user[i].username == ty.username) {
 
-	 if (add->AD_name->Text == "") {
-		  MessageBox::Show("Please Enter Name");
-		  return;
-	 }
-	 if (add->AD_username->Text == "") {
-		  MessageBox::Show("Please Enter Username");
-		  return;
-	 }
-	 if (add->AD_Age->Text == "") {
-		  MessageBox::Show("Please Enter Age");
-		  return;
-	 }
-	 if (add->AD_phoneNumber->Text == "") {
-		  MessageBox::Show("Please Enter Phone Number");
-		  return;
-	 }
-	 if (add->AD_pass->Text == "") {
-		  MessageBox::Show("Please Enter Password");
-		  return;
-	 }
-	 if (add->AD_conpass->Text == "") {
-		  MessageBox::Show("Please Enter Confirm Password");
-		  return;
-	 }
-	 if (add->AD_gender->SelectedIndex == -1) {
-		  MessageBox::Show("Please Select Gender");
-		  return;
-	 }
-	 ty.name = context.marshal_as<string>(add->AD_name->Text);
-	 ty.username = context.marshal_as<string>(add->AD_username->Text);
-	 ty.password = context.marshal_as<string>(add->AD_pass->Text);
-	 ty.age = stoi(context.marshal_as<string>(add->AD_Age->Text));
-	 ty.phonenumber = context.marshal_as<string>(add->AD_phoneNumber->Text);
-	 ty.gender = context.marshal_as<string>(add->AD_gender->Text);
-	 string contemp = context.marshal_as<string>(add->AD_conpass->Text);
-	 if (contemp != ty.password) {
-		  MessageBox::Show("Password doesn't match");
-		  return;
-	 }
-	 for (int i = 0; i < userCount; i++) {
-		  if (user[i].username == ty.username) {
-			   MessageBox::Show("Username already exists");
-			   return;
-		  }
-	 }
-	 if (!f.validPhoneNumber(ty.phonenumber)) {
-		  MessageBox::Show("Invalid Number\nExample: 01*********");
-		  return;
-	 }
-	 ty.id = userID;
-	 ty.email = ty.email + "@Hadmin.com";
-	 ty.userType = "Admin";
-	 user[userCount] = ty;
-	 userCount++;
-	 userID++;
-	 this->Close();*/
+            num = MessageBox::Show("Rejected\nThis username already exist! registration again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+            if (num == System::Windows::Forms::DialogResult::Yes) {
+
+				 AddNewAdmin_Click(sender, e);
+
+			}
+			else {
+				// Cancel the operation
+				 MessageBox::Show("Registration Canceled!");
+				return;
+              
+            }
+           
+        }
+    }
+    if (!f.validPhoneNumber(ty.phonenumber)) {
+		 num = MessageBox::Show("Rejected\nInvalid Number ->(Example:01**********) registration again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+		 if (num == System::Windows::Forms::DialogResult::Yes) {
+
+			  AddNewAdmin_Click(sender, e);
+
+		 }
+		 else {
+			  // Cancel the operation
+			  MessageBox::Show("Registration Canceled!");
+			  return;
+
+		 }
+
+    }
+	if (ty.age <= 17) {
+	
+		 num = MessageBox::Show("Rejected\nInvalid Age ->(Must be grater than 17)\n registration again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+		 if (num == System::Windows::Forms::DialogResult::Yes) {
+
+			  AddNewAdmin_Click(sender, e);
+
+		 }
+		 else {
+			  // Cancel the operation
+			  MessageBox::Show("Registration Canceled!");
+			  return;
+		 }
+	}
+    ty.id = userID;
+    ty.email = ty.username + "@Hadmin.com";
+    ty.userType = "Admin";
+    user[userCount] = ty;
+    userCount++;
+    userID++;
+	MessageBox::Show("Registration Done!\nAccount ID: "+ty.id);
+
 }
 		
 };
