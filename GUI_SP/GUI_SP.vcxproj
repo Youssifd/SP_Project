@@ -124,12 +124,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Addpage.cpp" />
+    <ClCompile Include="ListOfPatient.cpp" />
     <ClCompile Include="mainPage.cpp" />
     <ClCompile Include="MyUserControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Addpage.h">
       <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ListOfPatient.h">
+      <FileType>CppControl</FileType>
     </ClInclude>
     <ClInclude Include="mainFun.h" />
     <ClInclude Include="mainPage.h">
@@ -144,6 +148,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Addpage.resx">
       <DependentUpon>Addpage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListOfPatient.resx">
+      <DependentUpon>ListOfPatient.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainPage.resx" />
     <EmbeddedResource Include="ListOfHopsital.resx">
