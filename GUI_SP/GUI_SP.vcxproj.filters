@@ -18,15 +18,6 @@
     <ClCompile Include="mainPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MyUserControl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Addpage.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ListOfPatient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainPage.h">

@@ -1,5 +1,6 @@
 #pragma once
-
+#include "mainPage.h"
+mainFun f;
 namespace GUISP {
 
 	using namespace System;
@@ -15,6 +16,8 @@ namespace GUISP {
 	public ref class Addpage : public System::Windows::Forms::Form
 	{
 	public:
+		 msclr::interop::marshal_context context;
+
 		Addpage(void)
 		{
 			InitializeComponent();
@@ -358,42 +361,102 @@ private: System::Void age_KeyPress(System::Object^ sender, System::Windows::Form
 	 }
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	 System::Windows::Forms::DialogResult num; // Fix: Define DialogResult variable
+
 	 if (name->Text == "") {
-		  MessageBox::Show("Please Enter Name");
+		  MessageBox::Show("Please Enter Name","warning");
 		  return;
 	 }
 	 if (username->Text == "") {
-		  MessageBox::Show("Please Enter Username");
+		  MessageBox::Show("Please Enter Username", "warning");
 		  return;
 	 }
 	 if (age->Text == "") {
-		  MessageBox::Show("Please Enter Age");
+		  MessageBox::Show("Please Enter Age", "warning");
 		  return;
 	 }
 	 if (phoneN->Text == "") {
-		  MessageBox::Show("Please Enter Phone Number");
+		  MessageBox::Show("Please Enter Phone Number", "warning");
 		  return;
 	 }
 	 if (pass->Text == "") {
-		  MessageBox::Show("Please Enter Password");
+		  MessageBox::Show("Please Enter Password", "warning");
 		  return;
 	 }
 	 if (conpass->Text == "") {
-		  MessageBox::Show("Please Enter Confirm Password");
+		  MessageBox::Show("Please Enter Confirm Password", "warning");
 		  return;
 	 }
 	 if (gender->SelectedIndex == -1) {
-		  MessageBox::Show("Please Select Gender");
+		  MessageBox::Show("Please Select Gender", "warning");
 		  return;
 	 }
 	 if(conpass->Text != pass->Text){
-		  MessageBox::Show("Password and Confirm Password do not match");
+		  MessageBox::Show("Password and Confirm Password do not match", "warning");
 		  return;
 	 }
 	 if(pass->Text->Length < 8){
-		  MessageBox::Show("Password must be at least 8 characters long");
+		  MessageBox::Show("Password must be at least 8 characters long", "warning");
 		  return;
 	 }
+
+
+
+	 Users ty;
+	 ty.name = context.marshal_as<string>(name->Text);
+	 ty.username = context.marshal_as<string>(username->Text);
+	 ty.password = context.marshal_as<string>(pass->Text);
+	 ty.age = stoi(context.marshal_as<string>(age->Text));
+	 ty.phonenumber = context.marshal_as<string>(phoneN->Text);
+	 ty.gender = context.marshal_as<string>(gender->Text);
+	 for (int i = 0; i < userCount; i++) {
+		  if (user[i].username == ty.username) {
+			   num = MessageBox::Show("Rejected\nThis username already exist! Try again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+			   if (num == System::Windows::Forms::DialogResult::Yes) {
+					return;
+			   }
+			   else {					
+					MessageBox::Show("Registration Canceled!");
+					this->Close();
+					return;
+			   }
+
+		  }
+	 }
+	 if (ty.age <= 17) {
+		  num = MessageBox::Show("Invalid Age ->(Must be grater than 17)\n Try again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+		  if (num == System::Windows::Forms::DialogResult::Yes) {
+			   return;
+		  }
+		  else {
+			   // Cancel the operation
+			   MessageBox::Show("Registration Canceled!");
+			   this->Close();
+			   return;
+		  }
+	 }	  
+	 if (!f.validPhoneNumber(ty.phonenumber)) {
+		  num = MessageBox::Show("Invalid Number ->(Example:01**********)\n Try again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+
+		  if (num == System::Windows::Forms::DialogResult::Yes) {
+			   return;
+		  }
+		  else {
+			   // Cancel the operation
+			   MessageBox::Show("Registration Canceled!");
+			   this->Close();
+			   return;
+		  } 
+	 }
+		  
+	 ty.id = userID;
+	 ty.email = ty.username + "@Hadmin.com";
+	 ty.userType = "Admin";
+	 user[userCount] = ty;
+	 userCount++;
+	 userID++;
+	 MessageBox::Show("Registration Done!\nAccount ID: " + ty.id,"Done", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 	
 	 this->Close();
 }

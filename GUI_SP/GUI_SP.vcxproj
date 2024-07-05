@@ -123,10 +123,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Addpage.cpp" />
-    <ClCompile Include="ListOfPatient.cpp" />
     <ClCompile Include="mainPage.cpp" />
-    <ClCompile Include="MyUserControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Addpage.h">

@@ -6,9 +6,6 @@
 #include"ListOfHopsital.h"
 #include"ListOfPatient.h"
 #include"AddPage.h"
-mainFun f;
-Users user[NumberOfUsers];
-Hospitals hospital[NumberOfHospital],Htemp;
 namespace GUISP {
 
 	 using namespace System;
@@ -567,6 +564,8 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_AllhospitalData;
 private: System::Windows::Forms::Button^ AddNewAdminbut;
 private: System::Windows::Forms::Button^ button6;
 private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
+private: System::Windows::Forms::Button^ AD_DelAcc;
+private: System::Windows::Forms::Button^ PA_del;
 
 
 
@@ -814,6 +813,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   this->AD_modify_hos_but = (gcnew System::Windows::Forms::Button());
 			   this->AD_addORdel_hos_but = (gcnew System::Windows::Forms::Button());
 			   this->AD_info_pn = (gcnew System::Windows::Forms::Panel());
+			   this->AD_DelAcc = (gcnew System::Windows::Forms::Button());
 			   this->AddNewAdminbut = (gcnew System::Windows::Forms::Button());
 			   this->edit_AInfo = (gcnew System::Windows::Forms::Button());
 			   this->view_AInfo = (gcnew System::Windows::Forms::Button());
@@ -1009,6 +1009,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   this->PA_ViewReserveList = (gcnew System::Windows::Forms::Button());
 			   this->PA_view_hosInfo = (gcnew System::Windows::Forms::Button());
 			   this->PA_info_pn = (gcnew System::Windows::Forms::Panel());
+			   this->PA_del = (gcnew System::Windows::Forms::Button());
 			   this->edit_PInfo = (gcnew System::Windows::Forms::Button());
 			   this->view_PInfo = (gcnew System::Windows::Forms::Button());
 			   this->uesrType_PA_lab = (gcnew System::Windows::Forms::Label());
@@ -4048,6 +4049,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   // AD_info_pn
 			   // 
 			   this->AD_info_pn->BackColor = System::Drawing::SystemColors::ButtonShadow;
+			   this->AD_info_pn->Controls->Add(this->AD_DelAcc);
 			   this->AD_info_pn->Controls->Add(this->AddNewAdminbut);
 			   this->AD_info_pn->Controls->Add(this->edit_AInfo);
 			   this->AD_info_pn->Controls->Add(this->view_AInfo);
@@ -4061,6 +4063,21 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   this->AD_info_pn->Size = System::Drawing::Size(343, 187);
 			   this->AD_info_pn->TabIndex = 0;
 			   // 
+			   // AD_DelAcc
+			   // 
+			   this->AD_DelAcc->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AD_DelAcc.BackgroundImage")));
+			   this->AD_DelAcc->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			   this->AD_DelAcc->FlatAppearance->BorderSize = 0;
+			   this->AD_DelAcc->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->AD_DelAcc->ForeColor = System::Drawing::SystemColors::Control;
+			   this->AD_DelAcc->Location = System::Drawing::Point(313, 52);
+			   this->AD_DelAcc->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			   this->AD_DelAcc->Name = L"AD_DelAcc";
+			   this->AD_DelAcc->Size = System::Drawing::Size(24, 26);
+			   this->AD_DelAcc->TabIndex = 8;
+			   this->AD_DelAcc->UseVisualStyleBackColor = true;
+			   this->AD_DelAcc->Click += gcnew System::EventHandler(this, &mainPage::AD_DelAcc_Click);
+			   // 
 			   // AddNewAdminbut
 			   // 
 			   this->AddNewAdminbut->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"AddNewAdminbut.BackgroundImage")));
@@ -4068,7 +4085,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   this->AddNewAdminbut->FlatAppearance->BorderSize = 0;
 			   this->AddNewAdminbut->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->AddNewAdminbut->ForeColor = System::Drawing::SystemColors::Control;
-			   this->AddNewAdminbut->Location = System::Drawing::Point(312, 46);
+			   this->AddNewAdminbut->Location = System::Drawing::Point(278, 52);
 			   this->AddNewAdminbut->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			   this->AddNewAdminbut->Name = L"AddNewAdminbut";
 			   this->AddNewAdminbut->Size = System::Drawing::Size(24, 26);
@@ -4097,7 +4114,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   this->view_AInfo->FlatAppearance->BorderSize = 0;
 			   this->view_AInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->view_AInfo->ForeColor = System::Drawing::SystemColors::Control;
-			   this->view_AInfo->Location = System::Drawing::Point(281, 10);
+			   this->view_AInfo->Location = System::Drawing::Point(278, 10);
 			   this->view_AInfo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			   this->view_AInfo->Name = L"view_AInfo";
 			   this->view_AInfo->Size = System::Drawing::Size(24, 26);
@@ -6712,6 +6729,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   // PA_info_pn
 			   // 
 			   this->PA_info_pn->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			   this->PA_info_pn->Controls->Add(this->PA_del);
 			   this->PA_info_pn->Controls->Add(this->edit_PInfo);
 			   this->PA_info_pn->Controls->Add(this->view_PInfo);
 			   this->PA_info_pn->Controls->Add(this->uesrType_PA_lab);
@@ -6724,6 +6742,21 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   this->PA_info_pn->Size = System::Drawing::Size(340, 181);
 			   this->PA_info_pn->TabIndex = 0;
 			   // 
+			   // PA_del
+			   // 
+			   this->PA_del->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PA_del.BackgroundImage")));
+			   this->PA_del->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			   this->PA_del->FlatAppearance->BorderSize = 0;
+			   this->PA_del->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->PA_del->ForeColor = System::Drawing::SystemColors::Control;
+			   this->PA_del->Location = System::Drawing::Point(308, 54);
+			   this->PA_del->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			   this->PA_del->Name = L"PA_del";
+			   this->PA_del->Size = System::Drawing::Size(24, 26);
+			   this->PA_del->TabIndex = 9;
+			   this->PA_del->UseVisualStyleBackColor = true;
+			   this->PA_del->Click += gcnew System::EventHandler(this, &mainPage::PA_del_Click);
+			   // 
 			   // edit_PInfo
 			   // 
 			   this->edit_PInfo->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
@@ -6731,7 +6764,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   this->edit_PInfo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			   this->edit_PInfo->FlatAppearance->BorderSize = 0;
 			   this->edit_PInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->edit_PInfo->Location = System::Drawing::Point(312, 6);
+			   this->edit_PInfo->Location = System::Drawing::Point(308, 7);
 			   this->edit_PInfo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			   this->edit_PInfo->Name = L"edit_PInfo";
 			   this->edit_PInfo->Size = System::Drawing::Size(24, 26);
@@ -6746,7 +6779,7 @@ private: System::Windows::Forms::FlowLayoutPanel^ AD_allpatient;
 			   this->view_PInfo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			   this->view_PInfo->FlatAppearance->BorderSize = 0;
 			   this->view_PInfo->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->view_PInfo->Location = System::Drawing::Point(284, 6);
+			   this->view_PInfo->Location = System::Drawing::Point(264, 6);
 			   this->view_PInfo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			   this->view_PInfo->Name = L"view_PInfo";
 			   this->view_PInfo->Size = System::Drawing::Size(24, 26);
@@ -9198,75 +9231,6 @@ private: System::Void AD_viewAllH_Click(System::Object^ sender, System::EventArg
 private: System::Void AddNewAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
     Addpage^ add = gcnew Addpage();
     add->ShowDialog();
-    System::Windows::Forms::DialogResult num; // Fix: Define DialogResult variable
-
-    Users ty;
-	if (add->name->Text == "Close")
-		 return;
-    ty.name = context.marshal_as<string>(add->name->Text);
-    ty.username = context.marshal_as<string>(add->username->Text);
-    ty.password = context.marshal_as<string>(add->pass->Text);
-    ty.age = stoi(context.marshal_as<string>(add->age->Text));
-    ty.phonenumber = context.marshal_as<string>(add->phoneN->Text);
-    ty.gender = context.marshal_as<string>(add->gender->Text);
-    for (int i = 0; i < userCount; i++) {
-        if (user[i].username == ty.username) {
-
-            num = MessageBox::Show("Rejected\nThis username already exist! registration again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-            if (num == System::Windows::Forms::DialogResult::Yes) {
-
-				 AddNewAdmin_Click(sender, e);
-
-			}
-			else {
-				// Cancel the operation
-				 MessageBox::Show("Registration Canceled!");
-				return;
-              
-            }
-           
-        }
-    }
-    if (!f.validPhoneNumber(ty.phonenumber)) {
-		 num = MessageBox::Show("Rejected\nInvalid Number ->(Example:01**********) registration again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-		 if (num == System::Windows::Forms::DialogResult::Yes) {
-
-			  AddNewAdmin_Click(sender, e);
-
-		 }
-		 else {
-			  // Cancel the operation
-			  MessageBox::Show("Registration Canceled!");
-			  return;
-
-		 }
-
-    }
-	if (ty.age <= 17) {
-	
-		 num = MessageBox::Show("Rejected\nInvalid Age ->(Must be grater than 17)\n registration again?", "Choose an Option", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-		 if (num == System::Windows::Forms::DialogResult::Yes) {
-
-			  AddNewAdmin_Click(sender, e);
-
-		 }
-		 else {
-			  // Cancel the operation
-			  MessageBox::Show("Registration Canceled!");
-			  return;
-		 }
-	}
-    ty.id = userID;
-    ty.email = ty.username + "@Hadmin.com";
-    ty.userType = "Admin";
-    user[userCount] = ty;
-    userCount++;
-    userID++;
-	MessageBox::Show("Registration Done!\nAccount ID: "+ty.id);
-
 }
 		
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -9302,6 +9266,78 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 		  AD_view_Pinfo_Leave(sender, e);
 		  AD_viewPlist->SelectedIndex = -1;
 		  button6->Text = "View All";
+	 }
+}
+private: System::Void AD_DelAcc_Click(System::Object^ sender, System::EventArgs^ e) {
+	 System::Windows::Forms::DialogResult result;
+	 result = MessageBox::Show("Are you sure you want to delete your account?", "Delete Account", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+	 if (result == System::Windows::Forms::DialogResult::Yes) {
+		  user[Lindex].id = -1;
+		  user[Lindex].name = "";
+		  user[Lindex].age = -1;
+		  user[Lindex].reserCount = 0;
+		  user[Lindex].totalpaid = 0;
+		  user[Lindex].email = "";
+		  user[Lindex].gender = "";
+		  user[Lindex].phonenumber = "";
+		  user[Lindex].password = "";
+		  user[Lindex].username = "";
+		  user[Lindex].userType = "Patient";
+		  for (int i = NumberOfUsers - 1; i>=0; i--) {
+		  if (user[i].id > 1000) {
+			   break;
+		  }
+		  if (user[i].id==0) {
+			   swap(user[Lindex], user[i]);
+			   if (Lindex != userCount - 1 && user[userCount - 1].id > 1000) {
+					swap(user[Lindex], user[userCount - 1]);
+			   }
+			   break;
+		  }
+
+		  }
+			   userCount--;
+			   MessageBox::Show("Account Deleted Successfully");
+			   AD_logout_but_Click(sender, e);
+	 }
+	 else {
+		  MessageBox::Show("Account Deletion Canceled");
+	 }
+}
+private: System::Void PA_del_Click(System::Object^ sender, System::EventArgs^ e) {
+	 System::Windows::Forms::DialogResult result;
+	 result = MessageBox::Show("Are you sure you want to delete your account?", "Delete Account", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+	 if (result == System::Windows::Forms::DialogResult::Yes) {
+		  user[Lindex].id = -1;
+		  user[Lindex].age = -1;
+		  user[Lindex].totalpaid = 0;
+		  user[Lindex].reserCount = 0;
+		  user[Lindex].email = "";
+		  user[Lindex].name = "";
+		  user[Lindex].gender = "";
+		  user[Lindex].phonenumber = "";
+		  user[Lindex].password = "";
+		  user[Lindex].username = "";
+		 
+		  for (int i = NumberOfUsers - 1; i >= 0; i--) {
+			   if (user[i].id > 1000) {
+					break;
+			   }
+			   if (user[i].id == 0) {
+					swap(user[Lindex], user[i]);
+					if (Lindex != userCount - 1 && user[userCount - 1].id >1000) {
+						 swap(user[Lindex], user[userCount - 1]);
+					}
+					break;
+			   }
+
+		  }
+		  MessageBox::Show("Account Deleted Successfully");
+		  userCount--;
+		  PA_logout_but_Click(sender, e);
+	 }
+	 else {
+		  MessageBox::Show("Account Deletion Canceled");
 	 }
 }
 };

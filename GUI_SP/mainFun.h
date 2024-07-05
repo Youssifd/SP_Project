@@ -23,7 +23,7 @@ public:
 	 }
 	 void DefinitonOfVariable(Users user[], Hospitals hos[]) {
 		  ifstream UserInfo("Data/UserInfo.txt", ios::app);
-
+		
 		  for (int i = 0; !UserInfo.eof(); i++) {
 			   UserInfo >> user[i].id >> user[i].username >> user[i].age >> user[i].email >> user[i].gender >> user[i].phonenumber >> user[i].password >> user[i].reserCount;
 			   getline(UserInfo, user[i].name);
@@ -91,6 +91,12 @@ public:
 	 }
 	 void SaveData(Users user[]) {
 		  ofstream ExportUserInfo("Data/UserInfo.txt");
+		  for (int i = 0; i < userCount - 1; ++i) {
+			   for (int j = i + 1; j < userCount; j++) {
+					if (user[i].id > user[j].id)
+						 swap(user[i], user[j]);
+			   }
+		  }
 		  for (int i = 0; i < userCount; i++) {
 			   ExportUserInfo << user[i].id << " " << user[i].username << " " << user[i].age << " " << user[i].email << " " << user[i].gender << " " << user[i].phonenumber << " " << user[i].password << " " << user[i].reserCount << user[i].name;
 			   if (i != userCount - 1 || user[i].reserCount != 0)
@@ -300,7 +306,7 @@ public:
 	 void cancelreservation(Users patient[],Hospitals hospital[], int PIndex) {
 
 
-		  cout << "Enter your Resevaion ID: ";
+		
 
 		  
 
