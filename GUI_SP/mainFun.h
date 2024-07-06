@@ -195,38 +195,32 @@ public:
 	 }
 	 void DeleteHospital(Hospitals hospital[], string hsptlname)
 	 {
-
-
-
-		  bool found = false;
-
 		  for (int i = 0; i < hospitalCount; i++)
 		  {
 			   if (hsptlname == hospital[i].HospitalName)
 			   {
-					found = true;
-					cout << "search successfully" << endl;
-					hospital[i].HospitalID = 0;
-					hospital[i].PatientReservationRooms = 0;
-					hospital[i].ReservationPrice = 0;
-					hospital[i].BedsPrice = 0;
-					hospital[i].HospitalRate = 0;
-					hospital[i].HospitalName = "";
-					for (int j = 0; j < hospital[i].specialtiesCount; j++)
-					{//hospital[i].specialtiesCount to stop work with garbage 
-						 hospital[i].HospitalSpecialties[j] = "";
-					}
-					for (int j = 0; j < hospital[i].clinicsCount; j++)
-					{//hospital[i].clinicsCount->  same as specialtiesCount
-						 hospital[i].HospitalClinics[j] = "";
-					}
+					//cout << "search successfully" << endl;
+					//hospital[i].HospitalID = 0;
+					//hospital[i].PatientReservationRooms = 0;
+					//hospital[i].ReservationPrice = 0;
+					//hospital[i].BedsPrice = 0;
+					//hospital[i].HospitalRate = 0;
+					//hospital[i].HospitalName = "";
+					//for (int j = 0; j < hospital[i].specialtiesCount; j++)
+					//{//hospital[i].specialtiesCount to stop work with garbage 
+					//	 hospital[i].HospitalSpecialties[j] = "";
+					//}
+					//for (int j = 0; j < hospital[i].clinicsCount; j++)
+					//{//hospital[i].clinicsCount->  same as specialtiesCount
+					//	 hospital[i].HospitalClinics[j] = "";
+					//}
+					hospital[i] = Hdel;
 					if (i != (hospitalCount - 1))
 						 swap(hospital[i], hospital[hospitalCount - 1]);//edit -> Check the hospital not the last one
 					hospitalCount--;
+					SortHospitalByName(hospital);
 			   }
 		  }
-
-
 	 }
 	 void registerpatient(Users patient[], Users temp)
 	 {
@@ -317,8 +311,8 @@ public:
 					}
 			   }
 
-			   patient[PIndex].totalpaid -= patient[PIndex].reservation[Rindex].Totalprice;
-			   patient[PIndex].reservation[Rindex].PName = " ";
+			  patient[PIndex].totalpaid -= patient[PIndex].reservation[Rindex].Totalprice;
+			 /*  patient[PIndex].reservation[Rindex].PName = " ";
 			   patient[PIndex].reservation[Rindex].PAge = 0;
 			   patient[PIndex].reservation[Rindex].ReservtionID = 0;
 			   patient[PIndex].reservation[Rindex].hospital.HospitalName = " ";
@@ -330,8 +324,8 @@ public:
 			   patient[PIndex].reservation[Rindex].ReservationDay = " ";
 			   patient[PIndex].reservation[Rindex].ReservationPrice = 0;
 			   patient[PIndex].reservation[Rindex].surgeryprice = 0;
-			   patient[PIndex].reservation[Rindex].Totalprice = 0;
-			  
+			   patient[PIndex].reservation[Rindex].Totalprice = 0;*/
+			  patient[PIndex].reservation[Rindex] = Rdel;
 			   if (Rindex != patient[PIndex].reserCount - 1)
 					swap(patient[PIndex].reservation[Rindex], patient[PIndex].reservation[patient[PIndex].reserCount - 1]);
 			   Rindex = -1;

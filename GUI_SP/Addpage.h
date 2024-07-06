@@ -400,8 +400,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		  return;
 	 }
 
-
-
 	 Users ty;
 	 ty.name = context.marshal_as<string>(name->Text);
 	 ty.username = context.marshal_as<string>(username->Text);

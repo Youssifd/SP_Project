@@ -107,6 +107,8 @@ void GUISP::mainPage::displayPinfo() {
 	  
 }
 void GUISP::mainPage::AddHospital(Hospitals hos[]) {
+	 Hospitals Htemp;
+	 Htemp = hos[0];
 	 if (AD_HNorder_TB->Text == "") {
 		  AD_Herror->Text="Please Enter Hospital Name";
 		  return;
@@ -180,18 +182,10 @@ void GUISP::mainPage::AddHospital(Hospitals hos[]) {
 		  return ;
 	 }
 	
-	 Htemp.specialtiesCount = hos[0].specialtiesCount;
-	 Htemp.clinicsCount = hos[0].clinicsCount;
 	 hos[hospitalCount] = Htemp;
 
-	 for (int j = 0; j < hos[0].specialtiesCount; j++)
-		  hos[hospitalCount].HospitalSpecialties[j] = hos[0].HospitalSpecialties[j];
-
-	 for (int z = 0; z < hos[0].clinicsCount; z++)
-		  hos[hospitalCount].HospitalClinics[z] = hos[0].HospitalClinics[z];
-
 	 hospitalCount++; 
-	 MessageBox::Show("Hospital Added Successfully");
+	 MessageBox::Show("Hospital Added Successfully","Done",MessageBoxButtons::OK,MessageBoxIcon::Information);
 	 AD_HIDorder_TB->Text = "";
 	 AD_HRateorder_TB->Text = "";
 	 AD_HPRBsorder_TB->Text = "";
@@ -201,6 +195,7 @@ void GUISP::mainPage::AddHospital(Hospitals hos[]) {
 	 AD_HRPorder_TB->Text = "";
 }
 void GUISP::mainPage::modifyHospital() {
+	 Hospitals Htemp;
 
 	 if (AD_nameOfinput->Text == "Hospital ID") {
 		  Htemp.HospitalID = stoi(context.marshal_as < string>(AD_TBinput->Text));
@@ -343,7 +338,7 @@ void GUISP::mainPage::modifyHospital() {
 	 }
 
 	 //AD_warning1->Text = "edit sucss";
-	 MessageBox::Show("edit sucss");
+	 MessageBox::Show("Edit Successfully", "Done", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	 AD_TBinput->Text = "";
 }
 void GUISP::mainPage::modifyHSC() {

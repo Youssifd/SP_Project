@@ -72,8 +72,8 @@ struct Users {
 	 LABReservations* LabR = new LABReservations[NumberOfReservation];
 
 };
-Users user[NumberOfUsers];
-Hospitals hospital[NumberOfHospital], Htemp;
-
+Users user[NumberOfUsers],Udel;
+Hospitals hospital[NumberOfHospital],Hdel;
+Reservations Rdel;
 int  reservationID = 101, labReservation = 501, userCount = 0, hospitalCount = 0,userID=1001;
 int Lindex = -1, Pindex = -1, Hindex = -1, Rindex = -1,SPindex=-1,CLindex=-1,Dindex=-1,LabRindex=-1;
